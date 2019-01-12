@@ -32,6 +32,14 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.german_software_engineers.trainerapp.TrainingsSchedule" />
         </activity>
+        <activity
+            android:name=".AddTrainingsSchedule"
+            android:label="@string/title_activity_add_trainings_schedule"
+            android:parentActivityName=".TrainingScheduleEditor">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.german_software_engineers.trainerapp.TrainingScheduleEditor" />
+        </activity>
     </application>
 
 </manifest>

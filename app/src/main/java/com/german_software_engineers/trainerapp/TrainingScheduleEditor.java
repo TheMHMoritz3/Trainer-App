@@ -28,8 +28,7 @@ public class TrainingScheduleEditor extends AppCompatActivity
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                openEditorTrainingsSchedule();
             }
         });
 
@@ -93,5 +92,10 @@ public class TrainingScheduleEditor extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    public void openEditorTrainingsSchedule(){
+        Intent intent = new Intent(this, AddTrainingsSchedule.class);
+        startActivity(intent);
     }
 }
