@@ -33,12 +33,22 @@
                 android:value="com.german_software_engineers.trainerapp.TrainingsSchedule" />
         </activity>
         <activity
-            android:name=".AddTrainingsSchedule"
-            android:label="@string/title_activity_add_trainings_schedule"
-            android:parentActivityName=".TrainingScheduleEditor">
+            android:name=".GeneralTrainingScheduleEditor"
+            android:label="@string/title_activity_general_training_schedule_editor"
+            android:parentActivityName=".TrainingScheduleEditor"
+            android:theme="@style/AppTheme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.german_software_engineers.trainerapp.TrainingScheduleEditor" />
+        </activity>
+        <activity
+            android:name=".AddExerciseActivity"
+            android:label="@string/title_activity_add_exercise"
+            android:parentActivityName=".GeneralTrainingScheduleEditor"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.german_software_engineers.trainerapp.GeneralTrainingScheduleEditor" />
         </activity>
     </application>
 

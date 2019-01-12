@@ -95,7 +95,7 @@ public class TrainingScheduleEditor extends AppCompatActivity
     }
 
     public void openEditorTrainingsSchedule(){
-        Intent intent = new Intent(this, AddTrainingsSchedule.class);
+        Intent intent = new Intent(this, GeneralTrainingScheduleEditor.class);
         startActivity(intent);
     }
 }
