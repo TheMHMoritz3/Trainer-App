@@ -17,7 +17,7 @@ import com.german_software_engineers.trainerapp.dummy.DummyContent;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AddExerciseActivity extends FragmentActivity implements ExcersizeListFragment.OnListFragmentInteractionListener {
+public class AddExerciseActivity extends AppCompatActivity implements ExcersizeListFragment.OnListFragmentInteractionListener {
 
     private RecyclerView ExerciseView;
 
@@ -27,8 +27,8 @@ public class AddExerciseActivity extends FragmentActivity implements ExcersizeLi
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_excersize_list);
-        //Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        //setSupportActionBar(toolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
         DummyContent.DummyItem item = new DummyContent.DummyItem("test","test", "this is a test");
         items.add(item);
