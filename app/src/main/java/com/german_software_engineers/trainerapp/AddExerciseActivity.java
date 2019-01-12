@@ -1,31 +1,49 @@
 package com.german_software_engineers.trainerapp;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
+import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.View;
 
-public class AddExerciseActivity extends AppCompatActivity {
+import com.german_software_engineers.trainerapp.dummy.DummyContent;
 
+import java.util.ArrayList;
+import java.util.List;
+
+public class AddExerciseActivity extends FragmentActivity implements ExcersizeListFragment.OnListFragmentInteractionListener {
+
+    private RecyclerView ExerciseView;
+
+    private List<DummyContent.DummyItem> items = new ArrayList<DummyContent.DummyItem>();
+    private MyExcersizeRecyclerViewAdapter adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_exercise);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        setContentView(R.layout.fragment_excersize_list);
+        //Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        //setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        DummyContent.DummyItem item = new DummyContent.DummyItem("test","test", "this is a test");
+        items.add(item);
+//        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+//        fab.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                openExerciseDialog();
+//            }
+//        });
+        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        adapter = new MyExcersizeRecyclerViewAdapter(items,this);
+        ExerciseView = (RecyclerView)findViewById(R.id.list);
+        ExerciseView.setAdapter(adapter);
     }
 
     @Override
@@ -35,4 +53,27 @@ public class AddExerciseActivity extends AppCompatActivity {
         return true;
     }
 
+    public void openExerciseDialog(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+        builder.setView(R.layout.exersice_dialog)
+                .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+
+                    }
+                })
+                .setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+
+                    }
+                });
+
+        Dialog newFragment = builder.create();
+        newFragment.show();
+    }
+
+    @Override
+    public void onListFragmentInteraction(DummyContent.DummyItem item) {
+
+    }
 }
