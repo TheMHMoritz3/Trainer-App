@@ -26,20 +26,20 @@ public class AddExerciseActivity extends AppCompatActivity implements ExcersizeL
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.fragment_excersize_list);
+        setContentView(R.layout.activity_add_exercise);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         DummyContent.DummyItem item = new DummyContent.DummyItem("test","test", "this is a test");
         items.add(item);
-//        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-//        fab.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                openExerciseDialog();
-//            }
-//        });
-        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openExerciseDialog();
+            }
+        });
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         adapter = new MyExcersizeRecyclerViewAdapter(items,this);
         ExerciseView = (RecyclerView)findViewById(R.id.list);

@@ -8,5 +8,9 @@
     tools:context=".AddExerciseActivity"
     tools:showIn="@layout/activity_add_exercise">
 
-
+    <fragment
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:name="com.german_software_engineers.trainerapp.ExcersizeListFragment"
+        android:id="@+id/EditExcerciseList"/>
 </android.support.constraint.ConstraintLayout>
