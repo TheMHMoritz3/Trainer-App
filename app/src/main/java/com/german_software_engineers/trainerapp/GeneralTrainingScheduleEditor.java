@@ -10,6 +10,11 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Spinner;
 
+import com.german_software_engineers.trainerapp.Model.Intensities;
+import com.german_software_engineers.trainerapp.Model.Schedule;
+import com.german_software_engineers.trainerapp.Model.ScheduleAvailableException;
+import com.german_software_engineers.trainerapp.Model.TrainingsTypes;
+
 public class GeneralTrainingScheduleEditor extends AppCompatActivity {
 
     @Override
@@ -30,18 +35,30 @@ public class GeneralTrainingScheduleEditor extends AppCompatActivity {
     }
 
     private void openNextActivity(){
+        addScheduleToMoel();
         Intent intent = new Intent(this, AddExerciseActivity.class);
         intent.putExtra("scheduleName", ((EditText)findViewById(R.id.nameTextEdit)).getText().toString());
-        intent.putExtra("trainingsType", ((Spinner)findViewById(R.id.trainSpinner)).getId());
-        intent.putExtra("repeations", ((EditText)findViewById(R.id.repEdit)).getText().toString());
-        intent.putExtra("pause", ((EditText)findViewById(R.id.pauseEdit)).getText().toString());
-        intent.putExtra("set", ((EditText)findViewById(R.id.setEdit)).getText().toString());
-        intent.putExtra("speed", ((EditText)findViewById(R.id.speedEdit)).getText().toString());
-        intent.putExtra("WarmUpExe", ((EditText)findViewById(R.id.excEdit)).getText().toString());
-        intent.putExtra("WarmUpTime", ((EditText)findViewById(R.id.timeEdit)).getText().toString());
-        intent.putExtra("WarmUpIntensity", ((Spinner)findViewById(R.id.intenSpinner)).getId());
-        intent.putExtra("WarmUpBpm", ((EditText)findViewById(R.id.bpmEdit)).getText().toString());
         startActivity(intent);
     }
 
+    private void addScheduleToMoel(){
+        Integer reps = Integer.valueOf(((EditText)findViewById(R.id.repEdit)).getText().toString());
+        Integer pause = Integer.valueOf((((EditText)findViewById(R.id.pauseEdit)).getText().toString()));
+        Integer sets = Integer.valueOf(((EditText)findViewById(R.id.setEdit)).getText().toString());
+        Integer speed = Integer.valueOf(((EditText)findViewById(R.id.speedEdit)).getText().toString());
+        Integer warmUpTime = Integer.valueOf(((EditText)findViewById(R.id.timeEdit)).getText().toString());
+        Integer warmUpBPM = Integer.valueOf(((EditText)findViewById(R.id.bpmEdit)).getText().toString());
+        Schedule schedule = new Schedule(((EditText)findViewById(R.id.nameTextEdit)).getText().toString(),
+                TrainingsTypes.values()[((Spinner)findViewById(R.id.trainSpinner)).getId()],
+                reps.intValue(), pause.intValue(), sets.intValue(), speed.intValue(),
+                ((EditText)findViewById(R.id.excEdit)).getText().toString(),
+                warmUpTime.intValue(),
+                Intensities.values()[((Spinner)findViewById(R.id.intenSpinner)).getId()],
+                warmUpBPM.intValue());
+        try {
+            ApplicationHandler.getModel().addSchedule(schedule);
+        } catch (ScheduleAvailableException e) {
+            e.printStackTrace();
+        }
+    }
 }

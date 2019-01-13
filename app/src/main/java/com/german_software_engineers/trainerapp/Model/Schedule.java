@@ -1,6 +1,9 @@
 package com.german_software_engineers.trainerapp.Model;
 
 
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -77,5 +80,24 @@ public class Schedule {
 
     public List<Exercise> exercises(){
         return Exercises;
+    }
+
+    public String toGson(){
+        JsonObject object = new JsonObject();
+        object.addProperty("Name",Name);
+        object.addProperty("TrainingsType",TrainingsType.name());
+        object.addProperty("Intensity", WarmUpIntensity.name());
+        object.addProperty("Repeations",Repeations);
+        object.addProperty("PauseTime",PauseTime);
+        object.addProperty("Sets",Sets);
+        object.addProperty("Speed",Speed);
+        object.addProperty("WarmUpExc",WarmUpExcersize);
+        object.addProperty("WarmUpTime",WarmUpTime);
+        object.addProperty("bpm",BPM);
+
+        Gson gson = new Gson();
+        object.addProperty("Exercises",gson.toJson(Exercises.toArray()));
+
+        return object.toString();
     }
 }

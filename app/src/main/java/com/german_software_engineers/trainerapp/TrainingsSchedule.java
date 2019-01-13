@@ -1,5 +1,6 @@
 package com.german_software_engineers.trainerapp;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -16,11 +17,21 @@ import android.view.MenuItem;
 
 import com.german_software_engineers.trainerapp.dummy.DummyContent;
 
+import java.io.FileNotFoundException;
+
 public class TrainingsSchedule extends NavigationActivity implements ScheduleListFragment.OnListFragmentInteractionListener{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        try {
+            ApplicationHandler.setFileContext(openFileOutput(ApplicationHandler.FileName, MODE_PRIVATE), openFileInput(ApplicationHandler.FileName));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        ApplicationHandler.readSchedules();
+
         setContentView(R.layout.activity_trainings_schedule);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
