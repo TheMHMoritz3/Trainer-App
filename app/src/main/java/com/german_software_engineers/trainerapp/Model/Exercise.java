@@ -85,4 +85,8 @@ public class Exercise {
         if(IsWeightActivated)
             Weight = weight;
     }
+
+    public String getName() {
+        return Name;
+    }
 }

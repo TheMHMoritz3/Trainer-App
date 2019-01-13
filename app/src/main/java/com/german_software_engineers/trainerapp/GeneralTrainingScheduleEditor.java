@@ -35,13 +35,13 @@ public class GeneralTrainingScheduleEditor extends AppCompatActivity {
     }
 
     private void openNextActivity(){
-        addScheduleToMoel();
+        addScheduleToModel();
         Intent intent = new Intent(this, AddExerciseActivity.class);
         intent.putExtra("scheduleName", ((EditText)findViewById(R.id.nameTextEdit)).getText().toString());
         startActivity(intent);
     }
 
-    private void addScheduleToMoel(){
+    private void addScheduleToModel(){
         Integer reps = Integer.valueOf(((EditText)findViewById(R.id.repEdit)).getText().toString());
         Integer pause = Integer.valueOf((((EditText)findViewById(R.id.pauseEdit)).getText().toString()));
         Integer sets = Integer.valueOf(((EditText)findViewById(R.id.setEdit)).getText().toString());

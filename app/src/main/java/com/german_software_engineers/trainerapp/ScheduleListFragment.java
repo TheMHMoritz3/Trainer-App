@@ -11,8 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.german_software_engineers.trainerapp.Model.Schedule;
-import com.german_software_engineers.trainerapp.dummy.DummyContent;
-import com.german_software_engineers.trainerapp.dummy.DummyContent.DummyItem;
+
 
 import java.util.List;
 

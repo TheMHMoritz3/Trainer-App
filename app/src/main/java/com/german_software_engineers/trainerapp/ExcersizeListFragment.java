@@ -10,8 +10,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.german_software_engineers.trainerapp.dummy.DummyContent;
-import com.german_software_engineers.trainerapp.dummy.DummyContent.DummyItem;
+import com.german_software_engineers.trainerapp.Model.Exercise;
+import com.german_software_engineers.trainerapp.Model.ScheduleAvailableException;
 
 import java.util.List;
 
@@ -28,6 +28,7 @@ public class ExcersizeListFragment extends Fragment {
     // TODO: Customize parameters
     private int mColumnCount = 1;
     private OnListFragmentInteractionListener mListener;
+    private String ScheduleName;
 
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
@@ -38,8 +39,9 @@ public class ExcersizeListFragment extends Fragment {
 
     // TODO: Customize parameter initialization
     @SuppressWarnings("unused")
-    public static ExcersizeListFragment newInstance(int columnCount) {
+    public static ExcersizeListFragment newInstance(int columnCount, String scheduleName) {
         ExcersizeListFragment fragment = new ExcersizeListFragment();
+        fragment.ScheduleName = scheduleName;
         Bundle args = new Bundle();
         args.putInt(ARG_COLUMN_COUNT, columnCount);
         fragment.setArguments(args);
@@ -69,7 +71,11 @@ public class ExcersizeListFragment extends Fragment {
             } else {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
-            recyclerView.setAdapter(new MyExcersizeRecyclerViewAdapter(DummyContent.ITEMS, mListener));
+            try {
+                recyclerView.setAdapter(new MyExcersizeRecyclerViewAdapter(ApplicationHandler.getModel().getSchedule(ScheduleName).exercises(), mListener));
+            } catch (ScheduleAvailableException e) {
+                e.printStackTrace();
+            }
         }
         return view;
     }
@@ -104,6 +110,6 @@ public class ExcersizeListFragment extends Fragment {
      */
     public interface OnListFragmentInteractionListener {
         // TODO: Update argument type and name
-        void onListFragmentInteraction(DummyItem item);
+        void onListFragmentInteraction(Exercise item);
     }
 }

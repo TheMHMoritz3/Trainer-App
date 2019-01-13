@@ -8,7 +8,7 @@ import android.widget.TextView;
 
 import com.german_software_engineers.trainerapp.Model.Schedule;
 import com.german_software_engineers.trainerapp.ScheduleListFragment.OnListFragmentInteractionListener;
-import com.german_software_engineers.trainerapp.dummy.DummyContent.DummyItem;
+
 
 import java.util.List;
 
@@ -37,7 +37,7 @@ public class MyScheduleRecyclerViewAdapter extends RecyclerView.Adapter<MySchedu
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
         holder.mItem = mValues.get(position);
-        holder.mIdView.setText(position);
+        //holder.mIdView.setText(position);
         holder.mContentView.setText(mValues.get(position).getName());
 
         holder.mView.setOnClickListener(new View.OnClickListener() {

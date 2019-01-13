@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.german_software_engineers.trainerapp.ExcersizeListFragment.OnListFragmentInteractionListener;
-import com.german_software_engineers.trainerapp.dummy.DummyContent.DummyItem;
+import com.german_software_engineers.trainerapp.Model.Exercise;
 
 import java.util.List;
 
@@ -18,10 +18,10 @@ import java.util.List;
  */
 public class MyExcersizeRecyclerViewAdapter extends RecyclerView.Adapter<MyExcersizeRecyclerViewAdapter.ViewHolder> {
 
-    private final List<DummyItem> mValues;
+    private final List<Exercise> mValues;
     private final OnListFragmentInteractionListener mListener;
 
-    public MyExcersizeRecyclerViewAdapter(List<DummyItem> items, OnListFragmentInteractionListener listener) {
+    public MyExcersizeRecyclerViewAdapter(List<Exercise> items, OnListFragmentInteractionListener listener) {
         mValues = items;
         mListener = listener;
     }
@@ -36,8 +36,8 @@ public class MyExcersizeRecyclerViewAdapter extends RecyclerView.Adapter<MyExcer
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
         holder.mItem = mValues.get(position);
-        holder.mIdView.setText(mValues.get(position).id);
-        holder.mContentView.setText(mValues.get(position).content);
+        holder.mIdView.setText(position);
+        holder.mContentView.setText(mValues.get(position).getName());
 
         holder.mView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,7 +60,7 @@ public class MyExcersizeRecyclerViewAdapter extends RecyclerView.Adapter<MyExcer
         public final View mView;
         public final TextView mIdView;
         public final TextView mContentView;
-        public DummyItem mItem;
+        public Exercise mItem;
 
         public ViewHolder(View view) {
             super(view);

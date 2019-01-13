@@ -15,7 +15,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.german_software_engineers.trainerapp.Model.Schedule;
-import com.german_software_engineers.trainerapp.dummy.DummyContent;
 
 public class TrainingScheduleEditor extends NavigationActivity
         implements ScheduleListFragment.OnListFragmentInteractionListener {
