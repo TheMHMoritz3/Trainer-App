@@ -2,9 +2,12 @@ package com.german_software_engineers.trainerapp.Model;
 
 
 import com.google.gson.Gson;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Schedule {
@@ -19,6 +22,8 @@ public class Schedule {
     private int WarmUpTime;
     private int BPM;
     private List<Exercise> Exercises;
+
+    private Schedule(){}
 
     public Schedule(String name, TrainingsTypes trainingsType, int repeations, int pauseTime, int sets, int speed, String warmUpEx, int warmUpTime, Intensities intensity, int bpm){
         Name = name;
@@ -99,5 +104,32 @@ public class Schedule {
         object.addProperty("Exercises",gson.toJson(Exercises.toArray()));
 
         return object.toString();
+    }
+
+    public static Schedule fromGson(String ScheduleGson){
+        JsonParser parser = new JsonParser();
+        JsonElement parsedElement = parser.parse(ScheduleGson);
+        JsonObject parsedObject=parsedElement.getAsJsonObject();
+
+        Schedule returnValue = new Schedule();
+
+        returnValue.Name = parsedObject.get("Name").getAsString();
+        returnValue.TrainingsType = TrainingsTypes.valueOf(parsedObject.get("TrainingsType").getAsString());
+        returnValue.WarmUpIntensity = Intensities.valueOf(parsedObject.get("Intensity").getAsString());
+        returnValue.Repeations = parsedObject.get("Repeations").getAsInt();
+        returnValue.PauseTime = parsedObject.get("PauseTime").getAsInt();
+        returnValue.Sets = parsedObject.get("Sets").getAsInt();
+        returnValue.Speed = parsedObject.get("Speed").getAsInt();
+        returnValue.WarmUpExcersize = parsedObject.get("WarmUpExc").toString();
+        returnValue.WarmUpTime = parsedObject.get("WarmUpTime").getAsInt();
+        returnValue.BPM = parsedObject.get("bpm").getAsInt();
+
+        String excString = parsedObject.get("Exercises").getAsString();
+        Gson gson = new Gson();
+        Exercise[] exercises = gson.fromJson(excString,Exercise[].class);
+        returnValue.Exercises = new ArrayList<>();
+        returnValue.Exercises.addAll(Arrays.asList(exercises));
+
+        return returnValue;
     }
 }
