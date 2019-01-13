@@ -54,15 +54,15 @@ public class Model {
         String gson="";
         String line ="";
         do {
+            gson+=line;
             try {
                 line=reader.readLine();
             } catch (IOException e) {
                 e.printStackTrace();
                 break;
             }
-            gson+=line;
-        } while (!line.isEmpty());
-
+        } while ((line!=null)&&(!line.isEmpty()));
+        
         if(gson.isEmpty())
             return;
         Gson gson1 = new Gson();
