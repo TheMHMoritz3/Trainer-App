@@ -50,6 +50,16 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.german_software_engineers.trainerapp.GeneralTrainingScheduleEditor" />
         </activity>
+        <activity
+            android:name=".ExerciseViewActivity"
+            android:label="@string/title_activity_exercise_view"
+            android:parentActivityName=".TrainingsSchedule"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.german_software_engineers.trainerapp.TrainingsSchedule" />
+        </activity>
     </application>
-
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 </manifest>

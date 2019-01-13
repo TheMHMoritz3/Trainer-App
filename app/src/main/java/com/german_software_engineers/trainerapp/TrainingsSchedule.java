@@ -17,20 +17,38 @@ import android.view.MenuItem;
 
 import com.german_software_engineers.trainerapp.Model.Schedule;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.util.Scanner;
 
 public class TrainingsSchedule extends NavigationActivity implements ScheduleListFragment.OnListFragmentInteractionListener{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         try {
-            ApplicationHandler.setFileContext(openFileOutput(ApplicationHandler.FileName, MODE_PRIVATE), openFileInput(ApplicationHandler.FileName));
+            String FileName = getFilesDir()+"/"+ApplicationHandler.FileName;
+            File file = new File(FileName);
+            if(file.exists()) {
+                Scanner scanner = new Scanner(file);
+                if(scanner.hasNextLine()) {
+                    String value = scanner.nextLine();
+                    if (!value.isEmpty())
+                        ApplicationHandler.getModel().fromGson(value);
+                }
+            }
         } catch (FileNotFoundException e) {
             e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-        ApplicationHandler.readSchedules();
 
         setContentView(R.layout.activity_trainings_schedule);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -56,6 +74,12 @@ public class TrainingsSchedule extends NavigationActivity implements ScheduleLis
 
         ScheduleListFragment editScheduleFragment = ScheduleListFragment.newInstance(1);
         getSupportFragmentManager().beginTransaction().replace(R.id.ScheduleFragment, editScheduleFragment ).commit();
+    }
+
+    @Override
+    protected void onStart()
+    {
+        super.onStart();
     }
 
     @Override
@@ -113,6 +137,8 @@ public class TrainingsSchedule extends NavigationActivity implements ScheduleLis
 
     @Override
     public void onListFragmentInteraction(Schedule item) {
-
+        Intent intent = new Intent(this,ExerciseViewActivity.class);
+        intent.putExtra("scheduleName",item.getName());
+        startActivity(intent);
     }
 }

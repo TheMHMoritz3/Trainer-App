@@ -17,6 +17,8 @@ import com.german_software_engineers.trainerapp.Model.Exercise;
 import com.german_software_engineers.trainerapp.Model.Schedule;
 import com.german_software_engineers.trainerapp.Model.ScheduleAvailableException;
 
+import java.io.FileOutputStream;
+
 public class AddExerciseActivity extends AppCompatActivity implements ExcersizeListFragment.OnListFragmentInteractionListener {
 
     String ScheduleName;
@@ -83,6 +85,14 @@ public class AddExerciseActivity extends AppCompatActivity implements ExcersizeL
     }
 
     public void finished(){
+        try {
+            FileOutputStream outputStream = openFileOutput(ApplicationHandler.FileName, MODE_PRIVATE);
+            String  value = ApplicationHandler.getModel().getGson();
+            outputStream.write(value.getBytes());
+            outputStream.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         Intent intent = new Intent(this, TrainingScheduleEditor.class);
         startActivity(intent);
     }
