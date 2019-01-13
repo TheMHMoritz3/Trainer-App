@@ -10,7 +10,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class Model {
@@ -62,7 +64,7 @@ public class Model {
                 break;
             }
         } while ((line!=null)&&(!line.isEmpty()));
-        
+
         if(gson.isEmpty())
             return;
         Gson gson1 = new Gson();
@@ -71,5 +73,11 @@ public class Model {
             Schedule sched= Schedule.fromGson(gson_code);
             Schedules.put(sched.getName(),sched);
         }
+    }
+
+    public List<Schedule> getSchedulesList(){
+        List<Schedule> returnValue = new ArrayList<>();
+        returnValue.addAll(Schedules.values());
+        return returnValue;
     }
 }

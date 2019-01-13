@@ -15,6 +15,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.german_software_engineers.trainerapp.Model.Schedule;
 import com.german_software_engineers.trainerapp.dummy.DummyContent;
 
 import java.io.FileNotFoundException;
@@ -112,7 +113,7 @@ public class TrainingsSchedule extends NavigationActivity implements ScheduleLis
     }
 
     @Override
-    public void onListFragmentInteraction(DummyContent.DummyItem item) {
+    public void onListFragmentInteraction(Schedule item) {
 
     }
 }

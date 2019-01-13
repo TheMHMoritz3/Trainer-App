@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.german_software_engineers.trainerapp.Model.Schedule;
 import com.german_software_engineers.trainerapp.dummy.DummyContent;
 import com.german_software_engineers.trainerapp.dummy.DummyContent.DummyItem;
 
@@ -69,7 +70,7 @@ public class ScheduleListFragment extends Fragment {
             } else {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
-            recyclerView.setAdapter(new MyScheduleRecyclerViewAdapter(DummyContent.ITEMS, mListener));
+            recyclerView.setAdapter(new MyScheduleRecyclerViewAdapter(ApplicationHandler.getModel().getSchedulesList(), mListener));
         }
         return view;
     }
@@ -104,6 +105,6 @@ public class ScheduleListFragment extends Fragment {
      */
     public interface OnListFragmentInteractionListener {
         // TODO: Update argument type and name
-        void onListFragmentInteraction(DummyItem item);
+        void onListFragmentInteraction(Schedule item);
     }
 }
