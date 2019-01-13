@@ -14,8 +14,9 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
-public class TrainingsSchedule extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+import com.german_software_engineers.trainerapp.dummy.DummyContent;
+
+public class TrainingsSchedule extends NavigationActivity implements ScheduleListFragment.OnListFragmentInteractionListener{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +42,9 @@ public class TrainingsSchedule extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        ScheduleListFragment editScheduleFragment = ScheduleListFragment.newInstance(1);
+        getSupportFragmentManager().beginTransaction().replace(R.id.ScheduleFragment, editScheduleFragment ).commit();
     }
 
     @Override
@@ -94,5 +98,10 @@ public class TrainingsSchedule extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    @Override
+    public void onListFragmentInteraction(DummyContent.DummyItem item) {
+
     }
 }

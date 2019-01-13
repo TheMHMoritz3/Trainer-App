@@ -18,10 +18,6 @@ import java.util.List;
 
 public class AddExerciseActivity extends AppCompatActivity implements ExcersizeListFragment.OnListFragmentInteractionListener {
 
-    private RecyclerView ExerciseView;
-
-    private List<DummyContent.DummyItem> items = new ArrayList<DummyContent.DummyItem>();
-    private MyExcersizeRecyclerViewAdapter adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,8 +25,6 @@ public class AddExerciseActivity extends AppCompatActivity implements ExcersizeL
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        DummyContent.DummyItem item = new DummyContent.DummyItem("test","test", "this is a test");
-        items.add(item);
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -39,10 +33,6 @@ public class AddExerciseActivity extends AppCompatActivity implements ExcersizeL
             }
         });
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-        adapter = new MyExcersizeRecyclerViewAdapter(items,this);
-        ExerciseView = (RecyclerView)findViewById(R.id.list);
-        ExerciseView.setAdapter(adapter);
     }
 
     @Override
