@@ -37,7 +37,41 @@ public class MyExcersizeRecyclerViewAdapter extends RecyclerView.Adapter<MyExcer
     public void onBindViewHolder(final ViewHolder holder, int position) {
         holder.mItem = mValues.get(position);
 //        holder.mIdView.setText(position);
-        holder.mContentView.setText(mValues.get(position).getName());
+        holder.TitleView.setText(mValues.get(position).getName());
+
+        StringBuilder builder = new StringBuilder();
+        if(holder.mItem.isAngleActivated()){
+            builder.append("Angle: ");
+            builder.append(holder.mItem.getAnglePosition());
+            builder.append("\n");
+        }
+        if(holder.mItem.isBackActivated()){
+            builder.append("Back: ");
+            builder.append(holder.mItem.getBackPosition());
+            builder.append("\n");
+        }
+        if(holder.mItem.isFootActivated()){
+            builder.append("Foot: ");
+            builder.append(holder.mItem.getFootPosition());
+            builder.append("\n");
+        }
+        if(holder.mItem.isLegActivated()){
+            builder.append("Leg: ");
+            builder.append(holder.mItem.getLegPosition());
+            builder.append("\n");
+        }
+        if(holder.mItem.isSeatActivated()){
+            builder.append("Seat: ");
+            builder.append(holder.mItem.getSeatPosition());
+            builder.append("\n");
+        }
+        if(holder.mItem.isWeightActivated()){
+            builder.append("Weight: ");
+            builder.append(holder.mItem.getWeight());
+            builder.append("\n");
+        }
+
+        holder.AdditonalInfo.setText(builder.toString());
 
         holder.mView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -58,20 +92,20 @@ public class MyExcersizeRecyclerViewAdapter extends RecyclerView.Adapter<MyExcer
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         public final View mView;
-        public final TextView mIdView;
-        public final TextView mContentView;
+        public final TextView TitleView;
+        public final TextView AdditonalInfo;
         public Exercise mItem;
 
         public ViewHolder(View view) {
             super(view);
             mView = view;
-            mIdView = (TextView) view.findViewById(R.id.item_number);
-            mContentView = (TextView) view.findViewById(R.id.content);
+            TitleView = (TextView) view.findViewById(R.id.title);
+            AdditonalInfo = (TextView)view.findViewById(R.id.information);
         }
 
         @Override
         public String toString() {
-            return super.toString() + " '" + mContentView.getText() + "'";
+            return super.toString() + " '" + TitleView.getText() + "'";
         }
     }
 }

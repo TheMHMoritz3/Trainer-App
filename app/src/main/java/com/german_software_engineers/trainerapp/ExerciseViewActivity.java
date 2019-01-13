@@ -52,7 +52,7 @@ public class ExerciseViewActivity extends AppCompatActivity implements Excersize
 
         TextView ScheduleInfo = (TextView)findViewById(R.id.ScheduleInfo);
         ScheduleInfo.setText("Repeations: "+ActiveSchedule.getRepeations()+"\nPause: "+ActiveSchedule.getPauseTime()+"\nSets: "+ ActiveSchedule.getSets()+"\nSpeed: "+ActiveSchedule.getSpeed());
-        
+
         TextView WarmUpInfo = (TextView)findViewById(R.id.WarmUpInfo);
         WarmUpInfo.setText("Exercise: "+ActiveSchedule.getWarmUpExcersize()+"\nTime: "+ActiveSchedule.getWarmUpTime()+"\nIntensity: "+ ActiveSchedule.getWarmUpIntensity().toString());
     }

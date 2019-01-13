@@ -58,17 +58,23 @@ public class ExerciseDialog extends DialogFragment {
         if(isAngnleActivated)
             anglePos = Integer.valueOf(((TextView)dialog.findViewById(R.id.AngleEdit)).getText().toString());
 
-        boolean isWeightActivated = ((CheckBox)dialog.findViewById(R.id.WeightCheckBox)).isChecked();
-        Integer weight = 0;
-        if(isWeightActivated)
-            weight = Integer.valueOf(((TextView)dialog.findViewById(R.id.WeightEdit)).getText().toString());
+        boolean isBackActivated = ((CheckBox)dialog.findViewById(R.id.BackCheckBox)).isChecked();
+        Integer backPos = 0;
+        if(isAngnleActivated)
+            backPos = Integer.valueOf(((TextView)dialog.findViewById(R.id.BackEdit)).getText().toString());
 
-        Exercise exc = new Exercise(name,isSeatActivated, isLegActivated,isFootActivated,isAngnleActivated,isWeightActivated);
+        boolean isWeightActivated = ((CheckBox)dialog.findViewById(R.id.WeightCheckBox)).isChecked();
+        Double weight = 0.0;
+        if(isWeightActivated)
+            weight = Double.valueOf(((TextView)dialog.findViewById(R.id.WeightEdit)).getText().toString());
+
+        Exercise exc = new Exercise(name,isSeatActivated, isLegActivated,isFootActivated,isAngnleActivated,isWeightActivated, isBackActivated);
         exc.setAnglePosition(anglePos.intValue());
         exc.setFootPosition(footPos.intValue());
         exc.setLegPosition(LegPos.intValue());
         exc.setSeatPosition(seatPos.intValue());
-        exc.setWeight(weight.intValue());
+        exc.setWeight(weight.doubleValue());
+        exc.setBackPosition(backPos.intValue());
 
         Schedule.addExercise(exc);
     }

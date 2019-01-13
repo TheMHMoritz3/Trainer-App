@@ -12,17 +12,20 @@ public class Exercise {
     private boolean IsAngleActivated;
     private int AnglePosition;
     private boolean IsWeightActivated;
-    private int Weight;
+    private double Weight;
+    private boolean IsBackActivated;
+    private int BackPosition;
 
     private Exercise(){}
 
-    public Exercise(String name,boolean isSeatActivated, boolean isLegActivated, boolean isFootActivated, boolean isAngleActivated, boolean isWeightActivated ){
+    public Exercise(String name,boolean isSeatActivated, boolean isLegActivated, boolean isFootActivated, boolean isAngleActivated, boolean isWeightActivated, boolean isBackActivated){
         Name = name;
         IsSeatActivated = isSeatActivated;
         IsLegActivated = isLegActivated;
         IsFootActivated = isFootActivated;
         IsAngleActivated = isAngleActivated;
         IsWeightActivated = isWeightActivated;
+        IsBackActivated = isBackActivated;
     }
 
     public void setSeatPosition(int pos){
@@ -74,19 +77,55 @@ public class Exercise {
             AnglePosition = anglePosition;
     }
 
-    public int getWeight() {
+    public double getWeight() {
         if(IsWeightActivated)
             return Weight;
         else
             return -1;
     }
 
-    public void setWeight(int weight) {
+    public void setWeight(double weight) {
         if(IsWeightActivated)
             Weight = weight;
     }
 
     public String getName() {
         return Name;
+    }
+
+    public int getBackPosition() {
+        if(IsBackActivated)
+            return BackPosition;
+        else
+            return -1;
+    }
+
+    public void setBackPosition(int backPosition) {
+        if(IsBackActivated)
+            BackPosition = backPosition;
+    }
+
+    public boolean isBackActivated() {
+        return IsBackActivated;
+    }
+
+    public boolean isFootActivated() {
+        return IsFootActivated;
+    }
+
+    public boolean isSeatActivated() {
+        return IsSeatActivated;
+    }
+
+    public boolean isLegActivated(){
+        return IsLegActivated;
+    }
+
+    public boolean isAngleActivated() {
+        return IsAngleActivated;
+    }
+
+    public boolean isWeightActivated(){
+        return IsWeightActivated;
     }
 }
