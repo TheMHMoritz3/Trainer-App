@@ -20,6 +20,7 @@ import com.german_software_engineers.trainerapp.Model.ScheduleAvailableException
 public class AddExerciseActivity extends AppCompatActivity implements ExcersizeListFragment.OnListFragmentInteractionListener {
 
     String ScheduleName;
+    ExcersizeListFragment fragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +40,7 @@ public class AddExerciseActivity extends AppCompatActivity implements ExcersizeL
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         ScheduleName = intent.getStringExtra("scheduleName");
-        ExcersizeListFragment fragment = ExcersizeListFragment.newInstance(1,ScheduleName);
+        fragment = ExcersizeListFragment.newInstance(1,ScheduleName);
         getSupportFragmentManager().beginTransaction().replace(R.id.excEdit, fragment ).commit();
     }
 
@@ -52,18 +53,28 @@ public class AddExerciseActivity extends AppCompatActivity implements ExcersizeL
 
     public void openExerciseDialog(){
         ExerciseDialog dialog = new ExerciseDialog();
-        dialog.show(getSupportFragmentManager(),"ExerciseDialog");
-        Exercise exc = dialog.getExc();
-        if(exc!=null) {
-            try {
-                ApplicationHandler.getModel().getSchedule(ScheduleName).addExercise(exc);
-            } catch (ScheduleAvailableException e) {
-                e.printStackTrace();
-            }
-        }else
-        {
-            Log.i("openExerciseDialog","Somethings Wrong");
+        try {
+            dialog.setSchedule(ApplicationHandler.getModel().getSchedule(ScheduleName));
+        } catch (ScheduleAvailableException e) {
+            e.printStackTrace();
         }
+        dialog.show(getSupportFragmentManager(),"ExerciseDialog");
+//
+//        if(exc!=null) {
+//            try {
+//                ApplicationHandler.getModel().getSchedule(ScheduleName).addExercise(exc);
+//            } catch (ScheduleAvailableException e) {
+//                e.printStackTrace();
+//            }
+//        }else
+//        {
+//            Log.i("openExerciseDialog","Somethings Wrong");
+//        }
+//        try {
+//            fragment.getAdatpoer().notifyItemRangeChanged(0,ApplicationHandler.getModel().getSchedule(ScheduleName).exercises().size());
+//        } catch (ScheduleAvailableException e) {
+//            e.printStackTrace();
+//        }
     }
 
     @Override

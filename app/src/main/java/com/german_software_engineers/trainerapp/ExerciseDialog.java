@@ -10,10 +10,11 @@ import android.widget.CheckBox;
 import android.widget.TextView;
 
 import com.german_software_engineers.trainerapp.Model.Exercise;
+import com.german_software_engineers.trainerapp.Model.Schedule;
 
 public class ExerciseDialog extends DialogFragment {
     Dialog dialog;
-    Exercise exc = null;
+    Schedule Schedule = null;
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
@@ -62,15 +63,17 @@ public class ExerciseDialog extends DialogFragment {
         if(isWeightActivated)
             weight = Integer.valueOf(((TextView)dialog.findViewById(R.id.WeightEdit)).getText().toString());
 
-        exc = new Exercise(name,isSeatActivated, isLegActivated,isFootActivated,isAngnleActivated,isWeightActivated);
+        Exercise exc = new Exercise(name,isSeatActivated, isLegActivated,isFootActivated,isAngnleActivated,isWeightActivated);
         exc.setAnglePosition(anglePos.intValue());
         exc.setFootPosition(footPos.intValue());
         exc.setLegPosition(LegPos.intValue());
         exc.setSeatPosition(seatPos.intValue());
         exc.setWeight(weight.intValue());
+
+        Schedule.addExercise(exc);
     }
 
-    public Exercise getExc() {
-        return exc;
+    public void setSchedule(Schedule schedule){
+        Schedule = schedule;
     }
 }

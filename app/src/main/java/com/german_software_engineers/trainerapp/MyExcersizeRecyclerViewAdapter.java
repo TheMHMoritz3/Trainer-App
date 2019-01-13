@@ -36,7 +36,7 @@ public class MyExcersizeRecyclerViewAdapter extends RecyclerView.Adapter<MyExcer
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
         holder.mItem = mValues.get(position);
-        holder.mIdView.setText(position);
+//        holder.mIdView.setText(position);
         holder.mContentView.setText(mValues.get(position).getName());
 
         holder.mView.setOnClickListener(new View.OnClickListener() {

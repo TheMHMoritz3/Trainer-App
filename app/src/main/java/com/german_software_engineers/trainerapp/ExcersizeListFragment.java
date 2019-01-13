@@ -29,6 +29,7 @@ public class ExcersizeListFragment extends Fragment {
     private int mColumnCount = 1;
     private OnListFragmentInteractionListener mListener;
     private String ScheduleName;
+    private MyExcersizeRecyclerViewAdapter Adapter;
 
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
@@ -72,7 +73,8 @@ public class ExcersizeListFragment extends Fragment {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
             try {
-                recyclerView.setAdapter(new MyExcersizeRecyclerViewAdapter(ApplicationHandler.getModel().getSchedule(ScheduleName).exercises(), mListener));
+                Adapter =  new MyExcersizeRecyclerViewAdapter(ApplicationHandler.getModel().getSchedule(ScheduleName).exercises(), mListener);
+                recyclerView.setAdapter(Adapter);
             } catch (ScheduleAvailableException e) {
                 e.printStackTrace();
             }
@@ -111,5 +113,9 @@ public class ExcersizeListFragment extends Fragment {
     public interface OnListFragmentInteractionListener {
         // TODO: Update argument type and name
         void onListFragmentInteraction(Exercise item);
+    }
+
+    public MyExcersizeRecyclerViewAdapter getAdatpoer(){
+        return Adapter;
     }
 }
