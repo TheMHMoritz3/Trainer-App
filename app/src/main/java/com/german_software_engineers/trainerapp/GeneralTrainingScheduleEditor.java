@@ -49,11 +49,11 @@ public class GeneralTrainingScheduleEditor extends AppCompatActivity {
         Integer warmUpTime = Integer.valueOf(((EditText)findViewById(R.id.timeEdit)).getText().toString());
         Integer warmUpBPM = Integer.valueOf(((EditText)findViewById(R.id.bpmEdit)).getText().toString());
         Schedule schedule = new Schedule(((EditText)findViewById(R.id.nameTextEdit)).getText().toString(),
-                TrainingsTypes.values()[((Spinner)findViewById(R.id.trainSpinner)).getId()],
+                TrainingsTypes.values()[(int)((Spinner)findViewById(R.id.trainSpinner)).getSelectedItemId()],
                 reps.intValue(), pause.intValue(), sets.intValue(), speed.intValue(),
                 ((EditText)findViewById(R.id.excEdit)).getText().toString(),
                 warmUpTime.intValue(),
-                Intensities.values()[((Spinner)findViewById(R.id.intenSpinner)).getId()],
+                Intensities.values()[(int)((Spinner)findViewById(R.id.intenSpinner)).getSelectedItemId()],
                 warmUpBPM.intValue());
         try {
             ApplicationHandler.getModel().addSchedule(schedule);
