@@ -103,4 +103,8 @@ public class Model {
         returnValue.addAll(Schedules.values());
         return returnValue;
     }
+
+    public void deleteSchedule(String name){
+        Schedules.remove(name);
+    }
 }

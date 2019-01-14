@@ -1,5 +1,6 @@
 package com.german_software_engineers.trainerapp;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -7,17 +8,23 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.Button;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.german_software_engineers.trainerapp.Model.Exercise;
 import com.german_software_engineers.trainerapp.Model.Schedule;
 import com.german_software_engineers.trainerapp.Model.ScheduleAvailableException;
 
-public class ExerciseViewActivity extends AppCompatActivity implements ExcersizeListFragment.OnListFragmentInteractionListener {
+import java.io.FileOutputStream;
+
+public class ExerciseViewActivity extends ExerciseListActivity  {
 
     String ScheduleName;
     ExcersizeListFragment fragment;
     Schedule ActiveSchedule;
+    Dialog scheduleDialog;
+    Dialog exceriseDialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         Intent intent = getIntent();
@@ -31,8 +38,7 @@ public class ExerciseViewActivity extends AppCompatActivity implements Excersize
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                startEditOfSchedule();
             }
         });
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -54,11 +60,67 @@ public class ExerciseViewActivity extends AppCompatActivity implements Excersize
         ScheduleInfo.setText("Repeations: "+ActiveSchedule.getRepeations()+"\nPause: "+ActiveSchedule.getPauseTime()+"\nSets: "+ ActiveSchedule.getSets()+"\nSpeed: "+ActiveSchedule.getSpeed());
 
         TextView WarmUpInfo = (TextView)findViewById(R.id.WarmUpInfo);
-        WarmUpInfo.setText("Exercise: "+ActiveSchedule.getWarmUpExcersize()+"\nTime: "+ActiveSchedule.getWarmUpTime()+"\nIntensity: "+ ActiveSchedule.getWarmUpIntensity().toString());
+        WarmUpInfo.setText("Exercise: "+ActiveSchedule.getWarmUpExcersize()+"\nTime: "+ActiveSchedule.getWarmUpTime()+"\nIntensity: "+ ActiveSchedule.getWarmUpIntensity().toString()+"\nBPM: "+ ActiveSchedule.getBPM());
+    }
+
+    public void startEditOfSchedule(){
+        ApplicationHandler.getModel().deleteSchedule(ActiveSchedule.getName());
+        try {
+            FileOutputStream outputStream = openFileOutput(ApplicationHandler.FileName, MODE_PRIVATE);
+            String  value = ApplicationHandler.getModel().getGson();
+            outputStream.write(value.getBytes());
+            outputStream.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        finish();
+//        scheduleDialog = new Dialog(this);
+//        scheduleDialog.setContentView(R.layout.schedule_edit_dialog);
+//        scheduleDialog.setTitle("Edit Schedule");
+//        ((TextView)scheduleDialog.findViewById(R.id.repeEdit)).setText(String.valueOf(ActiveSchedule.getRepeations()));
+//        ((TextView)scheduleDialog.findViewById(R.id.pauseEdit2)).setText(String.valueOf(ActiveSchedule.getPauseTime()));
+//        ((TextView)scheduleDialog.findViewById(R.id.setEdit2)).setText(String.valueOf(ActiveSchedule.getSets()));
+//        ((TextView)scheduleDialog.findViewById(R.id.speedEdit2)).setText(String.valueOf(ActiveSchedule.getSpeed()));
+//        ((TextView)scheduleDialog.findViewById(R.id.execEdit2)).setText(String.valueOf(ActiveSchedule.getWarmUpExcersize()));
+//        ((TextView)scheduleDialog.findViewById(R.id.timeEdit2)).setText(String.valueOf(ActiveSchedule.getWarmUpTime()));
+//        ((Spinner)scheduleDialog.findViewById(R.id.intenEdit2)).setSelection(ActiveSchedule.getWarmUpIntensity().ordinal());
+//        ((TextView)scheduleDialog.findViewById(R.id.bpmEdit)).setText(String.valueOf(ActiveSchedule.getBPM()));
+//        Button b = (Button) scheduleDialog.findViewById(R.id.OkButton);
+//        b.setOnClickListener(new View.OnClickListener() // button 1 click
+//        {
+//            @Override
+//            public void onClick(View v) {
+//                updateSchedule();
+//                scheduleDialog.dismiss();
+//            }
+//
+//        });
+//        Button b1 = (Button) scheduleDialog.findViewById(R.id.CancelButton); // button2 click
+//        b1.setOnClickListener(new View.OnClickListener()
+//        {
+//
+//            @Override
+//            public void onClick(View v) {
+//                // TODO Auto-generated method stub
+//                scheduleDialog.cancel(); // dismiss scheduleDialog
+//            }
+//
+//        });
+//        scheduleDialog.show();
     }
 
     @Override
     public void onListFragmentInteraction(Exercise item) {
+        ExerciseDialog dialog = new ExerciseDialog();
+        try {
+            dialog.setSchedule(ApplicationHandler.getModel().getSchedule(ScheduleName));
+        } catch (ScheduleAvailableException e) {
+            e.printStackTrace();
+        }
+        dialog.show(getSupportFragmentManager(),"ExerciseDialog");
+    }
+
+    public void updateSchedule(){
 
     }
 }

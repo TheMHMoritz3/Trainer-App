@@ -46,8 +46,6 @@ public class TrainingsSchedule extends NavigationActivity implements ScheduleLis
             }
         } catch (FileNotFoundException e) {
             e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
         }
 
         setContentView(R.layout.activity_trainings_schedule);
@@ -58,8 +56,7 @@ public class TrainingsSchedule extends NavigationActivity implements ScheduleLis
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                openNewTrainingsEditor();
             }
         });
 
@@ -71,14 +68,13 @@ public class TrainingsSchedule extends NavigationActivity implements ScheduleLis
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-
-        ScheduleListFragment editScheduleFragment = ScheduleListFragment.newInstance(1);
-        getSupportFragmentManager().beginTransaction().replace(R.id.ScheduleFragment, editScheduleFragment ).commit();
     }
 
     @Override
     protected void onStart()
     {
+        ScheduleListFragment editScheduleFragment = ScheduleListFragment.newInstance(1);
+        getSupportFragmentManager().beginTransaction().replace(R.id.ScheduleFragment, editScheduleFragment ).commit();
         super.onStart();
     }
 
@@ -139,6 +135,11 @@ public class TrainingsSchedule extends NavigationActivity implements ScheduleLis
     public void onListFragmentInteraction(Schedule item) {
         Intent intent = new Intent(this,ExerciseViewActivity.class);
         intent.putExtra("scheduleName",item.getName());
+        startActivity(intent);
+    }
+
+    public void openNewTrainingsEditor(){
+        Intent intent = new Intent(this, GeneralTrainingScheduleEditor.class);
         startActivity(intent);
     }
 }

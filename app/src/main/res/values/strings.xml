@@ -60,4 +60,7 @@ modification follow.\n\n\n"
     <string name="ok">Ok</string>
     <string name="cancel">Cancel</string>
     <string name="title_activity_exercise_view">ExerciseViewActivity</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
