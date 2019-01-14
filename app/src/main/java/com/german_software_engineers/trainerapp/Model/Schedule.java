@@ -120,7 +120,17 @@ public class Schedule {
         returnValue.PauseTime = parsedObject.get("PauseTime").getAsInt();
         returnValue.Sets = parsedObject.get("Sets").getAsInt();
         returnValue.Speed = parsedObject.get("Speed").getAsInt();
-        returnValue.WarmUpExcersize = parsedObject.get("WarmUpExc").toString();
+        returnValue.WarmUpExcersize = parsedObject.get("WarmUpExc").getAsString();
+
+        while (returnValue.WarmUpExcersize.contains("\\")){
+            returnValue.WarmUpExcersize=returnValue.WarmUpExcersize.replace("\\","");
+        }
+
+        while (returnValue.WarmUpExcersize.contains("\"")){
+            returnValue.WarmUpExcersize=returnValue.WarmUpExcersize.replace("\"","");
+        }
+
+
         returnValue.WarmUpTime = parsedObject.get("WarmUpTime").getAsInt();
         returnValue.BPM = parsedObject.get("bpm").getAsInt();
 
