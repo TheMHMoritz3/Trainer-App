@@ -42,8 +42,14 @@ public class AddExerciseActivity extends AppCompatActivity implements ExcersizeL
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         ScheduleName = intent.getStringExtra("scheduleName");
+    }
+
+    @Override
+    protected void onStart()
+    {
         fragment = ExcersizeListFragment.newInstance(1,ScheduleName);
         getSupportFragmentManager().beginTransaction().replace(R.id.excEdit, fragment ).commit();
+        super.onStart();
     }
 
     @Override
@@ -81,7 +87,10 @@ public class AddExerciseActivity extends AppCompatActivity implements ExcersizeL
 
     @Override
     public void onListFragmentInteraction(Exercise item) {
-
+        Intent intent = new Intent(this, EditExerciseActivity.class);
+        intent.putExtra("scheduleName", ScheduleName);
+        intent.putExtra("excName", item.getName());
+        startActivity(intent);
     }
 
     public void finished(){

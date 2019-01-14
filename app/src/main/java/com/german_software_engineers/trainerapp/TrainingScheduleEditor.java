@@ -106,6 +106,8 @@ public class TrainingScheduleEditor extends NavigationActivity
 
     @Override
     public void onListFragmentInteraction(Schedule item) {
-
+        Intent intent = new Intent(this, AddExerciseActivity.class);
+        intent.putExtra("scheduleName",item.getName());
+        startActivity(intent);
     }
 }
