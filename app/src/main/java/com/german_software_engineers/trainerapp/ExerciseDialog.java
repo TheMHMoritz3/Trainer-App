@@ -60,7 +60,7 @@ public class ExerciseDialog extends DialogFragment {
 
         boolean isBackActivated = ((CheckBox)dialog.findViewById(R.id.BackCheckBox)).isChecked();
         Integer backPos = 0;
-        if(isAngnleActivated)
+        if(isBackActivated)
             backPos = Integer.valueOf(((TextView)dialog.findViewById(R.id.BackEdit)).getText().toString());
 
         boolean isWeightActivated = ((CheckBox)dialog.findViewById(R.id.WeightCheckBox)).isChecked();
