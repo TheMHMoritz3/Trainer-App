@@ -59,7 +59,7 @@ public class EditExerciseActivity extends AppCompatActivity {
     }
 
     private void updateGui(){
-        ((TextView)findViewById(R.id.excName)).setText(ActiveExcercse.getName());
+        ((EditText)findViewById(R.id.excName)).setText(ActiveExcercse.getName());
 
         ((CheckBox)findViewById(R.id.seatCheckBox2)).setChecked(ActiveExcercse.isSeatActivated());
         if(ActiveExcercse.isSeatActivated())
@@ -87,7 +87,7 @@ public class EditExerciseActivity extends AppCompatActivity {
     }
 
     private void updateExc(){
-        String name = ((TextView)findViewById(R.id.excName)).getText().toString();
+        String name = ((EditText)findViewById(R.id.excName)).getText().toString();
 
         boolean isSeatActivated = ((CheckBox)findViewById(R.id.seatCheckBox2)).isChecked();
         Integer seatPos = 0;

@@ -130,6 +130,7 @@ public class Exercise {
     }
 
     public void copy(Exercise other){
+        Name=other.Name;
         IsSeatActivated = other.IsSeatActivated;
         SeatPosition= other.SeatPosition;
         IsLegActivated= other.IsLegActivated;
