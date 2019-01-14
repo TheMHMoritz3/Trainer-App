@@ -128,4 +128,31 @@ public class Exercise {
     public boolean isWeightActivated(){
         return IsWeightActivated;
     }
+
+    public void copy(Exercise other){
+        IsSeatActivated = other.IsSeatActivated;
+        SeatPosition= other.SeatPosition;
+        IsLegActivated= other.IsLegActivated;
+        LegPosition= other.LegPosition;
+        IsFootActivated= other.IsFootActivated;
+        FootPosition= other.FootPosition;
+        IsAngleActivated= other.IsAngleActivated;
+        AnglePosition= other.AnglePosition;
+        IsWeightActivated= other.IsWeightActivated;
+        Weight= other.Weight;
+        IsBackActivated= other.IsBackActivated;
+        BackPosition= other.BackPosition;
+    }
+
+    @Override
+    public String toString()
+    {
+        return Name;
+    }
+
+    @Override
+    public boolean equals( Object obj )
+    {
+        return  (toString()==obj.toString());
+    }
 }

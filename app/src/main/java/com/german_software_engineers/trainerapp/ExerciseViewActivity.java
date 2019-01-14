@@ -53,6 +53,12 @@ public class ExerciseViewActivity extends ExerciseListActivity  {
 
         setTitle(ActiveSchedule.getName());
 
+    }
+
+
+    @Override
+    protected void onStart()
+    {
         fragment = ExcersizeListFragment.newInstance(1,ScheduleName);
         getSupportFragmentManager().beginTransaction().replace(R.id.execView, fragment ).commit();
 
@@ -61,7 +67,9 @@ public class ExerciseViewActivity extends ExerciseListActivity  {
 
         TextView WarmUpInfo = (TextView)findViewById(R.id.WarmUpInfo);
         WarmUpInfo.setText("Exercise: "+ActiveSchedule.getWarmUpExcersize()+"\nTime: "+ActiveSchedule.getWarmUpTime()+"\nIntensity: "+ ActiveSchedule.getWarmUpIntensity().toString()+"\nBPM: "+ ActiveSchedule.getBPM());
+        super.onStart();
     }
+
 
     public void startEditOfSchedule(){
         ApplicationHandler.getModel().deleteSchedule(ActiveSchedule.getName());
@@ -111,13 +119,10 @@ public class ExerciseViewActivity extends ExerciseListActivity  {
 
     @Override
     public void onListFragmentInteraction(Exercise item) {
-        ExerciseDialog dialog = new ExerciseDialog();
-        try {
-            dialog.setSchedule(ApplicationHandler.getModel().getSchedule(ScheduleName));
-        } catch (ScheduleAvailableException e) {
-            e.printStackTrace();
-        }
-        dialog.show(getSupportFragmentManager(),"ExerciseDialog");
+        Intent intent = new Intent(this, EditExerciseActivity.class);
+        intent.putExtra("scheduleName", ActiveSchedule.getName());
+        intent.putExtra("excName", item.getName());
+        startActivity(intent);
     }
 
     public void updateSchedule(){
