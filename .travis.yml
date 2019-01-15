@@ -1,8 +1,9 @@
 language: android
+ env:
+  matrix:
+    - ANDROID_TARGET=android-28 ANDROID_ABI=armeabi-v7a
 before_install:
  - chmod +x gradlew
- - android list targets
- - jdk_switcher use oraclejdk8
  - echo no | android create avd --force -n test -t $ANDROID_TARGET --abi $ANDROID_ABI
  - emulator -avd test -no-skin -no-audio -no-window &
  - adb wait-for-device
@@ -32,9 +33,3 @@ android:
     # if you need to run emulator(s) during your tests
     - sys-img-x86-android-28
     - sys-img-armeabi-v7a-android-28
-    
-    
-    
- env:
-  matrix:
-    - ANDROID_TARGET=android-28 ANDROID_ABI=armeabi-v7a
