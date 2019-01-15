@@ -6,7 +6,9 @@ notifications:
 before_install:
   - chmod +x gradlew
   - touch ~/.android/repositories.cfg
-  - yes | sdkmanager "platforms;android-26"
+  - yes | sdkmanager "platforms;android-28"
+  - yes | sdkmanager "build-tools;27.0.3"
+  #- yes | sdkmanager "platforms;android-26"
   #- sudo apt-get -qq update
   #- sudo apt-get install -y pax
   
