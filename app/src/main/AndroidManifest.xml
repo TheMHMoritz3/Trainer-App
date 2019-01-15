@@ -73,5 +73,4 @@
                 android:value="com.german_software_engineers.trainerapp.ExerciseViewActivity" />
         </activity>
     </application>
-
 </manifest>
