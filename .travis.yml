@@ -39,7 +39,8 @@ android:
 
 install: skip
 
-#script: skip
+script:
+    - ./gradlew build check
 
 matrix:
   include:
