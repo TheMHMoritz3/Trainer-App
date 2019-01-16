@@ -10,7 +10,6 @@ import android.widget.TextView;
 
 import com.german_software_engineers.trainerapp.Model.Intensities;
 import com.german_software_engineers.trainerapp.Model.Schedule;
-import com.german_software_engineers.trainerapp.Model.ScheduleAvailableException;
 
 public class ScheduleEditDialog extends DialogFragment  {
     private Dialog dialog;

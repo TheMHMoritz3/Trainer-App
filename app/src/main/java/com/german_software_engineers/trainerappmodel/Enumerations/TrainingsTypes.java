@@ -1,4 +1,4 @@
-package com.german_software_engineers.trainerapp.Model;
+package com.german_software_engineers.trainerappmodel.Enumerations;
 
 public enum TrainingsTypes {
     strength_endurance,

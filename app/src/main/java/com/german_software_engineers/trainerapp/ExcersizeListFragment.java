@@ -13,8 +13,6 @@ import android.view.ViewGroup;
 import com.german_software_engineers.trainerapp.Model.Exercise;
 import com.german_software_engineers.trainerapp.Model.ScheduleAvailableException;
 
-import java.util.List;
-
 /**
  * A fragment representing a list of Items.
  * <p/>
