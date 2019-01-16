@@ -12,6 +12,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import com.german_software_engineers.trainerappmodel.Exceptions.ScheduleAvailableException;
+
 
 public class Model {
     private Map<String,Schedule> Schedules;

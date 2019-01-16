@@ -10,6 +10,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import com.german_software_engineers.trainerappmodel.Enumerations.*;
+
 public class Schedule {
     private String Name;
     private TrainingsTypes TrainingsType;

@@ -8,7 +8,6 @@ import android.support.v4.app.DialogFragment;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-import com.german_software_engineers.trainerapp.Model.Intensities;
 import com.german_software_engineers.trainerapp.Model.Schedule;
 
 public class ScheduleEditDialog extends DialogFragment  {

@@ -11,7 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.german_software_engineers.trainerapp.Model.Exercise;
-import com.german_software_engineers.trainerapp.Model.ScheduleAvailableException;
+import com.german_software_engineers.trainerappmodel.Exceptions.ScheduleAvailableException;
 
 /**
  * A fragment representing a list of Items.

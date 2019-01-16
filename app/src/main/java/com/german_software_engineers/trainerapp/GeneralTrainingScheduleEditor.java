@@ -9,10 +9,10 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Spinner;
 
-import com.german_software_engineers.trainerapp.Model.Intensities;
+import com.german_software_engineers.trainerappmodel.Enumerations.Intensities;
 import com.german_software_engineers.trainerapp.Model.Schedule;
-import com.german_software_engineers.trainerapp.Model.ScheduleAvailableException;
-import com.german_software_engineers.trainerapp.Model.TrainingsTypes;
+import com.german_software_engineers.trainerappmodel.Exceptions.ScheduleAvailableException;
+import com.german_software_engineers.trainerappmodel.Enumerations.TrainingsTypes;
 
 public class GeneralTrainingScheduleEditor extends AppCompatActivity {
 
