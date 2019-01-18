@@ -9,8 +9,8 @@ import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
 
-import com.german_software_engineers.trainerapp.Model.Exercise;
-import com.german_software_engineers.trainerapp.Model.Schedule;
+import com.german_software_engineers.trainerappmodel.Model.Exercise;
+import com.german_software_engineers.trainerappmodel.Model.Schedule;
 import com.german_software_engineers.trainerappmodel.Exceptions.ScheduleAvailableException;
 
 import java.io.FileOutputStream;

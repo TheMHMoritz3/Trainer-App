@@ -1,4 +1,4 @@
-package com.german_software_engineers.trainerapp.Model;
+package com.german_software_engineers.trainerappmodel.Model;
 
 
 import com.google.gson.Gson;

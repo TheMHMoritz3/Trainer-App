@@ -8,8 +8,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.TextView;
 
-import com.german_software_engineers.trainerapp.Model.Exercise;
-import com.german_software_engineers.trainerapp.Model.Schedule;
+import com.german_software_engineers.trainerappmodel.Model.Exercise;
+import com.german_software_engineers.trainerappmodel.Model.Schedule;
 import com.german_software_engineers.trainerappmodel.Exceptions.ScheduleAvailableException;
 
 import java.io.FileOutputStream;

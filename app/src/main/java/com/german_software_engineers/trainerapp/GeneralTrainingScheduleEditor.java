@@ -10,7 +10,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 
 import com.german_software_engineers.trainerappmodel.Enumerations.Intensities;
-import com.german_software_engineers.trainerapp.Model.Schedule;
+import com.german_software_engineers.trainerappmodel.Model.Schedule;
 import com.german_software_engineers.trainerappmodel.Exceptions.ScheduleAvailableException;
 import com.german_software_engineers.trainerappmodel.Enumerations.TrainingsTypes;
 

@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.german_software_engineers.trainerapp.ExcersizeListFragment.OnListFragmentInteractionListener;
-import com.german_software_engineers.trainerapp.Model.Exercise;
+import com.german_software_engineers.trainerappmodel.Model.Exercise;
 
 import java.util.List;
 

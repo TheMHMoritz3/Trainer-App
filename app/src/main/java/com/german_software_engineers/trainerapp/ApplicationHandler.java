@@ -1,13 +1,10 @@
 package com.german_software_engineers.trainerapp;
 
 
-import com.german_software_engineers.trainerapp.Model.Model;
+import com.german_software_engineers.trainerappmodel.Model.Model;
 
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.io.InputStream;
-import java.io.OutputStream;
 
 class ApplicationHandler {
     private static Model model = new Model();

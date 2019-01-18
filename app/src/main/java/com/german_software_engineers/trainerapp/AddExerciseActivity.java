@@ -9,7 +9,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
-import com.german_software_engineers.trainerapp.Model.Exercise;
+import com.german_software_engineers.trainerappmodel.Model.Exercise;
 import com.german_software_engineers.trainerappmodel.Exceptions.ScheduleAvailableException;
 
 import java.io.FileOutputStream;
