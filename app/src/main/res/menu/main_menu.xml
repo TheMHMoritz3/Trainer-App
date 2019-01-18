@@ -4,9 +4,9 @@
         <item
             android:id="@+id/nav_schedule"
             android:title="@string/menu_schedule" />
-        <item
+        <!--<item
             android:id="@+id/nav_editSchedule"
-            android:title="@string/menu_editSchedule" />
+            android:title="@string/menu_editSchedule" />-->
         <item
             android:id="@+id/nav_info"
             android:title="@string/menu_info" />
