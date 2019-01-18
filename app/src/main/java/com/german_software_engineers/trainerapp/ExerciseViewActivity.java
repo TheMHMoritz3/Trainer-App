@@ -34,7 +34,7 @@ public class ExerciseViewActivity extends ExerciseListActivity  {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startEditOfSchedule();
+                addExcersize();
             }
         });
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -66,6 +66,16 @@ public class ExerciseViewActivity extends ExerciseListActivity  {
         super.onStart();
     }
 
+
+    public void addExcersize(){
+        ExerciseDialog dialog = new ExerciseDialog();
+        try {
+            dialog.setSchedule(ApplicationHandler.getModel().getSchedule(ScheduleName));
+        } catch (ScheduleAvailableException e) {
+            e.printStackTrace();
+        }
+        dialog.show(getSupportFragmentManager(),"ExerciseDialog");
+    }
 
     public void startEditOfSchedule(){
         ApplicationHandler.getModel().deleteSchedule(ActiveSchedule.getName());
