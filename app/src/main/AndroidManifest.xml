@@ -14,10 +14,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".TrainingScheduleEditor"
-            android:label="@string/title_activity_training_schedule_editor"
-            android:theme="@style/AppTheme" />
-        <activity
             android:name=".TrainingsSchedule"
             android:label="@string/title_activity_trainings_schedule"
             android:theme="@style/AppTheme">
@@ -29,7 +25,7 @@
         </activity>
         <activity
             android:name=".InfoActivity"
-            android:label="@string/title_activity_info"
+            android:label="@string/InfoActivityTitle"
             android:parentActivityName=".TrainingsSchedule"
             android:theme="@style/AppTheme">
             <meta-data
@@ -44,15 +40,6 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.german_software_engineers.trainerapp.TrainingScheduleEditor" />
-        </activity>
-        <activity
-            android:name=".AddExerciseActivity"
-            android:label="@string/title_activity_add_exercise"
-            android:parentActivityName=".GeneralTrainingScheduleEditor"
-            android:theme="@style/AppTheme">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.german_software_engineers.trainerapp.GeneralTrainingScheduleEditor" />
         </activity>
         <activity
             android:name=".ExerciseViewActivity"

@@ -108,9 +108,6 @@ public class TrainingsSchedule extends NavigationActivity implements ScheduleLis
         if (id == R.id.nav_schedule) {
             Intent intent = new Intent(this, TrainingsSchedule.class);
             startActivity(intent);
-//        } else if (id == R.id.nav_editSchedule) {
-//            Intent intent = new Intent(this, TrainingScheduleEditor.class);
-//            startActivity(intent);
         } else if (id == R.id.nav_info) {
             Intent intent = new Intent(this, InfoActivity.class);
             startActivity(intent);
