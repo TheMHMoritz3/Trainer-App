@@ -3,17 +3,15 @@ package com.german_software_engineers.trainerapp;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.TextView;
 
-import com.german_software_engineers.trainerapp.Model.Exercise;
-import com.german_software_engineers.trainerapp.Model.Schedule;
-import com.german_software_engineers.trainerapp.Model.ScheduleAvailableException;
+import com.german_software_engineers.trainerappmodel.Model.Exercise;
+import com.german_software_engineers.trainerappmodel.Model.Schedule;
+import com.german_software_engineers.trainerappmodel.Exceptions.ScheduleAvailableException;
 
 import java.io.FileOutputStream;
 

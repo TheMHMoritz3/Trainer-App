@@ -1,4 +1,4 @@
-package com.german_software_engineers.trainerapp.Model;
+package com.german_software_engineers.trainerappmodel.Model;
 
 
 import com.google.gson.Gson;
@@ -9,6 +9,8 @@ import com.google.gson.JsonParser;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
+import com.german_software_engineers.trainerappmodel.Enumerations.*;
 
 public class Schedule {
     private String Name;

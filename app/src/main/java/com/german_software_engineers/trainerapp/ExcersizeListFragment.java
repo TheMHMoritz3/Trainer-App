@@ -10,10 +10,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.german_software_engineers.trainerapp.Model.Exercise;
-import com.german_software_engineers.trainerapp.Model.ScheduleAvailableException;
-
-import java.util.List;
+import com.german_software_engineers.trainerappmodel.Model.Exercise;
+import com.german_software_engineers.trainerappmodel.Exceptions.ScheduleAvailableException;
 
 /**
  * A fragment representing a list of Items.

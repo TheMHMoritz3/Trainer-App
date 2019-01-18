@@ -9,8 +9,8 @@ import android.support.v4.app.DialogFragment;
 import android.widget.CheckBox;
 import android.widget.TextView;
 
-import com.german_software_engineers.trainerapp.Model.Exercise;
-import com.german_software_engineers.trainerapp.Model.Schedule;
+import com.german_software_engineers.trainerappmodel.Model.Exercise;
+import com.german_software_engineers.trainerappmodel.Model.Schedule;
 
 public class ExerciseDialog extends DialogFragment {
     Dialog dialog;

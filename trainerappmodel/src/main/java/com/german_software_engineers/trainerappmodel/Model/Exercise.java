@@ -1,4 +1,4 @@
-package com.german_software_engineers.trainerapp.Model;
+package com.german_software_engineers.trainerappmodel.Model;
 
 public class Exercise {
     private String Name;

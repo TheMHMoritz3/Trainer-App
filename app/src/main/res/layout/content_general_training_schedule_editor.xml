@@ -8,6 +8,9 @@
     tools:context=".GeneralTrainingScheduleEditor"
     tools:showIn="@layout/activity_general_training_schedule_editor">
 
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
     <LinearLayout
         android:layout_marginLeft="@dimen/text_margin"
         android:layout_width="match_parent"
@@ -134,6 +137,7 @@
             android:inputType="numberSigned" />
     </LinearLayout>
 
+    </android.support.v4.widget.NestedScrollView>
 
 
 </android.support.constraint.ConstraintLayout>

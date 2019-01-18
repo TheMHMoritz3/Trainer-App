@@ -10,10 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.german_software_engineers.trainerapp.Model.Schedule;
-
-
-import java.util.List;
+import com.german_software_engineers.trainerappmodel.Model.Schedule;
 
 /**
  * A fragment representing a list of Items.
