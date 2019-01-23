@@ -45,10 +45,6 @@ public class ScheduleEditDialog extends DialogFragment  {
         ((TextView)dialog.findViewById(R.id.pauseEdit2)).setText(Schedule.getPauseTime());
         ((TextView)dialog.findViewById(R.id.setEdit2)).setText(Schedule.getSets());
         ((TextView)dialog.findViewById(R.id.speedEdit2)).setText(Schedule.getSpeed());
-        ((TextView)dialog.findViewById(R.id.execEdit2)).setText(Schedule.getWarmUpExcersize());
-        ((TextView)dialog.findViewById(R.id.timeEdit2)).setText(Schedule.getWarmUpTime());
-        ((Spinner)dialog.findViewById(R.id.intenEdit2)).setSelection(Schedule.getWarmUpIntensity().ordinal());
-        ((TextView)dialog.findViewById(R.id.bpmEdit)).setText(Schedule.getBPM());
     }
 
     private void updateSchedule(){

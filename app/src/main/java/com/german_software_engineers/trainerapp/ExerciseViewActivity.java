@@ -43,11 +43,12 @@ public class ExerciseViewActivity extends ExerciseListActivity  {
 
         ScheduleName = intent.getStringExtra("scheduleName");
 
-        try {
-            ActiveSchedule = ApplicationHandler.getModel().getSchedule(ScheduleName);
-        } catch (ScheduleAvailableException e) {
-            e.printStackTrace();
-        }
+        //TODO Application Context
+//        try {
+//            ActiveSchedule = ApplicationHandler.getModel().getSchedule(ScheduleName);
+//        } catch (ScheduleAvailableException e) {
+//            e.printStackTrace();
+//        }
 
         setTitle(ActiveSchedule.getName());
 
@@ -61,34 +62,33 @@ public class ExerciseViewActivity extends ExerciseListActivity  {
         getSupportFragmentManager().beginTransaction().replace(R.id.execView, fragment ).commit();
 
         TextView ScheduleInfo = (TextView)findViewById(R.id.ScheduleInfo);
-        ScheduleInfo.setText(getResources().getString(R.string.ScheduleInfo,ActiveSchedule.getRepeations(),ActiveSchedule.getPauseTime(),ActiveSchedule.getSets(),ActiveSchedule.getSpeed()));
+        ScheduleInfo.setText(getResources().getString(R.string.ScheduleInfo,ActiveSchedule.getRepetitions(),ActiveSchedule.getPauseTime(),ActiveSchedule.getSets(),ActiveSchedule.getSpeed()));
 
-        TextView WarmUpInfo = (TextView)findViewById(R.id.WarmUpInfo);
-        WarmUpInfo.setText("Exercise: "+ActiveSchedule.getWarmUpExcersize()+"\nTime: "+ActiveSchedule.getWarmUpTime()+"\nIntensity: "+ ActiveSchedule.getWarmUpIntensity().toString()+"\nBPM: "+ ActiveSchedule.getBPM());
         super.onStart();
     }
 
 
     public void addExcersize(){
         ExerciseDialog dialog = new ExerciseDialog();
-        try {
-            dialog.setSchedule(ApplicationHandler.getModel().getSchedule(ScheduleName));
-        } catch (ScheduleAvailableException e) {
-            e.printStackTrace();
-        }
-        dialog.show(getSupportFragmentManager(),"ExerciseDialog");
+//        try {
+//            dialog.setSchedule(ApplicationHandler.getModel().getSchedule(ScheduleName));
+//        } catch (ScheduleAvailableException e) {
+//            e.printStackTrace();
+//        }
+//        dialog.show(getSupportFragmentManager(),"ExerciseDialog");
     }
 
     public void startEditOfSchedule(){
-        ApplicationHandler.getModel().deleteSchedule(ActiveSchedule.getName());
-        try {
-            FileOutputStream outputStream = openFileOutput(ApplicationHandler.FileName, MODE_PRIVATE);
-            String  value = ApplicationHandler.getModel().getGson();
-            outputStream.write(value.getBytes());
-            outputStream.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+//        ApplicationHandler.getModel().deleteSchedule(ActiveSchedule.getName());
+        //TODO Application Context saving File
+//        try {
+//            FileOutputStream outputStream = openFileOutput(ApplicationHandler.FileName, MODE_PRIVATE);
+//            String  value = ApplicationHandler.getModel().getGson();
+//            outputStream.write(value.getBytes());
+//            outputStream.close();
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
         finish();
 
     }

@@ -4,21 +4,21 @@ import com.german_software_engineers.trainerappmodel.Enumerations.ExerciseType;
 
 public class DeviceExercise extends Exercise {
     private boolean IsSeatActivated;
-    private int SeatPosition;
+    private int SeatPosition=Integer.MAX_VALUE;
     private boolean IsLegActivated;
-    private int LegPosition;
+    private int LegPosition=Integer.MAX_VALUE;
     private boolean IsFootActivated;
-    private int FootPosition;
+    private int FootPosition=Integer.MAX_VALUE;
     private boolean IsAngleActivated;
-    private int AnglePosition;
+    private int AnglePosition=Integer.MAX_VALUE;
     private boolean IsWeightActivated;
-    private double Weight;
+    private double Weight=Double.MAX_VALUE;
     private boolean IsAdditionalWeightActivated;
-    private double AdditionalWeight;
+    private double AdditionalWeight=Double.MAX_VALUE;
     private boolean IsBackActivated;
-    private int BackPosition;
+    private int BackPosition=Integer.MAX_VALUE;
     private boolean IsDeviceNumberActivated;
-    private int DeviceNumber;
+    private int DeviceNumber=Integer.MAX_VALUE;
     private ExerciseType Type;
 
     public DeviceExercise(String name){
@@ -36,14 +36,14 @@ public class DeviceExercise extends Exercise {
         if(IsSeatActivated)
             return SeatPosition;
         else
-            return -1;
+            return Integer.MAX_VALUE;
     }
 
     public int getLegPosition() {
         if(IsLegActivated)
             return LegPosition;
         else
-            return -1;
+            return Integer.MAX_VALUE;
     }
 
     public void setLegPosition(int legPosition) {
@@ -55,7 +55,7 @@ public class DeviceExercise extends Exercise {
         if(IsFootActivated)
             return FootPosition;
         else
-            return -1;
+            return Integer.MAX_VALUE;
     }
 
     public void setFootPosition(int footPosition) {
@@ -67,7 +67,7 @@ public class DeviceExercise extends Exercise {
         if(IsAngleActivated)
             return AnglePosition;
         else
-            return -1;
+            return Integer.MAX_VALUE;
     }
 
     public void setAnglePosition(int anglePosition) {
@@ -79,7 +79,7 @@ public class DeviceExercise extends Exercise {
         if(IsWeightActivated)
             return Weight;
         else
-            return -1;
+            return Double.MAX_VALUE;
     }
 
     public void setWeight(double weight) {
@@ -93,7 +93,7 @@ public class DeviceExercise extends Exercise {
         if(IsBackActivated)
             return BackPosition;
         else
-            return -1;
+            return Integer.MAX_VALUE;
     }
 
     public void setBackPosition(int backPosition) {

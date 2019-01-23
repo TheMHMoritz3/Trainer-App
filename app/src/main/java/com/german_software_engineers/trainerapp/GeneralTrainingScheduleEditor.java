@@ -78,19 +78,19 @@ public class GeneralTrainingScheduleEditor extends AppCompatActivity {
         if(!((EditText)findViewById(R.id.repEdit)).getText().toString().isEmpty())
             warmUpBPM = Integer.valueOf(((EditText)findViewById(R.id.bpmEdit)).getText().toString());
 
-
-        Schedule schedule = new Schedule(((EditText)findViewById(R.id.nameTextEdit)).getText().toString(),
-                TrainingsTypes.values()[(int)((Spinner)findViewById(R.id.trainSpinner)).getSelectedItemId()],
-                reps.intValue(), pause.intValue(), sets.intValue(), speed.intValue(),
-                ((EditText)findViewById(R.id.excEdit)).getText().toString(),
-                warmUpTime.intValue(),
-                Intensities.values()[(int)((Spinner)findViewById(R.id.intenSpinner)).getSelectedItemId()],
-                warmUpBPM.intValue());
-        try {
-            ApplicationHandler.getModel().addSchedule(schedule);
-        } catch (ScheduleAvailableException e) {
-            e.printStackTrace();
-        }
+        //TODO Change Creating Schedule
+//        Schedule schedule = new Schedule(((EditText)findViewById(R.id.nameTextEdit)).getText().toString(),
+//                TrainingsTypes.values()[(int)((Spinner)findViewById(R.id.trainSpinner)).getSelectedItemId()],
+//                reps.intValue(), pause.intValue(), sets.intValue(), speed.intValue(),
+//                ((EditText)findViewById(R.id.excEdit)).getText().toString(),
+//                warmUpTime.intValue(),
+//                Intensities.values()[(int)((Spinner)findViewById(R.id.intenSpinner)).getSelectedItemId()],
+//                warmUpBPM.intValue());
+//        try {
+//            ApplicationHandler.getModel().addSchedule(schedule);
+//        } catch (ScheduleAvailableException e) {
+//            e.printStackTrace();
+//        }
         return true;
     }
 }

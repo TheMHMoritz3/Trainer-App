@@ -6,13 +6,13 @@ import com.german_software_engineers.trainerappmodel.Enumerations.Intensities;
 public class WarmUpExercise extends Exercise {
     private ExerciseType Type;
     private boolean IsExecutionTimeActivated = false;
-    private int ExecutionTime=0;
+    private int ExecutionTime=Integer.MAX_VALUE;
     private boolean IsIntensityActivated = false;
-    private Intensities Intenity=Intensities.soft;
+    private Intensities Intenity=Intensities.invalid;
     private boolean IsSubintensityActivated;
-    private int SubIntensity=0;
+    private int SubIntensity=Integer.MAX_VALUE;
     private boolean IsBPMActivated = false;
-    private int BPM=0;
+    private int BPM=Integer.MAX_VALUE;
 
     public WarmUpExercise(String name){
         super(name);
@@ -27,7 +27,7 @@ public class WarmUpExercise extends Exercise {
     public int getExecutionTime() {
         if(IsExecutionTimeActivated)
             return ExecutionTime;
-        return -1;
+        return Integer.MAX_VALUE;
     }
 
     public void setExecutionTime(int executionTime) {
@@ -38,7 +38,7 @@ public class WarmUpExercise extends Exercise {
     public Intensities getIntenity() {
         if(IsIntensityActivated)
             return Intenity;
-        return Intensities.hard;
+        return Intensities.invalid;
     }
 
     public void setIntenity(Intensities intenity) {
@@ -54,13 +54,13 @@ public class WarmUpExercise extends Exercise {
     public int getSubIntensity() {
         if(IsSubintensityActivated)
             return SubIntensity;
-        return -1;
+        return Integer.MAX_VALUE;
     }
 
     public int getBPM() {
         if(IsBPMActivated)
             return BPM;
-        return -1;
+        return Integer.MAX_VALUE;
     }
 
     public void setBPM(int BPM) {

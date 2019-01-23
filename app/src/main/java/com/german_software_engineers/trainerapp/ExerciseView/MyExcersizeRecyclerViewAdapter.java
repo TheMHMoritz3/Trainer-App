@@ -1,4 +1,4 @@
-package com.german_software_engineers.trainerapp;
+package com.german_software_engineers.trainerapp.ExerciseView;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -8,6 +8,7 @@ import android.widget.TextView;
 
 import com.german_software_engineers.trainerapp.ExcersizeListFragment.OnListFragmentInteractionListener;
 import com.german_software_engineers.trainerapp.ExerciseView.ExerciseViewHolder;
+import com.german_software_engineers.trainerapp.R;
 import com.german_software_engineers.trainerappmodel.Exercise.Exercise;
 
 import java.util.List;
@@ -91,23 +92,4 @@ public class MyExcersizeRecyclerViewAdapter extends RecyclerView.Adapter<Exercis
     public int getItemCount() {
         return mValues.size();
     }
-
-//    public class ViewHolder extends RecyclerView.ViewHolder {
-//        public final View mView;
-//        public final TextView TitleView;
-//        public final TextView AdditonalInfo;
-//        public Exercise mItem;
-//
-//        public ViewHolder(View view) {
-//            super(view);
-//            mView = view;
-//            TitleView = (TextView) view.findViewById(R.id.title);
-//            AdditonalInfo = (TextView)view.findViewById(R.id.information);
-//        }
-//
-//        @Override
-//        public String toString() {
-//            return super.toString() + " '" + TitleView.getText() + "'";
-//        }
-//    }
 }

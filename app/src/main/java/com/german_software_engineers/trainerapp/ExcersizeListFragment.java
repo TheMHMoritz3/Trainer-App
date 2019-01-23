@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.german_software_engineers.trainerapp.ExerciseView.MyExcersizeRecyclerViewAdapter;
 import com.german_software_engineers.trainerappmodel.Exercise.Exercise;
 import com.german_software_engineers.trainerappmodel.Exceptions.ScheduleAvailableException;
 
@@ -70,12 +71,13 @@ public class ExcersizeListFragment extends Fragment {
             } else {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
-            try {
-                Adapter =  new MyExcersizeRecyclerViewAdapter(ApplicationHandler.getModel().getSchedule(ScheduleName).exercises(), mListener);
-                recyclerView.setAdapter(Adapter);
-            } catch (ScheduleAvailableException e) {
-                e.printStackTrace();
-            }
+            //TODO Get Model from APPContext
+//            try {
+////                Adapter =  new MyExcersizeRecyclerViewAdapter(ApplicationHandler.getModel().getSchedule(ScheduleName).exercises(), mListener);
+//                recyclerView.setAdapter(Adapter);
+//            } catch (ScheduleAvailableException e) {
+//                e.printStackTrace();
+//            }
         }
         return view;
     }

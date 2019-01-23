@@ -23,20 +23,21 @@ public class TrainingsSchedule extends NavigationActivity implements ScheduleLis
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        try {
-            String FileName = getFilesDir()+"/"+ApplicationHandler.FileName;
-            File file = new File(FileName);
-            if(file.exists()) {
-                Scanner scanner = new Scanner(file);
-                if(scanner.hasNextLine()) {
-                    String value = scanner.nextLine();
-                    if (!value.isEmpty())
-                        ApplicationHandler.getModel().fromGson(value);
-                }
-            }
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
+        //TODO Open Model via Context
+//        try {
+//            String FileName = getFilesDir()+"/"+ApplicationHandler.FileName;
+//            File file = new File(FileName);
+//            if(file.exists()) {
+//                Scanner scanner = new Scanner(file);
+//                if(scanner.hasNextLine()) {
+//                    String value = scanner.nextLine();
+//                    if (!value.isEmpty())
+//                        ApplicationHandler.getModel().fromGson(value);
+//                }
+//            }
+//        } catch (FileNotFoundException e) {
+//            e.printStackTrace();
+//        }
 
         setContentView(R.layout.activity_trainings_schedule);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);

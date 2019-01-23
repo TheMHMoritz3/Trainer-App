@@ -6,9 +6,9 @@ public class BodyWeightExercise extends Exercise {
     private ExerciseType Type;
 
     private boolean IsAdditionalInformationActivated;
-    private String AdditionalInformation;
+    private String AdditionalInformation="";
 
-    BodyWeightExercise(String name){
+    public BodyWeightExercise(String name){
         super(name);
         Type=ExerciseType.BodyWeight;
     }
