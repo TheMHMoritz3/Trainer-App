@@ -1,6 +1,7 @@
 package com.german_software_engineers.trainerappmodel.Model;
 
 
+import com.german_software_engineers.trainerappmodel.Exercise.Exercise;
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;

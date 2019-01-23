@@ -1,4 +1,4 @@
-package com.german_software_engineers.trainerapp;
+package com.german_software_engineers.trainerapp.ExerciseView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,9 +9,9 @@ import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
 
-import com.german_software_engineers.trainerappmodel.Model.Exercise;
+import com.german_software_engineers.trainerapp.R;
+import com.german_software_engineers.trainerappmodel.Exercise.Exercise;
 import com.german_software_engineers.trainerappmodel.Model.Schedule;
-import com.german_software_engineers.trainerappmodel.Exceptions.ScheduleAvailableException;
 
 import java.io.FileOutputStream;
 
@@ -40,11 +40,11 @@ public class EditExerciseActivity extends AppCompatActivity {
     }
 
     private void getNessearyData(String scheduleName, String excName) {
-        try {
-            ActiveSchedule=ApplicationHandler.getModel().getSchedule(scheduleName);
-        } catch (ScheduleAvailableException e) {
-            e.printStackTrace();
-        }
+//        try {
+////            ActiveSchedule= ApplicationHandler.getModel().getSchedule(scheduleName);
+//        } catch (ScheduleAvailableException e) {
+//            e.printStackTrace();
+//        }
         if(ActiveSchedule!=null){
             for (Exercise exc:ActiveSchedule.exercises()) {
                 if(exc.getName().equals(excName)){
@@ -57,31 +57,31 @@ public class EditExerciseActivity extends AppCompatActivity {
     }
 
     private void updateGui(){
-        ((EditText)findViewById(R.id.excName)).setText(ActiveExcercse.getName());
-
-        ((CheckBox)findViewById(R.id.seatCheckBox2)).setChecked(ActiveExcercse.isSeatActivated());
-        if(ActiveExcercse.isSeatActivated())
-            ((EditText)findViewById(R.id.SeatEdit2)).setText(String.valueOf(ActiveExcercse.getSeatPosition()));
-
-        ((CheckBox)findViewById(R.id.LegCheckBox2)).setChecked(ActiveExcercse.isLegActivated());
-        if(ActiveExcercse.isLegActivated())
-            ((EditText)findViewById(R.id.LegEdit2)).setText(String.valueOf(ActiveExcercse.getLegPosition()));
-
-        ((CheckBox)findViewById(R.id.FootCheckBox2)).setChecked(ActiveExcercse.isFootActivated());
-        if(ActiveExcercse.isFootActivated())
-            ((EditText)findViewById(R.id.FootEdit2)).setText(String.valueOf(ActiveExcercse.getFootPosition()));
-
-        ((CheckBox)findViewById(R.id.AngleCheckBox2)).setChecked(ActiveExcercse.isAngleActivated());
-        if(ActiveExcercse.isAngleActivated())
-            ((EditText)findViewById(R.id.AngleEdit2)).setText(String.valueOf(ActiveExcercse.getAnglePosition()));
-
-        ((CheckBox)findViewById(R.id.BackCheckBox2)).setChecked(ActiveExcercse.isBackActivated());
-        if(ActiveExcercse.isBackActivated())
-            ((EditText)findViewById(R.id.BackEdit2)).setText(String.valueOf(ActiveExcercse.getBackPosition()));
-
-        ((CheckBox)findViewById(R.id.WeightCheckBox2)).setChecked(ActiveExcercse.isWeightActivated());
-        if(ActiveExcercse.isWeightActivated())
-            ((EditText)findViewById(R.id.WeightEdit2)).setText(String.valueOf(ActiveExcercse.getWeight()));
+//        ((EditText)findViewById(R.id.excName)).setText(ActiveExcercse.getName());
+//
+//        ((CheckBox)findViewById(R.id.seatCheckBox2)).setChecked(ActiveExcercse.isSeatActivated());
+//        if(ActiveExcercse.isSeatActivated())
+//            ((EditText)findViewById(R.id.SeatEdit2)).setText(String.valueOf(ActiveExcercse.getSeatPosition()));
+//
+//        ((CheckBox)findViewById(R.id.LegCheckBox2)).setChecked(ActiveExcercse.isLegActivated());
+//        if(ActiveExcercse.isLegActivated())
+//            ((EditText)findViewById(R.id.LegEdit2)).setText(String.valueOf(ActiveExcercse.getLegPosition()));
+//
+//        ((CheckBox)findViewById(R.id.FootCheckBox2)).setChecked(ActiveExcercse.isFootActivated());
+//        if(ActiveExcercse.isFootActivated())
+//            ((EditText)findViewById(R.id.FootEdit2)).setText(String.valueOf(ActiveExcercse.getFootPosition()));
+//
+//        ((CheckBox)findViewById(R.id.AngleCheckBox2)).setChecked(ActiveExcercse.isAngleActivated());
+//        if(ActiveExcercse.isAngleActivated())
+//            ((EditText)findViewById(R.id.AngleEdit2)).setText(String.valueOf(ActiveExcercse.getAnglePosition()));
+//
+//        ((CheckBox)findViewById(R.id.BackCheckBox2)).setChecked(ActiveExcercse.isBackActivated());
+//        if(ActiveExcercse.isBackActivated())
+//            ((EditText)findViewById(R.id.BackEdit2)).setText(String.valueOf(ActiveExcercse.getBackPosition()));
+//
+//        ((CheckBox)findViewById(R.id.WeightCheckBox2)).setChecked(ActiveExcercse.isWeightActivated());
+//        if(ActiveExcercse.isWeightActivated())
+//            ((EditText)findViewById(R.id.WeightEdit2)).setText(String.valueOf(ActiveExcercse.getWeight()));
     }
 
     private void updateExc(){
@@ -117,24 +117,24 @@ public class EditExerciseActivity extends AppCompatActivity {
         if(isWeightActivated)
             weight = Double.valueOf(((EditText)findViewById(R.id.WeightEdit2)).getText().toString());
 
-        Exercise exc = new Exercise(name,isSeatActivated, isLegActivated,isFootActivated,isAngnleActivated,isWeightActivated, isBackActivated);
-        exc.setAnglePosition(anglePos.intValue());
-        exc.setFootPosition(footPos.intValue());
-        exc.setLegPosition(LegPos.intValue());
-        exc.setSeatPosition(seatPos.intValue());
-        exc.setWeight(weight.doubleValue());
-        exc.setBackPosition(backPos.intValue());
-
-        ActiveExcercse.copy(exc);
-
-        try {
-            FileOutputStream outputStream = openFileOutput(ApplicationHandler.FileName, MODE_PRIVATE);
-            String  value = ApplicationHandler.getModel().getGson();
-            outputStream.write(value.getBytes());
-            outputStream.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+//        Exercise exc = new Exercise(name,isSeatActivated, isLegActivated,isFootActivated,isAngnleActivated,isWeightActivated, isBackActivated);
+//        exc.setAnglePosition(anglePos.intValue());
+//        exc.setFootPosition(footPos.intValue());
+//        exc.setLegPosition(LegPos.intValue());
+//        exc.setSeatPosition(seatPos.intValue());
+//        exc.setWeight(weight.doubleValue());
+//        exc.setBackPosition(backPos.intValue());
+//
+//        ActiveExcercse.copy(exc);
+//
+//        try {
+//            FileOutputStream outputStream = openFileOutput(ApplicationHandler.FileName, MODE_PRIVATE);
+//            String  value = ApplicationHandler.getModel().getGson();
+//            outputStream.write(value.getBytes());
+//            outputStream.close();
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
 
 
         finish();

@@ -10,7 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.german_software_engineers.trainerappmodel.Model.Exercise;
+import com.german_software_engineers.trainerappmodel.Exercise.Exercise;
 import com.german_software_engineers.trainerappmodel.Exceptions.ScheduleAvailableException;
 
 /**

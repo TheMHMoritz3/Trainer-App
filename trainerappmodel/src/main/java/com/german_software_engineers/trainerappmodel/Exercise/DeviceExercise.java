@@ -1,8 +1,8 @@
-package com.german_software_engineers.trainerappmodel.Model;
+package com.german_software_engineers.trainerappmodel.Exercise;
 
-public class Exercise {
-    private String Name;
+import com.german_software_engineers.trainerappmodel.Enumerations.ExerciseType;
 
+public class DeviceExercise extends Exercise {
     private boolean IsSeatActivated;
     private int SeatPosition;
     private boolean IsLegActivated;
@@ -13,19 +13,17 @@ public class Exercise {
     private int AnglePosition;
     private boolean IsWeightActivated;
     private double Weight;
+    private boolean IsAdditionalWeightActivated;
+    private double AdditionalWeight;
     private boolean IsBackActivated;
     private int BackPosition;
+    private boolean IsDeviceNumberActivated;
+    private int DeviceNumber;
+    private ExerciseType Type;
 
-    private Exercise(){}
-
-    public Exercise(String name,boolean isSeatActivated, boolean isLegActivated, boolean isFootActivated, boolean isAngleActivated, boolean isWeightActivated, boolean isBackActivated){
-        Name = name;
-        IsSeatActivated = isSeatActivated;
-        IsLegActivated = isLegActivated;
-        IsFootActivated = isFootActivated;
-        IsAngleActivated = isAngleActivated;
-        IsWeightActivated = isWeightActivated;
-        IsBackActivated = isBackActivated;
+    public DeviceExercise(String name){
+        super(name);
+        Type=ExerciseType.Device;
     }
 
     public void setSeatPosition(int pos){
@@ -89,9 +87,7 @@ public class Exercise {
             Weight = weight;
     }
 
-    public String getName() {
-        return Name;
-    }
+
 
     public int getBackPosition() {
         if(IsBackActivated)
@@ -129,31 +125,63 @@ public class Exercise {
         return IsWeightActivated;
     }
 
-    public void copy(Exercise other){
-        Name=other.Name;
-        IsSeatActivated = other.IsSeatActivated;
-        SeatPosition= other.SeatPosition;
-        IsLegActivated= other.IsLegActivated;
-        LegPosition= other.LegPosition;
-        IsFootActivated= other.IsFootActivated;
-        FootPosition= other.FootPosition;
-        IsAngleActivated= other.IsAngleActivated;
-        AnglePosition= other.AnglePosition;
-        IsWeightActivated= other.IsWeightActivated;
-        Weight= other.Weight;
-        IsBackActivated= other.IsBackActivated;
-        BackPosition= other.BackPosition;
+    public void setSeatActivated(boolean seatActivated) {
+        IsSeatActivated = seatActivated;
     }
 
-    @Override
-    public String toString()
-    {
-        return Name;
+    public void setLegActivated(boolean legActivated) {
+        IsLegActivated = legActivated;
     }
 
-    @Override
-    public boolean equals( Object obj )
-    {
-        return  (toString()==obj.toString());
+    public void setFootActivated(boolean footActivated) {
+        IsFootActivated = footActivated;
+    }
+
+    public void setAngleActivated(boolean angleActivated) {
+        IsAngleActivated = angleActivated;
+    }
+
+    public void setWeightActivated(boolean weightActivated) {
+        IsWeightActivated = weightActivated;
+    }
+
+    public void setBackActivated(boolean backActivated) {
+        IsBackActivated = backActivated;
+    }
+
+    public ExerciseType type(){
+        return Type;
+    }
+
+    public boolean isDeviceNumberActivated() {
+        return IsDeviceNumberActivated;
+    }
+
+    public void setDeviceNumberActivated(boolean deviceNumberActivated) {
+        IsDeviceNumberActivated = deviceNumberActivated;
+    }
+
+    public int getDeviceNumber() {
+        return DeviceNumber;
+    }
+
+    public void setDeviceNumber(int deviceNumber) {
+        DeviceNumber = deviceNumber;
+    }
+
+    public boolean isAdditionalWeightActivated() {
+        return IsAdditionalWeightActivated;
+    }
+
+    public void setAdditionalWeightActivated(boolean additionalWeightActivated) {
+        IsAdditionalWeightActivated = additionalWeightActivated;
+    }
+
+    public double getAdditionalWeight() {
+        return AdditionalWeight;
+    }
+
+    public void setAdditionalWeight(double additionalWeight) {
+        AdditionalWeight = additionalWeight;
     }
 }
