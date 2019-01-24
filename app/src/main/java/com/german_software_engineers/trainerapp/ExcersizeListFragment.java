@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.german_software_engineers.trainerapp.Controller.ApplicationManager;
 import com.german_software_engineers.trainerapp.ExerciseView.MyExcersizeRecyclerViewAdapter;
 import com.german_software_engineers.trainerappmodel.Exercise.Exercise;
 import com.german_software_engineers.trainerappmodel.Exceptions.ScheduleAvailableException;
@@ -71,13 +72,13 @@ public class ExcersizeListFragment extends Fragment {
             } else {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
-            //TODO Get Model from APPContext
-//            try {
-////                Adapter =  new MyExcersizeRecyclerViewAdapter(ApplicationHandler.getModel().getSchedule(ScheduleName).exercises(), mListener);
-//                recyclerView.setAdapter(Adapter);
-//            } catch (ScheduleAvailableException e) {
-//                e.printStackTrace();
-//            }
+            try {
+                ApplicationManager Manager = (ApplicationManager) getActivity().getApplicationContext();
+                Adapter =  new MyExcersizeRecyclerViewAdapter(Manager.getApplicationModel().getSchedule(ScheduleName).exercises(), mListener);
+                recyclerView.setAdapter(Adapter);
+            } catch (ScheduleAvailableException e) {
+                e.printStackTrace();
+            }
         }
         return view;
     }
@@ -111,11 +112,10 @@ public class ExcersizeListFragment extends Fragment {
      * >Communicating with Other Fragments</a> for more information.
      */
     public interface OnListFragmentInteractionListener {
-        // TODO: Update argument type and name
         void onListFragmentInteraction(Exercise item);
     }
 
-    public MyExcersizeRecyclerViewAdapter getAdatpoer(){
+    public MyExcersizeRecyclerViewAdapter getAdapter(){
         return Adapter;
     }
 }

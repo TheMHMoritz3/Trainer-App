@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Spinner;
 
+import com.german_software_engineers.trainerapp.Controller.ApplicationManager;
 import com.german_software_engineers.trainerappmodel.Enumerations.Intensities;
 import com.german_software_engineers.trainerappmodel.Model.Schedule;
 import com.german_software_engineers.trainerappmodel.Exceptions.ScheduleAvailableException;
@@ -48,49 +49,38 @@ public class GeneralTrainingScheduleEditor extends AppCompatActivity {
             return false;
         }
 
-        if(((EditText)findViewById(R.id.excEdit)).getText().toString().isEmpty())
-        {
-            ((EditText)findViewById(R.id.excEdit)).setError("Please Type in a warmup Excercise");
-            return false;
-        }
+        Schedule schedule = new Schedule(((EditText)findViewById(R.id.nameTextEdit)).getText().toString());
 
         Integer reps = 0;
-        if(!((EditText)findViewById(R.id.repEdit)).getText().toString().isEmpty())
-            reps = Integer.valueOf(((EditText)findViewById(R.id.repEdit)).getText().toString());
+        if(!((EditText)findViewById(R.id.repEdit)).getText().toString().isEmpty()) {
+            reps = Integer.valueOf(((EditText) findViewById(R.id.repEdit)).getText().toString());
+            schedule.setRepetitions(reps);
+        }
 
         Integer pause = 0;
-        if(!((EditText)findViewById(R.id.pauseEdit)).getText().toString().isEmpty())
-            pause = Integer.valueOf((((EditText)findViewById(R.id.pauseEdit)).getText().toString()));
+        if(!((EditText)findViewById(R.id.pauseEdit)).getText().toString().isEmpty()) {
+            pause = Integer.valueOf((((EditText) findViewById(R.id.pauseEdit)).getText().toString()));
+            schedule.setPauseTime(pause);
+        }
 
         Integer sets = 0;
-        if(!((EditText)findViewById(R.id.setEdit)).getText().toString().isEmpty())
-            sets = Integer.valueOf(((EditText)findViewById(R.id.setEdit)).getText().toString());
+        if(!((EditText)findViewById(R.id.setEdit)).getText().toString().isEmpty()) {
+            sets = Integer.valueOf(((EditText) findViewById(R.id.setEdit)).getText().toString());
+            schedule.setSets(sets);
+        }
 
         Integer speed = 0;
-        if(!((EditText)findViewById(R.id.speedEdit)).getText().toString().isEmpty())
-            speed = Integer.valueOf(((EditText)findViewById(R.id.speedEdit)).getText().toString());
+        if(!((EditText)findViewById(R.id.speedEdit)).getText().toString().isEmpty()) {
+            speed = Integer.valueOf(((EditText) findViewById(R.id.speedEdit)).getText().toString());
+            schedule.setSpeed(speed);
+        }
 
-        Integer warmUpTime = 0;
-        if(!((EditText)findViewById(R.id.timeEdit)).getText().toString().isEmpty())
-            warmUpTime = Integer.valueOf(((EditText)findViewById(R.id.timeEdit)).getText().toString());
 
-        Integer warmUpBPM = 0;
-        if(!((EditText)findViewById(R.id.repEdit)).getText().toString().isEmpty())
-            warmUpBPM = Integer.valueOf(((EditText)findViewById(R.id.bpmEdit)).getText().toString());
-
-        //TODO Change Creating Schedule
-//        Schedule schedule = new Schedule(((EditText)findViewById(R.id.nameTextEdit)).getText().toString(),
-//                TrainingsTypes.values()[(int)((Spinner)findViewById(R.id.trainSpinner)).getSelectedItemId()],
-//                reps.intValue(), pause.intValue(), sets.intValue(), speed.intValue(),
-//                ((EditText)findViewById(R.id.excEdit)).getText().toString(),
-//                warmUpTime.intValue(),
-//                Intensities.values()[(int)((Spinner)findViewById(R.id.intenSpinner)).getSelectedItemId()],
-//                warmUpBPM.intValue());
-//        try {
-//            ApplicationHandler.getModel().addSchedule(schedule);
-//        } catch (ScheduleAvailableException e) {
-//            e.printStackTrace();
-//        }
+       try {
+           ((ApplicationManager)getApplicationContext()).getApplicationModel().addSchedule(schedule);
+       } catch (ScheduleAvailableException e) {
+           e.printStackTrace();
+       }
         return true;
     }
 }

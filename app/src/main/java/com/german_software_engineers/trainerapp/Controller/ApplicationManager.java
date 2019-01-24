@@ -23,4 +23,20 @@ public class ApplicationManager extends Application {
         File DataFile = new File(getFilesDir() + "/" + getString(R.string.DataFile));
         xmlParser.parseFile(DataFile);
     }
+
+    public Model getApplicationModel(){
+        return ApplicationModel;
+    }
+
+    public void saveFile(){
+        XMLParser xmlParser = new XMLParser(ApplicationModel);
+        File DataFile = new File(getFilesDir() + "/" + getString(R.string.DataFile));
+        xmlParser.writeFile(DataFile);
+    }
+
+    @Override
+    public void onTerminate(){
+        saveFile();
+        super.onTerminate();
+    }
 }

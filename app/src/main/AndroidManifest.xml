@@ -33,15 +33,15 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.german_software_engineers.trainerapp.TrainingsSchedule" />
         </activity>
-        <!--<activity
+        <activity
             android:name=".GeneralTrainingScheduleEditor"
             android:label="@string/title_activity_general_training_schedule_editor"
-            android:parentActivityName=".TrainingScheduleEditor"
+            android:parentActivityName=".TrainingsSchedule"
             android:theme="@style/AppTheme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.german_software_engineers.trainerapp.TrainingScheduleEditor" />
-        </activity>-->
+                android:value="com.german_software_engineers.trainerapp.TrainingsSchedule" />
+        </activity>
         <activity
             android:name=".ExerciseViewActivity"
             android:label="@string/ExerciseViewActivityTitle"
