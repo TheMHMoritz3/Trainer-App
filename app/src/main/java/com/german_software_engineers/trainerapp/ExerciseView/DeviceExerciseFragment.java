@@ -8,7 +8,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.german_software_engineers.trainerapp.ExcersizeListFragment;
 import com.german_software_engineers.trainerapp.R;
+import com.german_software_engineers.trainerappmodel.Exercise.Exercise;
 
 
 /**
@@ -20,14 +22,8 @@ import com.german_software_engineers.trainerapp.R;
  * create an instance of this fragment.
  */
 public class DeviceExerciseFragment extends ExerciseFragment {
-    // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    private static final String ARG_EXERCISE = "exercise";
 
     private OnFragmentInteractionListener mListener;
 
@@ -39,16 +35,12 @@ public class DeviceExerciseFragment extends ExerciseFragment {
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
      *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
      * @return A new instance of fragment DeviceExerciseFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static DeviceExerciseFragment newInstance(String param1, String param2) {
+    public static DeviceExerciseFragment newInstance() {
         DeviceExerciseFragment fragment = new DeviceExerciseFragment();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
         return fragment;
     }
@@ -56,10 +48,9 @@ public class DeviceExerciseFragment extends ExerciseFragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+//        if (getArguments() != null) {
+//            Exercise = getArguments().getClass(ARG_EXERCISE);
+//        }
     }
 
     @Override

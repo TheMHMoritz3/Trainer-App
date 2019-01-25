@@ -24,6 +24,10 @@ import java.io.FileOutputStream;
 public class EditExerciseActivity extends AppCompatActivity implements ExerciseFragment.OnFragmentInteractionListener {
     ExerciseViewModel ViewModel = null;
 
+    BodyWeightExerciseFragment bodyWeightExerciseFragment = BodyWeightExerciseFragment.newInstance();
+    DeviceExerciseFragment deviceExerciseFragment = DeviceExerciseFragment.newInstance();
+    WarmUpExerciseFragment warmUpExerciseFragment = WarmUpExerciseFragment.newInstance();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,7 +46,7 @@ public class EditExerciseActivity extends AppCompatActivity implements ExerciseF
 
         Intent intent = getIntent();
         getNessearyData(intent.getStringExtra("scheduleName"),intent.getStringExtra("excName"));
-        
+
         ((Spinner)findViewById(R.id.ExerciseTypeSpinner)).setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -76,27 +80,26 @@ public class EditExerciseActivity extends AppCompatActivity implements ExerciseF
             }
         }
         ViewModel=new ExerciseViewModel(sched,exercise);
+        if(exercise!=null){
+            ((EditText)findViewById(R.id.excName)).setText(exercise.getName());
+        }else{
+            ((EditText)findViewById(R.id.excName)).setText("");
+        }
         ViewModel.getExerciseTypeLiveData().observe(this, observer -> {
             updateGui();
         });
-
-        DeviceExerciseFragment deviceExerciseFragment = DeviceExerciseFragment.newInstance("test","test");
-        getSupportFragmentManager().beginTransaction().replace(R.id.ExerciseFragment, deviceExerciseFragment ).commit();
     }
 
     private void updateGui(){
         switch (ViewModel.getExerciseType()){
             case WarmUp:
-                WarmUpExerciseFragment warmUpExerciseFragment = WarmUpExerciseFragment.newInstance("test","test");
                 getSupportFragmentManager().beginTransaction().replace(R.id.ExerciseFragment, warmUpExerciseFragment ).commit();
                 break;
                 default:
             case Device:
-                DeviceExerciseFragment deviceExerciseFragment = DeviceExerciseFragment.newInstance("test","test");
                 getSupportFragmentManager().beginTransaction().replace(R.id.ExerciseFragment, deviceExerciseFragment ).commit();
                 break;
             case BodyWeight:
-                BodyWeightExerciseFragment bodyWeightExerciseFragment = BodyWeightExerciseFragment.newInstance("test","test");
                 getSupportFragmentManager().beginTransaction().replace(R.id.ExerciseFragment, bodyWeightExerciseFragment ).commit();
                 break;
         }

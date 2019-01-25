@@ -13,9 +13,14 @@ public class ExerciseViewModel extends ViewModel {
     private Schedule ActiveSchedule;
     private MutableLiveData<ExerciseType> ActiveExerciseType = new MutableLiveData<>();
 
+    //Chechboxes
+    private MutableLiveData<Boolean> IsSeatCheckBoxActivated = new MutableLiveData<>();
+    private DeviceExerciseViewModel DeviceExercise = null;
+
     public ExerciseViewModel(Schedule schedule, Exercise exercise){
         ActiveSchedule = schedule;
         ActiveExcercise = exercise;
+        DeviceExercise = new DeviceExerciseViewModel(exercise);
     }
 
     void typeChanged(int chosenType){
@@ -28,5 +33,14 @@ public class ExerciseViewModel extends ViewModel {
 
     public ExerciseType getExerciseType(){
         return ActiveExerciseType.getValue();
+    }
+
+    public void addExercise(){
+
+    }
+
+
+    public DeviceExerciseViewModel getDeviceExercise() {
+        return DeviceExercise;
     }
 }
