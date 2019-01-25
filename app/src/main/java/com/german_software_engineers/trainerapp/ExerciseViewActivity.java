@@ -10,7 +10,6 @@ import android.widget.TextView;
 
 import com.german_software_engineers.trainerapp.Controller.ApplicationManager;
 import com.german_software_engineers.trainerapp.ExerciseView.EditExerciseActivity;
-import com.german_software_engineers.trainerapp.ExerciseView.ExerciseDialog;
 import com.german_software_engineers.trainerappmodel.Exercise.Exercise;
 import com.german_software_engineers.trainerappmodel.Model.Schedule;
 import com.german_software_engineers.trainerappmodel.Exceptions.ScheduleAvailableException;
@@ -71,14 +70,10 @@ public class ExerciseViewActivity extends ExerciseListActivity  {
 
 
     public void addExcersize(){
-        ExerciseDialog dialog = new ExerciseDialog();
-        try {
-            dialog.setSchedule(((ApplicationManager)getApplicationContext())
-                    .getApplicationModel().getSchedule(ScheduleName));
-        } catch (ScheduleAvailableException e) {
-            e.printStackTrace();
-        }
-        dialog.show(getSupportFragmentManager(),"ExerciseDialog");
+        Intent intent = new Intent(this,EditExerciseActivity.class);
+        intent.putExtra("scheduleName", ActiveSchedule.getName());
+        intent.putExtra("excName", "");
+        startActivity(intent);
     }
 
     public void startEditOfSchedule(){

@@ -23,12 +23,20 @@
             android:text="Name" />
 
         <Spinner
-            android:id="@+id/spinner"
+            android:id="@+id/ExerciseTypeSpinner"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:entries="@array/ExerciseTypes"/>
 
+        <FrameLayout
+            android:id="@+id/ExerciseFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:layout_editor_absoluteX="8dp"
+            tools:layout_editor_absoluteY="77dp"/>
 
     </LinearLayout>
+
+
 
 </android.support.constraint.ConstraintLayout>

@@ -1,6 +1,7 @@
 package com.german_software_engineers.trainerapp.ExerciseView;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
@@ -17,7 +18,7 @@ import com.german_software_engineers.trainerappmodel.Model.Schedule;
 
 import java.io.FileOutputStream;
 
-public class EditExerciseActivity extends AppCompatActivity {
+public class EditExerciseActivity extends AppCompatActivity implements DeviceExerciseFragment.OnFragmentInteractionListener {
     ExerciseViewModel ViewModel = null;
 
     @Override
@@ -63,17 +64,22 @@ public class EditExerciseActivity extends AppCompatActivity {
         ViewModel.getExerciseTypeLiveData().observe(this, observer -> {
             updateGui();
         });
+
+        DeviceExerciseFragment deviceExerciseFragment = DeviceExerciseFragment.newInstance("test","test");
+        getSupportFragmentManager().beginTransaction().replace(R.id.ExerciseFragment, deviceExerciseFragment ).commit();
     }
 
     private void updateGui(){
         switch (ViewModel.getExerciseType()){
             case WarmUp:
+
                 break;
                 default:
             case Device:
 
                 break;
             case BodyWeight:
+
                 break;
         }
     }
@@ -83,4 +89,8 @@ public class EditExerciseActivity extends AppCompatActivity {
     }
 
 
+    @Override
+    public void onFragmentInteraction(Uri uri) {
+
+    }
 }
