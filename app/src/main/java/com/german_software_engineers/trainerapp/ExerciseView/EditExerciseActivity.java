@@ -7,18 +7,21 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.Spinner;
 
 import com.german_software_engineers.trainerapp.Controller.ApplicationManager;
 import com.german_software_engineers.trainerapp.R;
 import com.german_software_engineers.trainerappmodel.Exceptions.ScheduleAvailableException;
 import com.german_software_engineers.trainerappmodel.Exercise.Exercise;
+import com.german_software_engineers.trainerappmodel.Exercise.WarmUpExercise;
 import com.german_software_engineers.trainerappmodel.Model.Schedule;
 
 import java.io.FileOutputStream;
 
-public class EditExerciseActivity extends AppCompatActivity implements DeviceExerciseFragment.OnFragmentInteractionListener {
+public class EditExerciseActivity extends AppCompatActivity implements ExerciseFragment.OnFragmentInteractionListener {
     ExerciseViewModel ViewModel = null;
 
     @Override
@@ -39,6 +42,18 @@ public class EditExerciseActivity extends AppCompatActivity implements DeviceExe
 
         Intent intent = getIntent();
         getNessearyData(intent.getStringExtra("scheduleName"),intent.getStringExtra("excName"));
+        
+        ((Spinner)findViewById(R.id.ExerciseTypeSpinner)).setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                ViewModel.typeChanged((int)id);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
     }
 
     private void getNessearyData(String scheduleName, String excName) {
@@ -72,14 +87,17 @@ public class EditExerciseActivity extends AppCompatActivity implements DeviceExe
     private void updateGui(){
         switch (ViewModel.getExerciseType()){
             case WarmUp:
-
+                WarmUpExerciseFragment warmUpExerciseFragment = WarmUpExerciseFragment.newInstance("test","test");
+                getSupportFragmentManager().beginTransaction().replace(R.id.ExerciseFragment, warmUpExerciseFragment ).commit();
                 break;
                 default:
             case Device:
-
+                DeviceExerciseFragment deviceExerciseFragment = DeviceExerciseFragment.newInstance("test","test");
+                getSupportFragmentManager().beginTransaction().replace(R.id.ExerciseFragment, deviceExerciseFragment ).commit();
                 break;
             case BodyWeight:
-
+                BodyWeightExerciseFragment bodyWeightExerciseFragment = BodyWeightExerciseFragment.newInstance("test","test");
+                getSupportFragmentManager().beginTransaction().replace(R.id.ExerciseFragment, bodyWeightExerciseFragment ).commit();
                 break;
         }
     }
