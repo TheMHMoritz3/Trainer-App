@@ -1,7 +1,9 @@
-package com.german_software_engineers.trainerapp.ExerciseView;
+package com.german_software_engineers.trainerapp.ExerciseView.Fragments;
 
 import android.net.Uri;
 import android.support.v4.app.Fragment;
+
+import com.german_software_engineers.trainerapp.ExerciseView.ViewModel.ExerciseViewModel;
 
 abstract public class ExerciseFragment extends Fragment {
 

@@ -1,4 +1,4 @@
-package com.german_software_engineers.trainerapp.ExerciseView;
+package com.german_software_engineers.trainerapp.ExerciseView.Fragments;
 
 import android.content.Context;
 import android.net.Uri;
@@ -8,26 +8,22 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.german_software_engineers.trainerapp.ExcersizeListFragment;
 import com.german_software_engineers.trainerapp.R;
-import com.german_software_engineers.trainerappmodel.Exercise.Exercise;
 
 
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link DeviceExerciseFragment.OnFragmentInteractionListener} interface
+ * {@link ExerciseFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link DeviceExerciseFragment#newInstance} factory method to
+ * Use the {@link WarmUpExerciseFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class DeviceExerciseFragment extends ExerciseFragment {
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_EXERCISE = "exercise";
+public class WarmUpExerciseFragment extends ExerciseFragment {
 
     private OnFragmentInteractionListener mListener;
 
-    public DeviceExerciseFragment() {
+    public WarmUpExerciseFragment() {
         // Required empty public constructor
     }
 
@@ -35,11 +31,10 @@ public class DeviceExerciseFragment extends ExerciseFragment {
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
      *
-     * @return A new instance of fragment DeviceExerciseFragment.
+     * @return A new instance of fragment WarmUpExerciseFragment.
      */
-    // TODO: Rename and change types and number of parameters
-    public static DeviceExerciseFragment newInstance() {
-        DeviceExerciseFragment fragment = new DeviceExerciseFragment();
+    public static WarmUpExerciseFragment newInstance() {
+        WarmUpExerciseFragment fragment = new WarmUpExerciseFragment();
         Bundle args = new Bundle();
         fragment.setArguments(args);
         return fragment;
@@ -48,16 +43,15 @@ public class DeviceExerciseFragment extends ExerciseFragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        if (getArguments() != null) {
-//            Exercise = getArguments().getClass(ARG_EXERCISE);
-//        }
+        if (getArguments() != null) {
+        }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_device_exercise, container, false);
+        return inflater.inflate(R.layout.fragment_warm_up_exercise, container, false);
     }
 
     // TODO: Rename method, update argument and hook method into UI event

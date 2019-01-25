@@ -8,18 +8,19 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Spinner;
 
 import com.german_software_engineers.trainerapp.Controller.ApplicationManager;
+import com.german_software_engineers.trainerapp.ExerciseView.Fragments.BodyWeightExerciseFragment;
+import com.german_software_engineers.trainerapp.ExerciseView.Fragments.DeviceExerciseFragment;
+import com.german_software_engineers.trainerapp.ExerciseView.Fragments.ExerciseFragment;
+import com.german_software_engineers.trainerapp.ExerciseView.Fragments.WarmUpExerciseFragment;
+import com.german_software_engineers.trainerapp.ExerciseView.ViewModel.ExerciseViewModel;
 import com.german_software_engineers.trainerapp.R;
 import com.german_software_engineers.trainerappmodel.Exceptions.ScheduleAvailableException;
 import com.german_software_engineers.trainerappmodel.Exercise.Exercise;
-import com.german_software_engineers.trainerappmodel.Exercise.WarmUpExercise;
 import com.german_software_engineers.trainerappmodel.Model.Schedule;
-
-import java.io.FileOutputStream;
 
 public class EditExerciseActivity extends AppCompatActivity implements ExerciseFragment.OnFragmentInteractionListener {
     ExerciseViewModel ViewModel = null;
@@ -88,6 +89,9 @@ public class EditExerciseActivity extends AppCompatActivity implements ExerciseF
         ViewModel.getExerciseTypeLiveData().observe(this, observer -> {
             updateGui();
         });
+
+        deviceExerciseFragment.setExerciseViewModel(ViewModel);
+        bodyWeightExerciseFragment.setExerciseViewModel(ViewModel);
     }
 
     private void updateGui(){

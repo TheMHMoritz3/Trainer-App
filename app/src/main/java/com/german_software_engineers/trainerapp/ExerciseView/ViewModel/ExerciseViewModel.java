@@ -1,10 +1,11 @@
-package com.german_software_engineers.trainerapp.ExerciseView;
+package com.german_software_engineers.trainerapp.ExerciseView.ViewModel;
 
 import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.ViewModel;
 
 import com.german_software_engineers.trainerappmodel.Enumerations.ExerciseType;
+import com.german_software_engineers.trainerappmodel.Exercise.BodyWeightExercise;
 import com.german_software_engineers.trainerappmodel.Exercise.Exercise;
 import com.german_software_engineers.trainerappmodel.Model.Schedule;
 
@@ -12,18 +13,28 @@ public class ExerciseViewModel extends ViewModel {
     private Exercise ActiveExcercise;
     private Schedule ActiveSchedule;
     private MutableLiveData<ExerciseType> ActiveExerciseType = new MutableLiveData<>();
+    public MutableLiveData<String> ExerciseName = new MutableLiveData<>();
 
-    //Chechboxes
-    private MutableLiveData<Boolean> IsSeatCheckBoxActivated = new MutableLiveData<>();
-    private DeviceExerciseViewModel DeviceExercise = null;
+    private DeviceExerciseViewModel DeviceExerciseViewModel = null;
+    private BodyWeightExerciseViewModel BodyWeightExerciseViewModel = null;
 
     public ExerciseViewModel(Schedule schedule, Exercise exercise){
         ActiveSchedule = schedule;
         ActiveExcercise = exercise;
-        DeviceExercise = new DeviceExerciseViewModel(exercise);
+        DeviceExerciseViewModel = new DeviceExerciseViewModel(exercise);
+        BodyWeightExerciseViewModel = new BodyWeightExerciseViewModel(exercise);
+        setRequiredValues();
     }
 
-    void typeChanged(int chosenType){
+    private void setRequiredValues(){
+        if(ActiveExcercise==null){
+            ExerciseName.postValue("");
+        }else{
+            ExerciseName.postValue(ActiveExcercise.getName());
+        }
+    }
+
+    public void typeChanged(int chosenType){
         ActiveExerciseType.postValue(ExerciseType.values()[chosenType]);
     }
 
@@ -40,7 +51,11 @@ public class ExerciseViewModel extends ViewModel {
     }
 
 
-    public DeviceExerciseViewModel getDeviceExercise() {
-        return DeviceExercise;
+    public DeviceExerciseViewModel getDeviceExerciseViewModel() {
+        return DeviceExerciseViewModel;
+    }
+
+    public BodyWeightExerciseViewModel getBodyWeightExerciseViewModel(){
+        return BodyWeightExerciseViewModel;
     }
 }
