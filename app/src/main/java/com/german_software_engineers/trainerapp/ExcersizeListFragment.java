@@ -73,7 +73,7 @@ public class ExcersizeListFragment extends Fragment {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
             try {
-                ApplicationManager Manager = (ApplicationManager) getActivity().getApplicationContext();
+                ApplicationManager Manager = (ApplicationManager) getActivity().getApplication();
                 Adapter =  new MyExcersizeRecyclerViewAdapter(Manager.getApplicationModel().getSchedule(ScheduleName).exercises(), mListener);
                 recyclerView.setAdapter(Adapter);
             } catch (ScheduleAvailableException e) {

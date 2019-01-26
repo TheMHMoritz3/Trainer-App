@@ -121,6 +121,7 @@ public class DeviceExerciseFragment extends ExerciseFragment {
 
 
         makeConnections();
+        setData();
     }
 
     private void makeConnections(){
@@ -337,7 +338,7 @@ public class DeviceExerciseFragment extends ExerciseFragment {
     public void setExerciseViewModel(ExerciseViewModel model){
         ExercViewModel=model;
         DeviceExercViewModel=ExercViewModel.getDeviceExerciseViewModel();
-        setData();
+//        setData();
     }
 
     private void setData(){

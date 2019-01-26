@@ -10,21 +10,21 @@ import com.german_software_engineers.trainerappmodel.Exercise.Exercise;
 public class DeviceExerciseViewModel extends ViewModel {
     private Exercise ActiveExercise = null;
 
-    private MutableLiveData<Boolean> IsSeatActivated = new MutableLiveData<>();
+    private boolean IsSeatActivated = false;
     private int SeatPosition = 0;
-    private MutableLiveData<Boolean> IsDeviceActivated = new MutableLiveData<>();
+    private boolean IsDeviceActivated = false;
     private int DevicePosition = 0;
-    private MutableLiveData<Boolean> IsLegActivated = new MutableLiveData<>();
+    private boolean IsLegActivated = false;
     private int LegPosition = 0;
-    private MutableLiveData<Boolean> IsFootActivated = new MutableLiveData<>();
+    private boolean IsFootActivated = false;
     private int FootPosition = 0;
-    private MutableLiveData<Boolean> IsAngleActivated = new MutableLiveData<>();
+    private boolean IsAngleActivated = false;
     private int AnglePosition = 0;
-    private MutableLiveData<Boolean> IsBackActivated = new MutableLiveData<>();
+    private boolean IsBackActivated = false;
     private int BackPosition = 0;
-    private MutableLiveData<Boolean> IsWeightActivated = new MutableLiveData<>();
+    private boolean IsWeightActivated = false;
     private double Weight=0;
-    private MutableLiveData<Boolean> IsAdditionalWeightActivated = new MutableLiveData<>();
+    private boolean IsAdditionalWeightActivated = false;
     private double AdditionalWeight=0;
 
 
@@ -35,87 +35,87 @@ public class DeviceExerciseViewModel extends ViewModel {
 
     private void applyData(){
         if((ActiveExercise!=null)&&(ActiveExercise.type()== ExerciseType.Device)){
-            IsSeatActivated.postValue(((DeviceExercise)ActiveExercise).isSeatActivated());
+            IsSeatActivated = ((DeviceExercise)ActiveExercise).isSeatActivated();
             SeatPosition=((DeviceExercise) ActiveExercise).getSeatPosition();
-            IsDeviceActivated.postValue(((DeviceExercise) ActiveExercise).isDeviceNumberActivated());
+            IsDeviceActivated = ((DeviceExercise) ActiveExercise).isDeviceNumberActivated();
             DevicePosition = ((DeviceExercise) ActiveExercise).getDeviceNumber();
-            IsLegActivated.postValue(((DeviceExercise) ActiveExercise).isLegActivated());
+            IsLegActivated = ((DeviceExercise) ActiveExercise).isLegActivated();
             LegPosition = ((DeviceExercise) ActiveExercise).getLegPosition();
-            IsFootActivated.postValue(((DeviceExercise) ActiveExercise).isFootActivated());
+            IsFootActivated = ((DeviceExercise) ActiveExercise).isFootActivated();
             FootPosition = ((DeviceExercise) ActiveExercise).getFootPosition();
-            IsAngleActivated.postValue(((DeviceExercise) ActiveExercise).isAngleActivated());
+            IsAngleActivated = ((DeviceExercise) ActiveExercise).isAngleActivated();
             AnglePosition = ((DeviceExercise) ActiveExercise).getAnglePosition();
-            IsBackActivated.postValue(((DeviceExercise) ActiveExercise).isBackActivated());
+            IsBackActivated = ((DeviceExercise) ActiveExercise).isBackActivated();
             BackPosition = ((DeviceExercise) ActiveExercise).getBackPosition();
-            IsWeightActivated.postValue(((DeviceExercise) ActiveExercise).isWeightActivated());
+            IsWeightActivated = ((DeviceExercise) ActiveExercise).isWeightActivated();
             Weight=((DeviceExercise) ActiveExercise).getWeight();
-            IsAdditionalWeightActivated.postValue(((DeviceExercise) ActiveExercise).isAdditionalWeightActivated());
+            IsAdditionalWeightActivated = ((DeviceExercise) ActiveExercise).isAdditionalWeightActivated();
             AdditionalWeight = ((DeviceExercise) ActiveExercise).getAdditionalWeight();
         }
     }
 
     public void setAdditionalWeightActivated(boolean activated){
-        IsAdditionalWeightActivated.postValue(activated);
+        IsAdditionalWeightActivated = activated;
     }
 
     public boolean isAdditionalWeightActivated() {
-        return IsAdditionalWeightActivated.getValue();
+        return IsAdditionalWeightActivated;
     }
 
     public void setWeightActivated(boolean activated){
-        IsWeightActivated.postValue(activated);
+        IsWeightActivated =activated;
     }
 
     public boolean isWeightActivated() {
-        return IsWeightActivated.getValue();
+        return IsWeightActivated;
     }
 
     public void setAngleActivated(boolean activated){
-        IsAngleActivated.postValue(activated);
+        IsAngleActivated = activated;
     }
 
     public boolean isAngleActivated() {
-        return IsAngleActivated.getValue();
+        return IsAngleActivated;
     }
 
     public void setFootActivated(boolean activated){
-        IsFootActivated.postValue(activated);
+        IsFootActivated = activated;
     }
 
     public boolean isFootActivated() {
-        return IsFootActivated.getValue();
+        return IsFootActivated;
     }
 
     public void setLegActivated(boolean activated){
-        IsLegActivated.postValue(activated);
+        IsLegActivated = activated;
     }
 
     public boolean isLegActivated() {
-        return IsLegActivated.getValue();
+        return IsLegActivated;
     }
 
     public void setDeviceActivated(boolean activated){
-        IsDeviceActivated.postValue(activated);
+        IsDeviceActivated = activated;
     }
 
     public boolean isDeviceActivated() {
-        return IsDeviceActivated.getValue();
+        return IsDeviceActivated;
     }
 
     public boolean isSeatActivated() {
-        return IsSeatActivated.getValue();
+        return IsSeatActivated;
     }
 
     public void setSeatActivated(boolean activated){
-        IsSeatActivated.postValue(activated);
+        IsSeatActivated = activated;
     }
 
     public boolean isBackActivated() {
-        return IsBackActivated.getValue();
+        return IsBackActivated;
     }
 
     public void setBackActivated(boolean activated){
-        IsBackActivated.postValue(activated);
+        IsBackActivated = activated;
     }
 
     public void setSeatPosition(int seatPosition) {

@@ -67,7 +67,8 @@ public class ScheduleListFragment extends Fragment {
             } else {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
-            ApplicationManager Manager = (ApplicationManager) getActivity().getApplicationContext();
+
+            ApplicationManager Manager = (ApplicationManager) getActivity().getApplication();
             recyclerView.setAdapter(new MyScheduleRecyclerViewAdapter(Manager.getApplicationModel().getSchedulesList(), mListener));
         }
         return view;

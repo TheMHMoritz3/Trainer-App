@@ -10,7 +10,7 @@ import com.german_software_engineers.trainerappmodel.Exercise.Exercise;
 public class BodyWeightExerciseViewModel extends ViewModel {
     private Exercise ActiveExercise = null;
 
-    private MutableLiveData<Boolean> IsAdditionalInformationActivated = new MutableLiveData<>();
+    private boolean IsAdditionalInformationActivated;
     private String AdditionalInformation = "";
 
     public BodyWeightExerciseViewModel(Exercise exercise){
@@ -21,7 +21,7 @@ public class BodyWeightExerciseViewModel extends ViewModel {
     private void applyData(){
         if((ActiveExercise!=null)&&(ActiveExercise.type()== ExerciseType.BodyWeight))
         {
-            IsAdditionalInformationActivated.postValue(((BodyWeightExercise)ActiveExercise).isAdditionalInformationActivated());
+            IsAdditionalInformationActivated = ((BodyWeightExercise)ActiveExercise).isAdditionalInformationActivated();
             AdditionalInformation = ((BodyWeightExercise) ActiveExercise).getAdditionalInformation();
         }
     }
@@ -35,10 +35,10 @@ public class BodyWeightExerciseViewModel extends ViewModel {
     }
 
     public void setAdditionalInformationActivated(boolean activated){
-        IsAdditionalInformationActivated.postValue(activated);
+        IsAdditionalInformationActivated = activated;
     }
 
     public boolean isAdditionalInformationActivated(){
-        return IsAdditionalInformationActivated.getValue();
+        return IsAdditionalInformationActivated;
     }
 }

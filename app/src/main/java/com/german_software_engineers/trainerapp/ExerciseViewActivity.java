@@ -43,7 +43,7 @@ public class ExerciseViewActivity extends ExerciseListActivity  {
         ScheduleName = intent.getStringExtra("scheduleName");
 
         try {
-            ActiveSchedule = ((ApplicationManager)getApplicationContext())
+            ActiveSchedule = ((ApplicationManager)getApplication())
                     .getApplicationModel().getSchedule(ScheduleName);
         } catch (ScheduleAvailableException e) {
             e.printStackTrace();
@@ -77,7 +77,7 @@ public class ExerciseViewActivity extends ExerciseListActivity  {
     }
 
     public void startEditOfSchedule(){
-        ((ApplicationManager)getApplicationContext()).saveFile();
+        ((ApplicationManager)getApplication()).saveFile();
         finish();
 
     }

@@ -64,7 +64,7 @@ public class EditExerciseActivity extends AppCompatActivity implements ExerciseF
     private void getNessearyData(String scheduleName, String excName) {
         Schedule sched=null;
         try {
-            sched= ((ApplicationManager)getApplicationContext()).getApplicationModel().getSchedule(scheduleName);
+            sched= ((ApplicationManager)getApplication()).getApplicationModel().getSchedule(scheduleName);
         } catch (ScheduleAvailableException e) {
             e.printStackTrace();
         }

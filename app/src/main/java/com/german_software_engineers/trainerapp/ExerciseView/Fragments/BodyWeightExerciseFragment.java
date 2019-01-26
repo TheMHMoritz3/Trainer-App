@@ -4,15 +4,19 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 
 import com.german_software_engineers.trainerapp.ExerciseView.ViewModel.BodyWeightExerciseViewModel;
 import com.german_software_engineers.trainerapp.ExerciseView.ViewModel.ExerciseViewModel;
 import com.german_software_engineers.trainerapp.R;
+import com.german_software_engineers.trainerappmodel.Exercise.BodyWeightExercise;
 
 
 /**
@@ -69,6 +73,9 @@ public class BodyWeightExerciseFragment extends ExerciseFragment {
 
         AdditionalInformationCheckbox = (CheckBox)view.findViewById(R.id.AdditionalInformationCheckbox);
         AdditionalInformationEdit = (EditText)view.findViewById(R.id.AdditionalInformationEditText);
+
+        makeConnections();
+        setData();
     }
 
     @Override
@@ -80,6 +87,39 @@ public class BodyWeightExerciseFragment extends ExerciseFragment {
             throw new RuntimeException(context.toString()
                     + " must implement OnFragmentInteractionListener");
         }
+    }
+
+    private void makeConnections(){
+        AdditionalInformationCheckbox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                BodyWeightExercViewModel.setAdditionalInformationActivated(AdditionalInformationCheckbox.isChecked());
+                AdditionalInformationEdit.setActivated(AdditionalInformationCheckbox.isChecked());
+            }
+        });
+        AdditionalInformationEdit.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                if(!AdditionalInformationEdit.getText().toString().isEmpty())
+                    BodyWeightExercViewModel.setAdditionalInformation(AdditionalInformationEdit.getText().toString());
+                else
+                    BodyWeightExercViewModel.setAdditionalInformation("");
+            }
+        });
+    }
+
+    private void setData(){
+
     }
 
     public void setExerciseViewModel(ExerciseViewModel model){
