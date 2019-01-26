@@ -48,15 +48,14 @@ public class ExerciseViewActivity extends ExerciseListActivity  {
 
         setTitle(ActiveSchedule.getName());
 
+        fragment = ExcersizeListFragment.newInstance(1,ScheduleName);
+        getSupportFragmentManager().beginTransaction().replace(R.id.execView, fragment ).commit();
     }
 
 
     @Override
     protected void onStart()
     {
-        fragment = ExcersizeListFragment.newInstance(1,ScheduleName);
-        getSupportFragmentManager().beginTransaction().replace(R.id.execView, fragment ).commit();
-
         TextView ScheduleInfo = (TextView)findViewById(R.id.ScheduleInfo);
 
         String scheduleInfo=String.format(getResources().getString(R.string.ScheduleInfo), ActiveSchedule.getRepetitions(),ActiveSchedule.getPauseTime(), ActiveSchedule.getSets(), ActiveSchedule.getSpeed());
@@ -71,12 +70,6 @@ public class ExerciseViewActivity extends ExerciseListActivity  {
         intent.putExtra("scheduleName", ActiveSchedule.getName());
         intent.putExtra("excName", "");
         startActivity(intent);
-    }
-
-    public void startEditOfSchedule(){
-        ((ApplicationManager)getApplication()).saveFile();
-        finish();
-
     }
 
     @Override
