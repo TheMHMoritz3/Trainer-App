@@ -17,12 +17,14 @@ public class ExerciseViewModel extends ViewModel {
 
     private DeviceExerciseViewModel DeviceExerciseViewModel = null;
     private BodyWeightExerciseViewModel BodyWeightExerciseViewModel = null;
+    private WarmUpExerciseViewModel WarmUpExerciseViewModel = null;
 
     public ExerciseViewModel(Schedule schedule, Exercise exercise){
         ActiveSchedule = schedule;
         ActiveExcercise = exercise;
         DeviceExerciseViewModel = new DeviceExerciseViewModel(exercise);
         BodyWeightExerciseViewModel = new BodyWeightExerciseViewModel(exercise);
+        WarmUpExerciseViewModel = new WarmUpExerciseViewModel(exercise);
         setRequiredValues();
     }
 
@@ -57,5 +59,9 @@ public class ExerciseViewModel extends ViewModel {
 
     public BodyWeightExerciseViewModel getBodyWeightExerciseViewModel(){
         return BodyWeightExerciseViewModel;
+    }
+
+    public WarmUpExerciseViewModel getWarmUpExerciseViewModel(){
+        return WarmUpExerciseViewModel;
     }
 }

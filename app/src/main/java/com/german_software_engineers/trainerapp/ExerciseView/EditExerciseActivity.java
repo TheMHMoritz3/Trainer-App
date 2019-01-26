@@ -92,6 +92,7 @@ public class EditExerciseActivity extends AppCompatActivity implements ExerciseF
 
         deviceExerciseFragment.setExerciseViewModel(ViewModel);
         bodyWeightExerciseFragment.setExerciseViewModel(ViewModel);
+        warmUpExerciseFragment.setExerciseViewModel(ViewModel);
     }
 
     private void updateGui(){

@@ -119,7 +119,9 @@ public class BodyWeightExerciseFragment extends ExerciseFragment {
     }
 
     private void setData(){
-
+        AdditionalInformationCheckbox.setChecked(BodyWeightExercViewModel.isAdditionalInformationActivated());
+        AdditionalInformationEdit.setEnabled(BodyWeightExercViewModel.isAdditionalInformationActivated());
+        AdditionalInformationEdit.setText(BodyWeightExercViewModel.getAdditionalInformation());
     }
 
     public void setExerciseViewModel(ExerciseViewModel model){

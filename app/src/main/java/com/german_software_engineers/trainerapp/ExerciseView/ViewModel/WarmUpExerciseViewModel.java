@@ -21,6 +21,7 @@ public class WarmUpExerciseViewModel extends ViewModel {
 
     public WarmUpExerciseViewModel(Exercise exercise) {
         Exercise = exercise;
+        setData();
     }
 
     private void setData() {
