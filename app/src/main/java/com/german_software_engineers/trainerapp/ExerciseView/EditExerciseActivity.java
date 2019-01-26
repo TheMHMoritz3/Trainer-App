@@ -20,7 +20,7 @@ import com.german_software_engineers.trainerapp.ExerciseView.ViewModel.ExerciseV
 import com.german_software_engineers.trainerapp.R;
 import com.german_software_engineers.trainerappmodel.Exceptions.ScheduleAvailableException;
 import com.german_software_engineers.trainerappmodel.Exercise.Exercise;
-import com.german_software_engineers.trainerappmodel.Model.Schedule;
+import com.german_software_engineers.trainerappmodel.Legacy.Schedule;
 
 public class EditExerciseActivity extends AppCompatActivity implements ExerciseFragment.OnFragmentInteractionListener {
     ExerciseViewModel ViewModel = null;
@@ -111,7 +111,8 @@ public class EditExerciseActivity extends AppCompatActivity implements ExerciseF
     }
 
     private void updateExc(){
-
+        ViewModel.addExercise();
+        finish();
     }
 
 

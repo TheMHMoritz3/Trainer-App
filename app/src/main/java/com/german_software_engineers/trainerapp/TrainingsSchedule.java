@@ -12,11 +12,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.german_software_engineers.trainerappmodel.Model.Schedule;
-
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.Scanner;
+import com.german_software_engineers.trainerappmodel.Legacy.Schedule;
 
 public class TrainingsSchedule extends NavigationActivity implements ScheduleListFragment.OnListFragmentInteractionListener{
 

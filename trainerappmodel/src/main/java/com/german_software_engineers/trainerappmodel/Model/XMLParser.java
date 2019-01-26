@@ -2,12 +2,12 @@ package com.german_software_engineers.trainerappmodel.Model;
 
 import com.german_software_engineers.trainerappmodel.Enumerations.ExerciseType;
 import com.german_software_engineers.trainerappmodel.Enumerations.Intensities;
-import com.german_software_engineers.trainerappmodel.Enumerations.TrainingsTypes;
 import com.german_software_engineers.trainerappmodel.Exceptions.ScheduleAvailableException;
 import com.german_software_engineers.trainerappmodel.Exercise.BodyWeightExercise;
 import com.german_software_engineers.trainerappmodel.Exercise.DeviceExercise;
 import com.german_software_engineers.trainerappmodel.Exercise.Exercise;
 import com.german_software_engineers.trainerappmodel.Exercise.WarmUpExercise;
+import com.german_software_engineers.trainerappmodel.Legacy.Schedule;
 
 import org.w3c.dom.Attr;
 import org.w3c.dom.Document;
@@ -17,11 +17,9 @@ import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import javax.xml.parsers.*;
-import javax.xml.transform.Source;
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerConfigurationException;
 import javax.xml.transform.TransformerException;

@@ -6,7 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.german_software_engineers.trainerappmodel.Model.Schedule;
+import com.german_software_engineers.trainerappmodel.Legacy.Schedule;
 import com.german_software_engineers.trainerapp.ScheduleListFragment.OnListFragmentInteractionListener;
 
 

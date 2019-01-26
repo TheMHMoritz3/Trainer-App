@@ -11,7 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.german_software_engineers.trainerapp.Controller.ApplicationManager;
-import com.german_software_engineers.trainerappmodel.Model.Schedule;
+import com.german_software_engineers.trainerappmodel.Legacy.Schedule;
 
 /**
  * A fragment representing a list of Items.

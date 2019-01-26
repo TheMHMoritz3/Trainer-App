@@ -1,6 +1,5 @@
 package com.german_software_engineers.trainerapp;
 
-import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -11,10 +10,8 @@ import android.widget.TextView;
 import com.german_software_engineers.trainerapp.Controller.ApplicationManager;
 import com.german_software_engineers.trainerapp.ExerciseView.EditExerciseActivity;
 import com.german_software_engineers.trainerappmodel.Exercise.Exercise;
-import com.german_software_engineers.trainerappmodel.Model.Schedule;
+import com.german_software_engineers.trainerappmodel.Legacy.Schedule;
 import com.german_software_engineers.trainerappmodel.Exceptions.ScheduleAvailableException;
-
-import java.io.FileOutputStream;
 
 public class ExerciseViewActivity extends ExerciseListActivity  {
 

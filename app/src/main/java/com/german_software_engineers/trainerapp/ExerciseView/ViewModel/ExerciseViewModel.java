@@ -6,8 +6,10 @@ import android.arch.lifecycle.ViewModel;
 
 import com.german_software_engineers.trainerappmodel.Enumerations.ExerciseType;
 import com.german_software_engineers.trainerappmodel.Exercise.BodyWeightExercise;
+import com.german_software_engineers.trainerappmodel.Exercise.DeviceExercise;
 import com.german_software_engineers.trainerappmodel.Exercise.Exercise;
-import com.german_software_engineers.trainerappmodel.Model.Schedule;
+import com.german_software_engineers.trainerappmodel.Exercise.WarmUpExercise;
+import com.german_software_engineers.trainerappmodel.Legacy.Schedule;
 
 public class ExerciseViewModel extends ViewModel {
     private Exercise ActiveExcercise;
@@ -49,7 +51,48 @@ public class ExerciseViewModel extends ViewModel {
     }
 
     public void addExercise(){
+        Exercise exercise;
+        switch (ActiveExerciseType.getValue()){
+            case Device:
+                default:
+                    exercise = new DeviceExercise(ExerciseName.getValue());
+                    ((DeviceExercise) exercise).setSeatActivated(DeviceExerciseViewModel.isSeatActivated());
+                    ((DeviceExercise) exercise).setSeatPosition(DeviceExerciseViewModel.getSeatPosition());
+                    ((DeviceExercise) exercise).setLegActivated(DeviceExerciseViewModel.isLegActivated());
+                    ((DeviceExercise) exercise).setLegPosition(DeviceExerciseViewModel.getLegPosition());
+                    ((DeviceExercise) exercise).setFootActivated(DeviceExerciseViewModel.isFootActivated());
+                    ((DeviceExercise) exercise).setFootPosition(DeviceExerciseViewModel.getFootPosition());
+                    ((DeviceExercise) exercise).setAngleActivated(DeviceExerciseViewModel.isAngleActivated());
+                    ((DeviceExercise) exercise).setAnglePosition(DeviceExerciseViewModel.getAnglePosition());
+                    ((DeviceExercise) exercise).setWeightActivated(DeviceExerciseViewModel.isWeightActivated());
+                    ((DeviceExercise) exercise).setWeight(DeviceExerciseViewModel.getWeight());
+                    ((DeviceExercise) exercise).setAdditionalWeightActivated(DeviceExerciseViewModel.isAdditionalWeightActivated());
+                    ((DeviceExercise) exercise).setAdditionalWeight(DeviceExerciseViewModel.getAdditionalWeight());
+                    ((DeviceExercise) exercise).setDeviceNumberActivated(DeviceExerciseViewModel.isDeviceActivated());
+                    ((DeviceExercise) exercise).setDeviceNumber(DeviceExerciseViewModel.getDevicePosition());
+                break;
+            case BodyWeight:
+                exercise = new BodyWeightExercise(ExerciseName.getValue());
+                ((BodyWeightExercise) exercise).setAdditionalInformationActivated(BodyWeightExerciseViewModel.isAdditionalInformationActivated());
+                ((BodyWeightExercise) exercise).setAdditionalInformation(BodyWeightExerciseViewModel.getAdditionalInformation());
+                break;
+            case WarmUp:
+                exercise = new WarmUpExercise(ExerciseName.getValue());
+                ((WarmUpExercise) exercise).setExecutionTimeActivated(WarmUpExerciseViewModel.isWarmUpTimeActivated());
+                ((WarmUpExercise) exercise).setExecutionTime(WarmUpExerciseViewModel.getWamUpTime());
+                ((WarmUpExercise) exercise).setIntensityActivated(WarmUpExerciseViewModel.isIntensityActivated());
+                ((WarmUpExercise) exercise).setIntenity(WarmUpExerciseViewModel.getIntensity());
+                ((WarmUpExercise) exercise).setSubintensityActivated(WarmUpExerciseViewModel.isSubIntensityActivated());
+                ((WarmUpExercise) exercise).setSubIntensity(WarmUpExerciseViewModel.getSubIntensity());
+                ((WarmUpExercise) exercise).setBPMActivated(WarmUpExerciseViewModel.isHeartfrequencyActivated());
+                ((WarmUpExercise) exercise).setBPM(WarmUpExerciseViewModel.getHeartfrequency());
+                break;
+        }
 
+        if(ActiveExcercise!=null)
+            ActiveSchedule.exercises().remove(ActiveExcercise);
+
+        ActiveSchedule.addExercise(exercise);
     }
 
 

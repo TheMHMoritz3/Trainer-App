@@ -1,4 +1,4 @@
-package com.german_software_engineers.trainerappmodel.Model;
+package com.german_software_engineers.trainerappmodel.Legacy;
 
 
 import com.german_software_engineers.trainerappmodel.Enumerations.*;

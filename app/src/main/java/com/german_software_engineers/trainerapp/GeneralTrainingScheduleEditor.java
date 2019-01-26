@@ -7,13 +7,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.Spinner;
 
 import com.german_software_engineers.trainerapp.Controller.ApplicationManager;
-import com.german_software_engineers.trainerappmodel.Enumerations.Intensities;
-import com.german_software_engineers.trainerappmodel.Model.Schedule;
+import com.german_software_engineers.trainerappmodel.Legacy.Schedule;
 import com.german_software_engineers.trainerappmodel.Exceptions.ScheduleAvailableException;
-import com.german_software_engineers.trainerappmodel.Enumerations.TrainingsTypes;
 
 public class GeneralTrainingScheduleEditor extends AppCompatActivity {
 

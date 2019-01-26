@@ -100,7 +100,7 @@ public class ExerciseViewHolder extends RecyclerView.ViewHolder {
     private void decorateWarmUpExercise(){
         ExerciseView.findViewById(R.id.ExerciseCard).setBackgroundResource(R.color.colorPrimary);
         WarmUpExercise exc = (WarmUpExercise)Exercise;
-        ((TextView)ExerciseView.findViewById(R.id.ExerciseOrder)).setText(exc.getPosition());
+//        ((TextView)ExerciseView.findViewById(R.id.ExerciseOrder)).setText(exc.getPosition());
         ((TextView)ExerciseView.findViewById(R.id.ExerciseTitle)).setText(exc.getName());
         ((TextView)ExerciseView.findViewById(R.id.ExerciseDeviceNumber)).setText("");
 

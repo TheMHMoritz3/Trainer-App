@@ -1,14 +1,8 @@
 package com.german_software_engineers.trainerappmodel.Model;
 
 
-import com.google.gson.Gson;
+import com.german_software_engineers.trainerappmodel.Legacy.Schedule;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -18,7 +12,7 @@ import com.german_software_engineers.trainerappmodel.Exceptions.ScheduleAvailabl
 
 public class Model {
     private String ApplicationVersion;
-    private Map<String,Schedule> Schedules;
+    private Map<String, Schedule> Schedules;
 
     public Model(){
         Schedules=new HashMap<>();
