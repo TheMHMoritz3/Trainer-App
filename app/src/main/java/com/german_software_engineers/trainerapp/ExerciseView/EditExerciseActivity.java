@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
@@ -48,17 +50,7 @@ public class EditExerciseActivity extends AppCompatActivity implements ExerciseF
         Intent intent = getIntent();
         getNessearyData(intent.getStringExtra("scheduleName"),intent.getStringExtra("excName"));
 
-        ((Spinner)findViewById(R.id.ExerciseTypeSpinner)).setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                ViewModel.typeChanged((int)id);
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
+        makeConnections();
     }
 
     private void getNessearyData(String scheduleName, String excName) {
@@ -95,6 +87,36 @@ public class EditExerciseActivity extends AppCompatActivity implements ExerciseF
         warmUpExerciseFragment.setExerciseViewModel(ViewModel);
     }
 
+    private void makeConnections(){
+        ((Spinner)findViewById(R.id.ExerciseTypeSpinner)).setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                ViewModel.typeChanged((int)id);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+        ((EditText)findViewById(R.id.excName)).addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                ViewModel.ExerciseName.postValue(((EditText)findViewById(R.id.excName)).getText().toString());
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                ViewModel.ExerciseName.postValue(((EditText)findViewById(R.id.excName)).getText().toString());
+            }
+        });
+    }
+
     private void updateGui(){
         switch (ViewModel.getExerciseType()){
             case WarmUp:
@@ -111,7 +133,12 @@ public class EditExerciseActivity extends AppCompatActivity implements ExerciseF
     }
 
     private void updateExc(){
+        if(((EditText)findViewById(R.id.excName)).getText().toString().isEmpty()){
+            ((EditText)findViewById(R.id.excName)).setError(getString(R.string.NoNameError));
+            return;
+        }
         ViewModel.addExercise();
+        ((ApplicationManager)getApplication()).saveFile();
         finish();
     }
 

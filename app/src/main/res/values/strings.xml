@@ -17,6 +17,7 @@
     <!--General-->
     <string name="DataFile">DataFile.xml</string>
     <string name="LineBreak">\n</string>
+    <string name="NoNameError">Please give it a name.</string>
 
     <!--Info Activity-->
     <string name="InfoActivityTitle">Info</string>
