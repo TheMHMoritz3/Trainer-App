@@ -10,7 +10,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.german_software_engineers.trainerappmodel.Model.Schedule;
+import com.german_software_engineers.trainerapp.Controller.ApplicationManager;
+import com.german_software_engineers.trainerappmodel.Legacy.Schedule;
 
 /**
  * A fragment representing a list of Items.
@@ -66,7 +67,9 @@ public class ScheduleListFragment extends Fragment {
             } else {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
-            recyclerView.setAdapter(new MyScheduleRecyclerViewAdapter(ApplicationHandler.getModel().getSchedulesList(), mListener));
+
+            ApplicationManager Manager = (ApplicationManager) getActivity().getApplication();
+            recyclerView.setAdapter(new MyScheduleRecyclerViewAdapter(Manager.getApplicationModel().getSchedulesList(), mListener));
         }
         return view;
     }

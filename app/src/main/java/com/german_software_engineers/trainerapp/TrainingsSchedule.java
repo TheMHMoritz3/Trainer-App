@@ -12,32 +12,13 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.german_software_engineers.trainerappmodel.Model.Schedule;
-
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.Scanner;
+import com.german_software_engineers.trainerappmodel.Legacy.Schedule;
 
 public class TrainingsSchedule extends NavigationActivity implements ScheduleListFragment.OnListFragmentInteractionListener{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        try {
-            String FileName = getFilesDir()+"/"+ApplicationHandler.FileName;
-            File file = new File(FileName);
-            if(file.exists()) {
-                Scanner scanner = new Scanner(file);
-                if(scanner.hasNextLine()) {
-                    String value = scanner.nextLine();
-                    if (!value.isEmpty())
-                        ApplicationHandler.getModel().fromGson(value);
-                }
-            }
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-
         setContentView(R.layout.activity_trainings_schedule);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -63,9 +44,9 @@ public class TrainingsSchedule extends NavigationActivity implements ScheduleLis
     @Override
     protected void onStart()
     {
+        super.onStart();
         ScheduleListFragment editScheduleFragment = ScheduleListFragment.newInstance(1);
         getSupportFragmentManager().beginTransaction().replace(R.id.ScheduleFragment, editScheduleFragment ).commit();
-        super.onStart();
     }
 
     @Override
@@ -107,9 +88,6 @@ public class TrainingsSchedule extends NavigationActivity implements ScheduleLis
 
         if (id == R.id.nav_schedule) {
             Intent intent = new Intent(this, TrainingsSchedule.class);
-            startActivity(intent);
-        } else if (id == R.id.nav_editSchedule) {
-            Intent intent = new Intent(this, TrainingScheduleEditor.class);
             startActivity(intent);
         } else if (id == R.id.nav_info) {
             Intent intent = new Intent(this, InfoActivity.class);

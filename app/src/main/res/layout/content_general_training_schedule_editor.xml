@@ -34,7 +34,7 @@
             android:id="@+id/trainSpinner"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:entries="@array/exerciseType" />
+            android:entries="@array/ScheduleType" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -84,57 +84,6 @@
             android:ems="10"
             android:inputType="numberSigned" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Warm Up:" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Exercise:" />
-
-        <EditText
-            android:id="@+id/excEdit"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textPersonName" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Time [Min]:" />
-
-        <EditText
-            android:id="@+id/timeEdit"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="numberSigned" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Intensity:" />
-
-        <Spinner
-            android:id="@+id/intenSpinner"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:entries="@array/Intesities" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Heart Freq [BPM]:" />
-
-        <EditText
-            android:id="@+id/bpmEdit"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="numberSigned" />
     </LinearLayout>
 
     </android.support.v4.widget.NestedScrollView>
