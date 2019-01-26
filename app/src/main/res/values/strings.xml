@@ -89,6 +89,7 @@ modification follow.\n\n\n"
     <string name="DeviceExerciseInfoWeight">Weight: %1$f kg</string>
     <string name="DeviceExerciseInfoAdditionalWeight"> + %1$f\n</string>
     <string name="DeviceExerciseInfoBackPosition">Back: %1$d\n</string>
+    <string name="DeviceExerciseInfoDeviceNumber">Device Number: %1$d\n</string>
 
 
     <string name="title_activity_edit_exercise">Edit Exercise</string>

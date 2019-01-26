@@ -25,7 +25,7 @@ public class WarmUpExerciseViewModel extends ViewModel {
     }
 
     private void setData() {
-        if ((Exercise != null) && (Exercise.type() == ExerciseType.BodyWeight)) {
+        if ((Exercise != null) && (Exercise.type() == ExerciseType.WarmUp)) {
             IsWarmUpTimeActivated = ((WarmUpExercise) Exercise).isExecutionTimeActivated();
             WamUpTime=((WarmUpExercise) Exercise).getExecutionTime();
             IsIntensityActivated = ((WarmUpExercise) Exercise).isIntensityActivated();

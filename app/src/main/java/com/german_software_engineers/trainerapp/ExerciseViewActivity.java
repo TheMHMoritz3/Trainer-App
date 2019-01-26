@@ -15,7 +15,7 @@ import com.german_software_engineers.trainerappmodel.Exceptions.ScheduleAvailabl
 
 public class ExerciseViewActivity extends ExerciseListActivity  {
 
-    String ScheduleName;
+    String ScheduleName = "";
     ExcersizeListFragment fragment;
     Schedule ActiveSchedule;
 
@@ -39,37 +39,51 @@ public class ExerciseViewActivity extends ExerciseListActivity  {
 
         ScheduleName = intent.getStringExtra("scheduleName");
 
-        try {
-            ActiveSchedule = ((ApplicationManager)getApplication())
-                    .getApplicationModel().getSchedule(ScheduleName);
-        } catch (ScheduleAvailableException e) {
-            e.printStackTrace();
+        if(ScheduleName!=null) {
+
+            try {
+                ActiveSchedule = ((ApplicationManager) getApplication())
+                        .getApplicationModel().getSchedule(ScheduleName);
+            } catch (ScheduleAvailableException e) {
+                e.printStackTrace();
+            }
+
+            setTitle(ActiveSchedule.getName());
+
+            fragment = ExcersizeListFragment.newInstance(1, ScheduleName);
+            getSupportFragmentManager().beginTransaction().replace(R.id.execView, fragment).commit();
         }
-
-        setTitle(ActiveSchedule.getName());
-
-        fragment = ExcersizeListFragment.newInstance(1,ScheduleName);
-        getSupportFragmentManager().beginTransaction().replace(R.id.execView, fragment ).commit();
     }
 
 
     @Override
     protected void onStart()
     {
-        TextView ScheduleInfo = (TextView)findViewById(R.id.ScheduleInfo);
-
-        String scheduleInfo=String.format(getResources().getString(R.string.ScheduleInfo), ActiveSchedule.getRepetitions(),ActiveSchedule.getPauseTime(), ActiveSchedule.getSets(), ActiveSchedule.getSpeed());
-        ScheduleInfo.setText(scheduleInfo);
-
         super.onStart();
+        if(ScheduleName!=null) {
+            TextView ScheduleInfo = (TextView) findViewById(R.id.ScheduleInfo);
+
+            String scheduleInfo = String.format(getResources().getString(R.string.ScheduleInfo), ActiveSchedule.getRepetitions(), ActiveSchedule.getPauseTime(), ActiveSchedule.getSets(), ActiveSchedule.getSpeed());
+            ScheduleInfo.setText(scheduleInfo);
+        }
     }
 
+    @Override
+    protected void onStop() {
+        super.onStop();
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle state) {
+        super.onSaveInstanceState(state);
+        state.putSerializable("scheduleName", ScheduleName);
+    }
 
     public void addExcersize(){
         Intent intent = new Intent(this,EditExerciseActivity.class);
         intent.putExtra("scheduleName", ActiveSchedule.getName());
         intent.putExtra("excName", "");
-        startActivity(intent);
+        startActivityForResult(intent,1);
     }
 
     @Override
@@ -77,10 +91,32 @@ public class ExerciseViewActivity extends ExerciseListActivity  {
         Intent intent = new Intent(this, EditExerciseActivity.class);
         intent.putExtra("scheduleName", ActiveSchedule.getName());
         intent.putExtra("excName", item.getName());
-        startActivity(intent);
+        startActivityForResult(intent,1);
     }
 
-    public void updateSchedule(){
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 1) {
+            if(resultCode == RESULT_OK) {
+                ScheduleName = data.getStringExtra("scheduleName");
+            }
+        }
 
+        try {
+            ActiveSchedule = ((ApplicationManager) getApplication())
+                    .getApplicationModel().getSchedule(ScheduleName);
+        } catch (ScheduleAvailableException e) {
+            e.printStackTrace();
+        }
+
+        setTitle(ActiveSchedule.getName());
+
+        fragment = ExcersizeListFragment.newInstance(1, ScheduleName);
+        getSupportFragmentManager().beginTransaction().replace(R.id.execView, fragment).commit();
+
+        TextView ScheduleInfo = (TextView) findViewById(R.id.ScheduleInfo);
+
+        String scheduleInfo = String.format(getResources().getString(R.string.ScheduleInfo), ActiveSchedule.getRepetitions(), ActiveSchedule.getPauseTime(), ActiveSchedule.getSets(), ActiveSchedule.getSpeed());
+        ScheduleInfo.setText(scheduleInfo);
     }
 }

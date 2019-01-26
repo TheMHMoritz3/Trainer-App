@@ -58,12 +58,16 @@ public class ExerciseViewHolder extends RecyclerView.ViewHolder {
 
     private void decorateDeviceExercise(){
         DeviceExercise exc = (DeviceExercise) Exercise;
-        ((TextView)ExerciseView.findViewById(R.id.ExerciseOrder)).setText(exc.getPosition());
+//        ((TextView)ExerciseView.findViewById(R.id.ExerciseOrder)).setText(exc.getPosition());
         ((TextView)ExerciseView.findViewById(R.id.ExerciseTitle)).setText(exc.getName());
-        if(exc.isDeviceNumberActivated())
-            ((TextView)ExerciseView.findViewById(R.id.ExerciseDeviceNumber)).setText(exc.getDeviceNumber());
+
 
         StringBuilder builder = new StringBuilder();
+
+        if(exc.isDeviceNumberActivated())
+            builder.append(ExerciseView.getResources().getString(
+                    R.string.DeviceExerciseInfoDeviceNumber, exc.getDeviceNumber()));
+            //((TextView)ExerciseView.findViewById(R.id.ExerciseDeviceNumber)).setText(exc.getDeviceNumber());
 
         if(exc.isWeightActivated())
         {
@@ -127,7 +131,7 @@ public class ExerciseViewHolder extends RecyclerView.ViewHolder {
 
     private void decorateBodyWeightExercise(){
         BodyWeightExercise exc = (BodyWeightExercise)Exercise;
-        ((TextView)ExerciseView.findViewById(R.id.ExerciseOrder)).setText(exc.getPosition());
+//        ((TextView)ExerciseView.findViewById(R.id.ExerciseOrder)).setText(exc.getPosition());
         ((TextView)ExerciseView.findViewById(R.id.ExerciseTitle)).setText(exc.getName());
         ((TextView)ExerciseView.findViewById(R.id.ExerciseDeviceNumber)).setText("");
 
@@ -135,6 +139,8 @@ public class ExerciseViewHolder extends RecyclerView.ViewHolder {
 
         if(exc.isAdditionalInformationActivated())
             builder.append(exc.getAdditionalInformation());
+
+        ((TextView)ExerciseView.findViewById(R.id.ExerciseInformation)).setText(builder.toString());
     }
     /**
      * Gives the view of the Exercise

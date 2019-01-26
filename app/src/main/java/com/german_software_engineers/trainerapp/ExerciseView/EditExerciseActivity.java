@@ -19,6 +19,7 @@ import com.german_software_engineers.trainerapp.ExerciseView.Fragments.DeviceExe
 import com.german_software_engineers.trainerapp.ExerciseView.Fragments.ExerciseFragment;
 import com.german_software_engineers.trainerapp.ExerciseView.Fragments.WarmUpExerciseFragment;
 import com.german_software_engineers.trainerapp.ExerciseView.ViewModel.ExerciseViewModel;
+import com.german_software_engineers.trainerapp.ExerciseViewActivity;
 import com.german_software_engineers.trainerapp.R;
 import com.german_software_engineers.trainerappmodel.Exceptions.ScheduleAvailableException;
 import com.german_software_engineers.trainerappmodel.Exercise.Exercise;
@@ -26,6 +27,7 @@ import com.german_software_engineers.trainerappmodel.Legacy.Schedule;
 
 public class EditExerciseActivity extends AppCompatActivity implements ExerciseFragment.OnFragmentInteractionListener {
     ExerciseViewModel ViewModel = null;
+    String ScheduleName;
 
     BodyWeightExerciseFragment bodyWeightExerciseFragment = BodyWeightExerciseFragment.newInstance();
     DeviceExerciseFragment deviceExerciseFragment = DeviceExerciseFragment.newInstance();
@@ -55,6 +57,7 @@ public class EditExerciseActivity extends AppCompatActivity implements ExerciseF
 
     private void getNessearyData(String scheduleName, String excName) {
         Schedule sched=null;
+        ScheduleName = scheduleName;
         try {
             sched= ((ApplicationManager)getApplication()).getApplicationModel().getSchedule(scheduleName);
         } catch (ScheduleAvailableException e) {
@@ -66,8 +69,6 @@ public class EditExerciseActivity extends AppCompatActivity implements ExerciseF
                 for (Exercise exc : sched.exercises()) {
                     if (exc.getName().equals(excName)) {
                         exercise = exc;
-                        updateGui();
-                        return;
                     }
                 }
             }
@@ -75,6 +76,7 @@ public class EditExerciseActivity extends AppCompatActivity implements ExerciseF
         ViewModel=new ExerciseViewModel(sched,exercise);
         if(exercise!=null){
             ((EditText)findViewById(R.id.excName)).setText(exercise.getName());
+//            updateGui();
         }else{
             ((EditText)findViewById(R.id.excName)).setText("");
         }
@@ -142,6 +144,13 @@ public class EditExerciseActivity extends AppCompatActivity implements ExerciseF
         finish();
     }
 
+    @Override
+    public void finish() {
+        Intent intent = new Intent(this, ExerciseViewActivity.class);
+        intent.putExtra("scheduleName",ScheduleName);
+        setResult(RESULT_OK,intent);
+        super.finish();
+    }
 
     @Override
     public void onFragmentInteraction(Uri uri) {

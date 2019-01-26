@@ -17,7 +17,7 @@
                 android:id="@+id/WarmUpTimeCheckBox"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Time: [s]" />
+                android:text="Time: [Min.]" />
 
             <EditText
                 android:id="@+id/WarmUpTimeEdit"

@@ -94,7 +94,7 @@ public class BodyWeightExerciseFragment extends ExerciseFragment {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 BodyWeightExercViewModel.setAdditionalInformationActivated(AdditionalInformationCheckbox.isChecked());
-                AdditionalInformationEdit.setActivated(AdditionalInformationCheckbox.isChecked());
+                AdditionalInformationEdit.setEnabled(AdditionalInformationCheckbox.isChecked());
             }
         });
         AdditionalInformationEdit.addTextChangedListener(new TextWatcher() {
