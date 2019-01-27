@@ -12,6 +12,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.german_software_engineers.trainerapp.Controller.ApplicationManager;
 import com.german_software_engineers.trainerappmodel.Legacy.Schedule;
 
 public class TrainingsSchedule extends NavigationActivity implements ScheduleListFragment.OnListFragmentInteractionListener{
@@ -101,8 +102,9 @@ public class TrainingsSchedule extends NavigationActivity implements ScheduleLis
 
     @Override
     public void onListFragmentInteraction(Schedule item) {
+        ((ApplicationManager)getApplication()).getApplicationModel().setActiveSchedule(item);
         Intent intent = new Intent(this,ExerciseViewActivity.class);
-        intent.putExtra("scheduleName",item.getName());
+//        intent.putExtra("scheduleName",item.getName());
         startActivity(intent);
     }
 
