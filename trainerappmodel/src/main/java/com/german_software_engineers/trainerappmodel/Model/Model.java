@@ -13,6 +13,7 @@ import com.german_software_engineers.trainerappmodel.Exceptions.ScheduleAvailabl
 public class Model {
     private String ApplicationVersion;
     private Map<String, Schedule> Schedules;
+    private Schedule ActiveSchedule;
 
     public Model(){
         Schedules=new HashMap<>();
@@ -43,5 +44,13 @@ public class Model {
 
     public void setApplicationVersion(String applicationVersion) {
         ApplicationVersion = applicationVersion;
+    }
+
+    public void setActiveSchedule(Schedule schedule){
+        ActiveSchedule = schedule;
+    }
+
+    public Schedule activeSchedule(){
+        return ActiveSchedule;
     }
 }
