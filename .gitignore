@@ -65,3 +65,8 @@ fastlane/test_output
 fastlane/readme.md
 
 *.jks
+app/release/app.aab
+app/release/app-release.zip
+app/release/output.json
+*.pepk
+*.jar
