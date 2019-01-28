@@ -59,7 +59,7 @@ public class EditExerciseActivity extends AppCompatActivity implements ExerciseF
         Schedule sched=null;
         ScheduleName = scheduleName;
         try {
-            sched= ((ApplicationManager)getApplication()).getApplicationModel().getSchedule(scheduleName);
+            sched = ((ApplicationManager)getApplication()).getApplicationModel().getSchedule(scheduleName);
         } catch (ScheduleAvailableException e) {
             e.printStackTrace();
         }
