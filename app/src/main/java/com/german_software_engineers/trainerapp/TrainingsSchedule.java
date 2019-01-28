@@ -13,9 +13,13 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.german_software_engineers.trainerapp.Controller.ApplicationManager;
+import com.german_software_engineers.trainerapp.Controller.ScheduleListModelController;
 import com.german_software_engineers.trainerappmodel.Legacy.Schedule;
 
 public class TrainingsSchedule extends NavigationActivity implements ScheduleListFragment.OnListFragmentInteractionListener{
+
+    ScheduleListModelController controller;
+    ScheduleListFragment editScheduleFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +50,8 @@ public class TrainingsSchedule extends NavigationActivity implements ScheduleLis
     protected void onStart()
     {
         super.onStart();
-        ScheduleListFragment editScheduleFragment = ScheduleListFragment.newInstance(1);
+        controller = new ScheduleListModelController(this,((ApplicationManager)getApplication()).getApplicationModel());
+        editScheduleFragment = ScheduleListFragment.newInstance(1, controller);
         getSupportFragmentManager().beginTransaction().replace(R.id.ScheduleFragment, editScheduleFragment ).commit();
     }
 
@@ -104,12 +109,16 @@ public class TrainingsSchedule extends NavigationActivity implements ScheduleLis
     public void onListFragmentInteraction(Schedule item) {
         ((ApplicationManager)getApplication()).getApplicationModel().setActiveSchedule(item);
         Intent intent = new Intent(this,ExerciseViewActivity.class);
-//        intent.putExtra("scheduleName",item.getName());
         startActivity(intent);
     }
 
     public void openNewTrainingsEditor(){
         Intent intent = new Intent(this, GeneralTrainingScheduleEditor.class);
         startActivity(intent);
+    }
+
+    public void refreshSchedulesList(){
+        editScheduleFragment.refreshItemList();
+        ((ApplicationManager) getApplication()).saveFile();
     }
 }

@@ -35,7 +35,6 @@ public class GeneralTrainingScheduleEditor extends AppCompatActivity {
         if(addScheduleToModel()) {
             ((ApplicationManager)getApplication()).saveFile();
             Intent intent = new Intent(this, ExerciseViewActivity.class);
-            intent.putExtra("scheduleName", ((EditText) findViewById(R.id.nameTextEdit)).getText().toString());
             startActivity(intent);
         }
     }
@@ -76,6 +75,7 @@ public class GeneralTrainingScheduleEditor extends AppCompatActivity {
 
        try {
            ((ApplicationManager)getApplication()).getApplicationModel().addSchedule(schedule);
+           ((ApplicationManager)getApplication()).getApplicationModel().setActiveSchedule(schedule);
        } catch (ScheduleAvailableException e) {
            e.printStackTrace();
        }

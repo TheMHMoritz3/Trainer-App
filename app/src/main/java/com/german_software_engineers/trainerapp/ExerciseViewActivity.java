@@ -58,12 +58,6 @@ public class ExerciseViewActivity extends ExerciseListActivity {
         super.onStop();
     }
 
-    @Override
-    protected void onSaveInstanceState(Bundle state) {
-        super.onSaveInstanceState(state);
-        state.putSerializable("scheduleName", ActiveSchedule.getName());
-    }
-
     public void addExcersize() {
         Intent intent = new Intent(this, EditExerciseActivity.class);
         intent.putExtra("scheduleName", ActiveSchedule.getName());

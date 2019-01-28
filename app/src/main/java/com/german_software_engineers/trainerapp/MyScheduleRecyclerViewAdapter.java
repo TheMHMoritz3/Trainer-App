@@ -4,10 +4,14 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
+import com.german_software_engineers.trainerapp.Controller.ApplicationManager;
+import com.german_software_engineers.trainerapp.Controller.ScheduleListModelController;
 import com.german_software_engineers.trainerappmodel.Legacy.Schedule;
 import com.german_software_engineers.trainerapp.ScheduleListFragment.OnListFragmentInteractionListener;
+import com.german_software_engineers.trainerappmodel.Model.Model;
 
 
 import java.util.List;
@@ -21,6 +25,7 @@ public class MyScheduleRecyclerViewAdapter extends RecyclerView.Adapter<MySchedu
 
     private final List<Schedule> mValues;
     private final OnListFragmentInteractionListener mListener;
+    private ScheduleListModelController controller = null;
 
     public MyScheduleRecyclerViewAdapter(List<Schedule> items, OnListFragmentInteractionListener listener) {
         mValues = items;
@@ -50,6 +55,13 @@ public class MyScheduleRecyclerViewAdapter extends RecyclerView.Adapter<MySchedu
                 }
             }
         });
+
+        holder.DeleteScheduleButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                controller.onDeleteClicked(holder.mItem.getName());
+            }
+        });
     }
 
     @Override
@@ -57,15 +69,21 @@ public class MyScheduleRecyclerViewAdapter extends RecyclerView.Adapter<MySchedu
         return mValues.size();
     }
 
+    public void setController(ScheduleListModelController controller) {
+        this.controller = controller;
+    }
+
     public class ViewHolder extends RecyclerView.ViewHolder {
         public final View mView;
         public final TextView mContentView;
+        public final ImageButton DeleteScheduleButton;
         public Schedule mItem;
 
         public ViewHolder(View view) {
             super(view);
             mView = view;
             mContentView = (TextView) view.findViewById(R.id.content);
+            DeleteScheduleButton = (ImageButton)view.findViewById(R.id.DeleteScheduleButton);
         }
 
         @Override
