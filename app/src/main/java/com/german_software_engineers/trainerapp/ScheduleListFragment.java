@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.german_software_engineers.trainerapp.Controller.ApplicationManager;
+import com.german_software_engineers.trainerapp.Controller.ScheduleListModelController;
 import com.german_software_engineers.trainerappmodel.Legacy.Schedule;
 
 /**
@@ -26,18 +27,23 @@ public class ScheduleListFragment extends Fragment {
     // TODO: Customize parameters
     private int mColumnCount = 1;
     private OnListFragmentInteractionListener mListener;
+    private ApplicationManager Manager;
+    private RecyclerView recyclerView;
+
+    ScheduleListModelController modelController;
 
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
      * fragment (e.g. upon screen orientation changes).
      */
-    public ScheduleListFragment() {
+    public ScheduleListFragment(ScheduleListModelController controller) {
+        modelController = controller;
     }
 
     // TODO: Customize parameter initialization
     @SuppressWarnings("unused")
-    public static ScheduleListFragment newInstance(int columnCount) {
-        ScheduleListFragment fragment = new ScheduleListFragment();
+    public static ScheduleListFragment newInstance(int columnCount, ScheduleListModelController controller) {
+        ScheduleListFragment fragment = new ScheduleListFragment(controller);
         Bundle args = new Bundle();
         args.putInt(ARG_COLUMN_COUNT, columnCount);
         fragment.setArguments(args);
@@ -61,15 +67,17 @@ public class ScheduleListFragment extends Fragment {
         // Set the adapter
         if (view instanceof RecyclerView) {
             Context context = view.getContext();
-            RecyclerView recyclerView = (RecyclerView) view;
+            recyclerView = (RecyclerView) view;
             if (mColumnCount <= 1) {
                 recyclerView.setLayoutManager(new LinearLayoutManager(context));
             } else {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
 
-            ApplicationManager Manager = (ApplicationManager) getActivity().getApplication();
-            recyclerView.setAdapter(new MyScheduleRecyclerViewAdapter(Manager.getApplicationModel().getSchedulesList(), mListener));
+            Manager = (ApplicationManager) getActivity().getApplication();
+            MyScheduleRecyclerViewAdapter adapter = new MyScheduleRecyclerViewAdapter(Manager.getApplicationModel().getSchedulesList(), mListener);
+            adapter.setController(modelController);
+            recyclerView.setAdapter(adapter);
         }
         return view;
     }
@@ -104,5 +112,12 @@ public class ScheduleListFragment extends Fragment {
      */
     public interface OnListFragmentInteractionListener {
         void onListFragmentInteraction(Schedule item);
+    }
+
+    public void refreshItemList()
+    {
+        MyScheduleRecyclerViewAdapter adapter = new MyScheduleRecyclerViewAdapter(Manager.getApplicationModel().getSchedulesList(), mListener);
+        adapter.setController(modelController);
+        recyclerView.setAdapter(adapter);
     }
 }
