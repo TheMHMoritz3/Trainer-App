@@ -7,7 +7,7 @@ import com.german_software_engineers.trainerappmodel.Exercise.BodyWeightExercise
 import com.german_software_engineers.trainerappmodel.Exercise.DeviceExercise;
 import com.german_software_engineers.trainerappmodel.Exercise.Exercise;
 import com.german_software_engineers.trainerappmodel.Exercise.WarmUpExercise;
-import com.german_software_engineers.trainerappmodel.Legacy.Schedule;
+import com.german_software_engineers.trainerappmodel.Schedule.Schedule;
 
 import org.w3c.dom.Attr;
 import org.w3c.dom.Document;
@@ -244,7 +244,7 @@ public class XMLParser {
                             break;
                         case BodyWeight:
                             BodyWeightExercise bexc = (BodyWeightExercise) exc;
-                            exerElement.appendChild(doc.createTextNode(bexc.getAdditionalInformation()));
+                            exerElement.setAttribute(EXCERCISE_ADDITIONALINFORMATION_TAG,bexc.getAdditionalInformation());
                             break;
                         case WarmUp:
                             WarmUpExercise wexc = (WarmUpExercise) exc;

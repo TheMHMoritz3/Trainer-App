@@ -1,4 +1,4 @@
-package com.german_software_engineers.trainerapp;
+package com.german_software_engineers.trainerapp.ScheduleView;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -12,7 +12,8 @@ import android.view.ViewGroup;
 
 import com.german_software_engineers.trainerapp.Controller.ApplicationManager;
 import com.german_software_engineers.trainerapp.Controller.ScheduleListModelController;
-import com.german_software_engineers.trainerappmodel.Legacy.Schedule;
+import com.german_software_engineers.trainerapp.R;
+import com.german_software_engineers.trainerappmodel.Schedule.Schedule;
 
 /**
  * A fragment representing a list of Items.
@@ -21,10 +22,7 @@ import com.german_software_engineers.trainerappmodel.Legacy.Schedule;
  * interface.
  */
 public class ScheduleListFragment extends Fragment {
-
-    // TODO: Customize parameter argument names
     private static final String ARG_COLUMN_COUNT = "column-count";
-    // TODO: Customize parameters
     private int mColumnCount = 1;
     private OnListFragmentInteractionListener mListener;
     private ApplicationManager Manager;
@@ -40,8 +38,12 @@ public class ScheduleListFragment extends Fragment {
         modelController = controller;
     }
 
-    // TODO: Customize parameter initialization
-    @SuppressWarnings("unused")
+    /**
+     * Creates a new ScheduleListFragment with the necessary Data
+     * @param columnCount the ColumnCount
+     * @param controller The necessary controller for interaction with the Model
+     * @return The new ScheduleListFragment
+     */
     public static ScheduleListFragment newInstance(int columnCount, ScheduleListModelController controller) {
         ScheduleListFragment fragment = new ScheduleListFragment(controller);
         Bundle args = new Bundle();
@@ -114,6 +116,9 @@ public class ScheduleListFragment extends Fragment {
         void onListFragmentInteraction(Schedule item);
     }
 
+    /**
+     * Refreshes the ItemList, if a Schedule is deleted.
+     */
     public void refreshItemList()
     {
         MyScheduleRecyclerViewAdapter adapter = new MyScheduleRecyclerViewAdapter(Manager.getApplicationModel().getSchedulesList(), mListener);

@@ -1,4 +1,4 @@
-package com.german_software_engineers.trainerapp;
+package com.german_software_engineers.trainerapp.ScheduleView;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -7,11 +7,10 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import com.german_software_engineers.trainerapp.Controller.ApplicationManager;
 import com.german_software_engineers.trainerapp.Controller.ScheduleListModelController;
-import com.german_software_engineers.trainerappmodel.Legacy.Schedule;
-import com.german_software_engineers.trainerapp.ScheduleListFragment.OnListFragmentInteractionListener;
-import com.german_software_engineers.trainerappmodel.Model.Model;
+import com.german_software_engineers.trainerapp.R;
+import com.german_software_engineers.trainerappmodel.Schedule.Schedule;
+import com.german_software_engineers.trainerapp.ScheduleView.ScheduleListFragment.OnListFragmentInteractionListener;
 
 
 import java.util.List;

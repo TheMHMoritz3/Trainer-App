@@ -19,19 +19,22 @@ import com.german_software_engineers.trainerapp.ExerciseView.Fragments.DeviceExe
 import com.german_software_engineers.trainerapp.ExerciseView.Fragments.ExerciseFragment;
 import com.german_software_engineers.trainerapp.ExerciseView.Fragments.WarmUpExerciseFragment;
 import com.german_software_engineers.trainerapp.ExerciseView.ViewModel.ExerciseViewModel;
-import com.german_software_engineers.trainerapp.ExerciseViewActivity;
 import com.german_software_engineers.trainerapp.R;
-import com.german_software_engineers.trainerappmodel.Exceptions.ScheduleAvailableException;
 import com.german_software_engineers.trainerappmodel.Exercise.Exercise;
-import com.german_software_engineers.trainerappmodel.Legacy.Schedule;
+import com.german_software_engineers.trainerappmodel.Schedule.Schedule;
 
 public class EditExerciseActivity extends AppCompatActivity implements ExerciseFragment.OnFragmentInteractionListener {
-    ExerciseViewModel ViewModel = null;
-    String ScheduleName;
 
-    BodyWeightExerciseFragment bodyWeightExerciseFragment = BodyWeightExerciseFragment.newInstance();
-    DeviceExerciseFragment deviceExerciseFragment = DeviceExerciseFragment.newInstance();
-    WarmUpExerciseFragment warmUpExerciseFragment = WarmUpExerciseFragment.newInstance();
+    private ExerciseViewModel ViewModel = null;
+
+    private BodyWeightExerciseFragment bodyWeightExerciseFragment = BodyWeightExerciseFragment.newInstance();
+    private DeviceExerciseFragment deviceExerciseFragment = DeviceExerciseFragment.newInstance();
+    private WarmUpExerciseFragment warmUpExerciseFragment = WarmUpExerciseFragment.newInstance();
+
+    /**
+     * Creates the Activity.
+     * @param savedInstanceState Saved instance State is not Used from us.
+     */
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,19 +53,21 @@ public class EditExerciseActivity extends AppCompatActivity implements ExerciseF
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         Intent intent = getIntent();
-        getNessearyData(intent.getStringExtra("scheduleName"),intent.getStringExtra("excName"));
+        getNecessaryData(intent.getStringExtra("excName"));
 
         makeConnections();
     }
 
-    private void getNessearyData(String scheduleName, String excName) {
+    /**
+     * Gets the necessary form the Model and the intent information.
+     * Afterwards the Activity should be decorated.
+     * @param excName
+     */
+    private void getNecessaryData(String excName) {
         Schedule sched=null;
-        ScheduleName = scheduleName;
-        try {
-            sched = ((ApplicationManager)getApplication()).getApplicationModel().getSchedule(scheduleName);
-        } catch (ScheduleAvailableException e) {
-            e.printStackTrace();
-        }
+
+        sched = ((ApplicationManager)getApplication()).getApplicationModel().activeSchedule();
+
         Exercise exercise=null;
         if(!excName.isEmpty()) {
             if (sched != null) {
@@ -88,6 +93,9 @@ public class EditExerciseActivity extends AppCompatActivity implements ExerciseF
         warmUpExerciseFragment.setExerciseViewModel(ViewModel);
     }
 
+    /**
+     * Makes the necessary connections to the ViewModel.
+     */
     private void makeConnections(){
         ((Spinner)findViewById(R.id.ExerciseTypeSpinner)).setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -118,6 +126,9 @@ public class EditExerciseActivity extends AppCompatActivity implements ExerciseF
         });
     }
 
+    /**
+     * Refreshes the Fragment if the Spinner value Changes.
+     */
     private void updateGui(){
         switch (ViewModel.getExerciseType()){
             case WarmUp:
@@ -133,6 +144,9 @@ public class EditExerciseActivity extends AppCompatActivity implements ExerciseF
         }
     }
 
+    /**
+     * Is called if the Exercise is Updated or created
+     */
     private void updateExc(){
         if(((EditText)findViewById(R.id.excName)).getText().toString().isEmpty()){
             ((EditText)findViewById(R.id.excName)).setError(getString(R.string.NoNameError));
@@ -141,14 +155,6 @@ public class EditExerciseActivity extends AppCompatActivity implements ExerciseF
         ViewModel.addExercise();
         ((ApplicationManager)getApplication()).saveFile();
         finish();
-    }
-
-    @Override
-    public void finish() {
-        Intent intent = new Intent(this, ExerciseViewActivity.class);
-        intent.putExtra("scheduleName",ScheduleName);
-        setResult(RESULT_OK,intent);
-        super.finish();
     }
 
     @Override

@@ -1,4 +1,4 @@
-package com.german_software_engineers.trainerapp;
+package com.german_software_engineers.trainerapp.ExerciseView;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -11,7 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.german_software_engineers.trainerapp.Controller.ApplicationManager;
-import com.german_software_engineers.trainerapp.ExerciseView.MyExcersizeRecyclerViewAdapter;
+import com.german_software_engineers.trainerapp.R;
 import com.german_software_engineers.trainerappmodel.Exercise.Exercise;
 import com.german_software_engineers.trainerappmodel.Exceptions.ScheduleAvailableException;
 

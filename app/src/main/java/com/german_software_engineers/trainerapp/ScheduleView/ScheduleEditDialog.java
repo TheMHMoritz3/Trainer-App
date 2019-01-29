@@ -1,4 +1,4 @@
-package com.german_software_engineers.trainerapp;
+package com.german_software_engineers.trainerapp.ScheduleView;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -7,7 +7,8 @@ import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.widget.TextView;
 
-import com.german_software_engineers.trainerappmodel.Legacy.Schedule;
+import com.german_software_engineers.trainerapp.R;
+import com.german_software_engineers.trainerappmodel.Schedule.Schedule;
 
 public class ScheduleEditDialog extends DialogFragment  {
     private Dialog dialog;

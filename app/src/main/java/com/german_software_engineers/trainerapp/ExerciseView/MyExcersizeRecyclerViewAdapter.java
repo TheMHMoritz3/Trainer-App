@@ -4,10 +4,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
-import com.german_software_engineers.trainerapp.ExcersizeListFragment.OnListFragmentInteractionListener;
-import com.german_software_engineers.trainerapp.ExerciseView.ExerciseViewHolder;
+import com.german_software_engineers.trainerapp.ExerciseView.ExcersizeListFragment.OnListFragmentInteractionListener;
 import com.german_software_engineers.trainerapp.R;
 import com.german_software_engineers.trainerappmodel.Exercise.Exercise;
 
@@ -37,42 +35,6 @@ public class MyExcersizeRecyclerViewAdapter extends RecyclerView.Adapter<Exercis
 
     @Override
     public void onBindViewHolder(final ExerciseViewHolder holder, int position) {
-//        holder.mItem = mValues.get(position);
-//        holder.TitleView.setText(mValues.get(position).getName());
-//
-//        StringBuilder builder = new StringBuilder();
-//        if(holder.mItem.isAngleActivated()){
-//            builder.append("Angle: ");
-//            builder.append(holder.mItem.getAnglePosition());
-//            builder.append("\n");
-//        }
-//        if(holder.mItem.isBackActivated()){
-//            builder.append("Back: ");
-//            builder.append(holder.mItem.getBackPosition());
-//            builder.append("\n");
-//        }
-//        if(holder.mItem.isFootActivated()){
-//            builder.append("Foot: ");
-//            builder.append(holder.mItem.getFootPosition());
-//            builder.append("\n");
-//        }
-//        if(holder.mItem.isLegActivated()){
-//            builder.append("Leg: ");
-//            builder.append(holder.mItem.getLegPosition());
-//            builder.append("\n");
-//        }
-//        if(holder.mItem.isSeatActivated()){
-//            builder.append("Seat: ");
-//            builder.append(holder.mItem.getSeatPosition());
-//            builder.append("\n");
-//        }
-//        if(holder.mItem.isWeightActivated()){
-//            builder.append("Weight: ");
-//            builder.append(holder.mItem.getWeight());
-//            builder.append("\n");
-//        }
-//
-//        holder.AdditonalInfo.setText(builder.toString());
 
         holder.setExercise(mValues.get(position));
 

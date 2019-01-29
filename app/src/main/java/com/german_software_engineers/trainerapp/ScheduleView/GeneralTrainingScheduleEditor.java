@@ -1,4 +1,4 @@
-package com.german_software_engineers.trainerapp;
+package com.german_software_engineers.trainerapp.ScheduleView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,7 +9,9 @@ import android.view.View;
 import android.widget.EditText;
 
 import com.german_software_engineers.trainerapp.Controller.ApplicationManager;
-import com.german_software_engineers.trainerappmodel.Legacy.Schedule;
+import com.german_software_engineers.trainerapp.ExerciseView.ExerciseViewActivity;
+import com.german_software_engineers.trainerapp.R;
+import com.german_software_engineers.trainerappmodel.Schedule.Schedule;
 import com.german_software_engineers.trainerappmodel.Exceptions.ScheduleAvailableException;
 
 public class GeneralTrainingScheduleEditor extends AppCompatActivity {

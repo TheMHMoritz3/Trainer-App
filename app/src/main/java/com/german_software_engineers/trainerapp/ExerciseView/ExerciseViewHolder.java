@@ -2,9 +2,11 @@ package com.german_software_engineers.trainerapp.ExerciseView;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toolbar;
 
 import com.german_software_engineers.trainerapp.R;
 import com.german_software_engineers.trainerappmodel.Exercise.BodyWeightExercise;
@@ -41,6 +43,15 @@ public class ExerciseViewHolder extends RecyclerView.ViewHolder {
     }
 
     private void decorateExerciseTile(){
+        Toolbar toolbar=ExerciseView.findViewById(R.id.ExerciseCardToolbar);
+        toolbar.inflateMenu(R.menu.exercise_fragmet_menu);
+        toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener(){
+
+            @Override
+            public boolean onMenuItemClick(MenuItem menuItem) {
+                return false;
+            }
+        });
         switch(Exercise.type()){
             case Device:
                 default:
@@ -58,15 +69,23 @@ public class ExerciseViewHolder extends RecyclerView.ViewHolder {
 
     private void decorateDeviceExercise(){
         DeviceExercise exc = (DeviceExercise) Exercise;
-//        ((TextView)ExerciseView.findViewById(R.id.ExerciseOrder)).setText(exc.getPosition());
-        ((TextView)ExerciseView.findViewById(R.id.ExerciseTitle)).setText(exc.getName());
+        StringBuilder titleBuilder = new StringBuilder();
+        titleBuilder.append(exc.getPosition());
+        titleBuilder.append("\t\t");
+        titleBuilder.append(exc.getName());
+
+        if(exc.isDeviceNumberActivated()){
+            titleBuilder.append("\t\t");
+            titleBuilder.append(exc.getDeviceNumber());
+        }
+
+        ((TextView)ExerciseView.findViewById(R.id.ExerciseTitle)).setText(titleBuilder.toString());
 
 
         StringBuilder builder = new StringBuilder();
 
-        if(exc.isDeviceNumberActivated())
-            builder.append(ExerciseView.getResources().getString(
-                    R.string.DeviceExerciseInfoDeviceNumber, exc.getDeviceNumber()));
+//        if(exc.isDeviceNumberActivated())
+//            builder.append(ExerciseView.getResources().getString(R.string.DeviceExerciseInfoDeviceNumber, exc.getDeviceNumber()));
             //((TextView)ExerciseView.findViewById(R.id.ExerciseDeviceNumber)).setText(exc.getDeviceNumber());
 
         if(exc.isWeightActivated())
@@ -104,9 +123,11 @@ public class ExerciseViewHolder extends RecyclerView.ViewHolder {
     private void decorateWarmUpExercise(){
         ExerciseView.findViewById(R.id.ExerciseCard).setBackgroundResource(R.color.colorPrimary);
         WarmUpExercise exc = (WarmUpExercise)Exercise;
-//        ((TextView)ExerciseView.findViewById(R.id.ExerciseOrder)).setText(exc.getPosition());
-        ((TextView)ExerciseView.findViewById(R.id.ExerciseTitle)).setText(exc.getName());
-        ((TextView)ExerciseView.findViewById(R.id.ExerciseDeviceNumber)).setText("");
+        StringBuilder titleBuilder = new StringBuilder();
+        titleBuilder.append(exc.getPosition());
+        titleBuilder.append("\t\t");
+        titleBuilder.append(exc.getName());
+        ((TextView)ExerciseView.findViewById(R.id.ExerciseTitle)).setText(titleBuilder.toString());
 
         StringBuilder builder = new StringBuilder();
 
@@ -131,9 +152,12 @@ public class ExerciseViewHolder extends RecyclerView.ViewHolder {
 
     private void decorateBodyWeightExercise(){
         BodyWeightExercise exc = (BodyWeightExercise)Exercise;
-//        ((TextView)ExerciseView.findViewById(R.id.ExerciseOrder)).setText(exc.getPosition());
-        ((TextView)ExerciseView.findViewById(R.id.ExerciseTitle)).setText(exc.getName());
-        ((TextView)ExerciseView.findViewById(R.id.ExerciseDeviceNumber)).setText("");
+
+        StringBuilder titleBuilder = new StringBuilder();
+        titleBuilder.append(exc.getPosition());
+        titleBuilder.append("\t\t");
+        titleBuilder.append(exc.getName());
+        ((TextView)ExerciseView.findViewById(R.id.ExerciseTitle)).setText(titleBuilder.toString());
 
         StringBuilder builder = new StringBuilder();
 

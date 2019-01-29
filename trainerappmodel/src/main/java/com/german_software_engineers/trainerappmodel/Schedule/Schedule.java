@@ -1,4 +1,4 @@
-package com.german_software_engineers.trainerappmodel.Legacy;
+package com.german_software_engineers.trainerappmodel.Schedule;
 
 
 import com.german_software_engineers.trainerappmodel.Enumerations.*;
@@ -72,5 +72,9 @@ public class Schedule {
     public void addExercise(Exercise exercise){
         exercise.setPosition(Exercises.size());
         Exercises.add(exercise);
+    }
+
+    public void deleteExercise(){
+
     }
 }

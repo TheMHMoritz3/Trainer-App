@@ -1,7 +1,7 @@
 package com.german_software_engineers.trainerappmodel.Model;
 
 
-import com.german_software_engineers.trainerappmodel.Legacy.Schedule;
+import com.german_software_engineers.trainerappmodel.Schedule.Schedule;
 
 import java.util.ArrayList;
 import java.util.HashMap;
