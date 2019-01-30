@@ -17,31 +17,17 @@
         card_view:cardElevation="2dp"
         card_view:cardUseCompatPadding="true">
 
-        <LinearLayout
+        <Toolbar
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="horizontal">
-
+            android:id="@+id/ScheduleFragmentToolbar">
             <TextView
                 android:id="@+id/content"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/text_margin"
                 android:textAppearance="?attr/textAppearanceListItem" />
-
-            <Space
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
-
-            <ImageButton
-                android:id="@+id/DeleteScheduleButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="right"
-                card_view:srcCompat="@android:drawable/ic_delete" />
-
-        </LinearLayout>
+        </Toolbar>
 
     </android.support.v7.widget.CardView>
 

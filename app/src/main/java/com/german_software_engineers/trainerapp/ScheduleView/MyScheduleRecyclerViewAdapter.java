@@ -2,10 +2,12 @@ package com.german_software_engineers.trainerapp.ScheduleView;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toolbar;
 
 import com.german_software_engineers.trainerapp.Controller.ScheduleListModelController;
 import com.german_software_engineers.trainerapp.R;
@@ -16,7 +18,7 @@ import com.german_software_engineers.trainerapp.ScheduleView.ScheduleListFragmen
 import java.util.List;
 
 /**
- * {@link RecyclerView.Adapter} that can display a {@link DummyItem} and makes a call to the
+ * {@link RecyclerView.Adapter} that can display a {@link com.german_software_engineers.trainerappmodel.Exercise.Exercise} and makes a call to the
  * specified {@link OnListFragmentInteractionListener}.
  * TODO: Replace the implementation with code for your data type.
  */
@@ -44,23 +46,22 @@ public class MyScheduleRecyclerViewAdapter extends RecyclerView.Adapter<MySchedu
         //holder.mIdView.setText(position);
         holder.mContentView.setText(mValues.get(position).getName());
 
-        holder.mView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (null != mListener) {
-                    // Notify the active callbacks interface (the activity, if the
-                    // fragment is attached to one) that an item has been selected.
-                    mListener.onListFragmentInteraction(holder.mItem);
-                }
+        holder.mView.setOnClickListener(v -> {
+            if (null != mListener) {
+                mListener.onListFragmentInteraction(holder.mItem);
             }
         });
 
-        holder.DeleteScheduleButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                controller.onDeleteClicked(holder.mItem.getName());
-            }
+        holder.Toolbar.setOnClickListener(v->{
+            if(mListener!=null)
+                mListener.onListFragmentInteraction(holder.mItem);
         });
+//        holder.DeleteScheduleButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                controller.onDeleteClicked(holder.mItem.getName());
+//            }
+//        });
     }
 
     @Override
@@ -75,14 +76,23 @@ public class MyScheduleRecyclerViewAdapter extends RecyclerView.Adapter<MySchedu
     public class ViewHolder extends RecyclerView.ViewHolder {
         public final View mView;
         public final TextView mContentView;
-        public final ImageButton DeleteScheduleButton;
+        public final Toolbar Toolbar;
         public Schedule mItem;
 
         public ViewHolder(View view) {
             super(view);
             mView = view;
             mContentView = (TextView) view.findViewById(R.id.content);
-            DeleteScheduleButton = (ImageButton)view.findViewById(R.id.DeleteScheduleButton);
+            Toolbar = (view.findViewById(R.id.ScheduleFragmentToolbar));
+
+            Toolbar.inflateMenu(R.menu.schedule_card_menu);
+            Toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener(){
+
+                @Override
+                public boolean onMenuItemClick(MenuItem menuItem) {
+                    return false;
+                }
+            });
         }
 
         @Override

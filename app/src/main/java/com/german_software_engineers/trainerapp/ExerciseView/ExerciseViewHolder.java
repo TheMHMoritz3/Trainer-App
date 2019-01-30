@@ -166,6 +166,7 @@ public class ExerciseViewHolder extends RecyclerView.ViewHolder {
 
         ((TextView)ExerciseView.findViewById(R.id.ExerciseInformation)).setText(builder.toString());
     }
+
     /**
      * Gives the view of the Exercise
      * @return The view tile

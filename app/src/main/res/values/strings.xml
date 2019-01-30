@@ -15,9 +15,10 @@
     <string name="title_activity_trainings_schedule">Trainings Schedule</string>
 
     <!--Menu-->
-    <string name="DeleteExercise">Delete</string>
+    <string name="Delete">Delete</string>
     <string name="MoveExerciseUp">One Step Up</string>
     <string name="MoveExerciseDown">One Step Down</string>
+    <string name="EditSchedule">Edit</string>
 
     <!--General-->
     <string name="DataFile">DataFile.xml</string>
