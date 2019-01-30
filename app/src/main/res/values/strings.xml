@@ -74,10 +74,8 @@ modification follow.\n\n\n"
         <item>Body Weight Exercise</item>
     </string-array>
 
-    <string name="title_activity_add_exercise">Add Exercise</string>
-    <string name="addExcercise">Add Exercise</string>
-    <string name="ok">Ok</string>
-    <string name="cancel">Cancel</string>
+    <!--EditSchedule-->
+    <string name="ScheduleNameError">Please type a name in</string>
 
     <!--ExerciseViewActivity-->
     <string name="ExerciseViewActivityTitle">ExerciseViewActivity</string>

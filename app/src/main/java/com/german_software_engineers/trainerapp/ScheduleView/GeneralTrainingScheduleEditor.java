@@ -31,6 +31,9 @@ public class GeneralTrainingScheduleEditor extends AppCompatActivity {
             }
         });
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        if(((ApplicationManager)getApplication()).getApplicationModel().activeSchedule()!=null){
+            decorateGuiWithActiveSchedule();
+        }
     }
 
     private void openNextActivity(){
@@ -41,46 +44,70 @@ public class GeneralTrainingScheduleEditor extends AppCompatActivity {
         }
     }
 
-    private boolean addScheduleToModel(){
-        if(((EditText)findViewById(R.id.nameTextEdit)).getText().toString().isEmpty())
-        {
-            ((EditText)findViewById(R.id.nameTextEdit)).setError("Please type a name in");
+    private void decorateGuiWithActiveSchedule(){
+        Schedule activeSchedule = ((ApplicationManager)getApplication()).getApplicationModel().activeSchedule();
+        ((EditText) findViewById(R.id.nameTextEdit)).setText(activeSchedule.getName());
+        ((EditText) findViewById(R.id.nameTextEdit)).setEnabled(false);
+
+        if(activeSchedule.getRepetitions()!=Integer.MAX_VALUE)
+            ((EditText) findViewById(R.id.repEdit)).setText(String.valueOf(activeSchedule.getRepetitions()));
+
+        if(activeSchedule.getPauseTime()!=Integer.MAX_VALUE)
+            ((EditText) findViewById(R.id.pauseEdit)).setText(String.valueOf(activeSchedule.getPauseTime()));
+
+        if(activeSchedule.getSets()!=Integer.MAX_VALUE)
+            ((EditText) findViewById(R.id.setEdit)).setText(String.valueOf(activeSchedule.getSets()));
+
+        if(activeSchedule.getSpeed()!=Integer.MAX_VALUE)
+            ((EditText) findViewById(R.id.speedEdit)).setText(String.valueOf(activeSchedule.getSpeed()));
+    }
+
+    private boolean addScheduleToModel() {
+        if (((EditText) findViewById(R.id.nameTextEdit)).getText().toString().isEmpty()) {
+            ((EditText) findViewById(R.id.nameTextEdit)).setError(getString(R.string.NoNameError));
             return false;
         }
+        Schedule schedule;
 
-        Schedule schedule = new Schedule(((EditText)findViewById(R.id.nameTextEdit)).getText().toString());
+        if(((ApplicationManager)getApplication()).getApplicationModel().activeSchedule()!=null)
+            schedule = ((ApplicationManager)getApplication()).getApplicationModel().activeSchedule();
+        else
+            schedule = new Schedule(((EditText) findViewById(R.id.nameTextEdit)).getText().toString());
 
         Integer reps = 0;
-        if(!((EditText)findViewById(R.id.repEdit)).getText().toString().isEmpty()) {
+        if (!((EditText) findViewById(R.id.repEdit)).getText().toString().isEmpty()) {
             reps = Integer.valueOf(((EditText) findViewById(R.id.repEdit)).getText().toString());
             schedule.setRepetitions(reps);
         }
 
         Integer pause = 0;
-        if(!((EditText)findViewById(R.id.pauseEdit)).getText().toString().isEmpty()) {
+        if (!((EditText) findViewById(R.id.pauseEdit)).getText().toString().isEmpty()) {
             pause = Integer.valueOf((((EditText) findViewById(R.id.pauseEdit)).getText().toString()));
             schedule.setPauseTime(pause);
         }
 
         Integer sets = 0;
-        if(!((EditText)findViewById(R.id.setEdit)).getText().toString().isEmpty()) {
+        if (!((EditText) findViewById(R.id.setEdit)).getText().toString().isEmpty()) {
             sets = Integer.valueOf(((EditText) findViewById(R.id.setEdit)).getText().toString());
             schedule.setSets(sets);
         }
 
         Integer speed = 0;
-        if(!((EditText)findViewById(R.id.speedEdit)).getText().toString().isEmpty()) {
+        if (!((EditText) findViewById(R.id.speedEdit)).getText().toString().isEmpty()) {
             speed = Integer.valueOf(((EditText) findViewById(R.id.speedEdit)).getText().toString());
             schedule.setSpeed(speed);
         }
 
-
-       try {
-           ((ApplicationManager)getApplication()).getApplicationModel().addSchedule(schedule);
-           ((ApplicationManager)getApplication()).getApplicationModel().setActiveSchedule(schedule);
-       } catch (ScheduleAvailableException e) {
-           e.printStackTrace();
-       }
-        return true;
+        if (((ApplicationManager) getApplication()).getApplicationModel().activeSchedule() == null) {
+            try {
+                ((ApplicationManager) getApplication()).getApplicationModel().addSchedule(schedule);
+                ((ApplicationManager) getApplication()).getApplicationModel().setActiveSchedule(schedule);
+            } catch (ScheduleAvailableException e) {
+                e.printStackTrace();
+            }
+            return true;
+        }else{
+            return true;
+        }
     }
 }

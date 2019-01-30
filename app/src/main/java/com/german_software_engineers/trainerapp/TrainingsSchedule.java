@@ -116,6 +116,7 @@ public class TrainingsSchedule extends NavigationActivity implements ScheduleLis
     }
 
     public void openNewTrainingsEditor(){
+        ((ApplicationManager)getApplication()).getApplicationModel().setActiveSchedule(null);
         Intent intent = new Intent(this, GeneralTrainingScheduleEditor.class);
         startActivity(intent);
     }
@@ -123,5 +124,10 @@ public class TrainingsSchedule extends NavigationActivity implements ScheduleLis
     public void refreshSchedulesList(){
         editScheduleFragment.refreshItemList();
         ((ApplicationManager) getApplication()).saveFile();
+    }
+
+    public void editTrainingsSchedule(){
+        Intent intent = new Intent(this, GeneralTrainingScheduleEditor.class);
+        startActivity(intent);
     }
 }

@@ -20,7 +20,6 @@ import java.util.List;
 /**
  * {@link RecyclerView.Adapter} that can display a {@link com.german_software_engineers.trainerappmodel.Exercise.Exercise} and makes a call to the
  * specified {@link OnListFragmentInteractionListener}.
- * TODO: Replace the implementation with code for your data type.
  */
 public class MyScheduleRecyclerViewAdapter extends RecyclerView.Adapter<MyScheduleRecyclerViewAdapter.ViewHolder> {
 
@@ -56,12 +55,19 @@ public class MyScheduleRecyclerViewAdapter extends RecyclerView.Adapter<MySchedu
             if(mListener!=null)
                 mListener.onListFragmentInteraction(holder.mItem);
         });
-//        holder.DeleteScheduleButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                controller.onDeleteClicked(holder.mItem.getName());
-//            }
-//        });
+
+        holder.Toolbar.setOnMenuItemClickListener(menuItem -> {
+            switch (menuItem.getItemId()){
+                case R.id.DeleteSchedule:
+                    controller.onDeleteClicked(holder.mItem.getName());
+                    return true;
+                case R.id.EditSchedule:
+                    controller.onEditScheduleClicked(holder.mItem);
+                    return true;
+                    default:
+                        return false;
+            }
+        });
     }
 
     @Override
@@ -69,10 +75,18 @@ public class MyScheduleRecyclerViewAdapter extends RecyclerView.Adapter<MySchedu
         return mValues.size();
     }
 
+    /**
+     * Sets the necessary controller for editing and deleting of the schedule
+     * @param controller Schedule List Controller.
+     * @see ScheduleListModelController
+     */
     public void setController(ScheduleListModelController controller) {
         this.controller = controller;
     }
 
+    /**
+     * Adapts the View for usable Code.
+     */
     public class ViewHolder extends RecyclerView.ViewHolder {
         public final View mView;
         public final TextView mContentView;
@@ -86,13 +100,6 @@ public class MyScheduleRecyclerViewAdapter extends RecyclerView.Adapter<MySchedu
             Toolbar = (view.findViewById(R.id.ScheduleFragmentToolbar));
 
             Toolbar.inflateMenu(R.menu.schedule_card_menu);
-            Toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener(){
-
-                @Override
-                public boolean onMenuItemClick(MenuItem menuItem) {
-                    return false;
-                }
-            });
         }
 
         @Override

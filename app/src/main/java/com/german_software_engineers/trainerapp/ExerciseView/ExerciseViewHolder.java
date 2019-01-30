@@ -1,10 +1,8 @@
 package com.german_software_engineers.trainerapp.ExerciseView;
 
 import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toolbar;
 
@@ -13,8 +11,6 @@ import com.german_software_engineers.trainerappmodel.Exercise.BodyWeightExercise
 import com.german_software_engineers.trainerappmodel.Exercise.DeviceExercise;
 import com.german_software_engineers.trainerappmodel.Exercise.Exercise;
 import com.german_software_engineers.trainerappmodel.Exercise.WarmUpExercise;
-
-import org.w3c.dom.Text;
 
 /**
  * {@Link RecyclerView.ViewHolder} to Display the {@Link Exercise}
@@ -45,11 +41,13 @@ public class ExerciseViewHolder extends RecyclerView.ViewHolder {
     private void decorateExerciseTile(){
         Toolbar toolbar=ExerciseView.findViewById(R.id.ExerciseCardToolbar);
         toolbar.inflateMenu(R.menu.exercise_fragmet_menu);
-        toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener(){
-
-            @Override
-            public boolean onMenuItemClick(MenuItem menuItem) {
-                return false;
+        toolbar.setOnMenuItemClickListener(menuItem -> {
+            switch (menuItem.getItemId()){
+                case R.id.MoveExerciseDown:
+                case R.id.MoveExerciseUp:
+                case R.id.DeleteExercise:
+                default:
+                    return true;
             }
         });
         switch(Exercise.type()){
@@ -83,10 +81,6 @@ public class ExerciseViewHolder extends RecyclerView.ViewHolder {
 
 
         StringBuilder builder = new StringBuilder();
-
-//        if(exc.isDeviceNumberActivated())
-//            builder.append(ExerciseView.getResources().getString(R.string.DeviceExerciseInfoDeviceNumber, exc.getDeviceNumber()));
-            //((TextView)ExerciseView.findViewById(R.id.ExerciseDeviceNumber)).setText(exc.getDeviceNumber());
 
         if(exc.isWeightActivated())
         {
