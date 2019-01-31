@@ -5,7 +5,10 @@ import com.german_software_engineers.trainerappmodel.Enumerations.*;
 import com.german_software_engineers.trainerappmodel.Exercise.Exercise;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Schedule {
     private String Name;
@@ -14,11 +17,11 @@ public class Schedule {
     private int PauseTime = Integer.MAX_VALUE;
     private int Sets = Integer.MAX_VALUE;
     private int Speed = Integer.MAX_VALUE;
-    private List<Exercise> Exercises;
+    private Map<Integer,Exercise> Exercises;
 
     public Schedule(String name){
         Name = name;
-        Exercises=new ArrayList<>();
+        Exercises=new HashMap<>();
     }
 
     public String getName() {
@@ -65,13 +68,39 @@ public class Schedule {
         return Speed;
     }
 
-    public List<Exercise> exercises(){
-        return Exercises;
+    public Collection<Exercise> exercises(){
+        return Exercises.values();
     }
 
     public void addExercise(Exercise exercise){
         exercise.setPosition(Exercises.size());
-        Exercises.add(exercise);
+        Exercises.put(exercise.getPosition(),exercise);
+    }
+
+    public void moveExerciseUp(int position){
+        if(position-1>0) {
+            Exercise exercise1 = Exercises.get(position);
+            Exercise exercise2 = Exercises.get(position - 1);
+            Exercises.remove(position);
+            Exercises.remove(position-1);
+            exercise1.setPosition(position-1);
+            exercise2.setPosition(position);
+            Exercises.put(exercise1.getPosition(),exercise1);
+            Exercises.put(exercise2.getPosition(),exercise2);
+        }
+    }
+
+    public void moveExerciseDown(int position){
+        if(position+1<Exercises.size()) {
+            Exercise exercise1 = Exercises.get(position);
+            Exercise exercise2 = Exercises.get(position +1);
+            Exercises.remove(position);
+            Exercises.remove(position+1);
+            exercise1.setPosition(position+1);
+            exercise2.setPosition(position);
+            Exercises.put(exercise1.getPosition(),exercise1);
+            Exercises.put(exercise2.getPosition(),exercise2);
+        }
     }
 
     public void deleteExercise(){
