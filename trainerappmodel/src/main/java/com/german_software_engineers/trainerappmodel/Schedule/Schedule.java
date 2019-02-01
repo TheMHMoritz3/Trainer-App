@@ -105,7 +105,13 @@ public class Schedule {
     }
 
     public void deleteExercise(int position){
-
-
+        if((position>=0)&&(position<Exercises.size())){
+            Exercises.remove(position);
+            for(int i = position; i<Exercises.size()-1; i++){
+                Exercise exercise = Exercises.get(i+1);
+                exercise.setPosition(i);
+                Exercises.put(exercise.getPosition(),exercise);
+            }
+        }
     }
 }

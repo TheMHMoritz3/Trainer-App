@@ -1,4 +1,4 @@
-package com.german_software_engineers.trainerapp.ExerciseView;
+package com.german_software_engineers.trainerapp.ExerciseView.Activity;
 
 import android.content.Intent;
 import android.net.Uri;

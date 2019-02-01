@@ -1,4 +1,4 @@
-package com.german_software_engineers.trainerapp.ExerciseView;
+package com.german_software_engineers.trainerapp.ExerciseView.Controller;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -6,7 +6,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.german_software_engineers.trainerapp.Controller.ExerciseListModelController;
-import com.german_software_engineers.trainerapp.ExerciseView.ExcersizeListFragment.OnListFragmentInteractionListener;
+import com.german_software_engineers.trainerapp.ExerciseView.Controller.ExerciseViewHolder;
+import com.german_software_engineers.trainerapp.ExerciseView.Fragments.ExcersizeListFragment.OnListFragmentInteractionListener;
 import com.german_software_engineers.trainerapp.R;
 import com.german_software_engineers.trainerappmodel.Exercise.Exercise;
 

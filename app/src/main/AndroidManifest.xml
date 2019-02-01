@@ -43,7 +43,7 @@
                 android:value="com.german_software_engineers.trainerapp.TrainingsSchedule" />
         </activity>
         <activity
-            android:name=".ExerciseView.ExerciseViewActivity"
+            android:name=".ExerciseView.Activity.ExerciseViewActivity"
             android:label="@string/ExerciseViewActivityTitle"
             android:parentActivityName=".TrainingsSchedule"
             android:theme="@style/AppTheme">
@@ -52,13 +52,13 @@
                 android:value="com.german_software_engineers.trainerapp.TrainingsSchedule" />
         </activity>
         <activity
-            android:name=".ExerciseView.EditExerciseActivity"
+            android:name=".ExerciseView.Activity.EditExerciseActivity"
             android:label="@string/title_activity_edit_exercise"
-            android:parentActivityName=".ExerciseView.ExerciseViewActivity"
+            android:parentActivityName=".ExerciseView.Activity.ExerciseViewActivity"
             android:theme="@style/AppTheme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.german_software_engineers.trainerapp.ExerciseView.ExerciseViewActivity" />
+                android:value="com.german_software_engineers.trainerapp.ExerciseView.Activity.ExerciseViewActivity" />
         </activity>
     </application>
 </manifest>

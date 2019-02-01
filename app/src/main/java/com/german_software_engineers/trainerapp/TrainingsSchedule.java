@@ -14,7 +14,7 @@ import android.view.MenuItem;
 
 import com.german_software_engineers.trainerapp.Controller.ApplicationManager;
 import com.german_software_engineers.trainerapp.Controller.ScheduleListModelController;
-import com.german_software_engineers.trainerapp.ExerciseView.ExerciseViewActivity;
+import com.german_software_engineers.trainerapp.ExerciseView.Activity.ExerciseViewActivity;
 import com.german_software_engineers.trainerapp.ScheduleView.GeneralTrainingScheduleEditor;
 import com.german_software_engineers.trainerapp.ScheduleView.ScheduleListFragment;
 import com.german_software_engineers.trainerappmodel.Schedule.Schedule;

@@ -1,4 +1,4 @@
-package com.german_software_engineers.trainerapp.ExerciseView;
+package com.german_software_engineers.trainerapp.ExerciseView.Controller;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
@@ -181,6 +181,7 @@ public class ExerciseViewHolder extends RecyclerView.ViewHolder {
                     Controller.moveExerciseUp(Exercise.getPosition());
                     return true;
                 case R.id.DeleteExercise:
+                    Controller.deleteExercise(Exercise.getPosition());
                 default:
                     return true;
             }

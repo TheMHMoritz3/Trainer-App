@@ -61,4 +61,8 @@ public class Model {
     public void moveExerciseOfActiveScheduleDown(int position){
         ActiveSchedule.moveExerciseDown(position);
     }
+
+    public void deleteExerciseOfActiveSchedule(int position){
+        ActiveSchedule.deleteExercise(position);
+    }
 }

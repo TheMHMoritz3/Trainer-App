@@ -2,7 +2,7 @@ package com.german_software_engineers.trainerapp.Controller;
 
 import android.support.annotation.NonNull;
 
-import com.german_software_engineers.trainerapp.ExerciseView.ExerciseViewActivity;
+import com.german_software_engineers.trainerapp.ExerciseView.Activity.ExerciseViewActivity;
 import com.german_software_engineers.trainerappmodel.Model.Model;
 
 public class ExerciseListModelController {
@@ -24,5 +24,9 @@ public class ExerciseListModelController {
         ExerciseView.updateView();
     }
 
+    public void deleteExercise(int position){
+        ApplicationModel.deleteExerciseOfActiveSchedule(position);
+        ExerciseView.updateView();
+    }
 
 }
