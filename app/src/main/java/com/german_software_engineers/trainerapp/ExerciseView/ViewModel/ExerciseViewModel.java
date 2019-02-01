@@ -89,8 +89,10 @@ public class ExerciseViewModel extends ViewModel {
                 break;
         }
 
-        if(ActiveExcercise!=null)
+        if(ActiveExcercise!=null) {
+            exercise.setPosition(ActiveExcercise.getPosition());
             ActiveSchedule.exercises().remove(ActiveExcercise);
+        }
 
         ActiveSchedule.addExercise(exercise);
     }

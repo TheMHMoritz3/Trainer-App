@@ -4,7 +4,7 @@ import com.german_software_engineers.trainerappmodel.Enumerations.ExerciseType;
 
 public abstract class Exercise {
     private String Name;
-    private int Position;
+    private int Position = Integer.MAX_VALUE;
 
     private Exercise(){}
 

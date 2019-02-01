@@ -74,7 +74,8 @@ public class Schedule {
     }
 
     public void addExercise(Exercise exercise){
-        exercise.setPosition(Exercises.size());
+        if(exercise.getPosition()==Integer.MAX_VALUE)
+            exercise.setPosition(Exercises.size());
         Exercises.put(exercise.getPosition(),exercise);
     }
 
