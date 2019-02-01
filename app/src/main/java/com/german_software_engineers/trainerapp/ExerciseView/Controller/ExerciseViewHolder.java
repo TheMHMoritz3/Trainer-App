@@ -1,18 +1,17 @@
-package com.german_software_engineers.trainerapp.ExerciseView;
+package com.german_software_engineers.trainerapp.ExerciseView.Controller;
 
 import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toolbar;
 
+import com.german_software_engineers.trainerapp.Controller.ExerciseListModelController;
 import com.german_software_engineers.trainerapp.R;
 import com.german_software_engineers.trainerappmodel.Exercise.BodyWeightExercise;
 import com.german_software_engineers.trainerappmodel.Exercise.DeviceExercise;
 import com.german_software_engineers.trainerappmodel.Exercise.Exercise;
 import com.german_software_engineers.trainerappmodel.Exercise.WarmUpExercise;
-
-import org.w3c.dom.Text;
 
 /**
  * {@Link RecyclerView.ViewHolder} to Display the {@Link Exercise}
@@ -21,7 +20,8 @@ import org.w3c.dom.Text;
 public class ExerciseViewHolder extends RecyclerView.ViewHolder {
     private View ExerciseView;
     private Exercise Exercise;
-
+    private ExerciseListModelController Controller;
+    private Toolbar toolbar;
     /**
      * Constructor
      * @param view defined by the super-class
@@ -41,6 +41,8 @@ public class ExerciseViewHolder extends RecyclerView.ViewHolder {
     }
 
     private void decorateExerciseTile(){
+        toolbar=ExerciseView.findViewById(R.id.ExerciseCardToolbar);
+        toolbar.inflateMenu(R.menu.exercise_fragmet_menu);
         switch(Exercise.type()){
             case Device:
                 default:
@@ -58,16 +60,20 @@ public class ExerciseViewHolder extends RecyclerView.ViewHolder {
 
     private void decorateDeviceExercise(){
         DeviceExercise exc = (DeviceExercise) Exercise;
-//        ((TextView)ExerciseView.findViewById(R.id.ExerciseOrder)).setText(exc.getPosition());
-        ((TextView)ExerciseView.findViewById(R.id.ExerciseTitle)).setText(exc.getName());
+        StringBuilder titleBuilder = new StringBuilder();
+        titleBuilder.append(exc.getPosition());
+        titleBuilder.append("\t\t");
+        titleBuilder.append(exc.getName());
+
+        if(exc.isDeviceNumberActivated()){
+            titleBuilder.append("\t\t");
+            titleBuilder.append(exc.getDeviceNumber());
+        }
+
+        ((TextView)ExerciseView.findViewById(R.id.ExerciseTitle)).setText(titleBuilder.toString());
 
 
         StringBuilder builder = new StringBuilder();
-
-        if(exc.isDeviceNumberActivated())
-            builder.append(ExerciseView.getResources().getString(
-                    R.string.DeviceExerciseInfoDeviceNumber, exc.getDeviceNumber()));
-            //((TextView)ExerciseView.findViewById(R.id.ExerciseDeviceNumber)).setText(exc.getDeviceNumber());
 
         if(exc.isWeightActivated())
         {
@@ -104,9 +110,11 @@ public class ExerciseViewHolder extends RecyclerView.ViewHolder {
     private void decorateWarmUpExercise(){
         ExerciseView.findViewById(R.id.ExerciseCard).setBackgroundResource(R.color.colorPrimary);
         WarmUpExercise exc = (WarmUpExercise)Exercise;
-//        ((TextView)ExerciseView.findViewById(R.id.ExerciseOrder)).setText(exc.getPosition());
-        ((TextView)ExerciseView.findViewById(R.id.ExerciseTitle)).setText(exc.getName());
-        ((TextView)ExerciseView.findViewById(R.id.ExerciseDeviceNumber)).setText("");
+        StringBuilder titleBuilder = new StringBuilder();
+        titleBuilder.append(exc.getPosition());
+        titleBuilder.append("\t\t");
+        titleBuilder.append(exc.getName());
+        ((TextView)ExerciseView.findViewById(R.id.ExerciseTitle)).setText(titleBuilder.toString());
 
         StringBuilder builder = new StringBuilder();
 
@@ -131,9 +139,12 @@ public class ExerciseViewHolder extends RecyclerView.ViewHolder {
 
     private void decorateBodyWeightExercise(){
         BodyWeightExercise exc = (BodyWeightExercise)Exercise;
-//        ((TextView)ExerciseView.findViewById(R.id.ExerciseOrder)).setText(exc.getPosition());
-        ((TextView)ExerciseView.findViewById(R.id.ExerciseTitle)).setText(exc.getName());
-        ((TextView)ExerciseView.findViewById(R.id.ExerciseDeviceNumber)).setText("");
+
+        StringBuilder titleBuilder = new StringBuilder();
+        titleBuilder.append(exc.getPosition());
+        titleBuilder.append("\t\t");
+        titleBuilder.append(exc.getName());
+        ((TextView)ExerciseView.findViewById(R.id.ExerciseTitle)).setText(titleBuilder.toString());
 
         StringBuilder builder = new StringBuilder();
 
@@ -142,6 +153,7 @@ public class ExerciseViewHolder extends RecyclerView.ViewHolder {
 
         ((TextView)ExerciseView.findViewById(R.id.ExerciseInformation)).setText(builder.toString());
     }
+
     /**
      * Gives the view of the Exercise
      * @return The view tile
@@ -156,5 +168,23 @@ public class ExerciseViewHolder extends RecyclerView.ViewHolder {
      */
     public Exercise getExercise() {
         return Exercise;
+    }
+
+    public void setController(ExerciseListModelController controller) {
+        Controller = controller;
+        toolbar.setOnMenuItemClickListener(menuItem -> {
+            switch (menuItem.getItemId()){
+                case R.id.MoveExerciseDown:
+                    Controller.moveExerciseDown(Exercise.getPosition());
+                    return true;
+                case R.id.MoveExerciseUp:
+                    Controller.moveExerciseUp(Exercise.getPosition());
+                    return true;
+                case R.id.DeleteExercise:
+                    Controller.deleteExercise(Exercise.getPosition());
+                default:
+                    return true;
+            }
+        });
     }
 }

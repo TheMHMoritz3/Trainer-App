@@ -1,4 +1,4 @@
-package com.german_software_engineers.trainerapp;
+package com.german_software_engineers.trainerapp.ScheduleView;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -11,9 +11,9 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.german_software_engineers.trainerapp.Controller.ApplicationManager;
-import com.german_software_engineers.trainerapp.ExerciseView.MyExcersizeRecyclerViewAdapter;
-import com.german_software_engineers.trainerappmodel.Exercise.Exercise;
-import com.german_software_engineers.trainerappmodel.Exceptions.ScheduleAvailableException;
+import com.german_software_engineers.trainerapp.Controller.ScheduleListModelController;
+import com.german_software_engineers.trainerapp.R;
+import com.german_software_engineers.trainerappmodel.Schedule.Schedule;
 
 /**
  * A fragment representing a list of Items.
@@ -21,28 +21,31 @@ import com.german_software_engineers.trainerappmodel.Exceptions.ScheduleAvailabl
  * Activities containing this fragment MUST implement the {@link OnListFragmentInteractionListener}
  * interface.
  */
-public class ExcersizeListFragment extends Fragment {
-
-    // TODO: Customize parameter argument names
+public class ScheduleListFragment extends Fragment {
     private static final String ARG_COLUMN_COUNT = "column-count";
-    // TODO: Customize parameters
     private int mColumnCount = 1;
     private OnListFragmentInteractionListener mListener;
-    private String ScheduleName;
-    private MyExcersizeRecyclerViewAdapter Adapter;
+    private ApplicationManager Manager;
+    private RecyclerView recyclerView;
+
+    ScheduleListModelController modelController;
 
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
      * fragment (e.g. upon screen orientation changes).
      */
-    public ExcersizeListFragment() {
+    public ScheduleListFragment(ScheduleListModelController controller) {
+        modelController = controller;
     }
 
-    // TODO: Customize parameter initialization
-    @SuppressWarnings("unused")
-    public static ExcersizeListFragment newInstance(int columnCount, String scheduleName) {
-        ExcersizeListFragment fragment = new ExcersizeListFragment();
-        fragment.ScheduleName = scheduleName;
+    /**
+     * Creates a new ScheduleListFragment with the necessary Data
+     * @param columnCount the ColumnCount
+     * @param controller The necessary controller for interaction with the Model
+     * @return The new ScheduleListFragment
+     */
+    public static ScheduleListFragment newInstance(int columnCount, ScheduleListModelController controller) {
+        ScheduleListFragment fragment = new ScheduleListFragment(controller);
         Bundle args = new Bundle();
         args.putInt(ARG_COLUMN_COUNT, columnCount);
         fragment.setArguments(args);
@@ -61,24 +64,22 @@ public class ExcersizeListFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_excersize_list, container, false);
+        View view = inflater.inflate(R.layout.fragment_schedule_list, container, false);
 
         // Set the adapter
         if (view instanceof RecyclerView) {
             Context context = view.getContext();
-            RecyclerView recyclerView = (RecyclerView) view;
+            recyclerView = (RecyclerView) view;
             if (mColumnCount <= 1) {
                 recyclerView.setLayoutManager(new LinearLayoutManager(context));
             } else {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
-            try {
-                ApplicationManager Manager = (ApplicationManager) getActivity().getApplication();
-                Adapter =  new MyExcersizeRecyclerViewAdapter(Manager.getApplicationModel().getSchedule(ScheduleName).exercises(), mListener);
-                recyclerView.setAdapter(Adapter);
-            } catch (ScheduleAvailableException e) {
-                e.printStackTrace();
-            }
+
+            Manager = (ApplicationManager) getActivity().getApplication();
+            MyScheduleRecyclerViewAdapter adapter = new MyScheduleRecyclerViewAdapter(Manager.getApplicationModel().getSchedulesList(), mListener);
+            adapter.setController(modelController);
+            recyclerView.setAdapter(adapter);
         }
         return view;
     }
@@ -112,10 +113,16 @@ public class ExcersizeListFragment extends Fragment {
      * >Communicating with Other Fragments</a> for more information.
      */
     public interface OnListFragmentInteractionListener {
-        void onListFragmentInteraction(Exercise item);
+        void onListFragmentInteraction(Schedule item);
     }
 
-    public MyExcersizeRecyclerViewAdapter getAdapter(){
-        return Adapter;
+    /**
+     * Refreshes the ItemList, if a Schedule is deleted.
+     */
+    public void refreshItemList()
+    {
+        MyScheduleRecyclerViewAdapter adapter = new MyScheduleRecyclerViewAdapter(Manager.getApplicationModel().getSchedulesList(), mListener);
+        adapter.setController(modelController);
+        recyclerView.setAdapter(adapter);
     }
 }

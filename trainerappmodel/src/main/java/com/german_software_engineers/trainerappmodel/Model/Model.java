@@ -1,7 +1,7 @@
 package com.german_software_engineers.trainerappmodel.Model;
 
 
-import com.german_software_engineers.trainerappmodel.Legacy.Schedule;
+import com.german_software_engineers.trainerappmodel.Schedule.Schedule;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -52,5 +52,17 @@ public class Model {
 
     public Schedule activeSchedule(){
         return ActiveSchedule;
+    }
+
+    public void moveExerciseOfActiveScheduleUp(int position){
+        ActiveSchedule.moveExerciseUp(position);
+    }
+
+    public void moveExerciseOfActiveScheduleDown(int position){
+        ActiveSchedule.moveExerciseDown(position);
+    }
+
+    public void deleteExerciseOfActiveSchedule(int position){
+        ActiveSchedule.deleteExercise(position);
     }
 }

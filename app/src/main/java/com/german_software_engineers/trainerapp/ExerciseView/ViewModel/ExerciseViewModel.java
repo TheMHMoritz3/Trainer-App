@@ -9,7 +9,7 @@ import com.german_software_engineers.trainerappmodel.Exercise.BodyWeightExercise
 import com.german_software_engineers.trainerappmodel.Exercise.DeviceExercise;
 import com.german_software_engineers.trainerappmodel.Exercise.Exercise;
 import com.german_software_engineers.trainerappmodel.Exercise.WarmUpExercise;
-import com.german_software_engineers.trainerappmodel.Legacy.Schedule;
+import com.german_software_engineers.trainerappmodel.Schedule.Schedule;
 
 public class ExerciseViewModel extends ViewModel {
     private Exercise ActiveExcercise;
