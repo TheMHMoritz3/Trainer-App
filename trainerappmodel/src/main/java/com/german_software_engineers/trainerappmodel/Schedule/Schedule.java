@@ -9,6 +9,7 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.TreeMap;
 
 public class Schedule {
     private String Name;
@@ -21,7 +22,7 @@ public class Schedule {
 
     public Schedule(String name){
         Name = name;
-        Exercises=new HashMap<>();
+        Exercises=new TreeMap<>();
     }
 
     public String getName() {
@@ -78,7 +79,7 @@ public class Schedule {
     }
 
     public void moveExerciseUp(int position){
-        if(position-1>0) {
+        if(position-1>=0) {
             Exercise exercise1 = Exercises.get(position);
             Exercise exercise2 = Exercises.get(position - 1);
             Exercises.remove(position);
@@ -103,7 +104,8 @@ public class Schedule {
         }
     }
 
-    public void deleteExercise(){
+    public void deleteExercise(int position){
+
 
     }
 }

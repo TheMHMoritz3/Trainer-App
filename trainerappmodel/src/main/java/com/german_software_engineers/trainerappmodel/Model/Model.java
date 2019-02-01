@@ -53,4 +53,12 @@ public class Model {
     public Schedule activeSchedule(){
         return ActiveSchedule;
     }
+
+    public void moveExerciseOfActiveScheduleUp(int position){
+        ActiveSchedule.moveExerciseUp(position);
+    }
+
+    public void moveExerciseOfActiveScheduleDown(int position){
+        ActiveSchedule.moveExerciseDown(position);
+    }
 }

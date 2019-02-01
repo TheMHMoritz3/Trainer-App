@@ -5,10 +5,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.german_software_engineers.trainerapp.Controller.ExerciseListModelController;
 import com.german_software_engineers.trainerapp.ExerciseView.ExcersizeListFragment.OnListFragmentInteractionListener;
 import com.german_software_engineers.trainerapp.R;
 import com.german_software_engineers.trainerappmodel.Exercise.Exercise;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 /**
@@ -20,10 +23,15 @@ public class MyExcersizeRecyclerViewAdapter extends RecyclerView.Adapter<Exercis
 
     private final List<Exercise> mValues;
     private final OnListFragmentInteractionListener mListener;
-
-    public MyExcersizeRecyclerViewAdapter(List<Exercise> items, OnListFragmentInteractionListener listener) {
-        mValues = items;
+    private ExerciseListModelController Contoller;
+    public MyExcersizeRecyclerViewAdapter(Collection<Exercise> items, OnListFragmentInteractionListener listener) {
+        mValues = new ArrayList<>();
+        mValues.addAll(items);
         mListener = listener;
+    }
+
+    public void setController(ExerciseListModelController controller){
+        Contoller = controller;
     }
 
     @Override
@@ -38,14 +46,11 @@ public class MyExcersizeRecyclerViewAdapter extends RecyclerView.Adapter<Exercis
 
         holder.setExercise(mValues.get(position));
 
-        holder.getExerciseView().setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (null != mListener) {
-                    // Notify the active callbacks interface (the activity, if the
-                    // fragment is attached to one) that an item has been selected.
-                    mListener.onListFragmentInteraction(holder.getExercise());
-                }
+        holder.setController(Contoller);
+
+        holder.getExerciseView().setOnClickListener(v -> {
+            if (null != mListener) {
+                mListener.onListFragmentInteraction(holder.getExercise());
             }
         });
     }

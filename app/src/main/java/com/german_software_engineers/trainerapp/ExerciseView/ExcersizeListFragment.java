@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.german_software_engineers.trainerapp.Controller.ApplicationManager;
+import com.german_software_engineers.trainerapp.Controller.ExerciseListModelController;
 import com.german_software_engineers.trainerapp.R;
 import com.german_software_engineers.trainerappmodel.Exercise.Exercise;
 import com.german_software_engineers.trainerappmodel.Exceptions.ScheduleAvailableException;
@@ -30,6 +31,7 @@ public class ExcersizeListFragment extends Fragment {
     private OnListFragmentInteractionListener mListener;
     private String ScheduleName;
     private MyExcersizeRecyclerViewAdapter Adapter;
+    private static ExerciseListModelController Controller;
 
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
@@ -40,8 +42,9 @@ public class ExcersizeListFragment extends Fragment {
 
     // TODO: Customize parameter initialization
     @SuppressWarnings("unused")
-    public static ExcersizeListFragment newInstance(int columnCount, String scheduleName) {
+    public static ExcersizeListFragment newInstance(int columnCount, String scheduleName, ExerciseListModelController controller) {
         ExcersizeListFragment fragment = new ExcersizeListFragment();
+        Controller = controller;
         fragment.ScheduleName = scheduleName;
         Bundle args = new Bundle();
         args.putInt(ARG_COLUMN_COUNT, columnCount);
@@ -75,6 +78,7 @@ public class ExcersizeListFragment extends Fragment {
             try {
                 ApplicationManager Manager = (ApplicationManager) getActivity().getApplication();
                 Adapter =  new MyExcersizeRecyclerViewAdapter(Manager.getApplicationModel().getSchedule(ScheduleName).exercises(), mListener);
+                Adapter.setController(Controller);
                 recyclerView.setAdapter(Adapter);
             } catch (ScheduleAvailableException e) {
                 e.printStackTrace();

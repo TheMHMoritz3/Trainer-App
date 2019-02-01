@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toolbar;
 
+import com.german_software_engineers.trainerapp.Controller.ExerciseListModelController;
 import com.german_software_engineers.trainerapp.R;
 import com.german_software_engineers.trainerappmodel.Exercise.BodyWeightExercise;
 import com.german_software_engineers.trainerappmodel.Exercise.DeviceExercise;
@@ -19,7 +20,8 @@ import com.german_software_engineers.trainerappmodel.Exercise.WarmUpExercise;
 public class ExerciseViewHolder extends RecyclerView.ViewHolder {
     private View ExerciseView;
     private Exercise Exercise;
-
+    private ExerciseListModelController Controller;
+    private Toolbar toolbar;
     /**
      * Constructor
      * @param view defined by the super-class
@@ -39,17 +41,8 @@ public class ExerciseViewHolder extends RecyclerView.ViewHolder {
     }
 
     private void decorateExerciseTile(){
-        Toolbar toolbar=ExerciseView.findViewById(R.id.ExerciseCardToolbar);
+        toolbar=ExerciseView.findViewById(R.id.ExerciseCardToolbar);
         toolbar.inflateMenu(R.menu.exercise_fragmet_menu);
-        toolbar.setOnMenuItemClickListener(menuItem -> {
-            switch (menuItem.getItemId()){
-                case R.id.MoveExerciseDown:
-                case R.id.MoveExerciseUp:
-                case R.id.DeleteExercise:
-                default:
-                    return true;
-            }
-        });
         switch(Exercise.type()){
             case Device:
                 default:
@@ -175,5 +168,22 @@ public class ExerciseViewHolder extends RecyclerView.ViewHolder {
      */
     public Exercise getExercise() {
         return Exercise;
+    }
+
+    public void setController(ExerciseListModelController controller) {
+        Controller = controller;
+        toolbar.setOnMenuItemClickListener(menuItem -> {
+            switch (menuItem.getItemId()){
+                case R.id.MoveExerciseDown:
+                    Controller.moveExerciseDown(Exercise.getPosition());
+                    return true;
+                case R.id.MoveExerciseUp:
+                    Controller.moveExerciseUp(Exercise.getPosition());
+                    return true;
+                case R.id.DeleteExercise:
+                default:
+                    return true;
+            }
+        });
     }
 }
