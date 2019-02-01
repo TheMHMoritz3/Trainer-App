@@ -1,5 +1,7 @@
 package com.german_software_engineers.trainerapp.ExerciseView.Controller;
 
+import android.graphics.Color;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
 import android.view.View;
@@ -7,6 +9,7 @@ import android.widget.TextView;
 import android.widget.Toolbar;
 
 import com.german_software_engineers.trainerapp.Controller.ExerciseListModelController;
+import com.german_software_engineers.trainerapp.ExerciseView.ViewModel.ExerciseViewModel;
 import com.german_software_engineers.trainerapp.R;
 import com.german_software_engineers.trainerappmodel.Exercise.BodyWeightExercise;
 import com.german_software_engineers.trainerappmodel.Exercise.DeviceExercise;
@@ -108,7 +111,8 @@ public class ExerciseViewHolder extends RecyclerView.ViewHolder {
     }
 
     private void decorateWarmUpExercise(){
-        ExerciseView.findViewById(R.id.ExerciseCard).setBackgroundResource(R.color.colorPrimary);
+        CardView card = ExerciseView.findViewById(R.id.ExerciseCard);
+        card.setCardBackgroundColor(ExerciseView.getResources().getColor(R.color.colorPrimary));
         WarmUpExercise exc = (WarmUpExercise)Exercise;
         StringBuilder titleBuilder = new StringBuilder();
         titleBuilder.append(exc.getPosition());
