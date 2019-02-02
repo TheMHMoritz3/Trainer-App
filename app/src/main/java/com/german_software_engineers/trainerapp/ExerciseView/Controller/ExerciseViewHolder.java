@@ -17,6 +17,7 @@ package com.german_software_engineers.trainerapp.ExerciseView.Controller;
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>
  */
 
+import android.content.Intent;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -24,6 +25,7 @@ import android.widget.TextView;
 import android.widget.Toolbar;
 
 import com.german_software_engineers.trainerapp.Controller.ExerciseListModelController;
+import com.german_software_engineers.trainerapp.ExerciseView.Activity.EditExerciseActivity;
 import com.german_software_engineers.trainerapp.R;
 import com.german_software_engineers.trainerappmodel.Exercise.BodyWeightExercise;
 import com.german_software_engineers.trainerappmodel.Exercise.DeviceExercise;
@@ -60,6 +62,7 @@ public class ExerciseViewHolder extends RecyclerView.ViewHolder {
     private void decorateExerciseTile(){
         toolbar=ExerciseView.findViewById(R.id.ExerciseCardToolbar);
         toolbar.inflateMenu(R.menu.exercise_fragmet_menu);
+
         switch(Exercise.type()){
             case Device:
                 default:
@@ -188,6 +191,10 @@ public class ExerciseViewHolder extends RecyclerView.ViewHolder {
         return Exercise;
     }
 
+    /**
+     * Sets the controller and does the necessary connections
+     * @param controller Exercise List Controller
+     */
     public void setController(ExerciseListModelController controller) {
         Controller = controller;
         toolbar.setOnMenuItemClickListener(menuItem -> {
@@ -203,6 +210,10 @@ public class ExerciseViewHolder extends RecyclerView.ViewHolder {
                 default:
                     return true;
             }
+        });
+
+        toolbar.setOnClickListener(clicklistener->{
+            Controller.editExercise(Exercise.getName());
         });
     }
 }

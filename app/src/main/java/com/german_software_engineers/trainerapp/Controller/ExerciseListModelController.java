@@ -46,4 +46,7 @@ public class ExerciseListModelController {
         ExerciseView.updateView();
     }
 
+    public void editExercise(String exerciseName){
+        ExerciseView.openExerciseEditor(exerciseName);
+    }
 }

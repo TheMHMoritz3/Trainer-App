@@ -80,14 +80,25 @@ public class ExerciseViewActivity extends ExerciseListActivity {
 
     @Override
     public void onListFragmentInteraction(Exercise item) {
-        Intent intent = new Intent(this, EditExerciseActivity.class);
-        intent.putExtra("excName", item.getName());
-        startActivity(intent);
+        openExerciseEditor(item.getName());
     }
 
+    /**
+     * Updates the view.
+     */
     public void updateView(){
         fragment = ExcersizeListFragment.newInstance(1, ActiveSchedule.getName(), Controller);
         getSupportFragmentManager().beginTransaction().replace(R.id.execView, fragment).commit();
         ((ApplicationManager)getApplication()).saveFile();
+    }
+
+    /**
+     * Opens the exercise editor with the exercise with that name.
+     * @param exerciseName Name of the exercise you want to edit.
+     */
+    public void openExerciseEditor(String exerciseName){
+        Intent intent = new Intent(this, EditExerciseActivity.class);
+        intent.putExtra("excName", exerciseName);
+        startActivity(intent);
     }
 }
