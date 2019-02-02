@@ -102,27 +102,39 @@ public class ExerciseViewHolder extends RecyclerView.ViewHolder {
                         R.string.DeviceExerciseInfoWeight, exc.getWeight()));
                 builder.append(ExerciseView.getResources().getString(
                         R.string.DeviceExerciseInfoAdditionalWeight, exc.getAdditionalWeight()));
+                builder.append("\n");
             }else{
                 builder.append(ExerciseView.getResources().getString(
                         R.string.DeviceExerciseInfoWeight, exc.getWeight()));
                 builder.append(ExerciseView.getResources().getString(R.string.LineBreak));
+                builder.append("\n");
             }
         }
 
-        if(exc.isSeatActivated())
-            builder.append(ExerciseView.getResources().getString(R.string.DeviceExerciseInfoSeatPosition,exc.getSeatPosition()));
+        if(exc.isSeatActivated()) {
+            builder.append(ExerciseView.getResources().getString(R.string.DeviceExerciseInfoSeatPosition, exc.getSeatPosition()));
+            builder.append("\n");
+        }
 
-        if(exc.isLegActivated())
-            builder.append(ExerciseView.getResources().getString(R.string.DeviceExerciseInfoLegPosition,exc.getLegPosition()));
+        if(exc.isLegActivated()) {
+            builder.append(ExerciseView.getResources().getString(R.string.DeviceExerciseInfoLegPosition, exc.getLegPosition()));
+            builder.append("\n");
+        }
 
-        if(exc.isFootActivated())
-            builder.append(ExerciseView.getResources().getString(R.string.DeviceExerciseInfoFootPosition,exc.getFootPosition()));
+        if(exc.isFootActivated()) {
+            builder.append(ExerciseView.getResources().getString(R.string.DeviceExerciseInfoFootPosition, exc.getFootPosition()));
+            builder.append("\n");
+        }
 
-        if(exc.isAngleActivated())
+        if(exc.isAngleActivated()) {
             builder.append(ExerciseView.getResources().getString(R.string.DeviceExerciseInfoAnglePosition, exc.getAnglePosition()));
+            builder.append("\n");
+        }
 
-        if(exc.isBackActivated())
+        if(exc.isBackActivated()) {
             builder.append(ExerciseView.getResources().getString(R.string.DeviceExerciseInfoBackPosition, exc.getBackPosition()));
+            builder.append("\n");
+        }
 
         ((TextView)ExerciseView.findViewById(R.id.ExerciseInformation)).setText(builder.toString());
     }
@@ -139,21 +151,29 @@ public class ExerciseViewHolder extends RecyclerView.ViewHolder {
 
         StringBuilder builder = new StringBuilder();
 
-        if(exc.isExecutionTimeActivated())
+        if(exc.isExecutionTimeActivated()) {
             builder.append(ExerciseView.getResources().getString(
-                    R.string.WarmUpExerciseInfoExecutionTime,exc.getExecutionTime()));
+                    R.string.WarmUpExerciseInfoExecutionTime, exc.getExecutionTime()));
+            builder.append("\n");
+        }
 
-        if(exc.isExecutionTimeActivated())
+        if(exc.isExecutionTimeActivated()) {
             builder.append(ExerciseView.getResources().getString(
-                    R.string.WarmUpExerciseInfoIntensity,exc.getIntenity().name()));
+                    R.string.WarmUpExerciseInfoIntensity, exc.getIntenity().name()));
+            builder.append("\n");
+        }
 
-        if(exc.isSubintensityActivated())
+        if(exc.isSubintensityActivated()) {
             builder.append(ExerciseView.getResources().getString(
-                    R.string.WarmUpExerciseInfoSubIntensity,exc.getSubIntensity()));
+                    R.string.WarmUpExerciseInfoSubIntensity, exc.getSubIntensity()));
+            builder.append("\n");
+        }
 
-        if(exc.isIntensityActivated())
+        if(exc.isIntensityActivated()) {
             builder.append(ExerciseView.getResources().getString(
                     R.string.WarmUpExerciseInfoBPM, exc.getBPM()));
+            builder.append("\n");
+        }
 
         ((TextView)ExerciseView.findViewById(R.id.ExerciseInformation)).setText(builder.toString());
     }
@@ -169,8 +189,10 @@ public class ExerciseViewHolder extends RecyclerView.ViewHolder {
 
         StringBuilder builder = new StringBuilder();
 
-        if(exc.isAdditionalInformationActivated())
+        if(exc.isAdditionalInformationActivated()) {
             builder.append(exc.getAdditionalInformation());
+            builder.append("\n");
+        }
 
         ((TextView)ExerciseView.findViewById(R.id.ExerciseInformation)).setText(builder.toString());
     }

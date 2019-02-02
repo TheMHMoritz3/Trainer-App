@@ -14,7 +14,7 @@
             android:id="@+id/AdditionalInformationCheckbox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Additional Information" />
+            android:text="@string/BodyWeightExerciseAdditionalInformation" />
 
         <EditText
             android:id="@+id/AdditionalInformationEditText"

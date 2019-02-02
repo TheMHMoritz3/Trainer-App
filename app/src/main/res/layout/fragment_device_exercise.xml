@@ -20,7 +20,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Seat"/>
+                android:text="@string/DeviceExerciseSeat"/>
 
             <EditText
                 android:id="@+id/SeatEdit2"
@@ -42,10 +42,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Device Number:" />
+                android:text="@string/DeviceExerciseDeviceNumber" />
 
             <EditText
-                android:id="@+id/DevicetEdit2"
+                android:id="@+id/DeviceEdit2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -64,7 +64,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Leg" />
+                android:text="@string/DeviceExerciseLeg" />
 
             <EditText
                 android:id="@+id/LegEdit2"
@@ -86,7 +86,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Foot" />
+                android:text="@string/DeviceExerciseFoot" />
 
             <EditText
                 android:id="@+id/FootEdit2"
@@ -108,7 +108,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Angle" />
+                android:text="@string/DeviceExerciseAngle" />
 
             <EditText
                 android:id="@+id/AngleEdit2"
@@ -130,7 +130,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Back" />
+                android:text="@string/DeviceExerciseBack" />
 
             <EditText
                 android:id="@+id/BackEdit2"
@@ -152,7 +152,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Weight" />
+                android:text="@string/DeviceExerciseWeight" />
 
             <EditText
                 android:id="@+id/WeightEdit2"
@@ -174,7 +174,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Additional Weight" />
+                android:text="@string/DeviceExerciseAdditionalWeight" />
 
             <EditText
                 android:id="@+id/AdditionalWeightEdit2"

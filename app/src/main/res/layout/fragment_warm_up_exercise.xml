@@ -17,7 +17,7 @@
                 android:id="@+id/WarmUpTimeCheckBox"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Time: [Min.]" />
+                android:text="@string/WarmUpExerciseTime" />
 
             <EditText
                 android:id="@+id/WarmUpTimeEdit"
@@ -32,7 +32,7 @@
             android:id="@+id/WarmUpIntensityCheckBox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Intensity" />
+            android:text="@string/WarmUpExerciseIntensity" />
 
         <Spinner
             android:id="@+id/WarmUpIntensitySpinner"
@@ -48,7 +48,7 @@
                 android:id="@+id/WarmUpSubIntensityCheckBox"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Subintensity:" />
+                android:text="@string/WamUpExerciseSubintensity" />
 
             <EditText
                 android:id="@+id/WarmUpSubintensityEdit"
@@ -67,7 +67,7 @@
                 android:id="@+id/WarmUpBPMCheckBox"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Hearfrequency: [BPM]" />
+                android:text="@string/WarmUpExerciseHeartFrequency" />
 
             <EditText
                 android:id="@+id/WarmUpBPMEdit"

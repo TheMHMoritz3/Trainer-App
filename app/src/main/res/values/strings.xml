@@ -21,21 +21,28 @@
     <string name="EditSchedule">Edit</string>
 
     <!--General-->
-    <string name="DataFile">DataFile.xml</string>
-    <string name="LineBreak">\n</string>
+    <string name="DataFile" translatable="false">DataFile.xml</string>
+    <string name="LineBreak" translatable="false">\n</string>
     <string name="NoNameError">Please give it a name.</string>
 
     <!--Info Activity-->
     <string name="InfoActivityTitle">Info</string>
-    <string name="Copyright">Copyright 2019</string>
-    <string name="ReservedFor">Moritz Herzog - German Software Engineers</string>
+    <string name="Copyright" translatable="false">Copyright 2019</string>
+    <string name="ReservedFor" translatable="false">Moritz Herzog - German Software Engineers</string>
     <string name="LicenseShort">The software is published under the GPL V3. To view the license click on the button below.</string>
     <string name="LicenseButton">Take me to License</string>
     <string name="OtherLicenses">Licenses of used Parts</string>
     <string name="OpenGitHub">Open Github</string>
 
-
+    <!--General Trainings Editor-->
     <string name="title_activity_general_training_schedule_editor">Add Trainigns Schedule</string>
+    <string name="ScheduleNameHint">Name</string>
+    <string name="TrainingsTypeTextView">Trainings Type:</string>
+    <string name="RepetitionsTextView">Repetitions:</string>
+    <string name="PauseTextView">Pause [s]:</string>
+    <string name="SetsTextView">Sets:</string>
+    <string name="MovementSpeedTextView">Movement Speed [s]:</string>
+    <string name="ScheduleNameError">Please type a name in.</string>
 
     <string-array name="ScheduleType">
         <item>strength endurance</item>
@@ -56,30 +63,43 @@
         <item>Body Weight Exercise</item>
     </string-array>
 
-    <!--EditSchedule-->
-    <string name="ScheduleNameError">Please type a name in</string>
+    <!--Exercise View Activity-->
+    <string name="BodyWeightExerciseAdditionalInformation">Additional Information: </string>
+
+    <string name="DeviceExerciseSeat">Seat Position:</string>
+    <string name="DeviceExerciseDeviceNumber">Device Number:</string>
+    <string name="DeviceExerciseLeg">Leg Position:</string>
+    <string name="DeviceExerciseFoot">Foot Position:</string>
+    <string name="DeviceExerciseAngle">Angle Position:</string>
+    <string name="DeviceExerciseBack">Back Position:</string>
+    <string name="DeviceExerciseWeight">Weight: [kg]</string>
+    <string name="DeviceExerciseAdditionalWeight">Additional Weight:</string>
+
+    <string name="WarmUpExerciseTime">Time: [min.]</string>
+    <string name="WarmUpExerciseIntensity">Intensity:</string>
+    <string name="WamUpExerciseSubintensity">Sub-Intensity:</string>
+    <string name="WarmUpExerciseHeartFrequency">Heart-Frequency: [BPM]</string>
 
     <!--ExerciseViewActivity-->
-    <string name="ExerciseViewActivityTitle">ExerciseViewActivity</string>
-    <string name="ScheduleInfo">Repetitions: %1$d \nPause: %2$d s\nSets: %3$d \nSpeed: %4$d</string>
+    <string name="ExerciseViewActivityTitle" translatable="false">ExerciseViewActivity</string>
 
-    <string name="WarmUpExerciseInfoExecutionTime">Execution Time: %1$d\n</string>
-    <string name="WarmUpExerciseInfoIntensity">Intensity: %1$s min\n</string>
-    <string name="WarmUpExerciseInfoSubIntensity">Device Intensity: %1$d\n</string>
-    <string name="WarmUpExerciseInfoBPM">Heart Frequency: %1$d BPM\n</string>
+    <string name="WarmUpExerciseInfoIntensity">Intensity: %1$s</string>
+    <string name="WarmUpExerciseInfoSubIntensity">"Sub-Intensity: %1$d"</string>
 
-    <string name="DeviceExerciseInfoSeatPosition">Seat: %1$d\n</string>
-    <string name="DeviceExerciseInfoLegPosition">Leg: %1$d\n</string>
-    <string name="DeviceExerciseInfoFootPosition">Foot: %1$d\n</string>
-    <string name="DeviceExerciseInfoAnglePosition">Angle: %1$d\n</string>
+    <string name="DeviceExerciseInfoSeatPosition">"Seat: %1$d"</string>
+    <string name="DeviceExerciseInfoFootPosition">"Foot: %1$d"</string>
+    <string name="DeviceExerciseInfoAnglePosition">"Angle: %1$d"</string>
     <string name="DeviceExerciseInfoWeight">Weight: %1$f kg</string>
-    <string name="DeviceExerciseInfoAdditionalWeight"> + %1$f\n</string>
-    <string name="DeviceExerciseInfoBackPosition">Back: %1$d\n</string>
-    <string name="DeviceExerciseInfoDeviceNumber">Device Number: %1$d\n</string>
+    <string name="DeviceExerciseInfoAdditionalWeight" translatable="false"> + %1$f</string>
+    <string name="DeviceExerciseInfoBackPosition">"Back: %1$d"</string>
+    <string name="DeviceExerciseInfoDeviceNumber">"Device Number: %1$d"</string>
 
 
     <string name="title_activity_edit_exercise">Edit Exercise</string>
+    <string name="ScheduleInfo">Repetitions: %1$d \nPause: %2$d s\nSets: %3$d \nSpeed: %4$d</string>
+    <string name="WarmUpExerciseInfoExecutionTime">"Execution Time: %1$d "</string>
+    <string name="WarmUpExerciseInfoBPM">"Heart Frequency: %1$d BPM "</string>
+    <string name="DeviceExerciseInfoLegPosition">"Leg: %1$d "</string>
 
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

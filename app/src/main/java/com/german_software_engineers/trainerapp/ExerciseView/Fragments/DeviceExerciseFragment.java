@@ -122,7 +122,7 @@ public class DeviceExerciseFragment extends ExerciseFragment {
         SeatCheckbox = (CheckBox)view.findViewById(R.id.seatCheckBox2);
         SeatEdit = (EditText)view.findViewById(R.id.SeatEdit2);
         DeviceCheckbox = (CheckBox)view.findViewById(R.id.deviceCheckBox2);
-        DeviceEdit = (EditText)view.findViewById(R.id.DevicetEdit2);
+        DeviceEdit = (EditText)view.findViewById(R.id.DeviceEdit2);
         LegCheckbox = (CheckBox)view.findViewById(R.id.LegCheckBox2);
         LegEdit = (EditText)view.findViewById(R.id.LegEdit2);
         FootCheckbox=(CheckBox)view.findViewById(R.id.FootCheckBox2);
