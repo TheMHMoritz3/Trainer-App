@@ -17,16 +17,13 @@ package com.german_software_engineers.trainerapp.ExerciseView.Controller;
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>
  */
 
-import android.graphics.Color;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toolbar;
 
 import com.german_software_engineers.trainerapp.Controller.ExerciseListModelController;
-import com.german_software_engineers.trainerapp.ExerciseView.ViewModel.ExerciseViewModel;
 import com.german_software_engineers.trainerapp.R;
 import com.german_software_engineers.trainerappmodel.Exercise.BodyWeightExercise;
 import com.german_software_engineers.trainerappmodel.Exercise.DeviceExercise;
