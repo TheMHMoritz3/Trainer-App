@@ -51,9 +51,11 @@ public class ExerciseViewActivity extends ExerciseListActivity {
 
         ActiveSchedule = ((ApplicationManager)getApplication()).getApplicationModel().activeSchedule();
 
-        toolbar.setBackgroundColor(ActiveSchedule.getScheduleColor());
+        if(ActiveSchedule.getScheduleColor()!=Integer.MAX_VALUE) {
+            toolbar.setBackgroundColor(ActiveSchedule.getScheduleColor());
+            findViewById(R.id.app_bar).setBackgroundColor(ActiveSchedule.getScheduleColor());
+        }
 
-        findViewById(R.id.app_bar).setBackgroundColor(ActiveSchedule.getScheduleColor());
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setTitle(ActiveSchedule.getName());
 
