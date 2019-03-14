@@ -96,7 +96,7 @@
 
 
     <string name="title_activity_edit_exercise">Edit Exercise</string>
-    <string name="ScheduleInfo">Repetitions: %1$d \nPause: %2$d s\nSets: %3$d \nSpeed: %4$d</string>
+    <string name="ScheduleInfo">Repetitions: %1$d \nPause: %2$d s\nSets: %3$d \nSpeed: %4$d\n Trainings Type: %5$s</string>
     <string name="WarmUpExerciseInfoExecutionTime">"Execution Time: %1$d "</string>
     <string name="WarmUpExerciseInfoBPM">"Heart Frequency: %1$d BPM "</string>
     <string name="DeviceExerciseInfoLegPosition">"Leg: %1$d "</string>

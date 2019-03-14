@@ -29,7 +29,7 @@ import java.util.TreeMap;
 
 public class Schedule {
     private String Name;
-    private TrainingsTypes TrainingsType;
+    private TrainingsTypes TrainingsType = TrainingsTypes.invalid;
     private int Repetitions = Integer.MAX_VALUE;
     private int PauseTime = Integer.MAX_VALUE;
     private int Sets = Integer.MAX_VALUE;

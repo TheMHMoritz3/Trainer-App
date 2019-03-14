@@ -40,7 +40,7 @@
     <string name="WarmUpExerciseTime">Zeit: [min]</string>
     <string name="WarmUpExerciseIntensity">Intensität</string>
     <string name="WamUpExerciseSubintensity">Sub-Intensität:</string>
-    <string name="ScheduleInfo">Wiederholungen: %1$d \nPause: %2$d s\nSätze: %3$d \nBewegungstempo: %4$d</string>
+    <string name="ScheduleInfo">Wiederholungen: %1$d \nPause: %2$d \nSätze: %3$d \nBewegungstempo: %4$d\nTrainingstyp: %5$s</string>
     <string name="WarmUpExerciseInfoExecutionTime">"Dauer: %1$d"</string>
     <string name="WarmUpExerciseInfoIntensity">Intensität: %1$s</string>
     <string name="WarmUpExerciseInfoSubIntensity">Sub-Intensität: %1$d</string>

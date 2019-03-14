@@ -19,6 +19,7 @@ package com.german_software_engineers.trainerappmodel.Model;
 
 import com.german_software_engineers.trainerappmodel.Enumerations.ExerciseType;
 import com.german_software_engineers.trainerappmodel.Enumerations.Intensities;
+import com.german_software_engineers.trainerappmodel.Enumerations.TrainingsTypes;
 import com.german_software_engineers.trainerappmodel.Exceptions.ScheduleAvailableException;
 import com.german_software_engineers.trainerappmodel.Exercise.BodyWeightExercise;
 import com.german_software_engineers.trainerappmodel.Exercise.DeviceExercise;
@@ -108,7 +109,8 @@ public class XMLParser {
                     Element element=(Element)node;
                     String name = element.getAttribute(SCHEDULE_NAME_TAG);
                     Schedule schedule = new Schedule(name);
-//                    schedule.setTrainingsType(TrainingsTypes.valueOf(element.getAttribute(SCHEDULE_TRAININGSTYPE_TAG)));
+                    if(!element.getAttribute(SCHEDULE_TRAININGSTYPE_TAG).isEmpty())
+                        schedule.setTrainingsType(TrainingsTypes.valueOf(element.getAttribute(SCHEDULE_TRAININGSTYPE_TAG)));
                     schedule.setPauseTime(Integer.valueOf(element.getAttribute(SCHEDULE_PAUSETIME_TAG)));
                     schedule.setRepetitions(Integer.valueOf(element.getAttribute(SCHEDULE_REPETITIONS_TAG)));
                     schedule.setSets(Integer.valueOf(element.getAttribute(SCHEDULE_SETS_TAG)));
@@ -231,11 +233,8 @@ public class XMLParser {
             for (Schedule sched : ApplicationModel.getSchedulesList()) {
                 Element scheduleElement = doc.createElement(SCHEDULE_ID);
 
-//                Attr scheduleName=doc.createAttribute(SCHEDULE_NAME_TAG);
-//                scheduleName.setValue(sched.getName());
-//                scheduleElement.setAttributeNode(scheduleName);
                 scheduleElement.setAttribute(SCHEDULE_NAME_TAG, sched.getName());
-//                scheduleElement.setAttribute(SCHEDULE_TRAININGSTYPE_TAG, sched.getTrainingsType().name());
+                scheduleElement.setAttribute(SCHEDULE_TRAININGSTYPE_TAG, sched.getTrainingsType().name());
                 scheduleElement.setAttribute(SCHEDULE_REPETITIONS_TAG, String.valueOf(sched.getRepetitions()));
                 scheduleElement.setAttribute(SCHEDULE_PAUSETIME_TAG, String.valueOf(sched.getPauseTime()));
                 scheduleElement.setAttribute(SCHEDULE_SETS_TAG, String.valueOf(sched.getSets()));
