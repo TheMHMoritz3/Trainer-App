@@ -24,10 +24,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Spinner;
 
 import com.german_software_engineers.trainerapp.Controller.ApplicationManager;
 import com.german_software_engineers.trainerapp.ExerciseView.Activity.ExerciseViewActivity;
 import com.german_software_engineers.trainerapp.R;
+import com.german_software_engineers.trainerappmodel.Enumerations.TrainingsTypes;
 import com.german_software_engineers.trainerappmodel.Schedule.Schedule;
 import com.german_software_engineers.trainerappmodel.Exceptions.ScheduleAvailableException;
 
@@ -59,7 +61,7 @@ public class GeneralTrainingScheduleEditor extends AppCompatActivity {
     private void decorateGuiWithActiveSchedule(){
         Schedule activeSchedule = ((ApplicationManager)getApplication()).getApplicationModel().activeSchedule();
         ((EditText) findViewById(R.id.nameTextEdit)).setText(activeSchedule.getName());
-        ((EditText) findViewById(R.id.nameTextEdit)).setEnabled(false);
+        findViewById(R.id.nameTextEdit).setEnabled(false);
 
         if(activeSchedule.getRepetitions()!=Integer.MAX_VALUE)
             ((EditText) findViewById(R.id.repEdit)).setText(String.valueOf(activeSchedule.getRepetitions()));
@@ -85,6 +87,8 @@ public class GeneralTrainingScheduleEditor extends AppCompatActivity {
             schedule = ((ApplicationManager)getApplication()).getApplicationModel().activeSchedule();
         else
             schedule = new Schedule(((EditText) findViewById(R.id.nameTextEdit)).getText().toString());
+
+        schedule.setTrainingsType(TrainingsTypes.values()[(int)((Spinner)findViewById(R.id.trainSpinner)).getSelectedItemId()]);
 
         Integer reps = 0;
         if (!((EditText) findViewById(R.id.repEdit)).getText().toString().isEmpty()) {
