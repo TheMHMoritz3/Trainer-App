@@ -37,16 +37,11 @@ public class GeneralTrainingScheduleEditor extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_general_training_schedule_editor);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                openNextActivity();
-            }
-        });
+        FloatingActionButton fab = findViewById(R.id.fab);
+        fab.setOnClickListener(view -> openNextActivity());
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         if(((ApplicationManager)getApplication()).getApplicationModel().activeSchedule()!=null){
             decorateGuiWithActiveSchedule();
