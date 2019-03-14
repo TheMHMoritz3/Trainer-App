@@ -43,6 +43,7 @@
     <string name="SetsTextView">Sets:</string>
     <string name="MovementSpeedTextView">Movement Speed [s]:</string>
     <string name="ScheduleNameError">Please type a name in.</string>
+    <string name="ScheduleColorLabel">Color:</string>
 
     <string-array name="ScheduleType">
         <item>strength endurance</item>

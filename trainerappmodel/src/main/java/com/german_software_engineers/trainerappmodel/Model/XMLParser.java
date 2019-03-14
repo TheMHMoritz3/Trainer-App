@@ -61,6 +61,7 @@ public class XMLParser {
     static final String SCHEDULE_SETS_TAG = "sets";
     static final String SCHEDULE_SPEED_TAG = "speed";
     static final String SCHEDULE_TRAININGSTYPE_TAG = "trainingstype";
+    static final String SCHEDULE_COLOR_TAG="color";
 
     static final String EXCERCISE_ID = "exercise";
     static final String EXCERCISE_NAME_TAG = "name";
@@ -115,6 +116,9 @@ public class XMLParser {
                     schedule.setRepetitions(Integer.valueOf(element.getAttribute(SCHEDULE_REPETITIONS_TAG)));
                     schedule.setSets(Integer.valueOf(element.getAttribute(SCHEDULE_SETS_TAG)));
                     schedule.setSpeed(Integer.valueOf(element.getAttribute(SCHEDULE_SPEED_TAG)));
+
+                    if(!element.getAttribute(SCHEDULE_COLOR_TAG).isEmpty())
+                        schedule.setScheduleColor(Integer.valueOf(element.getAttribute(SCHEDULE_COLOR_TAG)));
 
                     NodeList nodeList1 = element.getElementsByTagName(EXCERCISE_ID);
 
@@ -239,6 +243,9 @@ public class XMLParser {
                 scheduleElement.setAttribute(SCHEDULE_PAUSETIME_TAG, String.valueOf(sched.getPauseTime()));
                 scheduleElement.setAttribute(SCHEDULE_SETS_TAG, String.valueOf(sched.getSets()));
                 scheduleElement.setAttribute(SCHEDULE_SPEED_TAG, String.valueOf(sched.getSpeed()));
+
+                if(sched.getScheduleColor()!=Integer.MAX_VALUE)
+                    scheduleElement.setAttribute(SCHEDULE_COLOR_TAG, String.valueOf(sched.getScheduleColor()));
 
                 for (Exercise exc : sched.exercises()) {
                     Element exerElement = doc.createElement(EXCERCISE_ID);

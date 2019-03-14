@@ -27,13 +27,16 @@ import android.widget.EditText;
 import android.widget.Spinner;
 
 import com.german_software_engineers.trainerapp.Controller.ApplicationManager;
+import com.german_software_engineers.trainerapp.Controller.ColorSelectionController;
 import com.german_software_engineers.trainerapp.ExerciseView.Activity.ExerciseViewActivity;
 import com.german_software_engineers.trainerapp.R;
 import com.german_software_engineers.trainerappmodel.Enumerations.TrainingsTypes;
 import com.german_software_engineers.trainerappmodel.Schedule.Schedule;
 import com.german_software_engineers.trainerappmodel.Exceptions.ScheduleAvailableException;
+import com.thebluealliance.spectrum.SpectrumPalette;
 
 public class GeneralTrainingScheduleEditor extends AppCompatActivity {
+    ColorSelectionController ColorSelection = new ColorSelectionController();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +51,9 @@ public class GeneralTrainingScheduleEditor extends AppCompatActivity {
         if(((ApplicationManager)getApplication()).getApplicationModel().activeSchedule()!=null){
             decorateGuiWithActiveSchedule();
         }
+
+        SpectrumPalette spectrumPalette = findViewById(R.id.ScheduleColor);
+        spectrumPalette.setOnColorSelectedListener(ColorSelection);
     }
 
     private void openNextActivity(){
@@ -90,6 +96,10 @@ public class GeneralTrainingScheduleEditor extends AppCompatActivity {
 
         schedule.setTrainingsType(TrainingsTypes.values()[(int)((Spinner)findViewById(R.id.trainSpinner)).getSelectedItemId()]);
 
+        if(ColorSelection.getSelectedColor()!=Integer.MAX_VALUE){
+            schedule.setScheduleColor(ColorSelection.getSelectedColor());
+        }
+
         Integer reps = 0;
         if (!((EditText) findViewById(R.id.repEdit)).getText().toString().isEmpty()) {
             reps = Integer.valueOf(((EditText) findViewById(R.id.repEdit)).getText().toString());
@@ -126,4 +136,6 @@ public class GeneralTrainingScheduleEditor extends AppCompatActivity {
             return true;
         }
     }
+
+
 }

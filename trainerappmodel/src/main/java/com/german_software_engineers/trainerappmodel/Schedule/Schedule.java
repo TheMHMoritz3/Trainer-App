@@ -35,6 +35,7 @@ public class Schedule {
     private int Sets = Integer.MAX_VALUE;
     private int Speed = Integer.MAX_VALUE;
     private Map<Integer,Exercise> Exercises;
+    private int ScheduleColor = Integer.MAX_VALUE;
 
     public Schedule(String name){
         Name = name;
@@ -130,5 +131,13 @@ public class Schedule {
                 Exercises.put(exercise.getPosition(),exercise);
             }
         }
+    }
+
+    public int getScheduleColor() {
+        return ScheduleColor;
+    }
+
+    public void setScheduleColor(int scheduleColor) {
+        ScheduleColor = scheduleColor;
     }
 }

@@ -45,13 +45,18 @@ public class ExerciseViewActivity extends ExerciseListActivity {
 
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(view -> addExcersize());
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
 
         Controller = new ExerciseListModelController(this,((ApplicationManager)getApplication()).getApplicationModel());
 
         ActiveSchedule = ((ApplicationManager)getApplication()).getApplicationModel().activeSchedule();
 
+        toolbar.setBackgroundColor(ActiveSchedule.getScheduleColor());
+
+        findViewById(R.id.app_bar).setBackgroundColor(ActiveSchedule.getScheduleColor());
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setTitle(ActiveSchedule.getName());
+
     }
 
 
