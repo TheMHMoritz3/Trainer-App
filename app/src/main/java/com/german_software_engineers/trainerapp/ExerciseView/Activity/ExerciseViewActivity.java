@@ -19,6 +19,7 @@ package com.german_software_engineers.trainerapp.ExerciseView.Activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.Toolbar;
 import android.widget.TextView;
@@ -54,6 +55,9 @@ public class ExerciseViewActivity extends ExerciseListActivity {
         if(ActiveSchedule.getScheduleColor()!=Integer.MAX_VALUE) {
             toolbar.setBackgroundColor(ActiveSchedule.getScheduleColor());
             findViewById(R.id.app_bar).setBackgroundColor(ActiveSchedule.getScheduleColor());
+            findViewById(R.id.toolbar_layout).setBackgroundColor(ActiveSchedule.getScheduleColor());
+            ((CollapsingToolbarLayout)findViewById(R.id.toolbar_layout)).setStatusBarScrimColor(ActiveSchedule.getScheduleColor());
+            ((CollapsingToolbarLayout)findViewById(R.id.toolbar_layout)).setContentScrimColor(ActiveSchedule.getScheduleColor());
         }
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
