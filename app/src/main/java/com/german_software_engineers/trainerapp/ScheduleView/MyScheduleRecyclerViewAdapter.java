@@ -17,6 +17,7 @@ package com.german_software_engineers.trainerapp.ScheduleView;
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>
  */
 
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -85,6 +86,10 @@ public class MyScheduleRecyclerViewAdapter extends RecyclerView.Adapter<MySchedu
                         return false;
             }
         });
+        if(mValues.get(position).getScheduleColor()!=Integer.MAX_VALUE) {
+            CardView card = holder.mView.findViewById(R.id.ScheduleCard);
+            card.setCardBackgroundColor(mValues.get(position).getScheduleColor());
+        }
     }
 
     @Override
@@ -115,7 +120,6 @@ public class MyScheduleRecyclerViewAdapter extends RecyclerView.Adapter<MySchedu
             mView = view;
             mContentView = (TextView) view.findViewById(R.id.content);
             Toolbar = (view.findViewById(R.id.ScheduleFragmentToolbar));
-
             Toolbar.inflateMenu(R.menu.schedule_card_menu);
         }
 

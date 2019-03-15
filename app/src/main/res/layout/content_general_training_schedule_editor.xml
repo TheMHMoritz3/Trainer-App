@@ -84,6 +84,19 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:inputType="numberSigned" />
+            
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/ScheduleColorLabel"/>
+
+            <com.thebluealliance.spectrum.SpectrumPalette
+                android:id="@+id/ScheduleColor"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:spectrum_autoPadding="true"
+                app:spectrum_outlineWidth="2dp"
+                app:spectrum_colors="@array/ChoosableColors" />
 
         </LinearLayout>
 
