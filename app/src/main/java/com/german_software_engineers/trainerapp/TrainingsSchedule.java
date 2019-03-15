@@ -34,6 +34,7 @@ import com.german_software_engineers.trainerapp.Controller.ScheduleListModelCont
 import com.german_software_engineers.trainerapp.ExerciseView.Activity.ExerciseViewActivity;
 import com.german_software_engineers.trainerapp.ScheduleView.GeneralTrainingScheduleEditor;
 import com.german_software_engineers.trainerapp.ScheduleView.ScheduleListFragment;
+import com.german_software_engineers.trainerapp.SettingsView.SettingsActivity;
 import com.german_software_engineers.trainerappmodel.Schedule.Schedule;
 
 public class TrainingsSchedule extends NavigationActivity implements ScheduleListFragment.OnListFragmentInteractionListener{
@@ -96,6 +97,8 @@ public class TrainingsSchedule extends NavigationActivity implements ScheduleLis
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            Intent intent = new Intent(this, SettingsActivity.class);
+            startActivity(intent);
             return true;
         }
 
