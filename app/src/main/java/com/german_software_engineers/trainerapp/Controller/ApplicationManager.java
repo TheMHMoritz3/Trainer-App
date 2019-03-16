@@ -1,10 +1,9 @@
 package com.german_software_engineers.trainerapp.Controller;
 
-import android.app.Application;
-
-import com.german_software_engineers.trainerapp.R;
 import Model.Model;
 import Model.XMLParser;
+import android.app.Application;
+import com.german_software_engineers.trainerapp.R;
 
 import java.io.File;
 
