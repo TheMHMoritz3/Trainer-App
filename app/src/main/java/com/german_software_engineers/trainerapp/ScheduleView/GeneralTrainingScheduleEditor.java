@@ -22,7 +22,6 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
 import android.widget.EditText;
 import android.widget.Spinner;
 
@@ -30,9 +29,9 @@ import com.german_software_engineers.trainerapp.Controller.ApplicationManager;
 import com.german_software_engineers.trainerapp.Controller.ColorSelectionController;
 import com.german_software_engineers.trainerapp.ExerciseView.Activity.ExerciseViewActivity;
 import com.german_software_engineers.trainerapp.R;
-import com.german_software_engineers.trainerappmodel.Enumerations.TrainingsTypes;
-import com.german_software_engineers.trainerappmodel.Schedule.Schedule;
-import com.german_software_engineers.trainerappmodel.Exceptions.ScheduleAvailableException;
+import Enumerations.TrainingsTypes;
+import Schedule.Schedule;
+import Exceptions.ScheduleAvailableException;
 import com.thebluealliance.spectrum.SpectrumPalette;
 
 public class GeneralTrainingScheduleEditor extends AppCompatActivity {

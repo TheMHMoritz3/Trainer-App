@@ -1,4 +1,4 @@
-package com.german_software_engineers.trainerappmodel.Exercise;
+package Exercise;
 
 /**
  *     Copyright (C) 2019  Moritz Herzog
@@ -17,7 +17,7 @@ package com.german_software_engineers.trainerappmodel.Exercise;
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>
  */
 
-import com.german_software_engineers.trainerappmodel.Enumerations.ExerciseType;
+import Enumerations.ExerciseType;
 
 public class BodyWeightExercise extends Exercise {
     private ExerciseType Type;

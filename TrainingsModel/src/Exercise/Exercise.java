@@ -1,4 +1,4 @@
-package com.german_software_engineers.trainerappmodel.Enumerations;
+package Exercise;
 
 /**
  *     Copyright (C) 2019  Moritz Herzog
@@ -17,10 +17,42 @@ package com.german_software_engineers.trainerappmodel.Enumerations;
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>
  */
 
-public enum TrainingsTypes {
-    strength_endurance,
-    hypertrophy,
-    maximum_strength,
-    pyramid_training,
-    invalid
+import Enumerations.ExerciseType;
+
+public abstract class Exercise {
+    private String Name;
+    private int Position = Integer.MAX_VALUE;
+
+    private Exercise(){}
+
+    public Exercise(String name) {
+        Name = name;
+    }
+
+    public String getName() {
+        return Name;
+    }
+
+
+    @Override
+    public String toString()
+    {
+        return Name;
+    }
+
+    @Override
+    public boolean equals( Object obj )
+    {
+        return  (toString()==obj.toString());
+    }
+
+    public abstract ExerciseType type();
+
+    public int getPosition() {
+        return Position;
+    }
+
+    public void setPosition(int position) {
+        Position = position;
+    }
 }

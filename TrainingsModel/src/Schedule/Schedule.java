@@ -1,4 +1,4 @@
-package com.german_software_engineers.trainerappmodel.Schedule;
+package Schedule;
 
 /**
  *     Copyright (C) 2019  Moritz Herzog
@@ -17,13 +17,10 @@ package com.german_software_engineers.trainerappmodel.Schedule;
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>
  */
 
-import com.german_software_engineers.trainerappmodel.Enumerations.*;
-import com.german_software_engineers.trainerappmodel.Exercise.Exercise;
+import Enumerations.*;
+import Exercise.Exercise;
 
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 

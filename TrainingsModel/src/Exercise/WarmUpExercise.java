@@ -1,4 +1,4 @@
-package com.german_software_engineers.trainerappmodel.Exercise;
+package Exercise;
 
 /**
  *     Copyright (C) 2019  Moritz Herzog
@@ -17,8 +17,8 @@ package com.german_software_engineers.trainerappmodel.Exercise;
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>
  */
 
-import com.german_software_engineers.trainerappmodel.Enumerations.ExerciseType;
-import com.german_software_engineers.trainerappmodel.Enumerations.Intensities;
+import Enumerations.ExerciseType;
+import Enumerations.Intensities;
 
 public class WarmUpExercise extends Exercise {
     private ExerciseType Type;

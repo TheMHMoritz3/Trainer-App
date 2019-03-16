@@ -14,7 +14,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SettingsView.SettingsActivity"></activity>
+        <activity
+            android:name=".SettingsView.SettingsActivity"
+            android:label="@string/action_settings"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.german_software_engineers.trainerapp.TrainingsSchedule" />
+        </activity>
         <activity
             android:name=".TrainingsSchedule"
             android:label="@string/title_activity_trainings_schedule"

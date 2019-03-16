@@ -18,7 +18,6 @@ package com.german_software_engineers.trainerapp.ExerciseView.Fragments;
  */
 
 import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.Editable;
@@ -35,7 +34,7 @@ import android.widget.Spinner;
 import com.german_software_engineers.trainerapp.ExerciseView.ViewModel.ExerciseViewModel;
 import com.german_software_engineers.trainerapp.ExerciseView.ViewModel.WarmUpExerciseViewModel;
 import com.german_software_engineers.trainerapp.R;
-import com.german_software_engineers.trainerappmodel.Enumerations.Intensities;
+import Enumerations.Intensities;
 
 
 /**

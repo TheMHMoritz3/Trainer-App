@@ -1,4 +1,4 @@
-package com.german_software_engineers.trainerappmodel.Enumerations;
+package Exceptions;
 
 /**
  *     Copyright (C) 2019  Moritz Herzog
@@ -17,8 +17,5 @@ package com.german_software_engineers.trainerappmodel.Enumerations;
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>
  */
 
-public enum ExerciseType {
-    WarmUp,
-    Device,
-    BodyWeight
+public class ScheduleAvailableException extends Exception {
 }

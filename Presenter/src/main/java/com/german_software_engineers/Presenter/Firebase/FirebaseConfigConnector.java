@@ -18,4 +18,7 @@ package com.german_software_engineers.Presenter.Firebase;
  */
 
 public class FirebaseConfigConnector {
+    public FirebaseConfigConnector(){
+
+    }
 }

@@ -1,4 +1,4 @@
-package com.german_software_engineers.trainerappmodel.Exceptions;
+package Enumerations;
 
 /**
  *     Copyright (C) 2019  Moritz Herzog
@@ -17,5 +17,10 @@ package com.german_software_engineers.trainerappmodel.Exceptions;
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>
  */
 
-public class ScheduleAvailableException extends Exception {
+public enum TrainingsTypes {
+    strength_endurance,
+    hypertrophy,
+    maximum_strength,
+    pyramid_training,
+    invalid
 }

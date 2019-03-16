@@ -19,10 +19,10 @@ package com.german_software_engineers.trainerapp.ExerciseView.ViewModel;
 
 import android.arch.lifecycle.ViewModel;
 
-import com.german_software_engineers.trainerappmodel.Enumerations.ExerciseType;
-import com.german_software_engineers.trainerappmodel.Enumerations.Intensities;
-import com.german_software_engineers.trainerappmodel.Exercise.Exercise;
-import com.german_software_engineers.trainerappmodel.Exercise.WarmUpExercise;
+import Enumerations.ExerciseType;
+import Enumerations.Intensities;
+import Exercise.Exercise;
+import Exercise.WarmUpExercise;
 
 public class WarmUpExerciseViewModel extends ViewModel {
     private Exercise Exercise = null;

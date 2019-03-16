@@ -18,7 +18,6 @@ package com.german_software_engineers.trainerapp.ExerciseView.Fragments;
  */
 
 import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.Editable;
@@ -33,7 +32,6 @@ import android.widget.EditText;
 import com.german_software_engineers.trainerapp.ExerciseView.ViewModel.BodyWeightExerciseViewModel;
 import com.german_software_engineers.trainerapp.ExerciseView.ViewModel.ExerciseViewModel;
 import com.german_software_engineers.trainerapp.R;
-import com.german_software_engineers.trainerappmodel.Exercise.BodyWeightExercise;
 
 
 /**

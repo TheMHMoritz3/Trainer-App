@@ -37,8 +37,8 @@ import com.german_software_engineers.trainerapp.ExerciseView.Fragments.ExerciseF
 import com.german_software_engineers.trainerapp.ExerciseView.Fragments.WarmUpExerciseFragment;
 import com.german_software_engineers.trainerapp.ExerciseView.ViewModel.ExerciseViewModel;
 import com.german_software_engineers.trainerapp.R;
-import com.german_software_engineers.trainerappmodel.Exercise.Exercise;
-import com.german_software_engineers.trainerappmodel.Schedule.Schedule;
+import Exercise.Exercise;
+import Schedule.Schedule;
 
 public class EditExerciseActivity extends AppCompatActivity implements ExerciseFragment.OnFragmentInteractionListener {
 

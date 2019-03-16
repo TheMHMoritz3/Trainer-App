@@ -1,4 +1,4 @@
-package com.german_software_engineers.trainerappmodel.Model;
+package Model;
 
 /**
  *     Copyright (C) 2019  Moritz Herzog
@@ -17,13 +17,13 @@ package com.german_software_engineers.trainerappmodel.Model;
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>
  */
 
-import com.german_software_engineers.trainerappmodel.Schedule.Schedule;
+import Schedule.Schedule;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import com.german_software_engineers.trainerappmodel.Exceptions.ScheduleAvailableException;
+import Exceptions.ScheduleAvailableException;
 
 public class Model {
     private String ApplicationVersion;

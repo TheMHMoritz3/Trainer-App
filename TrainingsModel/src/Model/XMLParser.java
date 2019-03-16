@@ -1,4 +1,4 @@
-package com.german_software_engineers.trainerappmodel.Model;
+package Model;
 
 /**
  *     Copyright (C) 2019  Moritz Herzog
@@ -17,15 +17,15 @@ package com.german_software_engineers.trainerappmodel.Model;
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>
  */
 
-import com.german_software_engineers.trainerappmodel.Enumerations.ExerciseType;
-import com.german_software_engineers.trainerappmodel.Enumerations.Intensities;
-import com.german_software_engineers.trainerappmodel.Enumerations.TrainingsTypes;
-import com.german_software_engineers.trainerappmodel.Exceptions.ScheduleAvailableException;
-import com.german_software_engineers.trainerappmodel.Exercise.BodyWeightExercise;
-import com.german_software_engineers.trainerappmodel.Exercise.DeviceExercise;
-import com.german_software_engineers.trainerappmodel.Exercise.Exercise;
-import com.german_software_engineers.trainerappmodel.Exercise.WarmUpExercise;
-import com.german_software_engineers.trainerappmodel.Schedule.Schedule;
+import Enumerations.ExerciseType;
+import Enumerations.Intensities;
+import Enumerations.TrainingsTypes;
+import Exceptions.ScheduleAvailableException;
+import Exercise.BodyWeightExercise;
+import Exercise.DeviceExercise;
+import Exercise.Exercise;
+import Exercise.WarmUpExercise;
+import Schedule.Schedule;
 
 import org.w3c.dom.Attr;
 import org.w3c.dom.Document;

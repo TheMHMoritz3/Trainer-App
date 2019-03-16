@@ -28,8 +28,8 @@ import com.german_software_engineers.trainerapp.Controller.ApplicationManager;
 import com.german_software_engineers.trainerapp.Controller.ExerciseListModelController;
 import com.german_software_engineers.trainerapp.ExerciseView.Fragments.ExcersizeListFragment;
 import com.german_software_engineers.trainerapp.R;
-import com.german_software_engineers.trainerappmodel.Exercise.Exercise;
-import com.german_software_engineers.trainerappmodel.Schedule.Schedule;
+import Exercise.Exercise;
+import Schedule.Schedule;
 
 public class ExerciseViewActivity extends ExerciseListActivity {
     ExcersizeListFragment fragment;

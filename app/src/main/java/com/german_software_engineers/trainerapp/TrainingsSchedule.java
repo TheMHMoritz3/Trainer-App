@@ -20,7 +20,6 @@ package com.german_software_engineers.trainerapp;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -35,7 +34,7 @@ import com.german_software_engineers.trainerapp.ExerciseView.Activity.ExerciseVi
 import com.german_software_engineers.trainerapp.ScheduleView.GeneralTrainingScheduleEditor;
 import com.german_software_engineers.trainerapp.ScheduleView.ScheduleListFragment;
 import com.german_software_engineers.trainerapp.SettingsView.SettingsActivity;
-import com.german_software_engineers.trainerappmodel.Schedule.Schedule;
+import Schedule.Schedule;
 
 public class TrainingsSchedule extends NavigationActivity implements ScheduleListFragment.OnListFragmentInteractionListener{
 

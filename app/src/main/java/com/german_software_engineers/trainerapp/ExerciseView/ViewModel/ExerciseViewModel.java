@@ -21,12 +21,12 @@ import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.ViewModel;
 
-import com.german_software_engineers.trainerappmodel.Enumerations.ExerciseType;
-import com.german_software_engineers.trainerappmodel.Exercise.BodyWeightExercise;
-import com.german_software_engineers.trainerappmodel.Exercise.DeviceExercise;
-import com.german_software_engineers.trainerappmodel.Exercise.Exercise;
-import com.german_software_engineers.trainerappmodel.Exercise.WarmUpExercise;
-import com.german_software_engineers.trainerappmodel.Schedule.Schedule;
+import Enumerations.ExerciseType;
+import Exercise.BodyWeightExercise;
+import Exercise.DeviceExercise;
+import Exercise.Exercise;
+import Exercise.WarmUpExercise;
+import Schedule.Schedule;
 
 public class ExerciseViewModel extends ViewModel {
     private Exercise ActiveExcercise;
