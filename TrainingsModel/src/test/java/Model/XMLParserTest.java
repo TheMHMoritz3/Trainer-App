@@ -25,9 +25,11 @@ public class XMLParserTest {
 
     @Test
     public void parseFile() {
+        fail();
     }
 
     @Test
     public void writeFile() {
+        fail();
     }
 }
