@@ -84,6 +84,9 @@ public class XMLParser {
     public void setCurrentApplicationVersion(String version) {
         CurrentApplicationVersion = version;
     }
+    String getCurrentApplicationVersion(){
+        return CurrentApplicationVersion;
+    }
 
     public boolean parseFile(File readableFile) {
         try {
