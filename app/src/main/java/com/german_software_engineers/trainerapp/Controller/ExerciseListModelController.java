@@ -20,7 +20,7 @@ package com.german_software_engineers.trainerapp.Controller;
 import android.support.annotation.NonNull;
 
 import com.german_software_engineers.trainerapp.ExerciseView.Activity.ExerciseViewActivity;
-import com.german_software_engineers.trainerappmodel.Model.Model;
+import Model.Model;
 
 public class ExerciseListModelController {
     private ExerciseViewActivity ExerciseView;

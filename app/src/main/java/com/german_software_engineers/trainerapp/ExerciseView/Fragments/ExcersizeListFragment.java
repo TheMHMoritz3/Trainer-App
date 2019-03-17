@@ -31,8 +31,8 @@ import com.german_software_engineers.trainerapp.Controller.ApplicationManager;
 import com.german_software_engineers.trainerapp.Controller.ExerciseListModelController;
 import com.german_software_engineers.trainerapp.ExerciseView.Controller.MyExcersizeRecyclerViewAdapter;
 import com.german_software_engineers.trainerapp.R;
-import com.german_software_engineers.trainerappmodel.Exercise.Exercise;
-import com.german_software_engineers.trainerappmodel.Exceptions.ScheduleAvailableException;
+import Exercise.Exercise;
+import Exceptions.ScheduleAvailableException;
 
 /**
  * A fragment representing a list of Items.

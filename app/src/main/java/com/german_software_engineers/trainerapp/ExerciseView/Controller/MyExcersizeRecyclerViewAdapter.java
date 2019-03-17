@@ -23,10 +23,9 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.german_software_engineers.trainerapp.Controller.ExerciseListModelController;
-import com.german_software_engineers.trainerapp.ExerciseView.Controller.ExerciseViewHolder;
 import com.german_software_engineers.trainerapp.ExerciseView.Fragments.ExcersizeListFragment.OnListFragmentInteractionListener;
 import com.german_software_engineers.trainerapp.R;
-import com.german_software_engineers.trainerappmodel.Exercise.Exercise;
+import Exercise.Exercise;
 
 import java.util.ArrayList;
 import java.util.Collection;

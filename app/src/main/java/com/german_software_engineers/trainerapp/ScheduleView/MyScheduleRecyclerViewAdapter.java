@@ -20,23 +20,21 @@ package com.german_software_engineers.trainerapp.ScheduleView;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toolbar;
 
 import com.german_software_engineers.trainerapp.Controller.ScheduleListModelController;
 import com.german_software_engineers.trainerapp.R;
-import com.german_software_engineers.trainerappmodel.Schedule.Schedule;
+import Schedule.Schedule;
 import com.german_software_engineers.trainerapp.ScheduleView.ScheduleListFragment.OnListFragmentInteractionListener;
 
 
 import java.util.List;
 
 /**
- * {@link RecyclerView.Adapter} that can display a {@link com.german_software_engineers.trainerappmodel.Exercise.Exercise} and makes a call to the
+ * {@link RecyclerView.Adapter} that can display a {@link Exercise.Exercise} and makes a call to the
  * specified {@link OnListFragmentInteractionListener}.
  */
 public class MyScheduleRecyclerViewAdapter extends RecyclerView.Adapter<MyScheduleRecyclerViewAdapter.ViewHolder> {

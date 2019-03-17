@@ -30,7 +30,7 @@ import android.view.ViewGroup;
 import com.german_software_engineers.trainerapp.Controller.ApplicationManager;
 import com.german_software_engineers.trainerapp.Controller.ScheduleListModelController;
 import com.german_software_engineers.trainerapp.R;
-import com.german_software_engineers.trainerappmodel.Schedule.Schedule;
+import Schedule.Schedule;
 
 /**
  * A fragment representing a list of Items.

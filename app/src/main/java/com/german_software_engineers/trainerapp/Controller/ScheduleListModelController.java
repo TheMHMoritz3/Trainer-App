@@ -18,8 +18,8 @@ package com.german_software_engineers.trainerapp.Controller;
  */
 
 import com.german_software_engineers.trainerapp.TrainingsSchedule;
-import com.german_software_engineers.trainerappmodel.Model.Model;
-import com.german_software_engineers.trainerappmodel.Schedule.Schedule;
+import Model.Model;
+import Schedule.Schedule;
 
 public class ScheduleListModelController {
     private TrainingsSchedule TrainignsScheduleActivity;

@@ -1,0 +1,9 @@
+apply plugin: 'java-library'
+
+dependencies {
+    implementation 'com.google.firebase:firebase-config:16.3.0'
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+}
+
+sourceCompatibility = "8"
+targetCompatibility = "8"

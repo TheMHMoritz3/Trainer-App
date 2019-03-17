@@ -20,9 +20,9 @@ package com.german_software_engineers.trainerapp.ExerciseView.ViewModel;
 import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.ViewModel;
 
-import com.german_software_engineers.trainerappmodel.Enumerations.ExerciseType;
-import com.german_software_engineers.trainerappmodel.Exercise.BodyWeightExercise;
-import com.german_software_engineers.trainerappmodel.Exercise.Exercise;
+import Enumerations.ExerciseType;
+import Exercise.BodyWeightExercise;
+import Exercise.Exercise;
 
 public class BodyWeightExerciseViewModel extends ViewModel {
     private Exercise ActiveExercise = null;

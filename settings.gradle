@@ -1,1 +1,1 @@
-include ':app', ':trainerappmodel', ':model'
+include ':app','TrainingsModel', ':model', ':Presenter'
