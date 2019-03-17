@@ -85,6 +85,10 @@ public class XMLParser {
         CurrentApplicationVersion = version;
     }
 
+    String getCurrentApplicationVersion(){
+        return CurrentApplicationVersion;
+    }
+
     public boolean parseFile(File readableFile) {
         try {
             DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
