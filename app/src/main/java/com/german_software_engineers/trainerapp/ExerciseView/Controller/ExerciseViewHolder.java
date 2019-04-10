@@ -31,7 +31,6 @@ import Exercise.Exercise;
 import Exercise.WarmUpExercise;
 
 /**
- * {@Link RecyclerView.ViewHolder} to Display the {@Link Exercise}
  * Decorates it self to Display the Exercises in the RecyclerView
  */
 public class ExerciseViewHolder extends RecyclerView.ViewHolder {
@@ -157,7 +156,7 @@ public class ExerciseViewHolder extends RecyclerView.ViewHolder {
 
         if(exc.isExecutionTimeActivated()) {
             builder.append(ExerciseView.getResources().getString(
-                    R.string.WarmUpExerciseInfoIntensity, exc.getIntenity().name()));
+                    R.string.WarmUpExerciseInfoIntensity, ExerciseView.getResources().getStringArray(R.array.Intesities)[exc.getIntenity().ordinal()]));
             builder.append("\n");
         }
 
