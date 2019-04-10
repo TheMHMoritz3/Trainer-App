@@ -54,4 +54,7 @@
     <string name="DeviceExerciseInfoDeviceNumber">Gerätenummer: %1$d</string>
     <string name="title_activity_edit_exercise">Bearbeite Übung</string>
     <string name="WarmUpExerciseHeartFrequency">Herzfrequenz: [BPM]</string>
+    <string name="ScheduleColorLabel">"Farbe: "</string>
+    <string name="title_activity_settings">Einstellungen</string>
+    <string name="pref_header_general">Allgemein</string>
 </resources>
