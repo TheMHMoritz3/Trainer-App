@@ -231,8 +231,6 @@ public class ExerciseViewHolder extends RecyclerView.ViewHolder {
             }
         });
 
-        toolbar.setOnClickListener(clicklistener->{
-            Controller.editExercise(Exercise.getName());
-        });
+        toolbar.setOnClickListener(clicklistener -> Controller.editExercise(Exercise.getName()));
     }
 }
