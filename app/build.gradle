@@ -6,8 +6,8 @@ android {
         applicationId "com.german_software_engineers.trainerapp"
         minSdkVersion 21
         targetSdkVersion 28
-        versionCode 1903089
-        versionName "1903 Build 99"
+        versionCode 1904112
+        versionName "1904 Build 112"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     compileOptions() {
@@ -30,15 +30,15 @@ android {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation project(':Presenter')
-    implementation project(':TrainingsModel')
+    implementation project(":Presenter")
+    implementation project(":TrainingsModel")
     implementation 'com.android.support.constraint:constraint-layout:1.1.3'
     implementation 'com.android.support:appcompat-v7:28.0.0'
     implementation 'com.android.support:design:28.0.0'
     implementation 'com.android.support:support-v4:28.0.0'
     implementation 'com.android.support:cardview-v7:28.0.0'
     implementation 'com.android.support:recyclerview-v7:28.0.0'
-    implementation 'com.google.android.gms:play-services-oss-licenses:16.0.0'
+    implementation 'com.google.android.gms:play-services-oss-licenses:16.0.2'
     implementation 'com.thebluealliance:spectrum:0.7.1'
     implementation 'android.arch.lifecycle:extensions:1.1.1'
     testImplementation 'junit:junit:4.12'
