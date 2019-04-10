@@ -74,7 +74,7 @@ public class ExerciseViewActivity extends ExerciseListActivity {
         fragment = ExcersizeListFragment.newInstance(1, ActiveSchedule.getName(), Controller);
         getSupportFragmentManager().beginTransaction().replace(R.id.execView, fragment).commit();
 
-        String scheduleInfo = String.format(getResources().getString(R.string.ScheduleInfo), ActiveSchedule.getRepetitions(), ActiveSchedule.getPauseTime(), ActiveSchedule.getSets(), ActiveSchedule.getSpeed(), ActiveSchedule.getTrainingsType().toString());
+        String scheduleInfo = String.format(getResources().getString(R.string.ScheduleInfo), ActiveSchedule.getRepetitions(), ActiveSchedule.getPauseTime(), ActiveSchedule.getSets(), ActiveSchedule.getSpeed(), getResources().getStringArray(R.array.ScheduleType)[ActiveSchedule.getTrainingsType().ordinal()]);
         ScheduleInfo.setText(scheduleInfo);
     }
 

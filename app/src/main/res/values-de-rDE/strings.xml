@@ -54,7 +54,24 @@
     <string name="DeviceExerciseInfoDeviceNumber">Gerätenummer: %1$d</string>
     <string name="title_activity_edit_exercise">Bearbeite Übung</string>
     <string name="WarmUpExerciseHeartFrequency">Herzfrequenz: [BPM]</string>
-    <string name="ScheduleColorLabel">"Farbe: "</string>
-    <string name="title_activity_settings">Einstellungen</string>
-    <string name="pref_header_general">Allgemein</string>
+    <string name="ScheduleColorLabel">Farbe:</string>
+
+    <string-array name="ScheduleType">
+        <item>Kraftausdauer</item>
+        <item>Hypertrophie</item>
+        <item>Maximalkraft</item>
+        <item>Pyramiedentraining</item>
+    </string-array>
+
+    <string-array name="Intesities">
+        <item>Niedrieg</item>
+        <item>Mittel</item>
+        <item>Hart</item>
+    </string-array>
+
+    <string-array name="ExerciseTypes">
+        <item>Aufwärmübung</item>
+        <item>Geräteübung</item>
+        <item>Körpergewichtsübung</item>
+    </string-array>
 </resources>

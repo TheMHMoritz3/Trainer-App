@@ -1,5 +1,6 @@
 package Exercise;
 
+import Enumerations.ExerciseType;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -19,10 +20,13 @@ public class BodyWeightExerciseTest {
 
     @Test
     public void type() {
+        BodyWeightExercise bodyWeightExercise = new BodyWeightExercise("Test");
+        assertEquals("BodyWeightExercise Type", bodyWeightExercise.type(), ExerciseType.BodyWeight);
     }
 
     @Test
     public void getAdditionalInformation() {
+
     }
 
     @Test
