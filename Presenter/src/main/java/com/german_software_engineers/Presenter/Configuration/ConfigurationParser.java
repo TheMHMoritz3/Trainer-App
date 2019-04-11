@@ -16,5 +16,20 @@ package com.german_software_engineers.Presenter.Configuration;
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>
  */
-public class ConfigurationXMLReader {
+public class ConfigurationParser {
+    String PathToconfiguration = "";
+    Configuration Configuration = null;
+
+    public ConfigurationParser(Configuration configuration, String pathToconfiguration){
+
+    }
+
+    public void parseXML(){
+
+    }
+
+    public void writeXML(){
+
+    }
+
 }
