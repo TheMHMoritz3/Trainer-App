@@ -3,6 +3,7 @@ package com.german_software_engineers.trainerapp.Controller;
 import Model.Model;
 import Model.XMLParser;
 import android.app.Application;
+import android.content.Intent;
 import com.german_software_engineers.Presenter.Configuration.Configuration;
 import com.german_software_engineers.Presenter.Configuration.ConfigurationParser;
 import com.german_software_engineers.trainerapp.R;
@@ -32,6 +33,7 @@ public class ApplicationManager extends Application {
 
     @Override
     public void onCreate() {
+        startService(new Intent(getBaseContext(), CloseApplicationService.class));
         super.onCreate();
         createModelAndLoadFiles();
     }
@@ -56,16 +58,20 @@ public class ApplicationManager extends Application {
         XMLParser xmlParser = new XMLParser(ApplicationModel);
         File DataFile = new File(getFilesDir() + "/" + getString(R.string.DataFile));
         xmlParser.writeFile(DataFile);
-    }
-
-    @Override
-    public void onTerminate(){
-        saveFile();
 
         ConfigurationParser conofigParser = new ConfigurationParser(Configuration, getFilesDir() + "/");
         conofigParser.writeXML();
+    }
 
+
+    @Override
+    public void onTerminate(){
+        onApplicationClose();
         super.onTerminate();
+    }
+
+    public void onApplicationClose() {
+        saveFile();
     }
 
     public Configuration configuration() {
