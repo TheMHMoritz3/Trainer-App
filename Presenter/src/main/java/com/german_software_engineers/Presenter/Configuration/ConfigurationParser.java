@@ -1,5 +1,7 @@
 package com.german_software_engineers.Presenter.Configuration;
 
+import java.nio.file.Path;
+
 /**
  * Copyright (C) 2019  Moritz Herzog
  * <p>
@@ -17,11 +19,13 @@ package com.german_software_engineers.Presenter.Configuration;
  * along with this program.  If not, see <https://www.gnu.org/licenses/>
  */
 public class ConfigurationParser {
-    String PathToconfiguration = "";
+    String PathToConfiguration = "";
     Configuration Configuration = null;
+    String ConfigurationFile = "config.xml";
 
     public ConfigurationParser(Configuration configuration, String pathToconfiguration){
-
+        PathToConfiguration = pathToconfiguration;
+        Configuration = configuration;
     }
 
     public void parseXML(){
