@@ -101,4 +101,8 @@
     <string name="WarmUpExerciseInfoExecutionTime">"Execution Time: %1$d "</string>
     <string name="WarmUpExerciseInfoBPM">"Heart Frequency: %1$d BPM "</string>
     <string name="DeviceExerciseInfoLegPosition">"Leg: %1$d "</string>
+
+    <string name="BodyColorDescription">Body Exercise</string>
+    <string name="ArmColorDescription">Arms Exercise</string>
+    <string name="LegColorDescription">Legs Exercise</string>
 </resources>
