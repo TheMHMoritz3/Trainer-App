@@ -59,8 +59,8 @@ public class ApplicationManager extends Application {
         File DataFile = new File(getFilesDir() + "/" + getString(R.string.DataFile));
         xmlParser.writeFile(DataFile);
 
-        ConfigurationParser conofigParser = new ConfigurationParser(Configuration, getFilesDir() + "/");
-        conofigParser.writeXML();
+        ConfigurationParser configParser = new ConfigurationParser(Configuration, getFilesDir() + "/");
+        configParser.writeXML();
     }
 
 
