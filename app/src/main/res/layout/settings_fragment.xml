@@ -23,7 +23,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/BodyColorDescription"
             app:spectrum_autoPadding="true"
-            app:spectrum_colors="@array/ChoosableColors"/>
+        app:spectrum_colors="@array/RegionColors" />
 
     <TextView
             android:id="@+id/ArmColorDescription"
@@ -41,7 +41,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/ArmColorDescription"
             app:spectrum_autoPadding="true"
-            app:spectrum_colors="@array/ChoosableColors"/>
+        app:spectrum_colors="@array/RegionColors" />
 
     <TextView
             android:id="@+id/LegColorDescription"
@@ -59,7 +59,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/LegColorDescription"
             app:spectrum_autoPadding="true"
-            app:spectrum_colors="@array/ChoosableColors"/>
+        app:spectrum_colors="@array/RegionColors" />
 
 
 </android.support.constraint.ConstraintLayout>

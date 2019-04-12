@@ -25,9 +25,11 @@ import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.Spinner;
 
 import com.german_software_engineers.trainerapp.ExerciseView.ViewModel.DeviceExerciseViewModel;
 import com.german_software_engineers.trainerapp.ExerciseView.ViewModel.ExerciseViewModel;
@@ -64,6 +66,7 @@ public class DeviceExerciseFragment extends ExerciseFragment {
     private EditText WeightEdit;
     private CheckBox AdditionalWeightCheckbox;
     private EditText AdditionalWeightEdit;
+    private Spinner StimulatedBodyRegion;
 
 
 
@@ -135,6 +138,7 @@ public class DeviceExerciseFragment extends ExerciseFragment {
         WeightEdit = (EditText)view.findViewById(R.id.WeightEdit2);
         AdditionalWeightCheckbox=(CheckBox)view.findViewById(R.id.AdditionalWeightCheckBox2);
         AdditionalWeightEdit = (EditText)view.findViewById(R.id.AdditionalWeightEdit2);
+        StimulatedBodyRegion = (Spinner) view.findViewById(R.id.StimulatedBodyRegionSpinner);
 
 
         makeConnections();
@@ -350,6 +354,17 @@ public class DeviceExerciseFragment extends ExerciseFragment {
                     DeviceExercViewModel.setAdditionalWeight(0.0);
             }
         });
+        StimulatedBodyRegion.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                DeviceExercViewModel.setStimulatedBodyRegion((int) id);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
     }
 
     public void setExerciseViewModel(ExerciseViewModel model){
@@ -383,5 +398,6 @@ public class DeviceExerciseFragment extends ExerciseFragment {
         AdditionalWeightCheckbox.setChecked(DeviceExercViewModel.isAdditionalWeightActivated());
         AdditionalWeightEdit.setActivated(DeviceExercViewModel.isAdditionalWeightActivated());
         AdditionalWeightEdit.setText(String.valueOf(DeviceExercViewModel.getAdditionalWeight()));
+        //TODO Noch Stimulated Body Region Einfügen
     }
 }

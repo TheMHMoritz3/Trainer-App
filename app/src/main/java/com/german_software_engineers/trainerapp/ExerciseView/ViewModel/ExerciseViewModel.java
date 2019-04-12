@@ -87,11 +87,14 @@ public class ExerciseViewModel extends ViewModel {
                     ((DeviceExercise) exercise).setAdditionalWeight(DeviceExerciseViewModel.getAdditionalWeight());
                     ((DeviceExercise) exercise).setDeviceNumberActivated(DeviceExerciseViewModel.isDeviceActivated());
                     ((DeviceExercise) exercise).setDeviceNumber(DeviceExerciseViewModel.getDevicePosition());
+                    exercise.setStimulatedBodyRegion(DeviceExerciseViewModel.getStimulatedBodyRegion());
+
                 break;
             case BodyWeight:
                 exercise = new BodyWeightExercise(ExerciseName.getValue());
                 ((BodyWeightExercise) exercise).setAdditionalInformationActivated(BodyWeightExerciseViewModel.isAdditionalInformationActivated());
                 ((BodyWeightExercise) exercise).setAdditionalInformation(BodyWeightExerciseViewModel.getAdditionalInformation());
+                exercise.setStimulatedBodyRegion(BodyWeightExerciseViewModel.getStimulatedBodyRegion());
                 break;
             case WarmUp:
                 exercise = new WarmUpExercise(ExerciseName.getValue());

@@ -9,6 +9,13 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
+
+        <Spinner
+            android:id="@+id/StimulatedBodyRegionSpinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:entries="@array/BodyRegion" />
+
         <!--Device Exercise-->
         <LinearLayout
             android:layout_width="match_parent"

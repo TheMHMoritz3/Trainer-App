@@ -5,6 +5,10 @@
     <color name="colorAccent">#FF4081</color>
     <color name="WarmUpColor">#7b88d1</color>
 
+    <color name="DefaultArmsColor">#d32f2f</color>
+    <color name="DefaultBodyColor">#512da8</color>
+    <color name="DefualtLegsColor">#388e3c</color>
+
     <array name="ChoosableColors">
         <item>#d32f2f</item>
         <item>#c2185b</item>
@@ -22,5 +26,13 @@
         <item>#ffa000</item>
         <item>#f57c00</item>
         <item>#e64a19</item>
+    </array>
+
+    <array name="RegionColors">
+        <item>#d32f2f</item>
+        <item>#512da8</item>
+        <item>#388e3c</item>
+        <item>#fbc02d</item>
+        <item>#ffffff</item>
     </array>
 </resources>

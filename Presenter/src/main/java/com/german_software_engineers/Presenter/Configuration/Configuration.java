@@ -24,9 +24,9 @@ public class Configuration {
     private int LegsExerciseColor;
 
     public Configuration(){
-        BodyExerciseColor = Integer.MAX_VALUE;
-        ArmsExerciseColor = Integer.MAX_VALUE;
-        LegsExerciseColor = Integer.MAX_VALUE;
+        BodyExerciseColor = Integer.decode("#d32f2f");
+        ArmsExerciseColor = Integer.decode("#512da8");
+        LegsExerciseColor = Integer.decode("#388e3c");
     }
 
     public int getBodyExerciseColor() {
@@ -34,8 +34,7 @@ public class Configuration {
     }
 
     public void setBodyExerciseColor(int bodyExerciseColor) {
-        if((bodyExerciseColor>0)&&(bodyExerciseColor<Integer.MAX_VALUE))
-            BodyExerciseColor = bodyExerciseColor;
+        BodyExerciseColor = bodyExerciseColor;
     }
 
     public int getArmsExerciseColor() {
@@ -43,8 +42,7 @@ public class Configuration {
     }
 
     public void setArmsExerciseColor(int armsExerciseColor) {
-        if((armsExerciseColor>0)&&(armsExerciseColor<Integer.MAX_VALUE))
-            ArmsExerciseColor = armsExerciseColor;
+        ArmsExerciseColor = armsExerciseColor;
     }
 
     public int getLegsExerciseColor() {
@@ -52,7 +50,6 @@ public class Configuration {
     }
 
     public void setLegsExerciseColor(int legsExerciseColor) {
-        if((legsExerciseColor>0)&&(legsExerciseColor<Integer.MAX_VALUE))
-            LegsExerciseColor = legsExerciseColor;
+        LegsExerciseColor = legsExerciseColor;
     }
 }

@@ -29,7 +29,7 @@ import java.io.File;
 
 public class ApplicationManager extends Application {
     private Model ApplicationModel = null;
-    private Configuration Configuration = null;
+    private static Configuration Configuration = new Configuration();
 
     @Override
     public void onCreate() {
@@ -40,7 +40,11 @@ public class ApplicationManager extends Application {
 
     private void createModelAndLoadFiles() {
         ApplicationModel = new Model();
-        Configuration = new Configuration();
+
+
+        Configuration.setArmsExerciseColor(getResources().getColor(R.color.DefaultArmsColor));
+        Configuration.setLegsExerciseColor(getResources().getColor(R.color.DefaultBodyColor));
+        Configuration.setBodyExerciseColor(getResources().getColor(R.color.DefualtLegsColor));
 
         XMLParser xmlParser = new XMLParser(ApplicationModel);
         File DataFile = new File(getFilesDir() + "/" + getString(R.string.DataFile));
@@ -74,7 +78,7 @@ public class ApplicationManager extends Application {
         saveFile();
     }
 
-    public Configuration configuration() {
+    public static Configuration configuration() {
         return Configuration;
     }
 }
