@@ -43,8 +43,8 @@ public class ApplicationManager extends Application {
 
 
         Configuration.setArmsExerciseColor(getResources().getColor(R.color.DefaultArmsColor));
-        Configuration.setLegsExerciseColor(getResources().getColor(R.color.DefaultBodyColor));
-        Configuration.setBodyExerciseColor(getResources().getColor(R.color.DefualtLegsColor));
+        Configuration.setLegsExerciseColor(getResources().getColor(R.color.DefualtLegsColor));
+        Configuration.setBodyExerciseColor(getResources().getColor(R.color.DefaultBodyColor));
 
         XMLParser xmlParser = new XMLParser(ApplicationModel);
         File DataFile = new File(getFilesDir() + "/" + getString(R.string.DataFile));

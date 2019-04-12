@@ -69,10 +69,11 @@ public class ExerciseViewHolder extends RecyclerView.ViewHolder {
                 card.setCardBackgroundColor(ApplicationManager.configuration().getBodyExerciseColor());
                 break;
             case ARMS:
-                card.setCardBackgroundColor(ApplicationManager.configuration().getBodyExerciseColor());
+                card.setCardBackgroundColor(ApplicationManager.configuration().getArmsExerciseColor());
                 break;
             case LEGS:
                 card.setCardBackgroundColor(ApplicationManager.configuration().getLegsExerciseColor());
+                break;
             case INVALID:
             default:
                 break;
