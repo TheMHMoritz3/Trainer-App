@@ -25,13 +25,18 @@ import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.Spinner;
 
 import com.german_software_engineers.trainerapp.ExerciseView.ViewModel.BodyWeightExerciseViewModel;
 import com.german_software_engineers.trainerapp.ExerciseView.ViewModel.ExerciseViewModel;
 import com.german_software_engineers.trainerapp.R;
+
+import Enumerations.BodyRegion;
+import Exercise.BodyWeightExercise;
 
 
 /**
@@ -43,11 +48,13 @@ import com.german_software_engineers.trainerapp.R;
  * create an instance of this fragment.
  */
 public class BodyWeightExerciseFragment extends ExerciseFragment {
-    ExerciseViewModel ExercViewModel = null;
-    BodyWeightExerciseViewModel BodyWeightExercViewModel = null;
+    private ExerciseViewModel ExercViewModel = null;
+    private BodyWeightExerciseViewModel BodyWeightExercViewModel = null;
 
-    CheckBox AdditionalInformationCheckbox;
-    EditText AdditionalInformationEdit;
+    private CheckBox AdditionalInformationCheckbox;
+    private EditText AdditionalInformationEdit;
+    private Spinner StimulatedBodyRegion;
+
 
     private OnFragmentInteractionListener mListener;
 
@@ -85,6 +92,8 @@ public class BodyWeightExerciseFragment extends ExerciseFragment {
     @Override
     public void onViewCreated(View view,Bundle savedInstanceState){
         super.onViewCreated(view,savedInstanceState);
+
+        StimulatedBodyRegion = (Spinner) view.findViewById(R.id.StimulatedBodyRegionSpinner);
 
         AdditionalInformationCheckbox = (CheckBox)view.findViewById(R.id.AdditionalInformationCheckbox);
         AdditionalInformationEdit = (EditText)view.findViewById(R.id.AdditionalInformationEditText);
@@ -131,12 +140,25 @@ public class BodyWeightExerciseFragment extends ExerciseFragment {
                     BodyWeightExercViewModel.setAdditionalInformation("");
             }
         });
+
+        StimulatedBodyRegion.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                BodyWeightExercViewModel.setStimulatedBodyRegion((int) id);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
     }
 
     private void setData(){
         AdditionalInformationCheckbox.setChecked(BodyWeightExercViewModel.isAdditionalInformationActivated());
         AdditionalInformationEdit.setEnabled(BodyWeightExercViewModel.isAdditionalInformationActivated());
         AdditionalInformationEdit.setText(BodyWeightExercViewModel.getAdditionalInformation());
+        //TODO Noch Stimulated Bodyregion Einfügen
     }
 
     public void setExerciseViewModel(ExerciseViewModel model){

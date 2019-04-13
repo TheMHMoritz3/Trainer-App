@@ -17,6 +17,7 @@ package Model;
  * along with this program.  If not, see <https://www.gnu.org/licenses/>
  */
 
+import Enumerations.BodyRegion;
 import Enumerations.ExerciseType;
 import Enumerations.Intensities;
 import Enumerations.TrainingsTypes;
@@ -26,6 +27,8 @@ import Exercise.DeviceExercise;
 import Exercise.Exercise;
 import Exercise.WarmUpExercise;
 import Schedule.Schedule;
+
+import org.omg.CORBA.DynAnyPackage.Invalid;
 import org.w3c.dom.*;
 import org.xml.sax.SAXException;
 
@@ -38,13 +41,13 @@ import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
+
 import java.io.File;
 import java.io.IOException;
 
 public class XMLParser {
     // Application
     static final String ROOT_ID = "trainingsschedule";
-    static final String APPVERSION_ID = "appversion";
     // Schedules
     static final String SCHEDULE_ID = "schedule";
     static final String SCHEDULE_NAME_TAG = "name";
@@ -54,10 +57,12 @@ public class XMLParser {
     static final String SCHEDULE_SPEED_TAG = "speed";
     static final String SCHEDULE_TRAININGSTYPE_TAG = "trainingstype";
     static final String SCHEDULE_COLOR_TAG = "color";
+    //Exercise
     static final String EXCERCISE_ID = "exercise";
     static final String EXCERCISE_NAME_TAG = "name";
     static final String EXCERCISE_TYPE_TAG = "type";
     static final String EXCERCISE_POSITION_TAG = "position";
+    static final String EXCERCISE_BODY_REGION = "bodyregion";
     // WarmUpExercise
     static final String EXCERCISE_EXECUTIONTIME_TAG = "executiontime";
     static final String EXCERCISE_INTENSITY_TAG = "intensity";
@@ -74,21 +79,23 @@ public class XMLParser {
     static final String EXCERCISE_ADDITIONALWEIGHT_TAG = "additionalweight";
     static final String EXCERCISE_BACK_TAG = "BACK";
     static final String EXCERCISE_DEVICENUMBER_TAG = "devicenumber";
-    private String CurrentApplicationVersion = "";
     private Model ApplicationModel = null;
 
+    /**
+     * Constructor
+     *
+     * @param model Model to save the Data
+     */
     public XMLParser(Model model) {
         ApplicationModel = model;
     }
 
-    public void setCurrentApplicationVersion(String version) {
-        CurrentApplicationVersion = version;
-    }
-
-    String getCurrentApplicationVersion(){
-        return CurrentApplicationVersion;
-    }
-
+    /**
+     * Parses the given file.
+     *
+     * @param readableFile
+     * @return
+     */
     public boolean parseFile(File readableFile) {
         try {
             DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
@@ -96,7 +103,6 @@ public class XMLParser {
             Document doc = builder.parse(readableFile);
             doc.getDocumentElement().normalize();
 
-            String applicationVersion = doc.getDocumentElement().getAttribute(APPVERSION_ID);
             NodeList nodeList = doc.getElementsByTagName(SCHEDULE_ID);
             for (int i = 0; i < nodeList.getLength(); i++) {
                 Node node = nodeList.item(i);
@@ -122,10 +128,16 @@ public class XMLParser {
                             Element element1 = (Element) node2;
                             String excName = element1.getAttribute(EXCERCISE_NAME_TAG);
                             ExerciseType type = ExerciseType.valueOf(element1.getAttribute(EXCERCISE_TYPE_TAG));
+
+                            BodyRegion region = BodyRegion.INVALID;
+                            if (!element1.getAttribute(EXCERCISE_BODY_REGION).isEmpty())
+                                region = BodyRegion.valueOf(element1.getAttribute(EXCERCISE_BODY_REGION));
+
                             switch (type) {
                                 case Device:
                                     DeviceExercise dexc = new DeviceExercise(excName);
                                     dexc.setPosition(Integer.valueOf(element1.getAttribute(EXCERCISE_POSITION_TAG)));
+                                    dexc.setStimulatedBodyRegion(region);
 
                                     int intValue = Integer.valueOf(element1.getAttribute(EXCERCISE_SEAT_TAG));
                                     dexc.setSeatActivated(intValue != Integer.MAX_VALUE);
@@ -164,6 +176,7 @@ public class XMLParser {
                                 case BodyWeight:
                                     BodyWeightExercise bexc = new BodyWeightExercise(excName);
                                     bexc.setPosition(Integer.valueOf(element1.getAttribute(EXCERCISE_POSITION_TAG)));
+                                    bexc.setStimulatedBodyRegion(region);
                                     String addInformation = element1.getAttribute(EXCERCISE_ADDITIONALINFORMATION_TAG);
                                     bexc.setAdditionalInformationActivated(!addInformation.isEmpty());
                                     bexc.setAdditionalInformation(addInformation);
@@ -172,6 +185,7 @@ public class XMLParser {
                                 case WarmUp:
                                     WarmUpExercise wexc = new WarmUpExercise(excName);
                                     wexc.setPosition(Integer.valueOf(element1.getAttribute(EXCERCISE_POSITION_TAG)));
+                                    wexc.setStimulatedBodyRegion(region);
 
                                     Intensities intensities = Intensities.valueOf(element1.getAttribute(EXCERCISE_INTENSITY_TAG));
                                     wexc.setIntensityActivated(intensities != Intensities.invalid);
@@ -223,9 +237,6 @@ public class XMLParser {
             Document doc = builder.newDocument();
 
             Element rootElement = doc.createElement(ROOT_ID);
-            Attr appversionAttr = doc.createAttribute(APPVERSION_ID);
-            appversionAttr.setValue(CurrentApplicationVersion);
-            rootElement.setAttributeNode(appversionAttr);
             doc.appendChild(rootElement);
 
             for (Schedule sched : ApplicationModel.getSchedulesList()) {
@@ -246,6 +257,7 @@ public class XMLParser {
                     exerElement.setAttribute(EXCERCISE_NAME_TAG, exc.getName());
                     exerElement.setAttribute(EXCERCISE_POSITION_TAG, String.valueOf(exc.getPosition()));
                     exerElement.setAttribute(EXCERCISE_TYPE_TAG, exc.type().name());
+                    exerElement.setAttribute(EXCERCISE_BODY_REGION, exc.getStimulatedBodyRegion().name());
                     switch (exc.type()) {
                         case Device:
                             DeviceExercise dexc = (DeviceExercise) exc;

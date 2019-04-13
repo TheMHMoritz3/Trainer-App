@@ -17,11 +17,15 @@ package Exercise;
  * along with this program.  If not, see <https://www.gnu.org/licenses/>
  */
 
+import Enumerations.BodyRegion;
 import Enumerations.ExerciseType;
+
+import static Enumerations.BodyRegion.INVALID;
 
 public abstract class Exercise {
     private String Name;
     private int Position = Integer.MAX_VALUE;
+    private BodyRegion StimulatedBodyRegion = INVALID;
 
     private Exercise() {
     }
@@ -53,5 +57,13 @@ public abstract class Exercise {
 
     public void setPosition(int position) {
         Position = position;
+    }
+
+    public BodyRegion getStimulatedBodyRegion() {
+        return StimulatedBodyRegion;
+    }
+
+    public void setStimulatedBodyRegion(BodyRegion stimulatedBodyRegion) {
+        StimulatedBodyRegion = stimulatedBodyRegion;
     }
 }

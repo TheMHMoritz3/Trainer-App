@@ -20,6 +20,7 @@ package com.german_software_engineers.trainerapp.ExerciseView.ViewModel;
 import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.ViewModel;
 
+import Enumerations.BodyRegion;
 import Enumerations.ExerciseType;
 import Exercise.DeviceExercise;
 import Exercise.Exercise;
@@ -43,6 +44,7 @@ public class DeviceExerciseViewModel extends ViewModel {
     private double Weight=0;
     private boolean IsAdditionalWeightActivated = false;
     private double AdditionalWeight=0;
+    private BodyRegion StimulatedBodyRegion = BodyRegion.INVALID;
 
 
     public DeviceExerciseViewModel(Exercise exercise) {
@@ -68,6 +70,7 @@ public class DeviceExerciseViewModel extends ViewModel {
             Weight=((DeviceExercise) ActiveExercise).getWeight();
             IsAdditionalWeightActivated = ((DeviceExercise) ActiveExercise).isAdditionalWeightActivated();
             AdditionalWeight = ((DeviceExercise) ActiveExercise).getAdditionalWeight();
+            StimulatedBodyRegion = ActiveExercise.getStimulatedBodyRegion();
         }
     }
 
@@ -197,5 +200,13 @@ public class DeviceExerciseViewModel extends ViewModel {
 
     public void setAdditionalWeight(double additionalWeight) {
         AdditionalWeight = additionalWeight;
+    }
+
+    public BodyRegion getStimulatedBodyRegion() {
+        return StimulatedBodyRegion;
+    }
+
+    public void setStimulatedBodyRegion(int index) {
+        StimulatedBodyRegion = BodyRegion.values()[index];
     }
 }

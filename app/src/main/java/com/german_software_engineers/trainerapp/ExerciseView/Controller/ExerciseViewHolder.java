@@ -23,8 +23,11 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toolbar;
 
+import com.german_software_engineers.trainerapp.Controller.ApplicationManager;
 import com.german_software_engineers.trainerapp.Controller.ExerciseListModelController;
 import com.german_software_engineers.trainerapp.R;
+
+import Enumerations.BodyRegion;
 import Exercise.BodyWeightExercise;
 import Exercise.DeviceExercise;
 import Exercise.Exercise;
@@ -59,6 +62,22 @@ public class ExerciseViewHolder extends RecyclerView.ViewHolder {
     private void decorateExerciseTile(){
         toolbar=ExerciseView.findViewById(R.id.ExerciseCardToolbar);
         toolbar.inflateMenu(R.menu.exercise_fragmet_menu);
+
+        CardView card = ExerciseView.findViewById(R.id.ExerciseCard);
+        switch (Exercise.getStimulatedBodyRegion()) {
+            case BODY:
+                card.setCardBackgroundColor(ApplicationManager.configuration().getBodyExerciseColor());
+                break;
+            case ARMS:
+                card.setCardBackgroundColor(ApplicationManager.configuration().getArmsExerciseColor());
+                break;
+            case LEGS:
+                card.setCardBackgroundColor(ApplicationManager.configuration().getLegsExerciseColor());
+                break;
+            case INVALID:
+            default:
+                break;
+        }
 
         switch(Exercise.type()){
             case Device:
@@ -231,8 +250,6 @@ public class ExerciseViewHolder extends RecyclerView.ViewHolder {
             }
         });
 
-        toolbar.setOnClickListener(clicklistener->{
-            Controller.editExercise(Exercise.getName());
-        });
+        toolbar.setOnClickListener(clicklistener -> Controller.editExercise(Exercise.getName()));
     }
 }

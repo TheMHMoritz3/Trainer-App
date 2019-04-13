@@ -3,6 +3,9 @@ package com.german_software_engineers.trainerapp.Controller;
 import Model.Model;
 import Model.XMLParser;
 import android.app.Application;
+import android.content.Intent;
+import com.german_software_engineers.Presenter.Configuration.Configuration;
+import com.german_software_engineers.Presenter.Configuration.ConfigurationParser;
 import com.german_software_engineers.trainerapp.R;
 
 import java.io.File;
@@ -26,18 +29,29 @@ import java.io.File;
 
 public class ApplicationManager extends Application {
     private Model ApplicationModel = null;
+    private static Configuration Configuration = new Configuration();
 
     @Override
     public void onCreate() {
+        startService(new Intent(getBaseContext(), CloseApplicationService.class));
         super.onCreate();
         createModelAndLoadFiles();
     }
 
     private void createModelAndLoadFiles() {
         ApplicationModel = new Model();
+
+
+        Configuration.setArmsExerciseColor(getResources().getColor(R.color.DefaultArmsColor));
+        Configuration.setLegsExerciseColor(getResources().getColor(R.color.DefualtLegsColor));
+        Configuration.setBodyExerciseColor(getResources().getColor(R.color.DefaultBodyColor));
+
         XMLParser xmlParser = new XMLParser(ApplicationModel);
         File DataFile = new File(getFilesDir() + "/" + getString(R.string.DataFile));
         xmlParser.parseFile(DataFile);
+
+        ConfigurationParser conofigParser = new ConfigurationParser(Configuration, getFilesDir() + "/");
+        conofigParser.parseXML();
     }
 
     public Model getApplicationModel(){
@@ -48,11 +62,23 @@ public class ApplicationManager extends Application {
         XMLParser xmlParser = new XMLParser(ApplicationModel);
         File DataFile = new File(getFilesDir() + "/" + getString(R.string.DataFile));
         xmlParser.writeFile(DataFile);
+
+        ConfigurationParser configParser = new ConfigurationParser(Configuration, getFilesDir() + "/");
+        configParser.writeXML();
     }
+
 
     @Override
     public void onTerminate(){
-        saveFile();
+        onApplicationClose();
         super.onTerminate();
+    }
+
+    public void onApplicationClose() {
+        saveFile();
+    }
+
+    public static Configuration configuration() {
+        return Configuration;
     }
 }

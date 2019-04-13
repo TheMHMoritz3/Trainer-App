@@ -1,4 +1,4 @@
-package com.german_software_engineers.Presenter.Configuration;
+package Enumerations;
 
 /**
  * Copyright (C) 2019  Moritz Herzog
@@ -16,5 +16,9 @@ package com.german_software_engineers.Presenter.Configuration;
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>
  */
-public class ConfigurationXMLReader {
+public enum BodyRegion {
+    BODY,
+    ARMS,
+    LEGS,
+    INVALID
 }

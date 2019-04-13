@@ -18,12 +18,6 @@ public class XMLParserTest {
     }
 
     @Test
-    public void setCurrentApplicationVersion() {
-        parser.setCurrentApplicationVersion("testVersion");
-        Assert.assertEquals("Is Appicationversion not changed.",parser.getCurrentApplicationVersion(),"testVersion");
-    }
-
-    @Test
     public void parseFile() {
 //        fail();
     }

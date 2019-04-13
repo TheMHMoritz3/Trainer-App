@@ -82,16 +82,21 @@ public class ExerciseViewModel extends ViewModel {
                     ((DeviceExercise) exercise).setAngleActivated(DeviceExerciseViewModel.isAngleActivated());
                     ((DeviceExercise) exercise).setAnglePosition(DeviceExerciseViewModel.getAnglePosition());
                     ((DeviceExercise) exercise).setWeightActivated(DeviceExerciseViewModel.isWeightActivated());
+                    ((DeviceExercise) exercise).setBackActivated(DeviceExerciseViewModel.isBackActivated());
+                    ((DeviceExercise) exercise).setBackPosition(DeviceExerciseViewModel.getBackPosition());
                     ((DeviceExercise) exercise).setWeight(DeviceExerciseViewModel.getWeight());
                     ((DeviceExercise) exercise).setAdditionalWeightActivated(DeviceExerciseViewModel.isAdditionalWeightActivated());
                     ((DeviceExercise) exercise).setAdditionalWeight(DeviceExerciseViewModel.getAdditionalWeight());
                     ((DeviceExercise) exercise).setDeviceNumberActivated(DeviceExerciseViewModel.isDeviceActivated());
                     ((DeviceExercise) exercise).setDeviceNumber(DeviceExerciseViewModel.getDevicePosition());
+                    exercise.setStimulatedBodyRegion(DeviceExerciseViewModel.getStimulatedBodyRegion());
+
                 break;
             case BodyWeight:
                 exercise = new BodyWeightExercise(ExerciseName.getValue());
                 ((BodyWeightExercise) exercise).setAdditionalInformationActivated(BodyWeightExerciseViewModel.isAdditionalInformationActivated());
                 ((BodyWeightExercise) exercise).setAdditionalInformation(BodyWeightExerciseViewModel.getAdditionalInformation());
+                exercise.setStimulatedBodyRegion(BodyWeightExerciseViewModel.getStimulatedBodyRegion());
                 break;
             case WarmUp:
                 exercise = new WarmUpExercise(ExerciseName.getValue());
