@@ -5,34 +5,34 @@
     <color name="colorAccent">#FF4081</color>
     <color name="WarmUpColor">#7b88d1</color>
 
-    <color name="DefaultArmsColor">#d32f2f</color>
-    <color name="DefaultBodyColor">#512da8</color>
-    <color name="DefualtLegsColor">#388e3c</color>
+    <color name="DefaultArmsColor">#ff7a7a</color>
+    <color name="DefaultBodyColor">#8f9eff</color>
+    <color name="DefualtLegsColor">#b1ff6c</color>
 
     <array name="ChoosableColors">
-        <item>#d32f2f</item>
-        <item>#c2185b</item>
-        <item>#7b1fa2</item>
-        <item>#512da8</item>
-        <item>#303f9f</item>
-        <item>#1976d2</item>
-        <item>#0288d1</item>
-        <item>#0097a7</item>
-        <item>#00796b</item>
-        <item>#388e3c</item>
-        <item>#689f38</item>
-        <item>#afb42b</item>
-        <item>#fbc02d</item>
-        <item>#ffa000</item>
-        <item>#f57c00</item>
-        <item>#e64a19</item>
+        <item>#ff7a7a</item>
+        <item>#ff89b7</item>
+        <item>#df93ff</item>
+        <item>#bea3ff</item>
+        <item>#8f9eff</item>
+        <item>#b1d8ff</item>
+        <item>#9bdcff</item>
+        <item>#89f4ff</item>
+        <item>#7ffff0</item>
+        <item>#82ff88</item>
+        <item>#b1ff6c</item>
+        <item>#faff6b</item>
+        <item>#ffdd8a</item>
+        <item>#ffdea5</item>
+        <item>#ffc890</item>
+        <item>#ffbfab</item>
     </array>
 
     <array name="RegionColors">
-        <item>#d32f2f</item>
-        <item>#512da8</item>
-        <item>#388e3c</item>
-        <item>#fbc02d</item>
+        <item>#ffbfab</item>
+        <item>#8f9eff</item>
+        <item>#82ff88</item>
+        <item>#faff6b</item>
         <item>#ffffff</item>
     </array>
 </resources>
