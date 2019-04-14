@@ -26,7 +26,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 
 import com.german_software_engineers.trainerapp.Controller.ApplicationManager;
-import com.german_software_engineers.trainerapp.Controller.ColorSelectionController;
+import com.german_software_engineers.trainerapp.Legacy.ColorSelectionController;
 import com.german_software_engineers.trainerapp.ExerciseView.Activity.ExerciseViewActivity;
 import com.german_software_engineers.trainerapp.R;
 import Enumerations.TrainingsTypes;

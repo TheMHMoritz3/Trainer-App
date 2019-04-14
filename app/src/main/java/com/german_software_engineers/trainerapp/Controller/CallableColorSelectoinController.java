@@ -1,5 +1,9 @@
 package com.german_software_engineers.trainerapp.Controller;
 
+import com.thebluealliance.spectrum.SpectrumPalette;
+
+import java.util.concurrent.Callable;
+
 /**
  * Copyright (C) 2019  Moritz Herzog
  * <p>
@@ -16,14 +20,25 @@ package com.german_software_engineers.trainerapp.Controller;
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>
  */
-public class ColorSelectionController implements com.thebluealliance.spectrum.SpectrumPalette.OnColorSelectedListener {
-    private int SelectedColor = Integer.MAX_VALUE;
-    @Override
-    public void onColorSelected(int color) {
-        SelectedColor=color;
+public class CallableColorSelectoinController implements SpectrumPalette.OnColorSelectedListener {
+    private Callable<Integer> MethodToCall = null;
+    private int Color = Integer.MAX_VALUE;
+
+    public CallableColorSelectoinController(Callable<Integer> methodToCall) {
+        MethodToCall = methodToCall;
     }
 
-    public int getSelectedColor() {
-        return SelectedColor;
+    @Override
+    public void onColorSelected(int color) {
+        Color = color;
+        try {
+            MethodToCall.call();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public int getColor() {
+        return Color;
     }
 }

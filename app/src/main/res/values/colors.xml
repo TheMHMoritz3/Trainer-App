@@ -5,9 +5,9 @@
     <color name="colorAccent">#FF4081</color>
     <color name="WarmUpColor">#7b88d1</color>
 
-    <color name="DefaultArmsColor">#ff7a7a</color>
+    <color name="DefaultArmsColor">#ffbfab</color>
     <color name="DefaultBodyColor">#8f9eff</color>
-    <color name="DefualtLegsColor">#b1ff6c</color>
+    <color name="DefualtLegsColor">#82ff88</color>
 
     <array name="ChoosableColors">
         <item>#ff7a7a</item>
