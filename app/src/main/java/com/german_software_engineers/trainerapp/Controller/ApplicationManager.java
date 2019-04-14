@@ -51,7 +51,8 @@ public class ApplicationManager extends Application {
         xmlParser.parseFile(DataFile);
 
         ConfigurationParser conofigParser = new ConfigurationParser(Configuration, getFilesDir() + "/");
-        conofigParser.parseXML();
+        File configfile = new File(getFilesDir() + "/" + "config.xml");
+        conofigParser.parseXML(configfile);
     }
 
     public Model getApplicationModel(){
@@ -64,7 +65,8 @@ public class ApplicationManager extends Application {
         xmlParser.writeFile(DataFile);
 
         ConfigurationParser configParser = new ConfigurationParser(Configuration, getFilesDir() + "/");
-        configParser.writeXML();
+        File configfile = new File(getFilesDir() + "/" + "config.xml");
+        configParser.writeXML(configfile);
     }
 
 
