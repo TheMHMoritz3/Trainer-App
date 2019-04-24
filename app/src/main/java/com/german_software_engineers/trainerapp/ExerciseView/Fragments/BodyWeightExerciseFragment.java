@@ -158,7 +158,8 @@ public class BodyWeightExerciseFragment extends ExerciseFragment {
         AdditionalInformationCheckbox.setChecked(BodyWeightExercViewModel.isAdditionalInformationActivated());
         AdditionalInformationEdit.setEnabled(BodyWeightExercViewModel.isAdditionalInformationActivated());
         AdditionalInformationEdit.setText(BodyWeightExercViewModel.getAdditionalInformation());
-        //TODO Noch Stimulated Bodyregion Einfügen
+
+        StimulatedBodyRegion.setSelection(BodyWeightExercViewModel.getStimulatedBodyRegion().ordinal());
     }
 
     public void setExerciseViewModel(ExerciseViewModel model){
