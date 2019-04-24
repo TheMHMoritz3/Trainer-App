@@ -28,6 +28,8 @@ import com.german_software_engineers.trainerapp.Controller.ApplicationManager;
 import com.german_software_engineers.trainerapp.Controller.ExerciseListModelController;
 import com.german_software_engineers.trainerapp.ExerciseView.Fragments.ExcersizeListFragment;
 import com.german_software_engineers.trainerapp.R;
+
+import Enumerations.TrainingsTypes;
 import Exercise.Exercise;
 import Schedule.Schedule;
 
@@ -74,8 +76,13 @@ public class ExerciseViewActivity extends ExerciseListActivity {
         fragment = ExcersizeListFragment.newInstance(1, ActiveSchedule.getName(), Controller);
         getSupportFragmentManager().beginTransaction().replace(R.id.execView, fragment).commit();
 
-        String scheduleInfo = String.format(getResources().getString(R.string.ScheduleInfo), ActiveSchedule.getRepetitions(), ActiveSchedule.getPauseTime(), ActiveSchedule.getSets(), ActiveSchedule.getSpeed(), getResources().getStringArray(R.array.ScheduleType)[ActiveSchedule.getTrainingsType().ordinal()]);
-        ScheduleInfo.setText(scheduleInfo);
+        if (ActiveSchedule.getTrainingsType() != TrainingsTypes.invalid) {
+            String scheduleInfo = String.format(getResources().getString(R.string.ScheduleInfo), ActiveSchedule.getRepetitions(), ActiveSchedule.getPauseTime(), ActiveSchedule.getSets(), ActiveSchedule.getSpeed(), getResources().getStringArray(R.array.ScheduleType)[ActiveSchedule.getTrainingsType().ordinal()]);
+            ScheduleInfo.setText(scheduleInfo);
+        } else {
+            String scheduleInfo = String.format(getResources().getString(R.string.ScheduleInfo), ActiveSchedule.getRepetitions(), ActiveSchedule.getPauseTime(), ActiveSchedule.getSets(), ActiveSchedule.getSpeed(), "Please update your Trainingsschedule");
+            ScheduleInfo.setText(scheduleInfo);
+        }
     }
 
     @Override
