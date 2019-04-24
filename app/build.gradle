@@ -6,8 +6,8 @@ android {
         applicationId "com.german_software_engineers.trainerapp"
         minSdkVersion 21
         targetSdkVersion 28
-        versionCode 1904142
-        versionName "1904 Build 142"
+        versionCode 1904145
+        versionName "1904 Build 145"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     compileOptions() {
