@@ -93,6 +93,7 @@ public class EditExerciseActivity extends AppCompatActivity implements ExerciseF
         ViewModel=new ExerciseViewModel(sched,exercise);
         if(exercise!=null){
             ((EditText)findViewById(R.id.excName)).setText(exercise.getName());
+            ((Spinner)findViewById(R.id.ExerciseTypeSpinner)).setSelection(exercise.type().ordinal());
         }else{
             ((EditText)findViewById(R.id.excName)).setText("");
         }

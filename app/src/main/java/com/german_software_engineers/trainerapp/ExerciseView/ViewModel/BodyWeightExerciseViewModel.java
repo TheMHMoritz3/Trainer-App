@@ -42,6 +42,8 @@ public class BodyWeightExerciseViewModel extends ViewModel {
         {
             IsAdditionalInformationActivated = ((BodyWeightExercise)ActiveExercise).isAdditionalInformationActivated();
             AdditionalInformation = ((BodyWeightExercise) ActiveExercise).getAdditionalInformation();
+
+            region = ActiveExercise.getStimulatedBodyRegion();
         }
     }
 
