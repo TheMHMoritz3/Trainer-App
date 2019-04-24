@@ -122,23 +122,23 @@ public class DeviceExerciseFragment extends ExerciseFragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        SeatCheckbox = (CheckBox)view.findViewById(R.id.seatCheckBox2);
-        SeatEdit = (EditText)view.findViewById(R.id.SeatEdit2);
-        DeviceCheckbox = (CheckBox)view.findViewById(R.id.deviceCheckBox2);
-        DeviceEdit = (EditText)view.findViewById(R.id.DeviceEdit2);
-        LegCheckbox = (CheckBox)view.findViewById(R.id.LegCheckBox2);
-        LegEdit = (EditText)view.findViewById(R.id.LegEdit2);
-        FootCheckbox=(CheckBox)view.findViewById(R.id.FootCheckBox2);
-        FootEdit = (EditText)view.findViewById(R.id.FootEdit2);
-        AngleCheckbox=(CheckBox)view.findViewById(R.id.AngleCheckBox2);
-        AngleEdit = (EditText)view.findViewById(R.id.AngleEdit2);
-        BackCheckbox=(CheckBox)view.findViewById(R.id.BackCheckBox2);
-        BackEdit = (EditText)view.findViewById(R.id.BackEdit2);
-        WeightCheckbox=(CheckBox)view.findViewById(R.id.WeightCheckBox2);
-        WeightEdit = (EditText)view.findViewById(R.id.WeightEdit2);
-        AdditionalWeightCheckbox=(CheckBox)view.findViewById(R.id.AdditionalWeightCheckBox2);
-        AdditionalWeightEdit = (EditText)view.findViewById(R.id.AdditionalWeightEdit2);
-        StimulatedBodyRegion = (Spinner) view.findViewById(R.id.StimulatedBodyRegionSpinner);
+        SeatCheckbox = view.findViewById(R.id.seatCheckBox2);
+        SeatEdit = view.findViewById(R.id.SeatEdit2);
+        DeviceCheckbox = view.findViewById(R.id.deviceCheckBox2);
+        DeviceEdit = view.findViewById(R.id.DeviceEdit2);
+        LegCheckbox = view.findViewById(R.id.LegCheckBox2);
+        LegEdit = view.findViewById(R.id.LegEdit2);
+        FootCheckbox= view.findViewById(R.id.FootCheckBox2);
+        FootEdit = view.findViewById(R.id.FootEdit2);
+        AngleCheckbox= view.findViewById(R.id.AngleCheckBox2);
+        AngleEdit = view.findViewById(R.id.AngleEdit2);
+        BackCheckbox= view.findViewById(R.id.BackCheckBox2);
+        BackEdit = view.findViewById(R.id.BackEdit2);
+        WeightCheckbox= view.findViewById(R.id.WeightCheckBox2);
+        WeightEdit = view.findViewById(R.id.WeightEdit2);
+        AdditionalWeightCheckbox= view.findViewById(R.id.AdditionalWeightCheckBox2);
+        AdditionalWeightEdit = view.findViewById(R.id.AdditionalWeightEdit2);
+        StimulatedBodyRegion = view.findViewById(R.id.StimulatedBodyRegionSpinner);
 
 
         makeConnections();

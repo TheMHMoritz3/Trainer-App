@@ -93,10 +93,10 @@ public class BodyWeightExerciseFragment extends ExerciseFragment {
     public void onViewCreated(View view,Bundle savedInstanceState){
         super.onViewCreated(view,savedInstanceState);
 
-        StimulatedBodyRegion = (Spinner) view.findViewById(R.id.StimulatedBodyRegionSpinner);
+        StimulatedBodyRegion = view.findViewById(R.id.StimulatedBodyRegionSpinner2);
 
-        AdditionalInformationCheckbox = (CheckBox)view.findViewById(R.id.AdditionalInformationCheckbox);
-        AdditionalInformationEdit = (EditText)view.findViewById(R.id.AdditionalInformationEditText);
+        AdditionalInformationCheckbox = view.findViewById(R.id.AdditionalInformationCheckbox);
+        AdditionalInformationEdit = view.findViewById(R.id.AdditionalInformationEditText);
 
         makeConnections();
         setData();
@@ -114,12 +114,9 @@ public class BodyWeightExerciseFragment extends ExerciseFragment {
     }
 
     private void makeConnections(){
-        AdditionalInformationCheckbox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                BodyWeightExercViewModel.setAdditionalInformationActivated(AdditionalInformationCheckbox.isChecked());
-                AdditionalInformationEdit.setEnabled(AdditionalInformationCheckbox.isChecked());
-            }
+        AdditionalInformationCheckbox.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            BodyWeightExercViewModel.setAdditionalInformationActivated(AdditionalInformationCheckbox.isChecked());
+            AdditionalInformationEdit.setEnabled(AdditionalInformationCheckbox.isChecked());
         });
         AdditionalInformationEdit.addTextChangedListener(new TextWatcher() {
             @Override
@@ -158,8 +155,13 @@ public class BodyWeightExerciseFragment extends ExerciseFragment {
         AdditionalInformationCheckbox.setChecked(BodyWeightExercViewModel.isAdditionalInformationActivated());
         AdditionalInformationEdit.setEnabled(BodyWeightExercViewModel.isAdditionalInformationActivated());
         AdditionalInformationEdit.setText(BodyWeightExercViewModel.getAdditionalInformation());
+        try {
+            StimulatedBodyRegion.setSelection(BodyWeightExercViewModel.getStimulatedBodyRegion().ordinal());
+        }catch(Exception ex)
+        {
+            ex.printStackTrace();
+        }
 
-        StimulatedBodyRegion.setSelection(BodyWeightExercViewModel.getStimulatedBodyRegion().ordinal());
     }
 
     public void setExerciseViewModel(ExerciseViewModel model){
