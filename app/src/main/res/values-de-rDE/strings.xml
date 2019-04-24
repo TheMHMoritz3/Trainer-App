@@ -74,4 +74,14 @@
         <item>Geräteübung</item>
         <item>Körpergewichtsübung</item>
     </string-array>
+
+    <string name="BodyColorDescription">Körper Übung</string>
+    <string name="ArmColorDescription">Arm Übung</string>
+    <string name="LegColorDescription">Bein Übung</string>
+
+    <string-array name="BodyRegion">
+        <item>Körper</item>
+        <item>Arm</item>
+        <item>Bein</item>
+    </string-array>
 </resources>
