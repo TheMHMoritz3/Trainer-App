@@ -146,12 +146,9 @@ public class DeviceExerciseFragment extends ExerciseFragment {
     }
 
     private void makeConnections(){
-        SeatCheckbox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                DeviceExercViewModel.setSeatActivated(SeatCheckbox.isChecked());
-                SeatEdit.setActivated(DeviceExercViewModel.isSeatActivated());
-            }
+        SeatCheckbox.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            DeviceExercViewModel.setSeatActivated(SeatCheckbox.isChecked());
+            SeatEdit.setActivated(DeviceExercViewModel.isSeatActivated());
         });
         SeatEdit.addTextChangedListener(new TextWatcher() {
             @Override
@@ -172,12 +169,9 @@ public class DeviceExerciseFragment extends ExerciseFragment {
                     DeviceExercViewModel.setSeatPosition(0);
             }
         });
-        DeviceCheckbox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                DeviceExercViewModel.setDeviceActivated(DeviceCheckbox.isChecked());
-                DeviceEdit.setActivated(DeviceExercViewModel.isDeviceActivated());
-            }
+        DeviceCheckbox.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            DeviceExercViewModel.setDeviceActivated(DeviceCheckbox.isChecked());
+            DeviceEdit.setActivated(DeviceExercViewModel.isDeviceActivated());
         });
         DeviceEdit.addTextChangedListener(new TextWatcher() {
             @Override
@@ -198,12 +192,9 @@ public class DeviceExerciseFragment extends ExerciseFragment {
                     DeviceExercViewModel.setDevicePosition(0);
             }
         });
-        FootCheckbox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                DeviceExercViewModel.setFootActivated(FootCheckbox.isChecked());
-                DeviceEdit.setActivated(DeviceExercViewModel.isFootActivated());
-            }
+        FootCheckbox.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            DeviceExercViewModel.setFootActivated(FootCheckbox.isChecked());
+            DeviceEdit.setActivated(DeviceExercViewModel.isFootActivated());
         });
         FootEdit.addTextChangedListener(new TextWatcher() {
             @Override
@@ -224,12 +215,9 @@ public class DeviceExerciseFragment extends ExerciseFragment {
                     DeviceExercViewModel.setFootPosition(0);
             }
         });
-        LegCheckbox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                DeviceExercViewModel.setLegActivated(LegCheckbox.isChecked());
-                LegEdit.setActivated(DeviceExercViewModel.isLegActivated());
-            }
+        LegCheckbox.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            DeviceExercViewModel.setLegActivated(LegCheckbox.isChecked());
+            LegEdit.setActivated(DeviceExercViewModel.isLegActivated());
         });
         LegEdit.addTextChangedListener(new TextWatcher() {
             @Override
@@ -250,12 +238,9 @@ public class DeviceExerciseFragment extends ExerciseFragment {
                     DeviceExercViewModel.setLegPosition(0);
             }
         });
-        AngleCheckbox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                DeviceExercViewModel.setAngleActivated(AngleCheckbox.isChecked());
-                AngleEdit.setActivated(DeviceExercViewModel.isAngleActivated());
-            }
+        AngleCheckbox.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            DeviceExercViewModel.setAngleActivated(AngleCheckbox.isChecked());
+            AngleEdit.setActivated(DeviceExercViewModel.isAngleActivated());
         });
         AngleEdit.addTextChangedListener(new TextWatcher() {
             @Override
@@ -276,12 +261,9 @@ public class DeviceExerciseFragment extends ExerciseFragment {
                     DeviceExercViewModel.setAnglePosition(0);
             }
         });
-        BackCheckbox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                DeviceExercViewModel.setBackActivated(BackCheckbox.isChecked());
-                BackEdit.setActivated(DeviceExercViewModel.isBackActivated());
-            }
+        BackCheckbox.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            DeviceExercViewModel.setBackActivated(BackCheckbox.isChecked());
+            BackEdit.setActivated(DeviceExercViewModel.isBackActivated());
         });
         BackEdit.addTextChangedListener(new TextWatcher() {
             @Override
@@ -302,12 +284,9 @@ public class DeviceExerciseFragment extends ExerciseFragment {
                     DeviceExercViewModel.setBackPosition(0);
             }
         });
-        WeightCheckbox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                DeviceExercViewModel.setWeightActivated(WeightCheckbox.isChecked());
-                WeightEdit.setActivated(DeviceExercViewModel.isWeightActivated());
-            }
+        WeightCheckbox.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            DeviceExercViewModel.setWeightActivated(WeightCheckbox.isChecked());
+            WeightEdit.setActivated(DeviceExercViewModel.isWeightActivated());
         });
         WeightEdit.addTextChangedListener(new TextWatcher() {
             @Override
@@ -328,12 +307,9 @@ public class DeviceExerciseFragment extends ExerciseFragment {
                     DeviceExercViewModel.setWeight(0.0);
             }
         });
-        AdditionalWeightCheckbox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                DeviceExercViewModel.setAdditionalWeightActivated(AdditionalWeightCheckbox.isChecked());
-                AdditionalWeightEdit.setActivated(DeviceExercViewModel.isAdditionalWeightActivated());
-            }
+        AdditionalWeightCheckbox.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            DeviceExercViewModel.setAdditionalWeightActivated(AdditionalWeightCheckbox.isChecked());
+            AdditionalWeightEdit.setActivated(DeviceExercViewModel.isAdditionalWeightActivated());
         });
         AdditionalWeightEdit.addTextChangedListener(new TextWatcher() {
             @Override
@@ -370,34 +346,49 @@ public class DeviceExerciseFragment extends ExerciseFragment {
     public void setExerciseViewModel(ExerciseViewModel model){
         ExercViewModel=model;
         DeviceExercViewModel=ExercViewModel.getDeviceExerciseViewModel();
-//        setData();
     }
 
     private void setData(){
         SeatCheckbox.setChecked(DeviceExercViewModel.isSeatActivated());
         SeatEdit.setActivated(DeviceExercViewModel.isSeatActivated());
-        SeatEdit.setText(String.valueOf(DeviceExercViewModel.getSeatPosition()));
+        if(DeviceExercViewModel.getSeatPosition()!=Integer.MAX_VALUE)
+            SeatEdit.setText(String.valueOf(DeviceExercViewModel.getSeatPosition()));
+
         LegCheckbox.setChecked(DeviceExercViewModel.isLegActivated());
         LegEdit.setActivated(DeviceExercViewModel.isLegActivated());
-        LegEdit.setText(String.valueOf(DeviceExercViewModel.getLegPosition()));
+        if(DeviceExercViewModel.getLegPosition()!=Integer.MAX_VALUE)
+            LegEdit.setText(String.valueOf(DeviceExercViewModel.getLegPosition()));
+
         DeviceCheckbox.setChecked(DeviceExercViewModel.isDeviceActivated());
         DeviceEdit.setActivated(DeviceExercViewModel.isDeviceActivated());
-        DeviceEdit.setText(String.valueOf(DeviceExercViewModel.getDevicePosition()));
+        if(DeviceExercViewModel.getDevicePosition()!=Integer.MAX_VALUE)
+            DeviceEdit.setText(String.valueOf(DeviceExercViewModel.getDevicePosition()));
+
         FootCheckbox.setChecked(DeviceExercViewModel.isFootActivated());
         FootEdit.setActivated(DeviceExercViewModel.isFootActivated());
-        FootEdit.setText(String.valueOf(DeviceExercViewModel.getFootPosition()));
+        if(DeviceExercViewModel.getFootPosition()!=Integer.MAX_VALUE)
+            FootEdit.setText(String.valueOf(DeviceExercViewModel.getFootPosition()));
+
         AngleCheckbox.setChecked(DeviceExercViewModel.isAngleActivated());
         AngleEdit.setActivated(DeviceExercViewModel.isAngleActivated());
-        AngleEdit.setText(String.valueOf(DeviceExercViewModel.getAnglePosition()));
+        if(DeviceExercViewModel.getAnglePosition()!=Integer.MAX_VALUE)
+            AngleEdit.setText(String.valueOf(DeviceExercViewModel.getAnglePosition()));
+
         BackCheckbox.setChecked(DeviceExercViewModel.isBackActivated());
         BackEdit.setActivated(DeviceExercViewModel.isBackActivated());
-        BackEdit.setText(String.valueOf(DeviceExercViewModel.getBackPosition()));
+        if(DeviceExercViewModel.getBackPosition()!=Integer.MAX_VALUE)
+            BackEdit.setText(String.valueOf(DeviceExercViewModel.getBackPosition()));
+
         WeightCheckbox.setChecked(DeviceExercViewModel.isWeightActivated());
         WeightEdit.setActivated(DeviceExercViewModel.isWeightActivated());
-        WeightEdit.setText(String.valueOf(DeviceExercViewModel.getWeight()));
+        if(DeviceExercViewModel.getWeight()!=Integer.MAX_VALUE)
+            WeightEdit.setText(String.valueOf(DeviceExercViewModel.getWeight()));
+
         AdditionalWeightCheckbox.setChecked(DeviceExercViewModel.isAdditionalWeightActivated());
         AdditionalWeightEdit.setActivated(DeviceExercViewModel.isAdditionalWeightActivated());
-        AdditionalWeightEdit.setText(String.valueOf(DeviceExercViewModel.getAdditionalWeight()));
-        //TODO Noch Stimulated Body Region Einfügen
+        if(DeviceExercViewModel.getAdditionalWeight()!=Integer.MAX_VALUE)
+            AdditionalWeightEdit.setText(String.valueOf(DeviceExercViewModel.getAdditionalWeight()));
+
+        StimulatedBodyRegion.setSelection(DeviceExercViewModel.getStimulatedBodyRegion().ordinal());
     }
 }
