@@ -35,6 +35,8 @@ import com.german_software_engineers.trainerapp.ExerciseView.ViewModel.DeviceExe
 import com.german_software_engineers.trainerapp.ExerciseView.ViewModel.ExerciseViewModel;
 import com.german_software_engineers.trainerapp.R;
 
+import Enumerations.BodyRegion;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -389,6 +391,7 @@ public class DeviceExerciseFragment extends ExerciseFragment {
         if(DeviceExercViewModel.getAdditionalWeight()!=Integer.MAX_VALUE)
             AdditionalWeightEdit.setText(String.valueOf(DeviceExercViewModel.getAdditionalWeight()));
 
-        StimulatedBodyRegion.setSelection(DeviceExercViewModel.getStimulatedBodyRegion().ordinal());
+        if (DeviceExercViewModel.getStimulatedBodyRegion() != BodyRegion.INVALID)
+            StimulatedBodyRegion.setSelection(DeviceExercViewModel.getStimulatedBodyRegion().ordinal());
     }
 }

@@ -155,12 +155,9 @@ public class BodyWeightExerciseFragment extends ExerciseFragment {
         AdditionalInformationCheckbox.setChecked(BodyWeightExercViewModel.isAdditionalInformationActivated());
         AdditionalInformationEdit.setEnabled(BodyWeightExercViewModel.isAdditionalInformationActivated());
         AdditionalInformationEdit.setText(BodyWeightExercViewModel.getAdditionalInformation());
-        try {
+
+        if (BodyWeightExercViewModel.getStimulatedBodyRegion() != BodyRegion.INVALID)
             StimulatedBodyRegion.setSelection(BodyWeightExercViewModel.getStimulatedBodyRegion().ordinal());
-        }catch(Exception ex)
-        {
-            ex.printStackTrace();
-        }
 
     }
 
