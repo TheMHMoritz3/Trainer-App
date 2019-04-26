@@ -59,10 +59,32 @@ public class ExerciseViewHolder extends RecyclerView.ViewHolder {
         decorateExerciseTile();
     }
 
+    /**
+     * Starts Decorating the Exercise Tile. This method switches to the active Exercise Type.
+     */
     private void decorateExerciseTile(){
         toolbar=ExerciseView.findViewById(R.id.ExerciseCardToolbar);
         toolbar.inflateMenu(R.menu.exercise_fragmet_menu);
 
+        switch(Exercise.type()){
+            case Device:
+            default:
+                decorateDeviceExercise();
+                break;
+            case WarmUp:
+                decorateWarmUpExercise();
+                break;
+            case BodyWeight:
+                decorateBodyWeightExercise();
+                break;
+
+        }
+    }
+
+    /**
+     * Colors the Excercise Tile with the appropiate Color.
+     */
+    private void colorExerciseTile() {
         CardView card = ExerciseView.findViewById(R.id.ExerciseCard);
         switch (Exercise.getStimulatedBodyRegion()) {
             case BODY:
@@ -78,28 +100,19 @@ public class ExerciseViewHolder extends RecyclerView.ViewHolder {
             default:
                 break;
         }
-
-        switch(Exercise.type()){
-            case Device:
-                default:
-                    decorateDeviceExercise();
-                break;
-            case WarmUp:
-                decorateWarmUpExercise();
-                break;
-            case BodyWeight:
-                decorateBodyWeightExercise();
-                break;
-
-        }
     }
 
+    /**
+     * Decorates the Exercise Tile, that it looks like a DeviceExercise.
+     */
     private void decorateDeviceExercise(){
         DeviceExercise exc = (DeviceExercise) Exercise;
         StringBuilder titleBuilder = new StringBuilder();
         titleBuilder.append(exc.getPosition());
         titleBuilder.append("\t\t");
         titleBuilder.append(exc.getName());
+
+        colorExerciseTile();
 
         if(exc.isDeviceNumberActivated()){
             titleBuilder.append("\t\t");
@@ -111,8 +124,7 @@ public class ExerciseViewHolder extends RecyclerView.ViewHolder {
 
         StringBuilder builder = new StringBuilder();
 
-        if(exc.isWeightActivated())
-        {
+        if(exc.isWeightActivated()) {
             if(exc.isAdditionalWeightActivated()) {
                 builder.append(ExerciseView.getResources().getString(
                         R.string.DeviceExerciseInfoWeight, exc.getWeight()));
@@ -155,6 +167,9 @@ public class ExerciseViewHolder extends RecyclerView.ViewHolder {
         ((TextView)ExerciseView.findViewById(R.id.ExerciseInformation)).setText(builder.toString());
     }
 
+    /**
+     * Decorates the ExerciseTile, that it looks like a WarmUpExercise.
+     */
     private void decorateWarmUpExercise(){
         CardView card = ExerciseView.findViewById(R.id.ExerciseCard);
         card.setCardBackgroundColor(ExerciseView.getResources().getColor(R.color.WarmUpColor));
@@ -194,8 +209,13 @@ public class ExerciseViewHolder extends RecyclerView.ViewHolder {
         ((TextView)ExerciseView.findViewById(R.id.ExerciseInformation)).setText(builder.toString());
     }
 
+    /**
+     * Decorates the Exercise Tile, that it looks like a BodyweightExercise.
+     */
     private void decorateBodyWeightExercise(){
         BodyWeightExercise exc = (BodyWeightExercise)Exercise;
+
+        colorExerciseTile();
 
         StringBuilder titleBuilder = new StringBuilder();
         titleBuilder.append(exc.getPosition());
