@@ -223,9 +223,6 @@ public class XMLParser {
         } catch (IOException e) {
             e.printStackTrace();
             return false;
-        } catch (ScheduleAvailableException e) {
-            e.printStackTrace();
-            return false;
         }
     }
 

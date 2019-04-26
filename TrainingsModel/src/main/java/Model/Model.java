@@ -34,10 +34,12 @@ public class Model {
         Schedules = new HashMap<>();
     }
 
-    public void addSchedule(Schedule schedule) throws ScheduleAvailableException {
-        if (Schedules.containsKey(schedule.getName()))
-            throw new ScheduleAvailableException();
+    public boolean addSchedule(Schedule schedule) {
+        if (Schedules.containsKey(schedule.getName())){
+            return false;
+        }
         Schedules.put(schedule.getName(), schedule);
+        return true;
     }
 
     public Schedule getSchedule(String name) throws ScheduleAvailableException {
@@ -79,5 +81,9 @@ public class Model {
 
     public void deleteExerciseOfActiveSchedule(int position) {
         ActiveSchedule.deleteExercise(position);
+    }
+
+    public boolean isScheudleNameAvailable(Schedule schedule){
+        return (!Schedules.containsKey(schedule.getName()));
     }
 }
