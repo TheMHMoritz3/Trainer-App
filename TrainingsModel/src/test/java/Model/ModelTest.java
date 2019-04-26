@@ -1,9 +1,12 @@
 package Model;
 
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+
+import Schedule.Schedule;
 
 import static org.junit.Assert.*;
 
@@ -19,6 +22,27 @@ public class ModelTest {
 
     @Test
     public void addSchedule() {
+        Model model = new Model();
+        Schedule schedule = new Schedule("Test");
+
+        Assert.assertEquals(0,model.getSchedulesList().size());
+        Assert.assertEquals("This schould return true",true,model.isScheudleNameAvailable(schedule));
+        Assert.assertTrue(model.addSchedule(schedule));
+        Assert.assertEquals(1,model.getSchedulesList().size());
+    }
+
+    @Test
+    public void addScheduleWithExistingName() {
+        Model model = new Model();
+        Schedule schedule = new Schedule("Test");
+
+        Assert.assertEquals(0,model.getSchedulesList().size());
+        Assert.assertEquals("This schould return true",true,model.isScheudleNameAvailable(schedule));
+        Assert.assertTrue(model.addSchedule(schedule));
+        Assert.assertEquals(1,model.getSchedulesList().size());
+        Assert.assertEquals("This schould return false",false,model.isScheudleNameAvailable(schedule));
+        Assert.assertEquals(false,model.addSchedule(schedule));
+        Assert.assertEquals(1,model.getSchedulesList().size());
     }
 
     @Test

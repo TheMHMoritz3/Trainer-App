@@ -1,20 +1,20 @@
 package com.german_software_engineers.trainerapp.ScheduleView;
 
 /**
- *     Copyright (C) 2019  Moritz Herzog
- *
- *     This program is free software: you can redistribute it and/or modify
- *     it under the terms of the GNU General Public License as published by
- *     the Free Software Foundation, either version 3 of the License, or
- *     (at your option) any later version.
- *
- *     This program is distributed in the hope that it will be useful,
- *     but WITHOUT ANY WARRANTY; without even the implied warranty of
- *     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *     GNU General Public License for more details.
- *
- *     You should have received a copy of the GNU General Public License
- *     along with this program.  If not, see <https://www.gnu.org/licenses/>
+ * Copyright (C) 2019  Moritz Herzog
+ * <p>
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * <p>
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * <p>
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>
  */
 
 import android.content.Intent;
@@ -29,9 +29,11 @@ import com.german_software_engineers.trainerapp.Controller.ApplicationManager;
 import com.german_software_engineers.trainerapp.Legacy.ColorSelectionController;
 import com.german_software_engineers.trainerapp.ExerciseView.Activity.ExerciseViewActivity;
 import com.german_software_engineers.trainerapp.R;
+
 import Enumerations.TrainingsTypes;
 import Schedule.Schedule;
 import Exceptions.ScheduleAvailableException;
+
 import com.thebluealliance.spectrum.SpectrumPalette;
 
 public class GeneralTrainingScheduleEditor extends AppCompatActivity {
@@ -47,7 +49,7 @@ public class GeneralTrainingScheduleEditor extends AppCompatActivity {
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(view -> openNextActivity());
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        if(((ApplicationManager)getApplication()).getApplicationModel().activeSchedule()!=null){
+        if (((ApplicationManager) getApplication()).getApplicationModel().activeSchedule() != null) {
             decorateGuiWithActiveSchedule();
         }
 
@@ -55,29 +57,29 @@ public class GeneralTrainingScheduleEditor extends AppCompatActivity {
         spectrumPalette.setOnColorSelectedListener(ColorSelection);
     }
 
-    private void openNextActivity(){
-        if(addScheduleToModel()) {
-            ((ApplicationManager)getApplication()).saveFile();
+    private void openNextActivity() {
+        if (addScheduleToModel()) {
+            ((ApplicationManager) getApplication()).saveFile();
             Intent intent = new Intent(this, ExerciseViewActivity.class);
             startActivity(intent);
         }
     }
 
-    private void decorateGuiWithActiveSchedule(){
-        Schedule activeSchedule = ((ApplicationManager)getApplication()).getApplicationModel().activeSchedule();
+    private void decorateGuiWithActiveSchedule() {
+        Schedule activeSchedule = ((ApplicationManager) getApplication()).getApplicationModel().activeSchedule();
         ((EditText) findViewById(R.id.nameTextEdit)).setText(activeSchedule.getName());
         findViewById(R.id.nameTextEdit).setEnabled(false);
 
-        if(activeSchedule.getRepetitions()!=Integer.MAX_VALUE)
+        if (activeSchedule.getRepetitions() != Integer.MAX_VALUE)
             ((EditText) findViewById(R.id.repEdit)).setText(String.valueOf(activeSchedule.getRepetitions()));
 
-        if(activeSchedule.getPauseTime()!=Integer.MAX_VALUE)
+        if (activeSchedule.getPauseTime() != Integer.MAX_VALUE)
             ((EditText) findViewById(R.id.pauseEdit)).setText(String.valueOf(activeSchedule.getPauseTime()));
 
-        if(activeSchedule.getSets()!=Integer.MAX_VALUE)
+        if (activeSchedule.getSets() != Integer.MAX_VALUE)
             ((EditText) findViewById(R.id.setEdit)).setText(String.valueOf(activeSchedule.getSets()));
 
-        if(activeSchedule.getSpeed()!=Integer.MAX_VALUE)
+        if (activeSchedule.getSpeed() != Integer.MAX_VALUE)
             ((EditText) findViewById(R.id.speedEdit)).setText(String.valueOf(activeSchedule.getSpeed()));
     }
 
@@ -88,14 +90,14 @@ public class GeneralTrainingScheduleEditor extends AppCompatActivity {
         }
         Schedule schedule;
 
-        if(((ApplicationManager)getApplication()).getApplicationModel().activeSchedule()!=null)
-            schedule = ((ApplicationManager)getApplication()).getApplicationModel().activeSchedule();
+        if (((ApplicationManager) getApplication()).getApplicationModel().activeSchedule() != null)
+            schedule = ((ApplicationManager) getApplication()).getApplicationModel().activeSchedule();
         else
             schedule = new Schedule(((EditText) findViewById(R.id.nameTextEdit)).getText().toString());
 
-        schedule.setTrainingsType(TrainingsTypes.values()[(int)((Spinner)findViewById(R.id.trainSpinner)).getSelectedItemId()]);
+        schedule.setTrainingsType(TrainingsTypes.values()[(int) ((Spinner) findViewById(R.id.trainSpinner)).getSelectedItemId()]);
 
-        if(ColorSelection.getSelectedColor()!=Integer.MAX_VALUE){
+        if (ColorSelection.getSelectedColor() != Integer.MAX_VALUE) {
             schedule.setScheduleColor(ColorSelection.getSelectedColor());
         }
 
@@ -123,15 +125,15 @@ public class GeneralTrainingScheduleEditor extends AppCompatActivity {
             schedule.setSpeed(speed);
         }
 
+        if(!(((ApplicationManager) getApplication()).getApplicationModel().isScheudleNameAvailable(schedule))){
+            ((EditText) findViewById(R.id.nameTextEdit)).setError(getString(R.string.WrongNameError));
+            return false;
+        }
+
         if (((ApplicationManager) getApplication()).getApplicationModel().activeSchedule() == null) {
-            try {
-                ((ApplicationManager) getApplication()).getApplicationModel().addSchedule(schedule);
-                ((ApplicationManager) getApplication()).getApplicationModel().setActiveSchedule(schedule);
-            } catch (ScheduleAvailableException e) {
-                e.printStackTrace();
-            }
-            return true;
-        }else{
+            ((ApplicationManager) getApplication()).getApplicationModel().setActiveSchedule(schedule);
+            return ((ApplicationManager) getApplication()).getApplicationModel().addSchedule(schedule);
+        } else {
             return true;
         }
     }

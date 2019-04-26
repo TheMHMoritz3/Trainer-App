@@ -84,4 +84,6 @@
         <item>Arm</item>
         <item>Bein</item>
     </string-array>
+
+    <string name="WrongNameError">Es existiert schon ein Trainingsplan mit diesem Namen.</string>
 </resources>

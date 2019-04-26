@@ -24,6 +24,7 @@
     <string name="DataFile" translatable="false">DataFile.xml</string>
     <string name="LineBreak" translatable="false">\n</string>
     <string name="NoNameError">Please give it a name.</string>
+    <string name="WrongNameError">There is a Schedule already with that name.</string>
 
     <!--Info Activity-->
     <string name="InfoActivityTitle">Info</string>
