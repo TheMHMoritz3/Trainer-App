@@ -10,28 +10,25 @@ package com.german_software_engineers.trainerapp.ExerciseView.Controller;
  *
  *     This program is distributed in the hope that it will be useful,
  *     but WITHOUT ANY WARRANTY; without even the implied warranty of
- *     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  *     GNU General Public License for more details.
  *
  *     You should have received a copy of the GNU General Public License
  *     along with this program.  If not, see <https://www.gnu.org/licenses/>
  */
 
+import Exercise.BodyWeightExercise;
+import Exercise.DeviceExercise;
+import Exercise.Exercise;
+import Exercise.WarmUpExercise;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toolbar;
-
 import com.german_software_engineers.trainerapp.Controller.ApplicationManager;
 import com.german_software_engineers.trainerapp.Controller.ExerciseListModelController;
 import com.german_software_engineers.trainerapp.R;
-
-import Enumerations.BodyRegion;
-import Exercise.BodyWeightExercise;
-import Exercise.DeviceExercise;
-import Exercise.Exercise;
-import Exercise.WarmUpExercise;
 
 /**
  * Decorates it self to Display the Exercises in the RecyclerView
