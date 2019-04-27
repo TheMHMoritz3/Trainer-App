@@ -33,7 +33,7 @@ public class ApplicationManager extends Application {
 
     @Override
     public void onCreate() {
-        startService(new Intent(getBaseContext(), CloseApplicationService.class));
+//        startService(new Intent(getBaseContext(), CloseApplicationService.class));
         super.onCreate();
         createModelAndLoadFiles();
     }
