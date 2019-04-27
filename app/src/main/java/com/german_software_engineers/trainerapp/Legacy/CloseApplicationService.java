@@ -1,8 +1,10 @@
-package com.german_software_engineers.trainerapp.Controller;
+package com.german_software_engineers.trainerapp.Legacy;
 
 import android.app.Service;
 import android.content.Intent;
 import android.os.IBinder;
+
+import com.german_software_engineers.trainerapp.Controller.ApplicationManager;
 
 public class CloseApplicationService extends Service {
     ApplicationManager applicationManager;
