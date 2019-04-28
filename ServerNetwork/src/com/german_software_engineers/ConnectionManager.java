@@ -1,3 +1,5 @@
+package com.german_software_engineers;
+
 /**
  * Copyright (C) 2019  Moritz Herzog
  * <p>
@@ -14,12 +16,8 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>
  */
-public class InstanceManager {
-    public static void main(String[] args) {
-
-    }
-
-    public void startServer() {
+public class ConnectionManager {
+    public ConnectionManager(int port) {
 
     }
 }
