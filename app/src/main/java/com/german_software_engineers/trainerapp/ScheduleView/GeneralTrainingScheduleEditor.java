@@ -32,12 +32,12 @@ import com.german_software_engineers.trainerapp.R;
 
 import Enumerations.TrainingsTypes;
 import Schedule.Schedule;
-import Exceptions.ScheduleAvailableException;
 
 import com.thebluealliance.spectrum.SpectrumPalette;
 
 public class GeneralTrainingScheduleEditor extends AppCompatActivity {
-    ColorSelectionController ColorSelection = new ColorSelectionController();
+    private ColorSelectionController ColorSelection = new ColorSelectionController();
+    private Boolean IsEdited = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +51,7 @@ public class GeneralTrainingScheduleEditor extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         if (((ApplicationManager) getApplication()).getApplicationModel().activeSchedule() != null) {
             decorateGuiWithActiveSchedule();
+            IsEdited = true;
         }
 
         SpectrumPalette spectrumPalette = findViewById(R.id.ScheduleColor);
@@ -125,7 +126,7 @@ public class GeneralTrainingScheduleEditor extends AppCompatActivity {
             schedule.setSpeed(speed);
         }
 
-        if(!(((ApplicationManager) getApplication()).getApplicationModel().isScheudleNameAvailable(schedule))){
+        if((!(((ApplicationManager) getApplication()).getApplicationModel().isScheudleNameAvailable(schedule)))&&(!IsEdited)){
             ((EditText) findViewById(R.id.nameTextEdit)).setError(getString(R.string.WrongNameError));
             return false;
         }
