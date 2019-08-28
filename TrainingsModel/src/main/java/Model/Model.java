@@ -26,7 +26,7 @@ import java.util.List;
 import java.util.Map;
 
 public class Model {
-    private String ApplicationVersion;
+//    private String ApplicationVersion;
     private Map<String, Schedule> Schedules;
     private Schedule ActiveSchedule;
 
@@ -59,9 +59,9 @@ public class Model {
         Schedules.remove(name);
     }
 
-    public void setApplicationVersion(String applicationVersion) {
-        ApplicationVersion = applicationVersion;
-    }
+//    public void setApplicationVersion(String applicationVersion) {
+//        ApplicationVersion = applicationVersion;
+//    }
 
     public void setActiveSchedule(Schedule schedule) {
         ActiveSchedule = schedule;
