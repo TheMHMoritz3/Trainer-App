@@ -1,24 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    package="com.german_software_engineers.trainerapp">
+          package="com.german_software_engineers.trainerapp">
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 
     <application
-            android:name="$Controller.ApplicationManager"
+            android:name=".Controller.ApplicationManager"
             android:allowBackup="true"
             android:hardwareAccelerated="true"
             android:icon="@mipmap/ic_launcher"
             android:label="@string/app_name"
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
-            android:theme="@style/AppTheme"
-            android:fullBackupContent="true"
-            tools:ignore="GoogleAppIndexingWarning">
+            android:theme="@style/AppTheme">
         <activity
-                android:name="$SettingsView.SettingsActivity"
+                android:name=".SettingsView.SettingsActivity"
                 android:label="@string/action_settings"
                 android:theme="@style/AppTheme">
             <meta-data
@@ -26,7 +23,7 @@
                     android:value="com.german_software_engineers.trainerapp.TrainingsSchedule"/>
         </activity>
         <activity
-                android:name="$TrainingsSchedule"
+                android:name=".TrainingsSchedule"
                 android:label="@string/title_activity_trainings_schedule"
                 android:theme="@style/AppTheme">
             <intent-filter>
@@ -38,32 +35,32 @@
         <activity
                 android:name=".InfoActivity"
                 android:label="@string/InfoActivityTitle"
-                android:parentActivityName="$TrainingsSchedule"
+                android:parentActivityName=".TrainingsSchedule"
                 android:theme="@style/AppTheme">
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
                     android:value="com.german_software_engineers.trainerapp.TrainingsSchedule"/>
         </activity>
         <activity
-                android:name="$ScheduleView.GeneralTrainingScheduleEditor"
+                android:name=".ScheduleView.GeneralTrainingScheduleEditor"
                 android:label="@string/title_activity_general_training_schedule_editor"
-                android:parentActivityName="$TrainingsSchedule"
+                android:parentActivityName=".TrainingsSchedule"
                 android:theme="@style/AppTheme">
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
                     android:value="com.german_software_engineers.trainerapp.TrainingsSchedule"/>
         </activity>
         <activity
-                android:name="$ExerciseView.Activity.ExerciseViewActivity"
+                android:name=".ExerciseView.Activity.ExerciseViewActivity"
                 android:label="@string/ExerciseViewActivityTitle"
-                android:parentActivityName="$TrainingsSchedule"
+                android:parentActivityName=".TrainingsSchedule"
                 android:theme="@style/AppTheme">
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
                     android:value="com.german_software_engineers.trainerapp.TrainingsSchedule"/>
         </activity>
         <activity
-                android:name="$ExerciseView.Activity.EditExerciseActivity"
+                android:name=".ExerciseView.Activity.EditExerciseActivity"
                 android:label="@string/title_activity_edit_exercise"
                 android:parentActivityName=".ExerciseView.Activity.ExerciseViewActivity"
                 android:theme="@style/AppTheme">
