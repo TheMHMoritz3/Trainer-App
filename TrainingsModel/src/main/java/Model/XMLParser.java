@@ -120,94 +120,7 @@ public class XMLParser {
                     if (!element.getAttribute(SCHEDULE_COLOR_TAG).isEmpty())
                         schedule.setScheduleColor(Integer.valueOf(element.getAttribute(SCHEDULE_COLOR_TAG)));
 
-                    NodeList nodeList1 = element.getElementsByTagName(EXCERCISE_ID);
-
-                    for (int j = 0; j < nodeList1.getLength(); j++) {
-                        Node node2 = nodeList1.item(j);
-                        if (node2.getNodeType() == Node.ELEMENT_NODE) {
-                            Element element1 = (Element) node2;
-                            String excName = element1.getAttribute(EXCERCISE_NAME_TAG);
-                            ExerciseType type = ExerciseType.valueOf(element1.getAttribute(EXCERCISE_TYPE_TAG));
-
-                            BodyRegion region = BodyRegion.INVALID;
-                            if (!element1.getAttribute(EXCERCISE_BODY_REGION).isEmpty())
-                                region = BodyRegion.valueOf(element1.getAttribute(EXCERCISE_BODY_REGION));
-
-                            switch (type) {
-                                case Device:
-                                    DeviceExercise dexc = new DeviceExercise(excName);
-                                    dexc.setPosition(Integer.valueOf(element1.getAttribute(EXCERCISE_POSITION_TAG)));
-                                    dexc.setStimulatedBodyRegion(region);
-
-                                    int intValue = Integer.valueOf(element1.getAttribute(EXCERCISE_SEAT_TAG));
-                                    dexc.setSeatActivated(intValue != Integer.MAX_VALUE);
-                                    dexc.setSeatPosition(intValue);
-
-                                    intValue = Integer.valueOf(element1.getAttribute(EXCERCISE_LEG_TAG));
-                                    dexc.setLegActivated(intValue != Integer.MAX_VALUE);
-                                    dexc.setLegPosition(intValue);
-
-                                    intValue = Integer.valueOf(element1.getAttribute(EXCERCISE_FOOT_TAG));
-                                    dexc.setFootActivated(intValue != Integer.MAX_VALUE);
-                                    dexc.setFootPosition(intValue);
-
-                                    intValue = Integer.valueOf(element1.getAttribute(EXCERCISE_ANGLE_TAG));
-                                    dexc.setAngleActivated(intValue != Integer.MAX_VALUE);
-                                    dexc.setAnglePosition(intValue);
-
-                                    double doubleValue = Double.valueOf(element1.getAttribute(EXCERCISE_WEIGHT_TAG));
-                                    dexc.setWeightActivated(doubleValue != Double.MAX_VALUE);
-                                    dexc.setWeight(doubleValue);
-
-                                    doubleValue = Double.valueOf(element1.getAttribute(EXCERCISE_ADDITIONALWEIGHT_TAG));
-                                    dexc.setAdditionalWeightActivated(doubleValue != Double.MAX_VALUE);
-                                    dexc.setAdditionalWeight(doubleValue);
-
-                                    intValue = Integer.valueOf(element1.getAttribute(EXCERCISE_BACK_TAG));
-                                    dexc.setBackActivated(intValue != Integer.MAX_VALUE);
-                                    dexc.setBackPosition(intValue);
-
-                                    intValue = Integer.valueOf(element1.getAttribute(EXCERCISE_DEVICENUMBER_TAG));
-                                    dexc.setDeviceNumberActivated(intValue != Integer.MAX_VALUE);
-                                    dexc.setDeviceNumber(intValue);
-
-                                    schedule.addExercise(dexc);
-                                    break;
-                                case BodyWeight:
-                                    BodyWeightExercise bexc = new BodyWeightExercise(excName);
-                                    bexc.setPosition(Integer.valueOf(element1.getAttribute(EXCERCISE_POSITION_TAG)));
-                                    bexc.setStimulatedBodyRegion(region);
-                                    String addInformation = element1.getAttribute(EXCERCISE_ADDITIONALINFORMATION_TAG);
-                                    bexc.setAdditionalInformationActivated(!addInformation.isEmpty());
-                                    bexc.setAdditionalInformation(addInformation);
-                                    schedule.addExercise(bexc);
-                                    break;
-                                case WarmUp:
-                                    WarmUpExercise wexc = new WarmUpExercise(excName);
-                                    wexc.setPosition(Integer.valueOf(element1.getAttribute(EXCERCISE_POSITION_TAG)));
-                                    wexc.setStimulatedBodyRegion(region);
-
-                                    Intensities intensities = Intensities.valueOf(element1.getAttribute(EXCERCISE_INTENSITY_TAG));
-                                    wexc.setIntensityActivated(intensities != Intensities.invalid);
-                                    wexc.setIntenity(intensities);
-
-                                    int intValue2 = Integer.valueOf(element1.getAttribute(EXCERCISE_EXECUTIONTIME_TAG));
-                                    wexc.setExecutionTimeActivated(intValue2 != Integer.MAX_VALUE);
-                                    wexc.setExecutionTime(intValue2);
-
-                                    intValue2 = Integer.valueOf(element1.getAttribute(EXCERCISE_SUBINTENSITY_TAG));
-                                    wexc.setSubintensityActivated(intValue2 != Integer.MAX_VALUE);
-                                    wexc.setSubIntensity(intValue2);
-
-                                    intValue2 = Integer.valueOf(element1.getAttribute(EXCERCISE_BPM_TAG));
-                                    wexc.setBPMActivated(intValue2 != Integer.MAX_VALUE);
-                                    wexc.setBPM(intValue2);
-
-                                    schedule.addExercise(wexc);
-                                    break;
-                            }
-                        }
-                    }
+                    readExercise(element,schedule);
 
                     ApplicationModel.addSchedule(schedule);
                 }
@@ -224,6 +137,114 @@ public class XMLParser {
             e.printStackTrace();
             return false;
         }
+    }
+
+    private void readExercise(Element element, Schedule schedule){
+        NodeList nodeList1 = element.getElementsByTagName(EXCERCISE_ID);
+
+        for (int j = 0; j < nodeList1.getLength(); j++) {
+            Node node2 = nodeList1.item(j);
+            if (node2.getNodeType() == Node.ELEMENT_NODE) {
+                Element element1 = (Element) node2;
+                String excName = element1.getAttribute(EXCERCISE_NAME_TAG);
+                ExerciseType type = ExerciseType.valueOf(element1.getAttribute(EXCERCISE_TYPE_TAG));
+
+                BodyRegion region = BodyRegion.INVALID;
+                if (!element1.getAttribute(EXCERCISE_BODY_REGION).isEmpty())
+                    region = BodyRegion.valueOf(element1.getAttribute(EXCERCISE_BODY_REGION));
+                Exercise exercise = null;
+                switch (type) {
+                    case Device:
+                        exercise = getDeviceExercise(excName,element1,region);
+                        break;
+                    case BodyWeight:
+                        exercise = getBodyWeightExercise(excName,element1,region);
+                        break;
+                    case WarmUp:
+                        exercise =getWarmUpExercise(excName,element1,region);
+                        break;
+                }
+                if(exercise != null)
+                    schedule.addExercise(exercise);
+            }
+        }
+    }
+
+    private Exercise getDeviceExercise(String excName, Element element, BodyRegion region){
+        DeviceExercise dexc = new DeviceExercise(excName);
+        dexc.setPosition(Integer.valueOf(element.getAttribute(EXCERCISE_POSITION_TAG)));
+        dexc.setStimulatedBodyRegion(region);
+
+        int intValue = Integer.valueOf(element.getAttribute(EXCERCISE_SEAT_TAG));
+        dexc.setSeatActivated(intValue != Integer.MAX_VALUE);
+        dexc.setSeatPosition(intValue);
+
+        intValue = Integer.valueOf(element.getAttribute(EXCERCISE_LEG_TAG));
+        dexc.setLegActivated(intValue != Integer.MAX_VALUE);
+        dexc.setLegPosition(intValue);
+
+        intValue = Integer.valueOf(element.getAttribute(EXCERCISE_FOOT_TAG));
+        dexc.setFootActivated(intValue != Integer.MAX_VALUE);
+        dexc.setFootPosition(intValue);
+
+        intValue = Integer.valueOf(element.getAttribute(EXCERCISE_ANGLE_TAG));
+        dexc.setAngleActivated(intValue != Integer.MAX_VALUE);
+        dexc.setAnglePosition(intValue);
+
+        double doubleValue = Double.valueOf(element.getAttribute(EXCERCISE_WEIGHT_TAG));
+        dexc.setWeightActivated(doubleValue != Double.MAX_VALUE);
+        dexc.setWeight(doubleValue);
+
+        doubleValue = Double.valueOf(element.getAttribute(EXCERCISE_ADDITIONALWEIGHT_TAG));
+        dexc.setAdditionalWeightActivated(doubleValue != Double.MAX_VALUE);
+        dexc.setAdditionalWeight(doubleValue);
+
+        intValue = Integer.valueOf(element.getAttribute(EXCERCISE_BACK_TAG));
+        dexc.setBackActivated(intValue != Integer.MAX_VALUE);
+        dexc.setBackPosition(intValue);
+
+        intValue = Integer.valueOf(element.getAttribute(EXCERCISE_DEVICENUMBER_TAG));
+        dexc.setDeviceNumberActivated(intValue != Integer.MAX_VALUE);
+        dexc.setDeviceNumber(intValue);
+
+        return dexc;
+    }
+
+    private Exercise getBodyWeightExercise(String excName, Element element, BodyRegion region){
+        BodyWeightExercise bexc = new BodyWeightExercise(excName);
+
+        bexc.setPosition(Integer.valueOf(element.getAttribute(EXCERCISE_POSITION_TAG)));
+        bexc.setStimulatedBodyRegion(region);
+
+        String addInformation = element.getAttribute(EXCERCISE_ADDITIONALINFORMATION_TAG);
+        bexc.setAdditionalInformationActivated(!addInformation.isEmpty());
+        bexc.setAdditionalInformation(addInformation);
+
+        return bexc;
+    }
+
+    private Exercise getWarmUpExercise(String excName, Element element, BodyRegion region){
+        WarmUpExercise wexc = new WarmUpExercise(excName);
+        wexc.setPosition(Integer.valueOf(element.getAttribute(EXCERCISE_POSITION_TAG)));
+        wexc.setStimulatedBodyRegion(region);
+
+        Intensities intensities = Intensities.valueOf(element.getAttribute(EXCERCISE_INTENSITY_TAG));
+        wexc.setIntensityActivated(intensities != Intensities.invalid);
+        wexc.setIntenity(intensities);
+
+        int intValue2 = Integer.valueOf(element.getAttribute(EXCERCISE_EXECUTIONTIME_TAG));
+        wexc.setExecutionTimeActivated(intValue2 != Integer.MAX_VALUE);
+        wexc.setExecutionTime(intValue2);
+
+        intValue2 = Integer.valueOf(element.getAttribute(EXCERCISE_SUBINTENSITY_TAG));
+        wexc.setSubintensityActivated(intValue2 != Integer.MAX_VALUE);
+        wexc.setSubIntensity(intValue2);
+
+        intValue2 = Integer.valueOf(element.getAttribute(EXCERCISE_BPM_TAG));
+        wexc.setBPMActivated(intValue2 != Integer.MAX_VALUE);
+        wexc.setBPM(intValue2);
+
+        return wexc;
     }
 
     public boolean writeFile(File writeableFile) {

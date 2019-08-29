@@ -20,5 +20,6 @@ package Enumerations;
 public enum ExerciseType {
     WarmUp,
     Device,
-    BodyWeight
+    BodyWeight,
+    Circle
 }
