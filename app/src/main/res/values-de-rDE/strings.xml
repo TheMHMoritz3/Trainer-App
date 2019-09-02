@@ -73,6 +73,7 @@
         <item>Aufwärmübung</item>
         <item>Geräteübung</item>
         <item>Körpergewichtsübung</item>
+        <item>Zierkelübung</item>
     </string-array>
 
     <string name="BodyColorDescription">Körper Übung</string>

@@ -63,6 +63,7 @@
         <item>Warm Up Exercise</item>
         <item>Device Exercise</item>
         <item>Body Weight Exercise</item>
+        <item>Circle Exercise</item>
     </string-array>
 
     <!--Exercise View Activity-->

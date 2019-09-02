@@ -41,6 +41,7 @@ public class MyExcersizeRecyclerViewAdapter extends RecyclerView.Adapter<Exercis
     private final List<Exercise> mValues;
     private final OnListFragmentInteractionListener mListener;
     private ExerciseListModelController Contoller;
+
     public MyExcersizeRecyclerViewAdapter(Collection<Exercise> items, OnListFragmentInteractionListener listener) {
         mValues = new ArrayList<>();
         mValues.addAll(items);

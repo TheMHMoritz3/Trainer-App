@@ -32,6 +32,7 @@ import android.widget.Spinner;
 
 import com.german_software_engineers.trainerapp.Controller.ApplicationManager;
 import com.german_software_engineers.trainerapp.ExerciseView.Fragments.BodyWeightExerciseFragment;
+import com.german_software_engineers.trainerapp.ExerciseView.Fragments.CircleExerciseFragment;
 import com.german_software_engineers.trainerapp.ExerciseView.Fragments.DeviceExerciseFragment;
 import com.german_software_engineers.trainerapp.ExerciseView.Fragments.ExerciseFragment;
 import com.german_software_engineers.trainerapp.ExerciseView.Fragments.WarmUpExerciseFragment;
@@ -47,6 +48,7 @@ public class EditExerciseActivity extends AppCompatActivity implements ExerciseF
     private BodyWeightExerciseFragment bodyWeightExerciseFragment = BodyWeightExerciseFragment.newInstance();
     private DeviceExerciseFragment deviceExerciseFragment = DeviceExerciseFragment.newInstance();
     private WarmUpExerciseFragment warmUpExerciseFragment = WarmUpExerciseFragment.newInstance();
+    private CircleExerciseFragment circleExerciseFragment = CircleExerciseFragment.newInstance();
 
     /**
      * Creates the Activity.
@@ -153,6 +155,9 @@ public class EditExerciseActivity extends AppCompatActivity implements ExerciseF
                 break;
             case BodyWeight:
                 getSupportFragmentManager().beginTransaction().replace(R.id.ExerciseFragment, bodyWeightExerciseFragment ).commit();
+                break;
+            case Circle:
+                getSupportFragmentManager().beginTransaction().replace(R.id.ExerciseFragment, circleExerciseFragment ).commit();
                 break;
         }
     }

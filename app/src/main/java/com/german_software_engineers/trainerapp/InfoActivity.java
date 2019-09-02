@@ -26,7 +26,6 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.widget.Button;
-import com.google.android.gms.oss.licenses.OssLicensesMenuActivity;
 
 public class InfoActivity extends AppCompatActivity {
 
@@ -60,8 +59,8 @@ public class InfoActivity extends AppCompatActivity {
         });
 
         Button SeeOtherLicenses = findViewById(R.id.OtherLicensesButton);
-        SeeOtherLicenses.setOnClickListener(listener->{
-            startActivity(new Intent(this, OssLicensesMenuActivity.class));
-        });
+//        SeeOtherLicenses.setOnClickListener(listener->{
+//            startActivity(new Intent(this, OssLicensesMenuActivity.class));
+//        });
     }
 }

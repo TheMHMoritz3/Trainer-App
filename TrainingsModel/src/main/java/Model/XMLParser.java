@@ -270,39 +270,7 @@ public class XMLParser {
                 if (sched.getScheduleColor() != Integer.MAX_VALUE)
                     scheduleElement.setAttribute(SCHEDULE_COLOR_TAG, String.valueOf(sched.getScheduleColor()));
 
-                for (Exercise exc : sched.exercises()) {
-                    Element exerElement = doc.createElement(EXCERCISE_ID);
-                    exerElement.setAttribute(EXCERCISE_NAME_TAG, exc.getName());
-                    exerElement.setAttribute(EXCERCISE_POSITION_TAG, String.valueOf(exc.getPosition()));
-                    exerElement.setAttribute(EXCERCISE_TYPE_TAG, exc.type().name());
-                    exerElement.setAttribute(EXCERCISE_BODY_REGION, exc.getStimulatedBodyRegion().name());
-                    switch (exc.type()) {
-                        case Device:
-                            DeviceExercise dexc = (DeviceExercise) exc;
-                            exerElement.setAttribute(EXCERCISE_SEAT_TAG, String.valueOf(dexc.getSeatPosition()));
-                            exerElement.setAttribute(EXCERCISE_LEG_TAG, String.valueOf(dexc.getLegPosition()));
-                            exerElement.setAttribute(EXCERCISE_FOOT_TAG, String.valueOf(dexc.getFootPosition()));
-                            exerElement.setAttribute(EXCERCISE_ANGLE_TAG, String.valueOf(dexc.getAnglePosition()));
-                            exerElement.setAttribute(EXCERCISE_WEIGHT_TAG, String.valueOf(dexc.getWeight()));
-                            exerElement.setAttribute(EXCERCISE_ADDITIONALWEIGHT_TAG, String.valueOf(dexc.getAdditionalWeight()));
-                            exerElement.setAttribute(EXCERCISE_BACK_TAG, String.valueOf(dexc.getBackPosition()));
-                            exerElement.setAttribute(EXCERCISE_DEVICENUMBER_TAG, String.valueOf(dexc.getDeviceNumber()));
-                            break;
-                        case BodyWeight:
-                            BodyWeightExercise bexc = (BodyWeightExercise) exc;
-                            exerElement.setAttribute(EXCERCISE_ADDITIONALINFORMATION_TAG, bexc.getAdditionalInformation());
-                            break;
-                        case WarmUp:
-                            WarmUpExercise wexc = (WarmUpExercise) exc;
-                            exerElement.setAttribute(EXCERCISE_EXECUTIONTIME_TAG, String.valueOf(wexc.getExecutionTime()));
-                            exerElement.setAttribute(EXCERCISE_INTENSITY_TAG, wexc.getIntenity().name());
-                            exerElement.setAttribute(EXCERCISE_SUBINTENSITY_TAG, String.valueOf(wexc.getSubIntensity()));
-                            exerElement.setAttribute(EXCERCISE_BPM_TAG, String.valueOf(wexc.getBPM()));
-                            break;
-                    }
-
-                    scheduleElement.appendChild(exerElement);
-                }
+                writeExercises(sched,doc,scheduleElement);
 
                 rootElement.appendChild(scheduleElement);
 
@@ -325,5 +293,55 @@ public class XMLParser {
             e.printStackTrace();
             return false;
         }
+    }
+
+    public void writeExercises(Schedule schedule, Document doc, Element scheduleElement){
+        for (Exercise exc : schedule.exercises()) {
+            Element exerElement = doc.createElement(EXCERCISE_ID);
+            exerElement.setAttribute(EXCERCISE_NAME_TAG, exc.getName());
+            exerElement.setAttribute(EXCERCISE_POSITION_TAG, String.valueOf(exc.getPosition()));
+            exerElement.setAttribute(EXCERCISE_TYPE_TAG, exc.type().name());
+            exerElement.setAttribute(EXCERCISE_BODY_REGION, exc.getStimulatedBodyRegion().name());
+            switch (exc.type()) {
+                case Device:
+                    writeDeviceExcercise(exc,exerElement);
+                    break;
+                case BodyWeight:
+                    writeBodyExercise(exc,exerElement);
+                    break;
+                case WarmUp:
+                    writeWarmUpExercise(exc,exerElement);
+                    break;
+                case Circle:
+                    break;
+            }
+
+            scheduleElement.appendChild(exerElement);
+        }
+    }
+
+    private void writeDeviceExcercise(Exercise exc,Element exerElement){
+        DeviceExercise dexc = (DeviceExercise) exc;
+        exerElement.setAttribute(EXCERCISE_SEAT_TAG, String.valueOf(dexc.getSeatPosition()));
+        exerElement.setAttribute(EXCERCISE_LEG_TAG, String.valueOf(dexc.getLegPosition()));
+        exerElement.setAttribute(EXCERCISE_FOOT_TAG, String.valueOf(dexc.getFootPosition()));
+        exerElement.setAttribute(EXCERCISE_ANGLE_TAG, String.valueOf(dexc.getAnglePosition()));
+        exerElement.setAttribute(EXCERCISE_WEIGHT_TAG, String.valueOf(dexc.getWeight()));
+        exerElement.setAttribute(EXCERCISE_ADDITIONALWEIGHT_TAG, String.valueOf(dexc.getAdditionalWeight()));
+        exerElement.setAttribute(EXCERCISE_BACK_TAG, String.valueOf(dexc.getBackPosition()));
+        exerElement.setAttribute(EXCERCISE_DEVICENUMBER_TAG, String.valueOf(dexc.getDeviceNumber()));
+    }
+
+    private void writeBodyExercise(Exercise exc,Element exerElement){
+        BodyWeightExercise bexc = (BodyWeightExercise) exc;
+        exerElement.setAttribute(EXCERCISE_ADDITIONALINFORMATION_TAG, bexc.getAdditionalInformation());
+    }
+
+    private void writeWarmUpExercise(Exercise exc,Element exerElement){
+        WarmUpExercise wexc = (WarmUpExercise) exc;
+        exerElement.setAttribute(EXCERCISE_EXECUTIONTIME_TAG, String.valueOf(wexc.getExecutionTime()));
+        exerElement.setAttribute(EXCERCISE_INTENSITY_TAG, wexc.getIntenity().name());
+        exerElement.setAttribute(EXCERCISE_SUBINTENSITY_TAG, String.valueOf(wexc.getSubIntensity()));
+        exerElement.setAttribute(EXCERCISE_BPM_TAG, String.valueOf(wexc.getBPM()));
     }
 }
