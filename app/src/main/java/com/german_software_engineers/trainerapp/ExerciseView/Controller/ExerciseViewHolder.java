@@ -185,7 +185,7 @@ public class ExerciseViewHolder extends RecyclerView.ViewHolder {
             builder.append("\n");
         }
 
-        if(exc.isIntensityActivated()) {
+        if (exc.isBPMActivated()) {
             builder.append(ExerciseView.getResources().getString(
                     R.string.WarmUpExerciseInfoBPM, exc.getBPM()));
             builder.append("\n");
