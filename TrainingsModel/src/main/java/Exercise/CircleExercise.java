@@ -19,8 +19,12 @@ public class CircleExercise extends Exercise {
         return Type;
     }
 
-    public void addExercises(Exercise exercise){
+    public void addExercise(Exercise exercise){
         Exercises.add(exercise);
+    }
+
+    public void addExercises(List<Exercise> exercises){
+        Exercises.addAll(exercises);
     }
 
     public List<Exercise> getExercises(){

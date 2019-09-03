@@ -114,7 +114,7 @@ public class ExerciseViewModel extends ViewModel {
                 break;
             case Circle:
                 exercise = new CircleExercise(ExerciseName.getValue());
-                ((CircleExercise)exercise)
+                ((CircleExercise)exercise).addExercises(CircleExerViewMode.getExercises());
                 break;
         }
 
