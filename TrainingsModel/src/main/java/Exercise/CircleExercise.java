@@ -4,14 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import Enumerations.ExerciseType;
-
 public class CircleExercise extends Exercise {
     private final ExerciseType Type = ExerciseType.Circle;
 
     private List<Exercise> Exercises = new ArrayList<Exercise>();
 
 
-    CircleExercise(String name){
+    public CircleExercise(String name){
         super(name);
     }
 

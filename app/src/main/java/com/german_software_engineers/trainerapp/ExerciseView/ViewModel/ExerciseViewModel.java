@@ -26,6 +26,7 @@ import Exercise.BodyWeightExercise;
 import Exercise.DeviceExercise;
 import Exercise.Exercise;
 import Exercise.WarmUpExercise;
+import Exercise.CircleExercise;
 import Schedule.Schedule;
 
 public class ExerciseViewModel extends ViewModel {
@@ -37,6 +38,7 @@ public class ExerciseViewModel extends ViewModel {
     private DeviceExerciseViewModel DeviceExerciseViewModel = null;
     private BodyWeightExerciseViewModel BodyWeightExerciseViewModel = null;
     private WarmUpExerciseViewModel WarmUpExerciseViewModel = null;
+    private CircleExerciseViewModel CircleExerViewMode = null;
 
     public ExerciseViewModel(Schedule schedule, Exercise exercise){
         ActiveSchedule = schedule;
@@ -44,6 +46,7 @@ public class ExerciseViewModel extends ViewModel {
         DeviceExerciseViewModel = new DeviceExerciseViewModel(exercise);
         BodyWeightExerciseViewModel = new BodyWeightExerciseViewModel(exercise);
         WarmUpExerciseViewModel = new WarmUpExerciseViewModel(exercise);
+        CircleExerViewMode = new CircleExerciseViewModel();
         setRequiredValues();
     }
 
@@ -108,6 +111,10 @@ public class ExerciseViewModel extends ViewModel {
                 ((WarmUpExercise) exercise).setSubIntensity(WarmUpExerciseViewModel.getSubIntensity());
                 ((WarmUpExercise) exercise).setBPMActivated(WarmUpExerciseViewModel.isHeartfrequencyActivated());
                 ((WarmUpExercise) exercise).setBPM(WarmUpExerciseViewModel.getHeartfrequency());
+                break;
+            case Circle:
+                exercise = new CircleExercise(ExerciseName.getValue());
+                ((CircleExercise)exercise)
                 break;
         }
 

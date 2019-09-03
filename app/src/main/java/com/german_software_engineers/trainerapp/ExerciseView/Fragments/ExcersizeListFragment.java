@@ -31,6 +31,9 @@ import com.german_software_engineers.trainerapp.Controller.ApplicationManager;
 import com.german_software_engineers.trainerapp.Controller.ExerciseListModelController;
 import com.german_software_engineers.trainerapp.ExerciseView.Controller.MyExcersizeRecyclerViewAdapter;
 import com.german_software_engineers.trainerapp.R;
+
+import java.util.List;
+
 import Exercise.Exercise;
 import Exceptions.ScheduleAvailableException;
 
@@ -48,6 +51,7 @@ public class ExcersizeListFragment extends Fragment {
     private int mColumnCount = 1;
     private OnListFragmentInteractionListener mListener;
     private String ScheduleName;
+    private List<Exercise> Exercises;
     private MyExcersizeRecyclerViewAdapter Adapter;
     private static ExerciseListModelController Controller;
 
@@ -64,6 +68,17 @@ public class ExcersizeListFragment extends Fragment {
         ExcersizeListFragment fragment = new ExcersizeListFragment();
         Controller = controller;
         fragment.ScheduleName = scheduleName;
+        Bundle args = new Bundle();
+        args.putInt(ARG_COLUMN_COUNT, columnCount);
+        fragment.setArguments(args);
+        return fragment;
+    }
+
+    public static ExcersizeListFragment newInstance(int columnCount, List<Exercise> exercises, ExerciseListModelController controller) {
+        ExcersizeListFragment fragment = new ExcersizeListFragment();
+        Controller = controller;
+        fragment.ScheduleName = "";
+        fragment.Exercises = exercises;
         Bundle args = new Bundle();
         args.putInt(ARG_COLUMN_COUNT, columnCount);
         fragment.setArguments(args);
@@ -95,7 +110,10 @@ public class ExcersizeListFragment extends Fragment {
             }
             try {
                 ApplicationManager Manager = (ApplicationManager) getActivity().getApplication();
-                Adapter =  new MyExcersizeRecyclerViewAdapter(Manager.getApplicationModel().getSchedule(ScheduleName).exercises(), mListener);
+                if(ScheduleName!="")
+                    Adapter =  new MyExcersizeRecyclerViewAdapter(Manager.getApplicationModel().getSchedule(ScheduleName).exercises(), mListener);
+                else
+                    Adapter = new  MyExcersizeRecyclerViewAdapter(Exercises, mListener);
                 Adapter.setController(Controller);
                 recyclerView.setAdapter(Adapter);
             } catch (ScheduleAvailableException e) {

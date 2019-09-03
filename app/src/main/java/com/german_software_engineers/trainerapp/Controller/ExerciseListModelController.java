@@ -19,14 +19,14 @@ package com.german_software_engineers.trainerapp.Controller;
 
 import android.support.annotation.NonNull;
 
-import com.german_software_engineers.trainerapp.ExerciseView.Activity.ExerciseViewActivity;
+import com.german_software_engineers.trainerapp.ExerciseView.Activity.ExerciseView;
 import Model.Model;
 
 public class ExerciseListModelController {
-    private ExerciseViewActivity ExerciseView;
+    private ExerciseView ExerciseView;
     private Model ApplicationModel;
 
-    public ExerciseListModelController(@NonNull ExerciseViewActivity activity,@NonNull Model applicationModel){
+    public ExerciseListModelController(@NonNull ExerciseView activity, @NonNull Model applicationModel){
         ApplicationModel=applicationModel;
         ExerciseView=activity;
     }

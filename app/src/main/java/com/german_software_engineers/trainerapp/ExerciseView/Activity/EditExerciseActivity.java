@@ -41,7 +41,7 @@ import com.german_software_engineers.trainerapp.R;
 import Exercise.Exercise;
 import Schedule.Schedule;
 
-public class EditExerciseActivity extends AppCompatActivity implements ExerciseFragment.OnFragmentInteractionListener {
+public class EditExerciseActivity extends IEditExerviseActivity implements ExerciseFragment.OnFragmentInteractionListener {
 
     private ExerciseViewModel ViewModel = null;
 
@@ -178,5 +178,12 @@ public class EditExerciseActivity extends AppCompatActivity implements ExerciseF
     @Override
     public void onFragmentInteraction(Uri uri) {
 
+    }
+
+    @Override
+    public void onListFragmentInteraction(Exercise item) {
+        Intent intent = new Intent(this, EditExerciseActivity.class);
+        intent.putExtra("excName", item.getName());
+        startActivity(intent);
     }
 }

@@ -33,7 +33,7 @@ import Enumerations.TrainingsTypes;
 import Exercise.Exercise;
 import Schedule.Schedule;
 
-public class ExerciseViewActivity extends ExerciseListActivity {
+public class ExerciseViewActivity extends ExerciseListActivity implements ExerciseView {
     ExcersizeListFragment fragment;
     ExerciseListModelController Controller;
     Schedule ActiveSchedule;

@@ -9,12 +9,25 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.german_software_engineers.trainerapp.Controller.ApplicationManager;
+import com.german_software_engineers.trainerapp.Controller.ExerciseListModelController;
+import com.german_software_engineers.trainerapp.ExerciseView.Activity.ExerciseView;
 import com.german_software_engineers.trainerapp.ExerciseView.ViewModel.CircleExerciseViewModel;
 import com.german_software_engineers.trainerapp.R;
 
-public class CircleExerciseFragment extends Fragment {
+import java.util.ArrayList;
+import java.util.List;
+
+import Exercise.Exercise;
+
+public class CircleExerciseFragment extends Fragment implements ExerciseView {
 
     private CircleExerciseViewModel mViewModel;
+    private ExcersizeListFragment fragment;
+    ExerciseListModelController Controller;
+
+    //TODO Entferen
+    List<Exercise> exerciseList = new ArrayList<Exercise>();
 
     public static CircleExerciseFragment newInstance() {
         return new CircleExerciseFragment();
@@ -30,7 +43,21 @@ public class CircleExerciseFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         mViewModel = ViewModelProviders.of(this).get(CircleExerciseViewModel.class);
-        // TODO: Use the ViewModel
+        ApplicationManager manager = (ApplicationManager) getActivity().getApplication();
+        Controller = new ExerciseListModelController(this,manager.getApplicationModel());
+        fragment = ExcersizeListFragment.newInstance(1, exerciseList, Controller);
+        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.circleExercisesFragement, fragment).commit();
     }
 
+    @Override
+    public void updateView() {
+        ApplicationManager manager = (ApplicationManager) getActivity().getApplication();
+        fragment = ExcersizeListFragment.newInstance(1, exerciseList, Controller);
+        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.circleExercisesFragement, fragment).commit();
+    }
+
+    @Override
+    public void openExerciseEditor(String name) {
+
+    }
 }
