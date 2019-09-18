@@ -14,5 +14,4 @@ jobs:
       with:
         java-version: 1.8
     - name: Build with Gradle
-      run: chmod +x /home/runner/work/Trainer-App/Trainer-App/gradlew
-           ./gradlew build
+      run: build.sh
